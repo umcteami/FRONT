@@ -5,10 +5,82 @@
     android:layout_height="match_parent"
     tools:context=".Signup.EmailCodeFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="email code fragment" />
+    <ImageView
+        android:layout_width="197dp"
+        android:layout_height="33dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="92dp"
+        android:src="@drawable/email_num"/>
+
+    <ImageView
+        android:layout_width="213dp"
+        android:layout_height="20dp"
+        android:src="@drawable/email_code_textview"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="209dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="323dp"
+        android:orientation="horizontal"
+        android:background="@drawable/email_box">
+
+        <EditText
+            android:layout_width="328dp"
+            android:layout_height="48dp"
+            android:hint="이메일 주소를 입력해주세요"
+            android:inputType="textEmailAddress"
+            android:textColor="#6B6666"
+            android:foregroundGravity="fill"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="381dp"
+        android:orientation="horizontal"
+        android:background="@drawable/email_box">
+
+        <EditText
+            android:layout_width="328dp"
+            android:layout_height="48dp"
+            android:hint="인증 번호를 입력해주세요"
+            android:inputType="number"
+            android:textColor="#6B6666"
+            android:foregroundGravity="fill"
+            android:background="@null"/>
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/error"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+    
+    <ImageView
+        android:layout_width="235dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="439dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/email_code_textview4"/>
+
+    <ImageView
+        android:layout_width="137dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="439dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/email_code_error_textview"
+        android:visibility="invisible"/>
 
 </FrameLayout>

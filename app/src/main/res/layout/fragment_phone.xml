@@ -5,10 +5,54 @@
     android:layout_height="match_parent"
     tools:context=".Signup.PhoneFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:layout_width="197dp"
+        android:layout_height="33dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="92dp"
+        android:src="@drawable/phone_num"/>
+
+    <ImageView
+        android:layout_width="231dp"
+        android:layout_height="20dp"
+        android:src="@drawable/phone_textview"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="209dp"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="phone fragment" />
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="323dp"
+        android:orientation="horizontal"
+        android:background="@drawable/email_box">
+
+        <EditText
+            android:layout_width="328dp"
+            android:layout_height="48dp"
+            android:hint="000 0000 0000"
+            android:inputType="number"
+            android:textColor="#6B6666"
+            android:foregroundGravity="fill"
+            android:background="@null"/>
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/error"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="193dp"
+        android:layout_height="20dp"
+        android:src="@drawable/phone_error_textview"
+        android:layout_marginTop="381dp"
+        android:layout_marginLeft="16dp"
+        android:visibility="invisible"/>
 
 </FrameLayout>

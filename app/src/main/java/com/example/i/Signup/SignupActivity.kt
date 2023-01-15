@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.i.MainActivity
-import com.example.i.R
 import com.example.i.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
@@ -27,7 +26,6 @@ class SignupActivity : AppCompatActivity() {
         viewBinding.btOk.setOnClickListener {
             num++
             changeFragment(num)
-            viewBinding.btOk.text = "Next$num"
         }
     }
 
@@ -77,6 +75,7 @@ class SignupActivity : AppCompatActivity() {
             else -> {
                 var intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finish()
                 num = 0
             }
         }
