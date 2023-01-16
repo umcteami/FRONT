@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">I</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="TalkRoom">이야기방</string>
-    <string name="TalkRooms">이야기방 전체</string>
-    <stirng name="BestTalkRoom">인기글</stirng>
 
 </resources>
