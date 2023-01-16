@@ -2,11 +2,11 @@ package com.example.i
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.i.databinding.ActivityCommunityBinding
+import com.example.i.databinding.ActivityCommunityTalkroomBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class CommunityActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCommunityBinding
+class Community_TalkroomActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCommunityTalkroomBinding
     private val tabTitleArray = arrayOf(
         "이야기방 전체",
         "인기글"
@@ -14,7 +14,7 @@ class CommunityActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCommunityBinding.inflate(layoutInflater)
+        binding = ActivityCommunityTalkroomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val toolbar = binding.toolbar

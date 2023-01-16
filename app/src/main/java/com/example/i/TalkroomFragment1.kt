@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.i.databinding.FragmentCommunity1Binding
+import com.example.i.databinding.FragmentTalkroomBinding
 
 
-class CommunityFragment1 : Fragment() {
-    private lateinit var binding : FragmentCommunity1Binding
+class TalkroomFragment1 : Fragment() {
+    private lateinit var binding : FragmentTalkroomBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class CommunityFragment1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCommunity1Binding.inflate(inflater, container, false)
+        binding = FragmentTalkroomBinding.inflate(inflater, container, false)
         return binding.root
     }
 }
