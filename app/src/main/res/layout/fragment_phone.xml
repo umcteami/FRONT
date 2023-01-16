@@ -1,58 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Signup.PhoneFragment">
 
     <ImageView
+        android:id="@+id/phone_num"
         android:layout_width="197dp"
         android:layout_height="33dp"
         android:layout_gravity="end"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="92dp"
-        android:src="@drawable/phone_num"/>
+        android:layout_marginTop="12dp"
+        android:src="@drawable/phone_num"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
-        android:layout_width="231dp"
-        android:layout_height="20dp"
-        android:src="@drawable/phone_textview"
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="휴대폰 번호를 입력해주세요"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="21dp"
-        android:layout_marginTop="209dp"/>
+        android:fontFamily="@font/roboto"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="-3sp"
+        app:layout_constraintTop_toBottomOf="@+id/phone_num"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_phone"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="323dp"
-        android:orientation="horizontal"
-        android:background="@drawable/email_box">
+        android:layout_marginTop="94dp"
+        android:background="@drawable/email_box"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
-            android:layout_width="328dp"
+            android:id="@+id/et_phone"
+            android:layout_width="312dp"
             android:layout_height="48dp"
-            android:hint="000 0000 0000"
+            android:layout_marginStart="16dp"
+            android:background="@null"
+            android:hint="휴대폰 번호를 입력해주세요"
+            android:inputType="phone"
+            android:textColor="#6B6666"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_phonecode"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/email_box"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_phone">
+
+        <EditText
+            android:id="@+id/et_phonecode"
+            android:layout_width="312dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@null"
+            android:hint="인증 번호를 입력해주세요"
             android:inputType="number"
             android:textColor="#6B6666"
-            android:foregroundGravity="fill"
-            android:background="@null"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ib_error"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageButton
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="17dp"
-            android:src="@drawable/error"
-            android:visibility="invisible"/>
+            android:id="@+id/ib_error"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            android:src="@drawable/error_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/et_phonecode"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:layout_width="193dp"
-        android:layout_height="20dp"
-        android:src="@drawable/phone_error_textview"
-        android:layout_marginTop="381dp"
-        android:layout_marginLeft="16dp"
-        android:visibility="invisible"/>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
