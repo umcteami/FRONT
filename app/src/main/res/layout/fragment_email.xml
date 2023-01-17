@@ -31,46 +31,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_num" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_emailcode"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="94dp"
+        android:layout_marginTop="93dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/email_box"
+        android:hint="@string/email_hint"
+        app:boxStrokeWidthFocused="1dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/grey"
+        android:textColorHint="@color/grey"
+        app:boxStrokeErrorColor="@color/red"
+        app:errorIconDrawable="@drawable/error_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_email">
 
-        <EditText
-            android:id="@+id/et_email"
-            android:layout_width="312dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:background="@null"
-            android:hint="이메일 주소를 입력해주세요"
-            android:inputType="textEmailAddress"
-            android:textColor="#6B6666"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ib_error"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <ImageButton
-            android:id="@+id/ib_error"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@color/white"
-            android:src="@drawable/error_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/et_email"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="invisible"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

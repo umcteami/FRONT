@@ -19,7 +19,7 @@
         android:id="@+id/bt_ok"
         android:layout_width="328dp"
         android:layout_height="48dp"
-        android:src="@drawable/email_button2"
+        android:src="@drawable/code_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

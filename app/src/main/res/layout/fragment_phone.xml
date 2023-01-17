@@ -31,78 +31,29 @@
         app:layout_constraintTop_toBottomOf="@+id/phone_num"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_phone"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_phone"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="93dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="94dp"
-        android:background="@drawable/email_box"
-        app:layout_constraintTop_toBottomOf="@+id/tv_phone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <EditText
-            android:id="@+id/et_phone"
-            android:layout_width="312dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:background="@null"
-            android:hint="휴대폰 번호를 입력해주세요"
-            android:inputType="phone"
-            android:textColor="#6B6666"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_phonecode"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/email_box"
-        android:orientation="horizontal"
+        android:hint="@string/phone_hint"
+        app:boxStrokeWidthFocused="1dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/grey"
+        android:textColorHint="@color/grey"
+        app:boxStrokeErrorColor="@color/red"
+        app:errorIconDrawable="@drawable/error_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_phone">
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone">
 
-        <EditText
-            android:id="@+id/et_phonecode"
-            android:layout_width="312dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:background="@null"
-            android:hint="인증 번호를 입력해주세요"
-            android:inputType="number"
-            android:textColor="#6B6666"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ib_error"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <ImageButton
-            android:id="@+id/ib_error"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@color/white"
-            android:src="@drawable/error_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/et_phonecode"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="invisible"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

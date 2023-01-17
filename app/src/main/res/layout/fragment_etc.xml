@@ -51,12 +51,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
-        android:background="@drawable/nickname_box"
+        android:background="@color/main_2"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/tv_bir"
         tools:layout_editor_absoluteX="16dp">
 
-        <EditText
+        <Button
             android:id="@+id/et_bir"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -65,7 +65,9 @@
             android:background="@null"
             android:fontFamily="@font/roboto"
             android:hint="yyyy-mm-dd"
-            android:inputType="date"
+            android:backgroundTint="@color/main_2"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:gravity="start"
             android:minHeight="48dp"
             android:textColor="#A6A6A6"
             android:textSize="16sp"
@@ -81,7 +83,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@null"
-            android:src="@drawable/etc_button"
+            android:src="@drawable/calendar_month"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/et_bir"
@@ -111,7 +113,7 @@
         android:layout_marginTop="11dp"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
-        android:background="@drawable/nickname_box"
+        android:background="@color/main_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_add">
@@ -120,7 +122,7 @@
             android:id="@+id/iv_add"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/etc_button2"
+            android:src="@drawable/search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bt_add"
             app:layout_constraintHorizontal_bias="1.0"
@@ -150,7 +152,7 @@
         android:id="@+id/cl_add2"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@drawable/etc_box"
+        android:background="@color/light_grey"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
@@ -179,7 +181,7 @@
         android:id="@+id/cl_add3"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@drawable/etc_box"
+        android:background="@color/light_grey"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
@@ -204,36 +206,28 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_add4"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_intro"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/nickname_box"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginRight="17dp"
-        app:layout_constraintTop_toBottomOf="@+id/cl_add3"
+        android:layout_marginRight="16dp"
+        android:hint="상세주소"
+        app:boxStrokeWidthFocused="0dp"
+        app:boxStrokeWidth="0dp"
+        app:boxBackgroundColor="@color/main_2"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/grey"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/cl_add3">
 
-        <EditText
-            android:id="@+id/et_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:layout_marginEnd="11dp"
-            android:background="@null"
-            android:hint="상세주소 입력"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:textColor="#636363"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.textfield.TextInputLayout>
     
 </androidx.constraintlayout.widget.ConstraintLayout>
