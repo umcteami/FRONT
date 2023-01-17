@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import com.example.i.R
 
@@ -14,7 +15,7 @@ class PwSearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_pw_search, container, false)
-        val bt_call = rootView.findViewById<ImageButton>(R.id.bt_call)
+        val bt_call = rootView.findViewById<Button>(R.id.bt_call)
         val activity = activity as LoginActivity
 
         //인증번호 받기

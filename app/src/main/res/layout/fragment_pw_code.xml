@@ -31,7 +31,7 @@
             android:layout_marginLeft="10dp"
             android:text="계정 찾기"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:fontFamily="@font/roboto_bold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -46,16 +46,28 @@
             android:layout_marginTop="80dp"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:fontFamily="@font/roboto_bold"
             android:textColor="@color/black"
             android:text="인증 번호를 입력해주세요"
             android:textSize="20sp"/>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:hint="aiaiaiaiaiaiaiai@000.com"/>
+            android:layout_height="48dp"
+            android:layout_marginTop="141dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="aiaiaiaiaiaiaiai@000.com"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_regular"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -73,7 +85,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
-                    android:hint="인증 번호를 입력해주세요" />
+                    android:hint="인증 번호를 입력해주세요"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/roboto_regular"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -81,6 +95,8 @@
                 android:layout_height="match_parent"
                 android:text="00:00"
                 android:layout_marginRight="12dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -91,15 +107,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="· 입력하신 이메일 주소로 메일을 발송하였습니다.\n· 메일이 도착하기까지 시간이 소요될 수 있습니다"
-            android:textSize="11sp"/>
+            android:textSize="11sp"
+            android:fontFamily="@font/roboto_regular"/>
 
-        <ImageButton
+        <Button
             android:id="@+id/bt_ok"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/bt_ok"
-            android:clickable="false"/>
+            android:text="확인"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bt_rectangle" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,11 +130,13 @@
                 android:layout_height="match_parent"
                 android:text="인증 번호를 받지 못하셨나요?"
                 android:textSize="11sp"
+                android:fontFamily="@font/roboto_regular"
                 android:layout_marginLeft="92dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="재전송"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="#6B6666"
                 android:textSize="12sp"/>
         </LinearLayout>

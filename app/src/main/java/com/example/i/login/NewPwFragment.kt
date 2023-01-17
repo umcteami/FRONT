@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import com.example.i.R
 
@@ -16,7 +17,7 @@ class NewPWFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_new_pw, container, false)
-        val bt_ok = rootView.findViewById<ImageButton>(R.id.bt_ok)
+        val bt_ok = rootView.findViewById<Button>(R.id.bt_ok)
 
         // 로그인 화면으로 이동
         bt_ok.setOnClickListener{

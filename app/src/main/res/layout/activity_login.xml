@@ -31,7 +31,7 @@
             android:layout_marginLeft="10dp"
             android:text="로그인"
             android:textSize="16sp"
-            android:textStyle="bold"></TextView>
+            android:fontFamily="@font/roboto_black"></TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -54,16 +54,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="61dp"
-            android:background="@drawable/rectangle_yellow"
-            android:hint="    이메일" />
+            android:layout_height="48dp"
+            android:layout_marginTop="119dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_yellow"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="이메일"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_pwd"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
@@ -71,18 +79,22 @@
             app:endIconTint="@color/grey">
 
             <EditText
+                android:id="@+id/input_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rectangle_yellow"
                 android:hint="비밀번호" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
+        <Button
             android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="61dp"
-            android:background="@drawable/bt_login"
+            android:text="로그인"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bt_rectangle"
             android:clickable="false"/>
 
         <LinearLayout

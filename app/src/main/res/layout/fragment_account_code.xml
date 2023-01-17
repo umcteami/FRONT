@@ -31,7 +31,7 @@
             android:layout_marginLeft="10dp"
             android:text="계정 찾기"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:fontFamily="@font/roboto_bold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -51,11 +51,22 @@
             android:text="인증 번호를 입력해주세요"
             android:textSize="20sp"/>
 
-        <EditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:hint="000 0000 0000"/>
+            android:layout_height="48dp"
+            android:layout_marginTop="119dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="000 0000 0000"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -65,11 +76,12 @@
                 android:id="@+id/input_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
@@ -99,7 +111,9 @@
             android:layout_height="52dp"
             android:layout_marginTop="50dp"
             android:text="확인"
-            android:background="@drawable/bt_ok"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bt_clicked"
             android:clickable="false"/>
 
         <LinearLayout
