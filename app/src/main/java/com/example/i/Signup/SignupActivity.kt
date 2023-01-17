@@ -3,6 +3,7 @@ package com.example.i.Signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.i.MainActivity
 import com.example.i.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
@@ -72,9 +73,8 @@ class SignupActivity : AppCompatActivity() {
                     .commitAllowingStateLoss()
             }
             else -> {
-                var intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+                val intent = Intent(this, MainActivity::class.java)
+                this.startActivity(intent)
                 num = 0
             }
         }
