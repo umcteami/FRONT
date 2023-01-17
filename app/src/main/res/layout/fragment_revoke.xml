@@ -49,7 +49,7 @@
             android:text="탈퇴하기 전에 아래 주의사항을 꼭 확인해 주세요."
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/roboto_bold"/>
 
         <TextView
             android:layout_width="350dp"
@@ -58,7 +58,8 @@
             android:layout_marginBottom="20dp"
             android:text="· 회원 탈퇴 시 계정과 관련된 정보는 복구가 불가능합니다."
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_regular"/>
 
         <TextView
             android:layout_width="350dp"
@@ -66,7 +67,8 @@
             android:layout_marginBottom="20dp"
             android:text="· 기존에 작성한 게시글과 댓글, 나눔장터는 삭제되지 않고 유지됩니다. 등록한 게시글과 댓글을 삭제하기 원하신다면 탈퇴 전 삭제해 주시기 바랍니다."
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_regular"/>
 
         <TextView
             android:layout_width="350dp"
@@ -74,7 +76,8 @@
             android:layout_marginBottom="20dp"
             android:text="· 좋아요나 찜 내역, 알림 설정한 게시글 정보, 신고 내역, 차단 내역 등은 모두 소멸되며 복구되지 않습니다."
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_regular"/>
 
         <TextView
             android:layout_width="350dp"
@@ -82,7 +85,8 @@
             android:layout_marginBottom="20dp"
             android:text="· 탈퇴 후 7일 동안은 동일한 이메일 주소로 재가입하실 수 없습니다."
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_regular"/>
 
     </LinearLayout>
 
@@ -109,10 +113,9 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            style="?android:borderlessButtonStyle"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/bt_check_x" />
+            android:src="@drawable/bt_checked" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,16 +124,19 @@
             android:layout_marginTop="3dp"
             android:text="상단 주의사항을 모두 확인했으며 탈퇴에 동의합니다."
             android:textColor="@color/black"
-            android:textSize="12sp" />
-
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"/>
     </LinearLayout>
 
-    <ImageButton
+    <Button
         android:id="@+id/bt_call"
-        android:layout_width="wrap_content"
+        android:layout_width="410dp"
         android:layout_height="66dp"
-        android:background="@drawable/bt_revoke_x"
+        android:background="@drawable/bt_rectangle"
         android:clickable="false"
+        android:text="문의 접수하기"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

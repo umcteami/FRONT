@@ -17,17 +17,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
             android:text="자유방"
             android:textColor="#A6A6A6"
             android:textSize="14sp"
-            android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
@@ -37,6 +37,7 @@
             android:text="다니고 계시는 병원 정보 좀 부탁드려요 (서울/경기도)"
             android:textColor="@color/black"
             android:textSize="16dp"
+            android:fontFamily="@font/roboto_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +63,7 @@
             android:text="해피엄마"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:fontFamily="@font/roboto_regular"
             app:layout_constraintStart_toEndOf="@+id/profile"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -78,7 +80,8 @@
                 android:layout_height="match_parent"
                 android:text="22:12:18"
                 android:textColor="#A6A6A6"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:fontFamily="@font/roboto_regular"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,7 +89,8 @@
                 android:layout_marginStart="8dp"
                 android:text="조회 12"
                 android:textColor="#A6A6A6"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:fontFamily="@font/roboto_regular"/>
 
             <ImageView
                 android:layout_width="18dp"
@@ -126,6 +130,7 @@
                 android:layout_height="match_parent"
                 android:text="12"
                 android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
                 android:textSize="14sp" />
 
             <ImageView
@@ -139,6 +144,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
                 android:text="2"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 

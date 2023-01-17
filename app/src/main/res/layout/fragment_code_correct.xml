@@ -60,21 +60,24 @@
             android:text="aaa***@gma****"
             android:textSize="21sp"/>
 
-        <ImageButton
+        <Button
             android:id="@+id/bt_find_pw"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="68dp"
-            android:background="@drawable/bt_find_pw"
-            android:clickable="false"/>
+            android:text="비밀번호 찾기"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bt_rectangle"/>
 
-        <ImageButton
+        <Button
             android:id="@+id/bt_ok"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bt_ok"
-            android:clickable="false"/>
-
+            android:text="확인"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bt_rectangle" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

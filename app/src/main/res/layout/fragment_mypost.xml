@@ -38,7 +38,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="작성한 글"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:fontFamily="@font/roboto_bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -54,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:text="최신순"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:fontFamily="@font/roboto_regular"/>
 
             <ImageButton
                 android:id="@+id/bt_down"
