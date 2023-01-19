@@ -33,7 +33,7 @@
             android:layout_width="118dp"
             android:layout_height="40dp"
             android:text="아니오"
-            android:textColor="@color/grey"
+            android:textColor="@color/gray"
             android:textSize="14sp"
             android:backgroundTint="@color/light_gray"
             android:layout_marginRight="16dp"
