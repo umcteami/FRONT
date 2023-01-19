@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.i.R
 import com.example.i.databinding.ActivityCommunityTalkroomBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -21,9 +22,6 @@ class CommunityTalkroomActivity : AppCompatActivity() {
         viewBinding = ActivityCommunityTalkroomBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        val toolbar = viewBinding.toolbar
-        setSupportActionBar(toolbar)
-
         val viewPager = viewBinding.viewpager
         val tabLayout = viewBinding.tabLayout
 
@@ -33,12 +31,10 @@ class CommunityTalkroomActivity : AppCompatActivity() {
             tab.text = tabTitleArray[position]
         }.attach()
 
-        val button_write = viewBinding.btnWrite
-        button_write.setOnClickListener{
-            supportFragmentManager
-                .beginTransaction()
-                .replace(viewBinding.constraintLayout.id, PostWrightFragment())
-                .commitAllowingStateLoss()
+        val buttonWrite = viewBinding.btnWrite
+        buttonWrite.setOnClickListener{
+            val writeIntent = Intent(this, ComminityWriteActivity::class.java)
+            startActivity(writeIntent)
         }
     }
 }
