@@ -1,4 +1,4 @@
-package com.example.i
+package com.example.i.community
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

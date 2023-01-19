@@ -1,14 +1,15 @@
-package com.example.i
+package com.example.i.community
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.i.R
 
 class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) :
 RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
-    override fun onCreateViewHolder(parent : ViewGroup, viewType: Int):BoardViewHolder{
+    override fun onCreateViewHolder(parent : ViewGroup, viewType: Int): BoardViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.post_list_layout, parent, false)
         return BoardViewHolder(view)
     }

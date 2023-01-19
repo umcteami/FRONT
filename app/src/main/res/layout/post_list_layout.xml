@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="178dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".TalkroomFragment1">
+    tools:context=".community.TalkroomFragment1">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
