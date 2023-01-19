@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">I</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_hint">이메일 주소 입력</string>
     <string name="code_hint">인증 번호 입력</string>
@@ -14,5 +13,7 @@
     <string name="nickname_helper">닉네임은 최대 10자까지 입력할 수 있습니다.</string>
     <string name="intro_hint">한 줄 소개를 입력해주세요</string>
     <string name="intro_helper">한 줄 소개는 최대 50자까지 입력할 수 있습니다.</string>
+    <string name="TalkRoom">이야기방</string>
+    <string name="TalkRooms">이야기방 전체</string>
 
 </resources>
