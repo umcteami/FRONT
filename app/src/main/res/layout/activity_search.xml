@@ -31,9 +31,10 @@
             android:layout_gravity="center_vertical"
             android:background="@drawable/border_search"
             android:textColorHint="@color/main_3"
+            android:padding="10dp"
             android:hint="아이홈에서 검색할 내용을 입력하세요"
             android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/main_3"
+            android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
 
