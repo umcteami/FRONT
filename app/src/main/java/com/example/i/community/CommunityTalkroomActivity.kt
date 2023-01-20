@@ -31,6 +31,11 @@ class CommunityTalkroomActivity : AppCompatActivity() {
             tab.text = tabTitleArray[position]
         }.attach()
 
+        val buttonSearch = viewBinding.btnSearch
+        buttonSearch.setOnClickListener{
+            val searchIntent = Intent(this, SearchActivity::class.java)
+            startActivity(searchIntent)
+        }
         val buttonWrite = viewBinding.btnWrite
         buttonWrite.setOnClickListener{
             val writeIntent = Intent(this, ComminityWriteActivity::class.java)
