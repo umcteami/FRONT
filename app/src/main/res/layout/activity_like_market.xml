@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="좋아요한 게시글"
+                android:text="나눔장터 내역"
                 android:textSize="16sp"
                 android:fontFamily="@font/roboto_bold"/>
         </LinearLayout>
@@ -51,30 +51,16 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이야기방"
+                android:text="찜한 게시글"
                 android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"/>
+                android:fontFamily="@font/roboto_medium"/>
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="다이어리"
+                android:text="채팅한 게시글"
                 android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="정보공유"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"/>
+                android:fontFamily="@font/roboto_medium"/>
         </com.google.android.material.tabs.TabLayout>
-
-        <FrameLayout
-            android:id="@+id/frame_likePost"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
