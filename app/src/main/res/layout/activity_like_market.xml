@@ -14,23 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:background="@color/main_1"
-            android:orientation="horizontal"
-            android:paddingLeft="12dp"
-            android:paddingTop="31dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                style="?android:borderlessButtonStyle"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:srcCompat="@drawable/bt_back" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/bt_back">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,14 +30,14 @@
                 android:text="나눔장터 내역"
                 android:textSize="16sp"
                 android:fontFamily="@font/roboto_bold"/>
-        </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/main_4"
-            app:tabSelectedTextColor="@color/main_4">
+            app:tabSelectedTextColor="@color/black">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"

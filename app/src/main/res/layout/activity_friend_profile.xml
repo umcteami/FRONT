@@ -9,6 +9,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
+        app:menu="@menu/profile_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/main_1"
@@ -20,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="프로필"
+            android:text="내 프로필"
             android:textSize="16sp"
             android:fontFamily="@font/roboto_bold"/>
     </androidx.appcompat.widget.Toolbar>
@@ -77,8 +78,8 @@
         <Button
             android:layout_width="120dp"
             android:layout_height="36dp"
-            android:background="@drawable/bt_chatting"
             android:text="채팅 보내기"
+            android:background="@drawable/bt_chatting"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/textView5"
@@ -122,7 +123,16 @@
         android:id="@+id/frame_myDiary"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs"/>
+        app:layout_constraintTop_toBottomOf="@+id/tabs" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav"
+        app:labelVisibilityMode="labeled"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
