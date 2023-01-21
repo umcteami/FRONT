@@ -70,7 +70,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이야기방 전체" />
+                android:text="장터후기" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -98,7 +98,6 @@
             android:backgroundTint="@color/main_2"
             app:borderWidth="0dp"
             android:src="@drawable/ic_write"
-            android:outlineSpotShadowColor="@android:color/transparent"
             />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

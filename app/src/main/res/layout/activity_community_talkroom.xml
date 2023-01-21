@@ -98,17 +98,15 @@
         android:backgroundTint="@color/main_2"
         app:borderWidth="0dp"
         android:src="@drawable/ic_write"
-        android:outlineSpotShadowColor="@android:color/transparent"
-        />
+        android:outlineSpotShadowColor="@android:color/transparent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/gnb"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#DDDDDD"
-        />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/gnb"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:background="#DDDDDD"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
