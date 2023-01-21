@@ -13,6 +13,9 @@
         android:theme="@style/Theme.I"
         tools:targetApi="31">
         <activity
+            android:name=".community.ReviewSearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".community.DiaryActivity"
             android:exported="false" />
         <activity
