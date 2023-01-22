@@ -7,8 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 private const val NUM_TABS = 3
 
-class SearchviewPagerAdapter(fragmentManger: FragmentManager, lifecycle: Lifecycle) :
-    FragmentStateAdapter(fragmentManger, lifecycle) {
+class SearchviewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         return NUM_TABS
     }

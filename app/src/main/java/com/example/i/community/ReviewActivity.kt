@@ -21,7 +21,7 @@ class ReviewActivity : AppCompatActivity() {
         val viewPager = viewBinding.viewpager
         val tabLayout = viewBinding.tabLayout
 
-        viewPager.adapter = CommunityViewPagerAdapter(supportFragmentManager, lifecycle)
+        viewPager.adapter = ReviewViewPagerAdapter(supportFragmentManager, lifecycle)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabTitleArray[position]
         }.attach()
