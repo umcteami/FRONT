@@ -32,6 +32,7 @@
             android:background="@drawable/border_search"
             android:textColorHint="@color/main_3"
             android:hint="아이홈에서 검색할 내용을 입력하세요"
+            android:padding="10dp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/main_3"
             android:textSize="14sp" />
@@ -182,6 +183,10 @@
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
@@ -207,6 +212,10 @@
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
@@ -232,6 +241,10 @@
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
@@ -257,6 +270,10 @@
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
@@ -283,6 +300,10 @@
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
@@ -308,6 +329,10 @@
                 android:text="강아지 약"
                 android:textColor="@color/black"
                 />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
@@ -334,6 +359,10 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="강아지 약"
                 android:textColor="@color/black" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <ImageView
                 android:layout_width="11dp"

@@ -38,7 +38,7 @@ class CommunityTalkroomActivity : AppCompatActivity() {
         }
         val buttonWrite = viewBinding.btnWrite
         buttonWrite.setOnClickListener{
-            val writeIntent = Intent(this, ComminityWriteActivity::class.java)
+            val writeIntent = Intent(this, CommunityWriteActivity::class.java)
             startActivity(writeIntent)
         }
     }

@@ -27,10 +27,27 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Spinner
+        <TextView
+            android:id="@+id/tv_sort"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="최신순"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/btn_selectDate"
+            android:layout_width="22dp"
             android:layout_height="22dp"
-            android:gravity="center_vertical" />
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/frame_44" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
