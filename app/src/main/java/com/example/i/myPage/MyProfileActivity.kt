@@ -3,14 +3,14 @@ package com.example.i.myPage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.example.i.databinding.ActivityMyprofileBinding
+import com.example.i.databinding.ActivityMyProfileBinding
 
 class MyProfileActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityMyprofileBinding
+    private lateinit var viewBinding: ActivityMyProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivityMyprofileBinding.inflate(layoutInflater)
+        viewBinding = ActivityMyProfileBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         setSupportActionBar(viewBinding.toolbar)

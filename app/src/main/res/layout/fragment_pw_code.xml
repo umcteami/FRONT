@@ -101,7 +101,7 @@
             android:textSize="11sp"
             android:fontFamily="@font/roboto_regular"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_ok"
             android:layout_width="match_parent"
             android:layout_height="52dp"

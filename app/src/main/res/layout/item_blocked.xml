@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="53dp"
             android:layout_marginEnd="4dp"
-            android:background="@drawable/bt_blocked"
+            android:background="@drawable/bt_block"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/blocked_content"
             app:layout_constraintTop_toTopOf="@+id/blocked_name" />

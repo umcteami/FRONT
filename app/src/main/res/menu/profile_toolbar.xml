@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/profile_menu"
-        android:icon="@drawable/ic_blocked"
+        android:icon="@drawable/ic_menu"
         android:title="차단"
         android:enabled="true"
         app:showAsAction="always"

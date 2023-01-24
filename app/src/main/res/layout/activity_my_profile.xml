@@ -101,27 +101,27 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/view2"
         app:tabIndicatorColor="@color/main_4"
-        app:tabSelectedTextColor="@color/main_4">
+        app:tabSelectedTextColor="@color/black">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="이야기방"
+            android:text="작성한 글"
             android:textSize="14sp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="다이어리"
+            android:text="작성한 댓글"
             android:textSize="14sp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="정보공유"
+            android:text="나눔장터"
             android:textSize="14sp" />
     </com.google.android.material.tabs.TabLayout>
 

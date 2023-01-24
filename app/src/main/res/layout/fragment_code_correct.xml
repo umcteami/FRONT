@@ -51,24 +51,26 @@
             android:text="aaa***@gma****"
             android:textSize="21sp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_find_pw"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="68dp"
             android:text="비밀번호 찾기"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:fontFamily="@font/roboto_bold"
-            android:background="@drawable/bt_rectangle"/>
+            android:background="@drawable/bt_clicked"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_ok"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="10dp"
             android:text="확인"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:fontFamily="@font/roboto_bold"
-            android:background="@drawable/bt_rectangle" />
+            android:background="@drawable/bt_clicked" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
