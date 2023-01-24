@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.i.MainActivity
+import com.example.i.Message.MessageListFragment
 import com.example.i.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
@@ -31,6 +32,13 @@ class SignupActivity : AppCompatActivity() {
 
     fun changeFragment(index: Int) {
         when (index) {
+            0 -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(viewBinding.signupFragment.id, EmailFragment())
+                    .commitAllowingStateLoss()
+            }
+
             1 -> {
                 supportFragmentManager
                     .beginTransaction()
@@ -73,9 +81,8 @@ class SignupActivity : AppCompatActivity() {
                     .commitAllowingStateLoss()
             }
             else -> {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, SignupFinActivity::class.java)
                 this.startActivity(intent)
-                num = 0
             }
         }
     }
