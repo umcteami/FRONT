@@ -51,7 +51,7 @@
             android:layout_marginTop="1dp"
             android:fontFamily="@font/roboto_regular"
             android:text="안녕하세요 해피엄마입니다 ^^"
-            android:textColor="@color/grey"
+            android:textColor="@color/gray"
             android:textSize="13sp"
             app:layout_constraintStart_toEndOf="@+id/img_profile"
             app:layout_constraintTop_toBottomOf="@+id/blocked_name" />

@@ -63,7 +63,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_regular"
             android:text="10분 전"
-            android:textColor="@color/grey"
+            android:textColor="@color/gray"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/report_profile"
