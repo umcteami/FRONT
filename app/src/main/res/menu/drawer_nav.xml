@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/drawer1">
+        <item
+            android:id="@+id/drawer_community"
+            android:title="이야기방 전체" />
+    <item
+        android:id="@+id/drawer_talking"
+        android:title="수다방"
+        />
+    <item
+        android:id="@+id/drawer_qna"
+        android:title="질문방"
+        />
+    <item
+        android:id="@+id/drawer_info"
+        android:title="정보방"
+        />
+    </group>
+
+    <group android:id="@+id/drawer2">
+    <item
+        android:id="@+id/drawer_diary"
+        android:title="일기장 전체"
+
+        />
+    <item
+        android:id="@+id/drawer_care"
+        android:title="간호 일기"
+        />
+    <item
+        android:id="@+id/drawer_rain"
+        android:title="무지개 일기"
+        />
+    </group>
+
+    <group android:id="@+id/drawer3">
+    <item
+        android:id="@+id/drawer_review"
+        android:title="장터 후기"
+        />
+    </group>
+
+</menu>

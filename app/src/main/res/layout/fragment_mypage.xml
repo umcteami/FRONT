@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mypage_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_1"
+        card_view:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="마이 페이지"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        card_view:layout_constraintTop_toBottomOf="@+id/mypage_toolbar"
+        android:scrollbars="none"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mypage_head"
+                android:layout_width="match_parent"
+                android:layout_height="390dp"
+                card_view:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/mypage_profile"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="35dp"
+                        android:src="@drawable/img"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/mypage_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="40dp"
+                        android:text="유저닉네임유저닉네임"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        card_view:layout_constraintStart_toEndOf="@+id/mypage_profile"
+                        card_view:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/mypage_intro"
+                        android:layout_width="180dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:text="이건한줄소개란이에요한줄소개한줄소개한줄소개오십개를다채우면이정도분량이나와요이런식으로하면되겠죠헷"
+                        android:textColor="@color/grey"
+                        card_view:layout_constraintStart_toEndOf="@+id/mypage_profile"
+                        card_view:layout_constraintTop_toBottomOf="@+id/mypage_username" />
+
+                    <ImageButton
+                        android:id="@+id/mypage_settingBtn"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="32dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/mypage_setting"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="327dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="70dp"
+                        android:background="@drawable/mypage_border"
+                        android:orientation="horizontal"
+                        card_view:layout_constraintEnd_toEndOf="parent"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toBottomOf="@+id/mypage_profile">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="109dp"
+                            android:layout_height="match_parent"
+                            android:clickable="true">
+
+                            <TextView
+                                android:id="@+id/mypage_myPostTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="24dp"
+                                android:text="작성한 글"
+                                android:textColor="@color/grey"
+                                card_view:layout_constraintEnd_toEndOf="parent"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/mypage_myPostNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3"
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                card_view:layout_constraintEnd_toEndOf="parent"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toBottomOf="@+id/mypage_myPostTv" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/semi_grey" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="109dp"
+                            android:layout_height="match_parent"
+                            android:clickable="true">
+
+                            <TextView
+                                android:id="@+id/mypage_myDiaryTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="24dp"
+                                android:text="작성한 글"
+                                android:textColor="@color/grey"
+                                card_view:layout_constraintEnd_toEndOf="parent"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/mypage_myDiaryNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3"
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                card_view:layout_constraintEnd_toEndOf="parent"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toBottomOf="@+id/mypage_myDiaryTv" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/semi_grey" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="109dp"
+                            android:layout_height="match_parent"
+                            android:clickable="true">
+
+                            <TextView
+                                android:id="@+id/mypage_myMarketTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="24dp"
+                                android:text="작성한 글"
+                                android:textColor="@color/grey"
+                                card_view:layout_constraintEnd_toEndOf="parent"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/mypage_myMarketNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3"
+                                android:textColor="@color/black"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                card_view:layout_constraintEnd_toEndOf="parent"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toBottomOf="@+id/mypage_myMarketTv" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/mypage_settingTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="32dp"
+                        android:text="계정 설정"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_width="327dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:text="알림"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toBottomOf="@+id/mypage_settingTv" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mypage_middle"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:layout_marginTop="8dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/mypage_head"
+
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/mypage_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="32dp"
+                        android:text="나의 기록"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="327dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toBottomOf="@+id/mypage_record">
+
+                        <TextView
+                            android:id="@+id/mypage_likeList"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="좋아요한 게시글"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_marketList"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="찜한 물품"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_reportList"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="신고 내역"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_bolckList"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="차단한 사용자"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/mypage_middle">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/mypage_etc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="32dp"
+                        android:text="기타"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="327dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical"
+                        card_view:layout_constraintStart_toStartOf="parent"
+                        card_view:layout_constraintTop_toBottomOf="@+id/mypage_etc">
+
+                        <TextView
+                            android:id="@+id/mypage_supportTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="고객센터"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_anncmTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="공지사항"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_policyTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="약관 및 개인정보처리방침"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_versionTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="앱 버전"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_logoutTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="로그아웃"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/mypage_withdrawTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:text="탈퇴하기"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
