@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/grey">
+            app:endIconTint="@color/gray">
 
             <EditText
                 android:layout_width="match_parent"
@@ -74,7 +74,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="10dp"
              app:endIconMode="password_toggle"
-            app:endIconTint="@color/grey">
+            app:endIconTint="@color/gray">
 
             <EditText
                 android:layout_width="match_parent"
