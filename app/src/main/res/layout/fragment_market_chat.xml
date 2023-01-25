@@ -14,46 +14,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/main_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/bt_back">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="작성한 글"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_bold"/>
-        </androidx.appcompat.widget.Toolbar>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F5F5F5"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="MissingConstraints"
-            android:padding="20dp">
+            android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="최신순"
-                android:textSize="16sp"
+                android:layout_marginLeft="6dp"
+                android:textColor="#A6A6A6"
+                android:text="총 6개의 찜한 글이 있어요"
+                android:textSize="13sp"
                 android:fontFamily="@font/roboto_regular"/>
-
-            <ImageButton
-                android:id="@+id/bt_down"
-                style="?android:borderlessButtonStyle"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                app:srcCompat="@drawable/bt_down"/>
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -63,6 +38,10 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
                 tools:ignore="MissingClass">
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -74,7 +53,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/item_mypost" />
+                    tools:listitem="@layout/item_market" />
             </androidx.core.widget.NestedScrollView>
         </RelativeLayout>
     </LinearLayout>
