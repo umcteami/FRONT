@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:text="계정이 기억나지 않으세요?"
-            android:textColor="@color/grey"
+            android:textColor="@color/gray"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
