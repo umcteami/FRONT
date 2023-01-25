@@ -12,27 +12,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.I"
         tools:targetApi="31">
+
         <activity
-            android:name=".CommunityWriteActivity"
-            android:exported="false" />
             android:name=".Signup.SignupFinActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".community.ReviewWriteActivity"
             android:exported="false" />
         <activity
             android:name=".community.ReviewSearchActivity"
             android:exported="false" />
+        <activity
             android:name=".Market.WriteActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Message.MessageActivity"
             android:exported="false">
@@ -40,6 +42,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
             android:name=".community.DiaryActivity"
             android:exported="false" />
         <activity
@@ -53,8 +56,9 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true" />
 
+        <activity
             android:name=".community.CommunityTalkroomActivity"
             android:exported="true">
             <intent-filter>
@@ -64,17 +68,7 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name=".myPage.LikePostActivity"
-            android:exported="false" >
-        </activity>
-        <activity
-            android:name=".community.MainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".login.LoginActivity"
             android:exported="true" >
