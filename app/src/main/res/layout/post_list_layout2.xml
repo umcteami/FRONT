@@ -89,7 +89,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:id="@+id/iv_NewPost"
-                    android:src="@drawable/img"
+                    android:src="@drawable/img_post"
                     app:layout_constraintLeft_toRightOf="@id/tv_view"
                     app:layout_constraintTop_toBottomOf="@id/tv_writer"
                     android:layout_marginLeft="15dp"/>
@@ -120,7 +120,7 @@
                 android:id="@+id/iv_IconHeart"
                 android:layout_width="15dp"
                 android:layout_height="20dp"
-                android:src="@drawable/img_1"
+                android:src="@drawable/img_post"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cv_postImage"
                 android:layout_marginTop="15dp"/>
@@ -140,7 +140,7 @@
                 android:id="@+id/iv_Chat"
                 android:layout_width="15dp"
                 android:layout_height="20dp"
-                android:src="@drawable/img_2"
+                android:src="@drawable/img_post"
                 android:layout_marginLeft="10dp"
                 app:layout_constraintLeft_toRightOf="@id/tv_hearts"
                 app:layout_constraintTop_toBottomOf="@id/cv_postImage"

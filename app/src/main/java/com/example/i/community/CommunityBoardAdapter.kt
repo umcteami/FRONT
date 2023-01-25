@@ -17,10 +17,7 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
     override fun onBindViewHolder(holder: BoardViewHolder, position: Int) {
         holder.tv_time.text = itemList[position].time
         holder.tv_title.text=  itemList[position].title
-        holder.tv_view.text= itemList[position].view.toString()
-        holder.tv_likes.text= itemList[position].likes
         holder.tv_writer.text= itemList[position].name
-        holder.tv_roominfo.text= itemList[position].roomInfo
     }
 
     override fun getItemCount(): Int {

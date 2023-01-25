@@ -18,7 +18,7 @@ class ReviewFragment : Fragment() {
         viewBinding = FragmentReviewBinding.inflate(layoutInflater)
         val itemList = ArrayList<BoardItem>()
         itemList.apply {
-            add(BoardItem("12:00", "똘이엄마와 거래한 후기 입니다", "별이엄마", 2, "12", "4", "장터후기"))
+            add(BoardItem("12:00", "똘이엄마와 거래한 후기 입니다", "별이엄마"))
 
         }
         viewBinding.rvBoard.layoutManager =

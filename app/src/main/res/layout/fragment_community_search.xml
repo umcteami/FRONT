@@ -21,7 +21,7 @@
             android:layout_marginHorizontal="2dp"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            app:srcCompat="@drawable/arrow_back_ios"
+            app:srcCompat="@drawable/bt_back"
             android:layout_gravity="center_vertical"/>
 
         <EditText
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/background_recent">
+            android:background="@drawable/check_circle">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/btn_search_delete"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"
                 android:layout_marginRight="12dp"/>
         </LinearLayout>
@@ -101,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/background_recent">
+            android:background="@drawable/bt_back">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/btn_search_delete"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"
                 android:layout_marginRight="12dp"/>
         </LinearLayout>
@@ -124,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/background_recent">
+            android:background="@drawable/check_circle">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                 android:layout_height="15dp"
                 android:fontFamily="@font/roboto_regular"
                 android:background="@android:color/transparent"
-                android:src="@drawable/btn_search_delete"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"
                 android:layout_marginRight="12dp"/>
         </LinearLayout>
@@ -190,7 +190,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
-                android:src="@drawable/rankingup"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -219,7 +219,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
-                android:src="@drawable/rankingup"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -248,7 +248,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
-                android:src="@drawable/rankingdown"
+                android:src="@drawable/arrow_forward"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -277,7 +277,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
-                android:src="@drawable/rankingup"
+                android:src="@drawable/arrow_forward"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -307,7 +307,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
-                android:src="@drawable/rankingup"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -336,7 +336,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
-                android:src="@drawable/rankingup"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -367,7 +367,7 @@
             <ImageView
                 android:layout_width="11dp"
                 android:layout_height="5.5dp"
-                android:src="@drawable/rankingup"
+                android:src="@drawable/bt_back"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
