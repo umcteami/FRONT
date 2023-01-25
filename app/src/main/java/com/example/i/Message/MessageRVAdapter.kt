@@ -13,7 +13,7 @@ class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adap
             viewBinding.tvNickname.text = Message.nickname
             viewBinding.tvChat.text = Message.chat
             viewBinding.tvTime.text = Message.time
-            if (Message.num == null){
+            if (Message.num != null){
                 viewBinding.tvNum.visibility=View.VISIBLE
                 viewBinding.tvNum.text = Message.num
             }
