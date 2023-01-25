@@ -1,7 +1,5 @@
 package com.example.i.home
 
-import android.graphics.drawable.Drawable
-
 data class Ttls(
     var title: String,
 //    var picture : Drawable?,

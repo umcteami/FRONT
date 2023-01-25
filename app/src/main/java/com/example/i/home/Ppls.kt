@@ -1,7 +1,5 @@
 package com.example.i.home
 
-import android.graphics.drawable.Drawable
-
 data class Ppls(
     var title:String,
    // var picture : String,

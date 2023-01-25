@@ -20,6 +20,24 @@ class MypageFragment : Fragment() {
 
         setUpView()
 
+//        viewBinding.homeToolbar.setOnMenuItemClickListener {
+//            when (it.itemId) {
+//
+//                R.id.home_search -> {
+//                    val intent = Intent(context, SearchActivity::class.java)
+//                    intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+//                    startActivity(intent)
+//                    true
+//                }
+//                R.id.home_noti -> {
+//                    val intent = Intent(context, NotiActivity::class.java)
+//                    startActivity(intent)
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
+
         return viewBinding.root
     }
 

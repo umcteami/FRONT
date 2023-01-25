@@ -1,7 +1,5 @@
 package com.example.i.mypage
 
-import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem

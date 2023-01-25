@@ -1,6 +1,5 @@
 package com.example.i.toolbar
 
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -22,7 +21,7 @@ class NotiActivity : AppCompatActivity() {
         //왼쪽 버튼 사용설정(기본은 뒤로가기)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         //왼쪽 버튼 아이콘 변경
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back) //위치 조정 어케하지
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back) 
 
         val notiList: ArrayList<Noti> = arrayListOf()
 
