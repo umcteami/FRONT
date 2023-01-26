@@ -3,7 +3,7 @@ package com.example.i
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.i.Signup.SignupActivity
+import com.example.i.signup.SignupActivity
 import com.example.i.databinding.ActivityMainBinding
 import com.example.i.login.LoginActivity
 

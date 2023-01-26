@@ -14,7 +14,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".Signup.SignupFinActivity"
+            android:name=".signup.SignupFinActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -28,31 +28,31 @@
             android:name=".community.ReviewSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".Market.WriteActivity"
+            android:name=".market.WriteActivity"
             android:exported="false"/>
         <activity
-            android:name=".myPage.FriendProfileActivity"
+            android:name=".mypage.FriendProfileActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".myPage.MyProfileActivity"
+            android:name=".mypage.MyProfileActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".myPage.LikeMarketActivity"
+            android:name=".mypage.LikeMarketActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".myPage.MyMarketActivity"
+            android:name=".mypage.MyMarketActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -60,7 +60,7 @@
         </activity>
 
         <activity
-            android:name=".Message.MessageActivity"
+            android:name=".chat.MessageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -99,7 +99,7 @@
         </activity>
 
         <activity
-            android:name=".myPage.LikePostActivity"
+            android:name=".mypage.LikePostActivity"
             android:exported="false" />
 
         <activity
@@ -111,7 +111,7 @@
 
         </activity>
         <activity
-            android:name=".Signup.SignupActivity"
+            android:name=".signup.SignupActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
