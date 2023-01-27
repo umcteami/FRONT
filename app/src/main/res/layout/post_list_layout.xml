@@ -131,14 +131,14 @@
                     android:id="@+id/iv_postimage"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/img_diary_postlist"
+                    android:src="@drawable/img_post"
                     android:scaleType="centerCrop"/>
             </androidx.cardview.widget.CardView>
             <ImageView
                 android:id="@+id/iv_IconHeart"
                 android:layout_width="15dp"
                 android:layout_height="20dp"
-                android:src="@drawable/img_post"
+                android:src="@drawable/ic_heart"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cv_postImage"
                 android:layout_marginTop="15dp"/>
@@ -158,7 +158,7 @@
                 android:id="@+id/iv_Chat"
                 android:layout_width="15dp"
                 android:layout_height="20dp"
-                android:src="@drawable/img_post"
+                android:src="@drawable/ic_comment"
                 android:layout_marginLeft="10dp"
                 app:layout_constraintLeft_toRightOf="@id/tv_hearts"
                 app:layout_constraintTop_toBottomOf="@id/cv_postImage"

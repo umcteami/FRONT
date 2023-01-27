@@ -3,6 +3,7 @@ package com.example.i.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.i.MainActivity
 import com.example.i.databinding.ActivityLoginBinding
 
 
@@ -16,8 +17,8 @@ class LoginActivity : AppCompatActivity() {
 
         // 메인 화면으로 이동
         viewBinding.btLogin.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            this.startActivity(intent)
+            val intent = Intent(this, MainActivity::class.java)
+            this.startActivity(intent)
         }
 
         // 계정 찾기로 이동

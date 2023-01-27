@@ -15,7 +15,7 @@
 
         <activity
             android:name=".Signup.SignupFinActivity"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -23,13 +23,13 @@
 
         <activity
             android:name=".community.ReviewWriteActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".community.ReviewSearchActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Market.WriteActivity"
-            android:exported="false"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.FriendProfileActivity"
             android:exported="true" >
@@ -39,21 +39,21 @@
         </activity>
         <activity
             android:name=".myPage.MyProfileActivity"
-            android:exported="false" >
+            android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".myPage.LikeMarketActivity"
-            android:exported="false" >
+            android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".myPage.MyMarketActivity"
-            android:exported="false" >
+            android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -61,23 +61,23 @@
 
         <activity
             android:name=".Message.MessageActivity"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".community.DiaryActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".community.SearchActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".community.ReviewActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".community.CommunityWriteActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" >
@@ -100,7 +100,7 @@
 
         <activity
             android:name=".myPage.LikePostActivity"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity
             android:name=".login.LoginActivity"
@@ -112,7 +112,7 @@
         </activity>
         <activity
             android:name=".Signup.SignupActivity"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
