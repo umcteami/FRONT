@@ -26,7 +26,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:text="간호 일기"
-                android:textColor="@color/gray"
+                android:textColor="@color/grey"
                 android:textSize="14sp"/>
             <TextView
                 android:id="@+id/tv_title"

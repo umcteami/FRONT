@@ -20,7 +20,7 @@
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:text="4건의 검색결과가 있어요."
-            android:textColor="@color/gray" />
+            android:textColor="@color/grey" />
 
         <View
             android:layout_width="0dp"
