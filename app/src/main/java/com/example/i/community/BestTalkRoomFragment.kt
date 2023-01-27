@@ -19,7 +19,6 @@ class BestTalkRoomFragment : Fragment() {
         viewBinding = FragmentBesttalkroomBinding.inflate(layoutInflater)
 
         val bests = resources.getStringArray(R.array.best_array)
-        //val spinner = viewBinding.spinBestDate
 
 
         val itemList = ArrayList<BoardItem>()
