@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:minHeight="48dp"
+                android:layout_marginLeft="10dp"
                 android:inputType="textMultiLine"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/bt_send"
