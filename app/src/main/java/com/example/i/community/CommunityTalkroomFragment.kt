@@ -19,6 +19,10 @@ class CommunityTalkroomFragment : Fragment() {
         val itemList = ArrayList<BoardItem>()
         itemList.apply {
             add(BoardItem("11:11", "안녕하세요", "별이엄마"))
+            add(BoardItem("11:11", "안녕하세요", "별이엄마"))
+            add(BoardItem("11:11", "안녕하세요", "별이엄마"))
+            add(BoardItem("11:11", "안녕하세요", "별이엄마"))
+
         }
         viewBinding.rvBoard.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

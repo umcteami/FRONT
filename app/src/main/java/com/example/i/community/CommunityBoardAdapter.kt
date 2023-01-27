@@ -27,9 +27,6 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
     inner class BoardViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val tv_time = itemView.findViewById<TextView>(R.id.tv_writeTime)
         val tv_title = itemView.findViewById<TextView>(R.id.tv_title)
-        val tv_view = itemView.findViewById<TextView>(R.id.tv_view)
-        val tv_likes = itemView.findViewById<TextView>(R.id.tv_hearts)
         val tv_writer = itemView.findViewById<TextView>(R.id.tv_writer)
-        val tv_roominfo = itemView.findViewById<TextView>(R.id.tv_roominfo)
     }
 }

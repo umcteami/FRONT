@@ -20,7 +20,7 @@
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/btn_menu"
+            android:id="@+id/me"
             android:src="@drawable/ic_menu"
             android:layout_gravity="start"
             android:background="@android:color/transparent"/>
@@ -95,8 +95,7 @@
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/main_2"
         app:borderWidth="0dp"
-        android:src="@drawable/ic_write"
-        android:outlineSpotShadowColor="@android:color/transparent" />
+        android:src="@drawable/ic_write" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/gnb"

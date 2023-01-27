@@ -18,23 +18,23 @@
         <ImageButton
             android:id="@+id/bt_back"
             style="?android:borderlessButtonStyle"
+            android:layout_marginHorizontal="2dp"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="2dp"
-            app:srcCompat="@drawable/bt_arrow" />
+            app:srcCompat="@drawable/bt_back"
+            android:layout_gravity="center_vertical"/>
 
         <EditText
             android:id="@+id/et_search"
-            android:layout_width="300dp"
+            android:layout_width="340dp"
             android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/border_search"
-            android:fontFamily="@font/roboto_regular"
-            android:hint="아이홈에서 검색할 내용을 입력하세요"
-            android:padding="10dp"
-            android:textColor="@color/black"
             android:textColorHint="@color/main_3"
+            android:padding="10dp"
+            android:hint="아이홈에서 검색할 내용을 입력하세요"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -94,7 +94,6 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1" />
-
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="40dp"
