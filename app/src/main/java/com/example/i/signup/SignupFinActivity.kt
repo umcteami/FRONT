@@ -3,7 +3,7 @@ package com.example.i.signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.i.chat.MessageActivity
+import com.example.i.Main2Activity
 import com.example.i.databinding.ActivitySignupFinBinding
 
 class SignupFinActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class SignupFinActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         viewBinding.btStart.setOnClickListener {
-            val intent = Intent(this, MessageActivity::class.java)
+            val intent = Intent(this, Main2Activity::class.java)
             startActivity(intent)
         }
     }
