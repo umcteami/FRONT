@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/bt_back">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="전화번호 변경"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_bold"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:layout_marginTop="62dp"
+            android:layout_width="214dp"
+            android:layout_height="57dp"
+            android:textColor="@color/black"
+            android:text="새로운 휴대폰 번호를 \n입력해주세요"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="16sp"
+            android:hint="000 0000 0000">
+        </EditText>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_call"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/bt_rectangle"
+            android:text="인증 번호 받기"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_bold"
+            android:clickable="false"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

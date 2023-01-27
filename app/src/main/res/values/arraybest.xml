@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="best_array">
+        <item>오늘</item>
+        <item>이번 주</item>
+        <item>이번 달</item>
+        <item>이번 년</item>
+    </string-array>
+</resources>
