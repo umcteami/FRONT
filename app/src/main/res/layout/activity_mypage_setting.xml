@@ -67,7 +67,7 @@
                         android:layout_height="28dp"
                         android:layout_marginStart="56dp"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/ic_profile_edit"
+                        android:src="@drawable/edit_profile"
                         app:layout_constraintBottom_toBottomOf="@+id/edit_profile"
                         app:layout_constraintStart_toStartOf="@+id/edit_profile" />
 
