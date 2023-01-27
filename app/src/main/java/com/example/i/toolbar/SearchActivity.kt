@@ -1,9 +1,11 @@
 package com.example.i.toolbar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.databinding.ActivitySearchBinding
 
@@ -15,14 +17,12 @@ class SearchActivity : AppCompatActivity() {
         viewBinding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 //
-//        setSupportActionBar(viewBinding.searchToolbar)
-//        //Toolbar에 표시되는 제목의 표시 유무를 설정. false로 해야 custom한 툴바의 이름이 화면에 보인다.
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
-//        //왼쪽 버튼 사용설정(기본은 뒤로가기)
-//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-//        //왼쪽 버튼 아이콘 변경
-//        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back) //위치 조정 어케하지
-//
+        viewBinding.searchBackBtn.setOnClickListener {
+            val intent = Intent(this, Main2Activity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+        //
 //        val searchList: ArrayList<Search> = arrayListOf()
 //
 //        searchList.apply {
@@ -41,16 +41,17 @@ class SearchActivity : AppCompatActivity() {
 //
 //    }
 //
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id = item.itemId
-//        when (id) {
-//            android.R.id.home -> {
-//                finish()
-//                return true
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        when (id) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }

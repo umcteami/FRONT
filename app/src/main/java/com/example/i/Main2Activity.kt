@@ -3,7 +3,6 @@ package com.example.i
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.example.i.chat.ChattingFragment
 import com.example.i.chat.MessageListFragment
 import com.example.i.databinding.ActivityMain2Binding
 import com.example.i.home.HomeFragment
