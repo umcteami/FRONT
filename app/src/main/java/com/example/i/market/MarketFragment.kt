@@ -1,5 +1,6 @@
 package com.example.i.market
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +10,6 @@ import com.example.i.R
 import com.example.i.databinding.FragmentMarketBinding
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
-import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.tabs.TabLayout
 
 class MarketFragment : Fragment() {
     private lateinit var viewBinding : FragmentMarketBinding
