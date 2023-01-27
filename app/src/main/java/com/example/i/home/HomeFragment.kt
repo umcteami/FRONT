@@ -28,37 +28,30 @@ class HomeFragment :Fragment() {
         viewBinding = FragmentHomeBinding.inflate(layoutInflater)
 //        viewBinding2 = ActivityMain2Binding.inflate(layoutInflater)
 
-        viewBinding.homeToolbar.inflateMenu(R.menu.home_toolbar)
 
 
 //        fun clearToolbarMenu() {
 //            viewBinding.homeToolbar.menu.clear()
 //        }
 
-        viewBinding.homeToolbar.setNavigationIcon(R.drawable.toolbar_menu)
 
-        viewBinding.homeToolbar.setNavigationOnClickListener { view ->
+        viewBinding.homeMenuBtn.setOnClickListener {
             viewBinding.homeLayout.openDrawer(GravityCompat.START)
-            true
         }
 
-        viewBinding.homeToolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-
-                R.id.home_search -> {
-                    val intent = Intent(context, SearchActivity::class.java)
-                    intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    true
-                }
-                R.id.home_noti -> {
-                    val intent = Intent(context, NotiActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
+        viewBinding.homeSearchBtn.setOnClickListener {
+            val intent = Intent(context, SearchActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
         }
+
+        viewBinding.homeNotiBtn.setOnClickListener {
+            val intent = Intent(context, NotiActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+
+//
 
         //인기글 RV
         val pplList: ArrayList<Ppls> = arrayListOf()
