@@ -30,7 +30,8 @@ class MarketFragment : Fragment() {
             "전체",
             "맘마/까까",
             "장난감",
-            "영양제"
+            "영양제/약/간호용품",
+            "기타"
         )
 
         TabLayoutMediator(viewBinding.tapMarket, viewBinding.vpMarket) { tab, position ->

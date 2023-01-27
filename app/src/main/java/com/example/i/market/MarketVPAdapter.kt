@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class MarketVPAdapter(market: FragmentActivity): FragmentStateAdapter(market) {
-    override fun getItemCount(): Int = 4
+    override fun getItemCount(): Int = 5
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
@@ -13,6 +13,7 @@ class MarketVPAdapter(market: FragmentActivity): FragmentStateAdapter(market) {
             1 -> SnackFragment()
             2 -> ToyFragment()
             3 -> SupplementFragment()
+            4 -> EtcFragment()
             else -> MarketMainFragment()
         }
     }
