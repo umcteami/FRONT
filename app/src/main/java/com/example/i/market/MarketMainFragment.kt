@@ -27,6 +27,13 @@ class MarketMainFragment: Fragment() {
 
         mkList.apply{
             add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
         }
 
         viewBinding.rvMarket.layoutManager = LinearLayoutManager(context)

@@ -13,7 +13,7 @@ class MarketVPAdapter(market: FragmentActivity): FragmentStateAdapter(market) {
             1 -> SnackFragment()
             2 -> ToyFragment()
             3 -> SupplementFragment()
-            4 -> EtcFragment()
+            4 -> MarketEtcFragment()
             else -> MarketMainFragment()
         }
     }

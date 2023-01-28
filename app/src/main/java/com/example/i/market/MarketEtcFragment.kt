@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.i.databinding.FragmentToyBinding
+import com.example.i.databinding.FragmentMarketEtcBinding
 
-class ToyFragment: Fragment() {
+class MarketEtcFragment: Fragment() {
 
-    private lateinit var viewBinding: FragmentToyBinding
+    private lateinit var viewBinding: FragmentMarketEtcBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = FragmentToyBinding.inflate(layoutInflater)
+        viewBinding = FragmentMarketEtcBinding.inflate(layoutInflater)
 
         return viewBinding.root
     }

@@ -42,19 +42,27 @@ class MarketFragment : Fragment() {
             }
         }
         return viewBinding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        childFragmentManager
+            .beginTransaction()
+            .replace(viewBinding.tabMarketContainer.id, MarketMainFragment())
+            .commitAllowingStateLoss()
 
         viewBinding.tabMarket.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                val transaction = childFragmentManager.beginTransaction()
-                when(tab?.text) {
-                    "전체" -> transaction.replace(viewBinding.tabMarketContent.id, MarketMainFragment())
-                    "맘마/까까" -> transaction.replace(viewBinding.tabMarketContent.id, SnackFragment())
-                    "장난감" -> transaction.replace(viewBinding.tabMarketContent.id, ToyFragment())
-                    "영양제/약/간호용품" -> transaction.replace(viewBinding.tabMarketContent.id, SupplementFragment())
-                    "기타" -> transaction.replace(viewBinding.tabMarketContent.id, EtcFragment())
+                when(tab?.position) {
+                    0 -> childFragmentManager.beginTransaction().replace(viewBinding.tabMarketContainer.id, MarketMainFragment()).commitAllowingStateLoss()
+                    1 -> childFragmentManager.beginTransaction().replace(viewBinding.tabMarketContainer.id, SnackFragment()).commitAllowingStateLoss()
+                    2 -> childFragmentManager.beginTransaction().replace(viewBinding.tabMarketContainer.id, ToyFragment()).commitAllowingStateLoss()
+                    3 -> childFragmentManager.beginTransaction().replace(viewBinding.tabMarketContainer.id, SupplementFragment()).commitAllowingStateLoss()
+                    4 -> childFragmentManager.beginTransaction().replace(viewBinding.tabMarketContainer.id, MarketEtcFragment()).commitAllowingStateLoss()
                 }
-                transaction.commit()
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -65,13 +73,6 @@ class MarketFragment : Fragment() {
 
             }
         })
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
 
 //        val marketVPAdapter = MarketVPAdapter(requireActivity())
 //        viewBinding.vpMarket.adapter = marketVPAdapter
