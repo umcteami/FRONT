@@ -10,6 +10,7 @@ import com.example.i.R
 import com.example.i.databinding.FragmentMarketBinding
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
+import com.google.android.material.tabs.TabLayout
 
 class MarketFragment : Fragment() {
     private lateinit var viewBinding : FragmentMarketBinding
@@ -41,34 +42,36 @@ class MarketFragment : Fragment() {
             }
         }
         return viewBinding.root
+
+        viewBinding.tabMarket.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val transaction = childFragmentManager.beginTransaction()
+                when(tab?.text) {
+                    "전체" -> transaction.replace(viewBinding.tabMarketContent.id, MarketMainFragment())
+                    "맘마/까까" -> transaction.replace(viewBinding.tabMarketContent.id, SnackFragment())
+                    "장난감" -> transaction.replace(viewBinding.tabMarketContent.id, ToyFragment())
+                    "영양제/약/간호용품" -> transaction.replace(viewBinding.tabMarketContent.id, SupplementFragment())
+                    "기타" -> transaction.replace(viewBinding.tabMarketContent.id, EtcFragment())
+                }
+                transaction.commit()
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+        })
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        viewBinding.tabMarket.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
 
-//            override fun onTabSelected(tab: TabLayout.Tab?) {
-//                val transaction = supportFragmentManager.beginTransaction()
-//                when(tab?.text) {
-//                    "전체" -> transaction.replace(viewBinding.tabMarket, MarketMainFragment() )
-//                    "맘마/까까" -> transaction.replace(viewBinding.tabMarket, SnackFragment())
-//                    "장난감" -> transaction.replace(viewBinding.tabMarket, ToyFragment())
-//                    "영양제/약/간호용품" -> transaction.replace(viewBinding.tabMarket, SupplementFragment())
-//                    "기타" -> transaction.replace(viewBinding.tabMarket, EtcFragment())
-//                }
-//                transaction.commit()
-//            }
-//
-//            override fun onTabUnselected(tab: TabLayout.Tab?) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onTabReselected(tab: TabLayout.Tab?) {
-//                TODO("Not yet implemented")
-//            }
-//        })
 
 //        val marketVPAdapter = MarketVPAdapter(requireActivity())
 //        viewBinding.vpMarket.adapter = marketVPAdapter
@@ -86,3 +89,4 @@ class MarketFragment : Fragment() {
 //        }.attach()
     }
 }
+
