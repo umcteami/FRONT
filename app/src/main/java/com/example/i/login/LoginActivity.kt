@@ -73,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
             6 -> {
                 supportFragmentManager
                     .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, NewPWFragment())
+                    .replace(viewBinding.frameFragment.id, NewPwFragment())
                     .commit()
             }
         }

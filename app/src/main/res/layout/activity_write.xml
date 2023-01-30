@@ -207,7 +207,7 @@
         android:background="@null"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        android:src="@drawable/bt_unchecked"
+        android:src="@drawable/ic_unchecked"
         app:layout_constraintBottom_toBottomOf="@+id/et_price"
         app:layout_constraintEnd_toStartOf="@+id/tv_check"
         app:layout_constraintTop_toTopOf="@+id/et_price"

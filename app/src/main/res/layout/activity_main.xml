@@ -14,7 +14,7 @@
         android:layout_marginTop="21dp"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_login_title" />
+        app:srcCompat="@drawable/img_login_orange" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"

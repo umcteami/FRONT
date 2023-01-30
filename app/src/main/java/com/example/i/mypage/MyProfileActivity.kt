@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.example.i.databinding.ActivityMyProfileBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MyProfileActivity : AppCompatActivity() {
+
     private lateinit var viewBinding: ActivityMyProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +20,19 @@ class MyProfileActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         //왼쪽 버튼 사용설정 (기본: 뒤로가기)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        val adapter = MyProfileAdapter(supportFragmentManager, lifecycle)
+        viewBinding.viewPager.adapter = adapter
+
+        val tabTitleArray = arrayOf(
+            "작성한 글",
+            "작성한 댓글",
+            "나눔장터"
+        )
+
+        TabLayoutMediator(viewBinding.tabs, viewBinding.viewPager) { tab, position ->
+            tab.text = tabTitleArray[position]
+        }.attach()
     }
 
     //뒤로 가기 버튼 활성화

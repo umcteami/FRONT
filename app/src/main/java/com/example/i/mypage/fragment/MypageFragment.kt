@@ -1,4 +1,4 @@
-package com.example.i.mypage
+package com.example.i.mypage.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.i.databinding.FragmentMypageBinding
+import com.example.i.mypage.mypageSetting
 
 class MypageFragment : Fragment() {
     private lateinit var viewBinding: FragmentMypageBinding

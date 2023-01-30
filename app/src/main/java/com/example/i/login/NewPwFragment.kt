@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import com.example.i.R
 
-class NewPWFragment : Fragment() {
+class NewPwFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -17,7 +17,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="12dp">
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_likeMarket"
@@ -56,7 +59,7 @@
                 android:layout_width="20dp"
                 android:layout_height="18dp"
                 android:layout_marginLeft="180dp"
-                android:src="@drawable/ic_unlike" />
+                android:src="@drawable/bt_like" />
 
         </LinearLayout>
 
@@ -64,14 +67,12 @@
             android:id="@+id/like_comment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="212dp"
             android:fontFamily="@font/roboto_regular"
             android:text="강아지 껌"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.88"
             app:layout_constraintStart_toEndOf="@+id/img_likeMarket"
             app:layout_constraintTop_toBottomOf="@+id/layout1"
             app:layout_goneMarginTop="3dp" />

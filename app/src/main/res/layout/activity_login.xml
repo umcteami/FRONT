@@ -20,40 +20,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="로그인"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto_bold"/>
+            android:textSize="16sp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="72dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/img_logo_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/img_logo_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_marginTop="152dp"
-            android:layout_marginLeft="144dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_logo" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="107dp"
-            android:src="@drawable/img_logo_mint" />
+        android:layout_marginTop="23dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_email"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="119dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -62,15 +68,19 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bt_yellow"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="이메일"/>
+                android:hint="이메일" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/grey">
+            app:endIconTint="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_email">
 
             <EditText
                 android:id="@+id/input_pwd"
@@ -85,30 +95,33 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="61dp"
+            android:background="@drawable/bt_rectangle"
+            android:clickable="false"
+            android:fontFamily="@font/roboto_bold"
             android:text="로그인"
             android:textSize="16sp"
-            android:fontFamily="@font/roboto_bold"
-            android:background="@drawable/bt_rectangle"
-            android:clickable="false"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/find_account"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:text="계정 찾기"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_login" />
 
-            <TextView
-                android:id="@+id/find_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="계정 찾기" />
+        <TextView
+            android:id="@+id/new_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="비밀번호 재설정"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_login" />
 
-            <TextView
-                android:id="@+id/new_pwd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
-                android:text="비밀번호 재설정" />
-        </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
