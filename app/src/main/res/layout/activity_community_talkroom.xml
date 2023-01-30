@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout android:id="@+id/backLayout"
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/backLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -117,8 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/viewpager"
-                app:layout_constraintTop_toBottomOf="@id/tabLayout"
-              >
+                app:layout_constraintTop_toBottomOf="@id/tabLayout">
             </androidx.viewpager2.widget.ViewPager2>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -128,7 +128,6 @@
                     android:layout_marginRight="17dp"
                     android:layout_marginBottom="24dp"
                     android:backgroundTint="@color/main_2"
-                    android:outlineSpotShadowColor="@android:color/transparent"
                     android:src="@drawable/ic_write"
                     app:borderWidth="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
