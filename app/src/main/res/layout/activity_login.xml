@@ -56,38 +56,44 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_email"
+            android:id="@+id/user_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:hint="이메일"
+            app:errorIconDrawable="@drawable/error_icon"
+            app:errorIconTint="@color/red"
+            android:textColorHint="@color/grey">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bt_yellow"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="이메일" />
+                android:fontFamily="@font/roboto_regular"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
+            android:id="@+id/user_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:endIconMode="password_toggle"
             app:endIconTint="@color/grey"
+            android:hint="비밀번호"
+            android:textColorHint="@color/grey"
+            app:errorIconDrawable="@drawable/error_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_email">
+            app:layout_constraintTop_toBottomOf="@+id/user_email">
 
             <EditText
-                android:id="@+id/input_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bt_yellow"
-                android:hint="비밀번호" />
+                android:background="@drawable/bt_yellow" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -102,7 +108,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/user_pw" />
 
 
         <TextView
