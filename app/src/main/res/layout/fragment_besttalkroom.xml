@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="57dp"
-            android:background="@color/light_gray">
+            android:background="@color/light_grey">
 
             <TextView
                 android:id="@+id/tv_viewDate"
@@ -46,7 +46,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/gray" />
+            android:background="@color/grey" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

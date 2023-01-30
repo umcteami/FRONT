@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Message.MessageActivity">
+    tools:context=".chat.MessageActivity">
 
     <TextView
         android:id="@+id/tv_date"
@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:minHeight="48dp"
+                android:layout_marginLeft="10dp"
                 android:inputType="textMultiLine"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/bt_send"

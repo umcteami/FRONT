@@ -3,7 +3,9 @@ package com.example.i.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.i.Main2Activity
 import com.example.i.MainActivity
+import com.example.i.community.ReviewWriteActivity
 import com.example.i.databinding.ActivityLoginBinding
 
 
@@ -15,10 +17,18 @@ class LoginActivity : AppCompatActivity() {
         viewBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        //툴바 뒤로가기 -> 첫 화면으로 이동
+        val buttonWrite = viewBinding.backBtn
+        buttonWrite.setOnClickListener {
+            val writeIntent = Intent(this, MainActivity::class.java)
+            startActivity(writeIntent)
+        }
+
+
         // 메인 화면으로 이동
         viewBinding.btLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            this.startActivity(intent)
+              val intent = Intent(this, Main2Activity::class.java)
+             this.startActivity(intent)
         }
 
         // 계정 찾기로 이동

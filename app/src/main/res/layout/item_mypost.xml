@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:text="자유방"
-            android:textColor="@color/gray"
+            android:textColor="@color/grey"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:text="22:12:18"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/gray"
+                android:textColor="@color/grey"
                 android:textSize="11sp"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -92,7 +92,7 @@
                 android:layout_marginStart="8dp"
                 android:text="조회 12"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/gray"
+                android:textColor="@color/grey"
                 android:textSize="11sp"
                 android:fontFamily="@font/roboto_regular"/>
 

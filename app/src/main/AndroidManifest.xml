@@ -14,8 +14,8 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".Signup.SignupFinActivity"
-            android:exported="true">
+            android:name=".signup.SignupFinActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -23,36 +23,18 @@
 
         <activity
             android:name=".community.ReviewWriteActivity"
-            android:exported="true" />
+            android:exported="false" />
+
         <activity
             android:name=".community.ReviewSearchActivity"
-            android:exported="true" />
+            android:exported="false" />
+
         <activity
-            android:name=".Market.WriteActivity"
-            android:exported="true"/>
+            android:name=".market.WriteActivity"
+            android:exported="false"/>
+
         <activity
-            android:name=".myPage.FriendProfileActivity"
-            android:exported="true" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".myPage.MyProfileActivity"
-            android:exported="true" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".myPage.LikeMarketActivity"
-            android:exported="true" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".myPage.MyMarketActivity"
+            android:name=".mypage.FriendProfileActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -60,36 +42,69 @@
         </activity>
 
         <activity
-            android:name=".Message.MessageActivity"
-            android:exported="true">
+            android:name=".mypage.MyProfileActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".mypage.LikeMarketActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".mypage.MyMarketActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".chat.MessageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
         <activity
             android:name=".community.DiaryActivity"
-            android:exported="true" />
+            android:exported="false" />
+
         <activity
             android:name=".community.SearchActivity"
-            android:exported="true" />
+            android:exported="false" />
+
         <activity
             android:name=".community.ReviewActivity"
-            android:exported="true" />
+            android:exported="false" />
+
         <activity
             android:name=".community.CommunityWriteActivity"
-            android:exported="true" />
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".Main2Activity"
+            android:exported="true">
 
         </activity>
 
@@ -99,8 +114,8 @@
         </activity>
 
         <activity
-            android:name=".myPage.LikePostActivity"
-            android:exported="true" />
+            android:name=".mypage.LikePostActivity"
+            android:exported="false" />
 
         <activity
             android:name=".login.LoginActivity"
@@ -108,11 +123,19 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
         </activity>
+
+        <activity android:name=".toolbar.MenuActivity" />
+
+        <activity android:name=".toolbar.NotiActivity" />
+
+        <activity android:name=".toolbar.SearchActivity" />
+
+        <activity android:name=".mypage.mypageSetting" />
+
         <activity
-            android:name=".Signup.SignupActivity"
-            android:exported="true">
+            android:name=".signup.SignupActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

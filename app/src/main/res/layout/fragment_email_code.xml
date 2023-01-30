@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Signup.EmailCodeFragment">
+    tools:context=".signup.EmailCodeFragment">
 
     <ImageView
         android:id="@+id/emailcode_num"
@@ -59,8 +59,8 @@
         app:boxStrokeWidthFocused="1dp"
         app:boxBackgroundColor="@color/white"
         app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/gray"
-        android:textColorHint="@color/gray"
+        app:hintTextColor="@color/grey"
+        android:textColorHint="@color/grey"
         app:boxStrokeErrorColor="@color/red"
         app:errorIconDrawable="@drawable/error_icon"
         app:helperText="@string/email_code_helper"
