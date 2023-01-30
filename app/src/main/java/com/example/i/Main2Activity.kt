@@ -56,50 +56,8 @@ class Main2Activity : AppCompatActivity() {
             selectedItemId = R.id.navi_home //처음 실행할 때 홈 메뉴 가르킬 수 있도록 함
         }
 
-//        setSupportActionBar(viewBinding.toolbar)
-//        //Toolbar에 표시되는 제목의 표시 유무를 설정. false로 해야 custom한 툴바의 이름이 화면에 보인다.
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
-//        //왼쪽 버튼 사용설정(기본은 뒤로가기)
-//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-//        //왼쪽 버튼 아이콘 변경
-//        supportActionBar!!.setHomeAsUpIndicator(R.drawable.toolbar_menu)
-//
-//        //drawerBinding.drawerNav.setNavigationItemSelectedListener (this)
-
 
     }
-//    //item 버튼 메뉴 Toolbar에 집어 넣기
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.home_toolbar, menu)
-//        return true
-//    }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item?.itemId) {
-//            android.R.id.home -> {
-//                //햄버거 버튼 눌렀을 떄
-//                viewBinding.drawerLayout.openDrawer(GravityCompat.START)
-//                return true
-//            }
-//            R.id.home_search -> {
-//                //search 버튼 눌렀을 때
-//                val intent = Intent(applicationContext, SearchActivity::class.java)
-//                startActivity(intent)
-//                return true
-//            }
-//            R.id.home_noti -> {
-//                //noti 버튼 눌렀을 때
-//                val intent = Intent(applicationContext, NotiActivity::class.java)
-//                startActivity(intent)
-//                return true
-//            }
-//            else -> return super.onOptionsItemSelected(item)
-//        }
-//    }
-
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        TODO("Not yet implemented")
-//    }
 
 
 }

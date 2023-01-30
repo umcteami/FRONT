@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.i.Main2Activity
+import com.example.i.MainActivity
+import com.example.i.community.ReviewWriteActivity
 import com.example.i.databinding.ActivityLoginBinding
 
 
@@ -14,6 +16,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        //툴바 뒤로가기 -> 첫 화면으로 이동
+        val buttonWrite = viewBinding.backBtn
+        buttonWrite.setOnClickListener {
+            val writeIntent = Intent(this, MainActivity::class.java)
+            startActivity(writeIntent)
+        }
+
 
         // 메인 화면으로 이동
         viewBinding.btLogin.setOnClickListener {
