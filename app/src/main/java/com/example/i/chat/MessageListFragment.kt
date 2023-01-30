@@ -19,8 +19,6 @@ class MessageListFragment : Fragment() {
     ): View {
         viewBinding = FragmentMessageListBinding.inflate(layoutInflater)
 
-
-
         return viewBinding.root
     }
 
@@ -39,15 +37,6 @@ class MessageListFragment : Fragment() {
             add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
             add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
             add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-            add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-            add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-            add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-            add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-            add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-            add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-            add(Message("아이", "새해 복 많이 받으세요.", "20:00", "3"))
-
-
         }
 
         viewBinding.rvChat.layoutManager = LinearLayoutManager(context)

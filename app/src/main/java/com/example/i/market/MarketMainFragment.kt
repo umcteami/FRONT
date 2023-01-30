@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.databinding.FragmentMarketMainBinding
 
@@ -22,6 +23,32 @@ class MarketMainFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val mkpList: ArrayList<MarketP> = arrayListOf()
+
+        mkpList.apply{
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+            add(MarketP("무료나눔", "강아지 껌", "2"))
+
+        }
+
+        viewBinding.rvPpl.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
+        viewBinding.rvPpl.adapter = MarketPplRVAdapter(mkpList)
 
         val mkList: ArrayList<Market> = arrayListOf()
 
