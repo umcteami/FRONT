@@ -1,5 +1,6 @@
 package com.example.i.community
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,10 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
             viewBinding.tvTitle.text = item.title
             viewBinding.tvHearts.text = item.heart
             viewBinding.tvChat.text = item.comment
+
+            itemView.setOnClickListener{
+
+            }
 
         }
     }
