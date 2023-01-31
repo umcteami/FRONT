@@ -74,20 +74,10 @@ class MarketFragment : Fragment() {
             }
         })
 
-//        val marketVPAdapter = MarketVPAdapter(requireActivity())
-//        viewBinding.vpMarket.adapter = marketVPAdapter
-//
-//        val tabTitleArray = arrayOf(
-//            "전체",
-//            "맘마/까까",
-//            "장난감",
-//            "영양제/약/간호용품",
-//            "기타"
-//        )
-//
-//        TabLayoutMediator(viewBinding.tapMarket, viewBinding.vpMarket) { tab, position ->
-//            tab.text = tabTitleArray[position]
-//        }.attach()
+        viewBinding.fbMkEdit.setOnClickListener {
+            val intent = Intent(getActivity(), WriteActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 
