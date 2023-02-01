@@ -17,8 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <ImageButton
                 android:id="@+id/backBtn"
@@ -50,21 +49,21 @@
         android:id="@+id/cl_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
             android:id="@+id/ll_photo"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_photo"
@@ -75,10 +74,10 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_photo"
-                android:background="@drawable/write_rectangle"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/write_rectangle">
 
                 <ImageView
                     android:id="@+id/iv_camera"
@@ -87,7 +86,7 @@
                     android:src="@drawable/icon_camera"
                     app:layout_constraintBottom_toTopOf="@id/guideline"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                    app:layout_constraintRight_toRightOf="parent" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline"
@@ -103,10 +102,10 @@
                     android:text="0"
                     android:textColor="@color/grey"
                     android:textSize="14dp"
-                    app:layout_constraintTop_toBottomOf="@id/guideline"
+                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/tv_max"
-                    app:layout_constraintHorizontal_chainStyle="packed"/>
+                    app:layout_constraintTop_toBottomOf="@id/guideline" />
 
                 <TextView
                     android:id="@+id/tv_max"
@@ -115,10 +114,16 @@
                     android:text="/10"
                     android:textColor="@color/grey"
                     android:textSize="14dp"
-                    app:layout_constraintTop_toBottomOf="@id/guideline"
+                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintLeft_toRightOf="@id/tv_count"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintHorizontal_chainStyle="packed"/>
+                    app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="cl_photo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,13 +135,13 @@
         android:id="@+id/write_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/semi_grey"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/cl_image"
+        android:background="@color/semi_grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/cl_image" />
 
     <EditText
         android:id="@+id/et_title"
@@ -149,6 +154,7 @@
         android:fontFamily="@font/roboto"
         android:hint="제목을 입력해주세요."
         android:inputType="text"
+        android:maxLines="1"
         android:minHeight="48dp"
         android:textColor="@color/black"
         android:textSize="20dp"
@@ -161,27 +167,27 @@
         android:id="@+id/write_divider2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/semi_grey"
-        android:layout_marginTop="18dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="18dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/et_title"
+        android:background="@color/semi_grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
     <TextView
         android:id="@+id/tv_catagory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/roboto"
         android:text="카테고리"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:fontFamily="@font/roboto"
-        android:layout_marginTop="18dp"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/write_divider2"
         app:layout_constraintBottom_toTopOf="@+id/write_divider3"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/write_divider2" />
 
     <ImageButton
         android:id="@+id/bt_catagory"
@@ -201,30 +207,30 @@
         android:id="@+id/write_divider3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/semi_grey"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_catagory"
+        android:background="@color/semi_grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_catagory" />
 
     <TextView
         android:id="@+id/tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:fontFamily="@font/roboto"
         android:text="￦"
         android:textColor="#A6A6A6"
         android:textSize="20dp"
-        android:fontFamily="@font/roboto"
-        app:layout_constraintTop_toTopOf="@+id/et_price"
+        app:layout_constraintBottom_toBottomOf="@+id/et_price"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/et_price"/>
+        app:layout_constraintTop_toTopOf="@+id/et_price" />
 
     <EditText
         android:id="@+id/et_price"
-        android:layout_width="wrap_content"
+        android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:background="@null"
@@ -243,41 +249,41 @@
         android:id="@+id/ib_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
         android:background="@null"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:src="@drawable/ic_unchecked"
         app:layout_constraintBottom_toBottomOf="@+id/et_price"
-        app:layout_constraintEnd_toStartOf="@+id/tv_check"
+        app:layout_constraintEnd_toStartOf="@id/tv_check"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintTop_toTopOf="@+id/et_price"
         tools:ignore="SpeakableTextPresentCheck" />
+
 
     <TextView
         android:id="@+id/tv_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/roboto"
         android:text="나눔"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:fontFamily="@font/roboto"
-        android:layout_marginRight="20dp"
-        app:layout_constraintTop_toTopOf="@id/et_price"
-        app:layout_constraintBottom_toBottomOf="@+id/et_price"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
+        app:layout_constraintBottom_toBottomOf="@+id/ib_check"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ib_check"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/write_divider4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/semi_grey"
-        android:layout_marginTop="18dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="18dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/et_price"
+        android:background="@color/semi_grey"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_price" />
 
     <EditText
         android:id="@+id/et_content"
