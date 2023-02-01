@@ -5,38 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
+import com.example.i.databinding.FragmentReviewSearchResultBinding
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 class ReviewSearchResultFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var viewBinding : FragmentReviewSearchResultBinding
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_review_search_result, container, false)
-    }
-
-    companion object {
-        fun newInstance(param1: String, param2: String) =
-            ReviewSearchResultFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        viewBinding = FragmentReviewSearchResultBinding.inflate(layoutInflater)
+        val itemList = ArrayList<ReviewSearchItem>()
+        itemList.apply{
+            add(ReviewSearchItem("별이엄마와 거래해봤어요","누리엄마","22.12.12","조회 12","5","2"))
+            add(ReviewSearchItem("별이엄마와 거래해봤어요","누리엄마","22.12.12","조회 12","5","2"))
+            add(ReviewSearchItem("별이엄마와 거래해봤어요","누리엄마","22.12.12","조회 12","5","2"))
+        }
+        viewBinding.rvBoard.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        viewBinding.rvBoard.adapter = ReviewSearchAdapter(itemList)
+        return viewBinding.root
     }
 }
+

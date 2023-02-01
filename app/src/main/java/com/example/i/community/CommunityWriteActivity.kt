@@ -17,5 +17,9 @@ class CommunityWriteActivity : AppCompatActivity() {
             val uploadIntent = Intent(this, CommunityTalkroomActivity::class.java)
             startActivity(uploadIntent)
         }
+
+        viewBinding.btBack.setOnClickListener {
+            finish()
+        }
     }
 }

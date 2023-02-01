@@ -9,9 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
-import com.example.i.community.CommunityTalkroomActivity
-import com.example.i.community.DiaryActivity
-import com.example.i.community.ReviewActivity
+import com.example.i.community.*
 import com.example.i.databinding.FragmentHomeBinding
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
@@ -19,9 +17,6 @@ import com.example.i.toolbar.SearchActivity
 @Suppress("UNREACHABLE_CODE")
 class HomeFragment :Fragment() {
     private lateinit var viewBinding: FragmentHomeBinding
-
-//    private lateinit var viewBinding2: ActivityMain2Binding
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,17 +34,50 @@ class HomeFragment :Fragment() {
 
         viewBinding.drawerView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.drawer_community -> {
+                R.id.drawer_community -> { //이야기방 전체
                     val intent = Intent(context, CommunityTalkroomActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                 }
-                R.id.drawer_diary -> {
+
+                R.id.drawer_talking -> { //수다방
+                    val intent = Intent(context, CommunityTalkActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+
+                R.id.drawer_qna -> { //질문방
+                   val intent = Intent(context, CommunityQnaActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+                R.id.drawer_info -> { //정보방
+                    val intent = Intent(context, CommunityInfoActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+
+                R.id.drawer_diary -> { //일기장 전체
                     val intent = Intent(context, DiaryActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
 
                 }
+
+                R.id.drawer_care -> { //간호 일기
+                    val intent = Intent(context, DiaryCareActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
+                }
+
+                R.id.drawer_care -> { //무지개 일기
+                    val intent = Intent(context, DiaryRainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
+                }
+
                 R.id.drawer_review -> {
                     val intent = Intent(context, ReviewActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -116,11 +144,8 @@ class HomeFragment :Fragment() {
         viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
         viewBinding.homeTtlRV.adapter = TtlRVAdapter(ttlList)
 
-
         return viewBinding.root
     }
-
-
 
 
 }

@@ -42,6 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".market.WriteActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".mypage.FriendProfileActivity"
@@ -73,7 +74,8 @@
         </activity>
         <activity
             android:name=".chat.MessageActivity"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -108,7 +110,7 @@
             android:exported="true" />
         <activity
             android:name=".community.CommunityTalkroomActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".mypage.LikePostActivity"
             android:exported="false" />

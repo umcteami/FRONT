@@ -16,15 +16,14 @@ class ReviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentReviewBinding.inflate(layoutInflater)
-        val itemList = ArrayList<BoardItem>()
+        val itemList = ArrayList<BoardRoomXItem>()
         itemList.apply {
-            add(BoardItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)","정보방","12","2","3"))
-            add(BoardItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)","정보방","12","2","3"))
-
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)","12","2","3"))
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)","12","2","3"))
         }
         viewBinding.rvBoard.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        viewBinding.rvBoard.adapter = CommunityBoardAdapter(itemList)
+        viewBinding.rvBoard.adapter = CommunityRoomXBoardAdapter(itemList)
         return viewBinding.root
     }
 }

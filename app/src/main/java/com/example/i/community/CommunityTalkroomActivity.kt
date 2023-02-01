@@ -69,12 +69,44 @@ class CommunityTalkroomActivity : AppCompatActivity() {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                 }
+
+                R.id.drawer_talking -> {
+                    val intent = Intent(this, CommunityTalkActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+
+                R.id.drawer_qna -> {
+                    val intent = Intent(this, CommunityQnaActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+
+                R.id.drawer_info -> {
+                    val intent = Intent(this, CommunityInfoActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+
                 R.id.drawer_diary -> {
                     val intent = Intent(this, DiaryActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
 
                 }
+
+                R.id.drawer_care -> {
+                    val intent = Intent(this, DiaryCareActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+
+                R.id.drawer_rain -> {
+                    val intent = Intent(this, DiaryRainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+
                 R.id.drawer_review -> {
                     val intent = Intent(this, ReviewActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
