@@ -38,15 +38,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".community.ReviewWriteActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.ReviewSearchActivity"
             android:exported="false" />
-
         <activity
             android:name=".market.WriteActivity"
             android:windowSoftInputMode="adjustResize"
@@ -58,7 +55,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.MyProfileActivity"
             android:exported="false">
@@ -66,7 +62,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.LikeMarketActivity"
             android:exported="false">
@@ -74,7 +69,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.MyMarketActivity"
             android:exported="false">
@@ -82,7 +76,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".chat.MessageActivity"
             android:exported="false"
@@ -91,27 +84,21 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".community.DiaryActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.SearchActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.ReviewActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.CommunityWriteActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -122,13 +109,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Main2Activity"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".community.CommunityTalkroomActivity"
             android:exported="false" />
@@ -154,6 +137,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity android:name=".mypage.AnnounceActivity" />
+        <activity android:name=".mypage.SupportActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
         <meta-data
             android:name="preloaded_fonts"
