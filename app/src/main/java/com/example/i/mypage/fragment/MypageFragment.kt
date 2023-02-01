@@ -12,6 +12,8 @@ import com.example.i.mypage.mypageSetting
 import com.example.i.home.HomeFragment
 import com.example.i.login.AccountCodeFragment
 import com.example.i.login.CodeCorrectFragment
+import com.example.i.mypage.LikeMarketActivity
+import com.example.i.mypage.LikePostActivity
 import com.example.i.mypage.MyMarketActivity
 
 class MypageFragment : Fragment() {
@@ -28,6 +30,11 @@ class MypageFragment : Fragment() {
         setUpPost()
         setUpDiary()
         setUpMarket()
+        setUpLikeP()
+        setUpLikeM()
+        setUpReport()
+        setUpBlock()
+        setUpRevoke()
 
         return viewBinding.root
     }
@@ -70,4 +77,51 @@ class MypageFragment : Fragment() {
             startActivity(intent)
         }
     }
+
+    private fun setUpLikeP() {
+        viewBinding.mypageLikeList.setOnClickListener{
+            val intent = Intent(context, LikePostActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+    }
+
+    private fun setUpLikeM() {
+        viewBinding.mypageMarketList.setOnClickListener{
+            val intent = Intent(context, LikeMarketActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+    }
+
+    private fun setUpReport(){
+        viewBinding.mypageReportList.setOnClickListener{
+            activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.replace(viewBinding.frameFragment.id, ReportFragment())
+                ?.commit()
+        }
+
+    }
+    private fun setUpBlock(){
+        viewBinding.mypageBolckList.setOnClickListener{
+            activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.replace(viewBinding.frameFragment.id, BlockedFragment())
+                ?.commit()
+        }
+
+    }
+
+    private fun setUpRevoke(){
+        viewBinding.mypageRevokeTv.setOnClickListener{
+            activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.replace(viewBinding.frameFragment.id, RevokeFragment())
+                ?.commit()
+        }
+
+    }
+
+
 }
