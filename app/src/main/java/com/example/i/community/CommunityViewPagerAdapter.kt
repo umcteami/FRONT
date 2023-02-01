@@ -16,7 +16,7 @@ class CommunityViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lif
     override fun createFragment(position: Int): Fragment {
         when(position){
             0 -> return CommunityTalkroomFragment()
-            1 -> return BestTalkRoomFragment()
+            1 -> return CommunityTalkroomBestFragment()
         }
         return CommunityTalkroomFragment()
     }

@@ -1,5 +1,6 @@
 package com.example.i.community
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,19 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
-import com.example.i.databinding.FragmentBesttalkroomBinding
+import com.example.i.databinding.FragmentCommunityTalkroomBestBinding
 
 
-class BestTalkRoomFragment : Fragment() {
-    private lateinit var viewBinding: FragmentBesttalkroomBinding
+class CommunityTalkroomBestFragment : Fragment() {
+    private lateinit var viewBinding: FragmentCommunityTalkroomBestBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = FragmentBesttalkroomBinding.inflate(layoutInflater)
-
+        viewBinding = FragmentCommunityTalkroomBestBinding.inflate(layoutInflater)
         val bests = resources.getStringArray(R.array.best_array)
-
 
         val itemList = ArrayList<BoardItem>()
         itemList.apply {
