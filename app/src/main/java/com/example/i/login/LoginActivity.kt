@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.i.Main2Activity
 import com.example.i.MainActivity
-import com.example.i.R
-import com.example.i.community.ReviewWriteActivity
 import com.example.i.databinding.ActivityLoginBinding
+import com.example.i.login.models.PostLoginRequest
+import com.example.i.login.models.SignUpResponse
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginInterface {
     private lateinit var viewBinding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,16 +45,29 @@ class LoginActivity : AppCompatActivity() {
         // 로그인
         viewBinding.btLogin.setOnClickListener {
 
-//            // 이메일 확인
-//            if (!validateEmail()) {
-//                return@setOnClickListener
-//            }
+            // 이메일 확인
+            if (!validateEmail()) {
+                return@setOnClickListener
+            }
 
-            // 메인 화면으로 이동
-            val intent = Intent(this, Main2Activity::class.java)
-            this.startActivity(intent)
-            Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show()
+            // 서버에 값 보냄
+            val email = viewBinding.loginEtId.text.toString()
+            val password = viewBinding.loginEtPw.text.toString()
+            val postRequest = PostLoginRequest(email = email, password = password)
+            LoginService(this).tryPostSignUp(postRequest)
         }
+    }
+
+
+    override fun onPostSignUpSuccess(response: SignUpResponse) {
+        response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+        // 메인 화면으로 이동
+        val intent = Intent(this, Main2Activity::class.java)
+        this.startActivity(intent)
+    }
+
+    override fun onPostSignUpFailure(message: String) {
+        Toast.makeText(this, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 
     // 이메일 확인
