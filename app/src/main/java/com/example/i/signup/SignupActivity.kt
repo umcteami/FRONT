@@ -12,7 +12,6 @@ import com.example.i.databinding.DialogNicknameBinding
 class SignupActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivitySignupBinding
-    private var num = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,26 +23,11 @@ class SignupActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(viewBinding.signupFragment.id, EmailFragment())
             .commitAllowingStateLoss()
-
-
-        viewBinding.btOk.setOnClickListener {
-
-            changeFragment(num)
-
-        }
     }
 
     fun changeFragment(index: Int) {
         when (index) {
-            0 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.signupFragment.id, EmailFragment())
-                    .commitAllowingStateLoss()
-            }
-
             1 -> {
-                num++
                 supportFragmentManager
                     .beginTransaction()
                     .replace(viewBinding.signupFragment.id, EmailCodeFragment())
@@ -51,7 +35,6 @@ class SignupActivity : AppCompatActivity() {
             }
 
             2 -> {
-                num++
                 supportFragmentManager
                     .beginTransaction()
                     .replace(viewBinding.signupFragment.id, PhoneFragment())
@@ -59,7 +42,6 @@ class SignupActivity : AppCompatActivity() {
             }
 
             3 -> {
-                num++
                 supportFragmentManager
                     .beginTransaction()
                     .replace(viewBinding.signupFragment.id, PhoneCodeFragment())
@@ -67,7 +49,6 @@ class SignupActivity : AppCompatActivity() {
             }
 
             4 -> {
-                num++
                 supportFragmentManager
                     .beginTransaction()
                     .replace(viewBinding.signupFragment.id, PasswordFragment())
@@ -75,7 +56,6 @@ class SignupActivity : AppCompatActivity() {
             }
 
             5 -> {
-                num++
                 supportFragmentManager
                     .beginTransaction()
                     .replace(viewBinding.signupFragment.id, NicknameFragment())
@@ -83,7 +63,6 @@ class SignupActivity : AppCompatActivity() {
             }
 
             6 -> {
-                num++
                 supportFragmentManager
                     .beginTransaction()
                     .replace(viewBinding.signupFragment.id, EtcFragment())
@@ -93,7 +72,6 @@ class SignupActivity : AppCompatActivity() {
             else -> {
                 val intent = Intent(this, SignupFinActivity::class.java)
                 this.startActivity(intent)
-                num = 0
             }
         }
     }
