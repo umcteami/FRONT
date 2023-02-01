@@ -8,7 +8,7 @@ import com.example.i.Main2Activity
 import com.example.i.MainActivity
 import com.example.i.databinding.ActivityLoginBinding
 import com.example.i.login.models.PostLoginRequest
-import com.example.i.login.models.SignUpResponse
+import com.example.i.login.models.LoginResponse
 
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
@@ -54,19 +54,19 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             val email = viewBinding.loginEtId.text.toString()
             val password = viewBinding.loginEtPw.text.toString()
             val postRequest = PostLoginRequest(email = email, password = password)
-            LoginService(this).tryPostSignUp(postRequest)
+            LoginService(this).tryPostLogin(postRequest)
         }
     }
 
 
-    override fun onPostSignUpSuccess(response: SignUpResponse) {
+    override fun onPostLoginSuccess(response: LoginResponse) {
         response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
         // 메인 화면으로 이동
         val intent = Intent(this, Main2Activity::class.java)
         this.startActivity(intent)
     }
 
-    override fun onPostSignUpFailure(message: String) {
+    override fun onPostLoginFailure(message: String) {
         Toast.makeText(this, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 

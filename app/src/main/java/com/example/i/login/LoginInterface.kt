@@ -1,11 +1,11 @@
 package com.example.i.login
 
-import com.example.i.login.models.SignUpResponse
+import com.example.i.login.models.LoginResponse
 
 
 interface LoginInterface {
 
-    fun onPostSignUpSuccess(response: SignUpResponse)
+    fun onPostLoginSuccess(response: LoginResponse)
 
-    fun onPostSignUpFailure(message: String)
+    fun onPostLoginFailure(message: String)
 }
