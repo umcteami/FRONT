@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,24 +9,52 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/mypage_setting_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:background="@color/main_1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="내 정보 수정"
-        app:titleTextAppearance="@style/toolbarstyle"
-        android:background="@color/main_1">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:text="저장"
-            android:textSize="16dp"
-            android:id="@+id/setting_saveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_search_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내 정보 수정"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/backBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mypage_save_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:text="저장"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -34,8 +62,9 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mypage_setting_toolbar"
+        android:scrollbars="none"
         >
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
@@ -43,7 +72,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/edit_card1"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="320dp"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,15 +95,16 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_marginStart="56dp"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/edit_profile"
+                        android:background="@drawable/edit_circle"
+                        android:src="@drawable/ic_profile_edit"
+                        android:elevation="5dp"
                         app:layout_constraintBottom_toBottomOf="@+id/edit_profile"
                         app:layout_constraintStart_toStartOf="@+id/edit_profile" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/nicknameCl"
+                        android:id="@+id/edit_nicknameCl"
                         android:layout_width="328dp"
-                        android:layout_height="59dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -84,85 +114,253 @@
                             android:id="@+id/edit_nicknameTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
                             android:text="닉네임"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/edit_nickName"
                             android:layout_width="258dp"
-                            android:layout_height="36dp"
-                            app:boxBackgroundColor="@color/white"
-                            app:boxStrokeColor="@color/black"
-                            app:boxStrokeErrorColor="@color/red"
-                            app:boxStrokeWidthFocused="1dp"
+                            android:layout_height="wrap_content"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="10"
+                            app:boxStrokeColor="@color/grey_line"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
+                                android:layout_width="258dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:textSize="14dp" />
-
-
+                                android:background="@color/white"
+                                android:inputType="text"
+                                android:textSize="14dp"
+                                android:maxLength="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/introduce"
+                        android:id="@+id/edit_introduceCl"
                         android:layout_width="328dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nicknameCl">
+                        app:layout_constraintTop_toBottomOf="@+id/edit_nicknameCl">
 
                         <TextView
                             android:id="@+id/edit_introduceTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
                             android:text="한줄소개"
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/edit_introduce"
                             android:layout_width="258dp"
-                            android:layout_height="36dp"
-                            app:boxBackgroundColor="@color/white"
-                            app:boxStrokeColor="@color/black"
-                            app:boxStrokeErrorColor="@color/red"
-                            app:boxStrokeWidthFocused="1dp"
+                            android:layout_height="wrap_content"
+                            app:boxStrokeColor="@color/grey_line"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="50"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
+                                android:layout_width="258dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
+                                android:background="@color/white"
+                                android:inputType="textMultiLine"
+                                android:maxLength="50"
                                 android:textSize="14dp" />
-
-
                         </com.google.android.material.textfield.TextInputLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/edit_card2"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height= "wrap_content"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/edit_card1"
                  >
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/edit_brithCl"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                       >
+
+                        <TextView
+                            android:id="@+id/edit_brithTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="생년월일"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/edit_brith"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="86dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="2001.04.12"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/edit_brithTv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/change_birth"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:background="#00ff0000"
+                            android:clickable="true"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="right|center_vertical"
+                            android:text="변경"
+                            android:textColor="@color/main_4"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/edit_callCl"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                      >
+
+                        <TextView
+                            android:id="@+id/edit_callTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="전화번호"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/edit_call"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="86dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="010-0000-0000"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/edit_callTv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/change_call"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:background="#00ff0000"
+                            android:fontFamily="@font/roboto"
+                            android:text="변경"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/main_4"
+                            android:textSize="14dp"
+                            android:clickable="true"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/edit_emailCl"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/edit_emailTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="이메일"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/edit_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="86dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="abc123@naver.com"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/edit_emailTv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/change_email"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:background="#00ff0000"
+                            android:fontFamily="@font/roboto"
+                            android:text="변경"
+                            android:textColor="@color/main_4"
+                            android:textSize="14dp"
+                            android:gravity="right|center_vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -173,18 +371,172 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_card2"
                 >
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/edit_pwd"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="비밀번호 변경"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/edit_card4"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/edit_card3"
                 >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/edit_addressCl"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/edit_addressTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="주소"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/edit_address"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="86dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="서울특별시 노원구 화랑로 621 (공릉동, 서울여자대학교)"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/edit_addressTv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/change_address"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="변경"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/main_4"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/edit_address2Cl"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/edit_address2Tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="상세주소"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/edit_address2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="86dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="010-0000-0000"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/edit_address2Tv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/edit_addressNum"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/edit_addressNumTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="우편번호"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/edit_adressNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="86dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="abc123@naver.com"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/edit_addressNumTv"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
