@@ -13,7 +13,7 @@ import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEmailBinding
 import com.example.i.signup.models.*
 
-class EmailFragment : Fragment(), PostEmailInterface {
+class EmailFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding : FragmentEmailBinding
 
     override fun onCreateView(
@@ -60,8 +60,8 @@ class EmailFragment : Fragment(), PostEmailInterface {
 
         viewBinding.btOk.setOnClickListener{
             val auth = viewBinding.etEmail.text.toString()
-            val EmailRequest = PostEmailRequest(type = 1, auth = auth)
-            SignUpService(this).tryPostEmail(EmailRequest)
+            val EmailRequest = PostCodeRequest(type = 1, auth = auth)
+            PostCodeService(this).tryPostEmail(EmailRequest)
 
             activity.changeFragment(1)
         }
@@ -69,12 +69,20 @@ class EmailFragment : Fragment(), PostEmailInterface {
         return viewBinding.root
     }
 
-    override fun onPostEmailSuccess(response: EmailResponse) {
+    override fun onPostEmailSuccess(response: CodeResponse) {
         viewBinding.btOk.text = response.message
         //response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
     }
 
     override fun onPostEmailFailure(message: String) {
         //Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPostPhoneSuccess(response: CodeResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostPhoneFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }
