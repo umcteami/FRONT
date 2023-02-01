@@ -1,14 +1,15 @@
 package com.example.i.signup.models
 
-import com.example.i.login.models.PostLoginRequest
-import com.example.i.login.models.LoginResponse
 import retrofit2.Call
 import retrofit2.http.*
 
 interface SignUpRetrofitInterface {
+
+    // 인증번호 발송 API
     @POST("/member/join/auth")
     fun postEmail(@Body params: PostEmailRequest): Call<EmailResponse>
 
-    @POST("/member/login")
-    fun postSignUp(@Body params: PostSignUpRequest): Call<SignUpResponse>
+    // 인증번호 조회 API
+    @GET("/member/join/auth")
+    fun getEmail(): Call<EmailCheckResponse>
 }
