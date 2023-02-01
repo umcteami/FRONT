@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.i.Main2Activity
 import com.example.i.MainActivity
+import com.example.i.R
 import com.example.i.community.ReviewWriteActivity
 import com.example.i.databinding.ActivityLoginBinding
 
@@ -24,7 +26,6 @@ class LoginActivity : AppCompatActivity() {
             val writeIntent = Intent(this, MainActivity::class.java)
             startActivity(writeIntent)
         }
-
 
         // 메인 화면으로 이동
         viewBinding.btLogin.setOnClickListener {
@@ -59,47 +60,23 @@ class LoginActivity : AppCompatActivity() {
 
     // 이메일 확인
     fun validateEmail(): Boolean {
-        val value = viewBinding.userEmail.editText?.text.toString()
+        val value = viewBinding.idLayout.editText?.text.toString()
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+" // 이메일 형식
 
         // 이메일 입력이 안된 경우
         return if (value.isEmpty()) {
-            viewBinding.userEmail.error = "이메일을 입력해주세요."
+            viewBinding.idLayout.error = "이메일을 입력해주세요."
             false
         }
         // 이메일 형식이 잘못된 경우
         else if (!value.matches(emailPattern.toRegex())) {
-            viewBinding.userEmail.error = "이메일 형식이 잘못되었습니다."
+            viewBinding.idLayout.error = "이메일 형식이 잘못되었습니다."
             false
         }
         // 에러가 없는 경우
         else {
-            viewBinding.userEmail.error = null
-            viewBinding.userEmail.isErrorEnabled = false // 에러 메시지 사용X
-            true
-        }
-    }
-
-    // 비밀번호 확인
-    fun validatePw(): Boolean {
-        val value = viewBinding.userPw.editText?.text.toString()
-
-        // 이메일 입력이 안된 경우
-        return if (value.isEmpty()) {
-            viewBinding.userPw.error = "비밀번호를 입력해주세요."
-            false
-        }
-
-        // 비밀번호가 다른 경우
-        else if (value == "1111") {
-            viewBinding.userPw.error = "이메일 또는 비밀번호를 다시 확인해주세요"
-            false
-        }
-
-        // 에러가 없는 경우
-        else {
-            viewBinding.userPw.error = null
-            viewBinding.userPw.isErrorEnabled = false // 에러 메시지 사용X
+            viewBinding.idLayout.error = null
+            viewBinding.idLayout.isErrorEnabled = false // 에러 메시지 사용X
             true
         }
     }

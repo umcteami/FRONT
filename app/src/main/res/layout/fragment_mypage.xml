@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frameFragment"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:scrollbars="none"
     android:layout_width="match_parent"
@@ -29,8 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         card_view:layout_constraintTop_toBottomOf="@+id/mypage_toolbar"
-        android:scrollbars="none"
-        >
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
