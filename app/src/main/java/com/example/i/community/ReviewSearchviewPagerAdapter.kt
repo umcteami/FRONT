@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 private const val NUM_TABS = 3
 
-class SearchviewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+class ReviewSearchviewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         return NUM_TABS
@@ -15,10 +15,10 @@ class SearchviewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecy
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return ReviewSearchFragment()
-            1 -> return ReviewSearchFragment()
-            2 -> return ReviewSearchFragment()
+            0 -> return ReviewSearchResultFragment()
+            1 -> return ReviewSearchResultFragment()
+            2 -> return ReviewSearchResultFragment()
         }
-        return ReviewSearchFragment()
+        return ReviewSearchResultFragment()
     }
 }

@@ -108,7 +108,7 @@
             android:exported="true" />
         <activity
             android:name=".community.CommunityTalkroomActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".mypage.LikePostActivity"
             android:exported="false" />

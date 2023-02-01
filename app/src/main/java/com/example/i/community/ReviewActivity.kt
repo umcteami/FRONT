@@ -20,7 +20,6 @@ class ReviewActivity : AppCompatActivity() {
         "장터후기",
         "인기글"
     )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityReviewBinding.inflate(layoutInflater)
