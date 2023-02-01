@@ -8,7 +8,7 @@ import com.example.i.chat.MessageListFragment
 import com.example.i.databinding.ActivityMain2Binding
 import com.example.i.home.HomeFragment
 import com.example.i.market.MarketFragment
-import com.example.i.mypage.MypageFragment
+import com.example.i.mypage.fragment.MypageFragment
 
 class Main2Activity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMain2Binding
