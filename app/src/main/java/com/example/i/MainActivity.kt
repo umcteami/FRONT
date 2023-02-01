@@ -27,5 +27,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             this.startActivity(intent)
         }
+
+        viewBinding.bt.setOnClickListener {
+            val intent = Intent(this, Main2Activity::class.java)
+            this.startActivity(intent)
+        }
     }
 }
