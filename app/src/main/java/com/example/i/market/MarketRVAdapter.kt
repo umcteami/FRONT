@@ -1,6 +1,7 @@
 package com.example.i.market
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.databinding.ItemMarket2Binding
@@ -26,5 +27,20 @@ class MarketRVAdapter(private val mkList: ArrayList<Market>): RecyclerView.Adapt
         holder.bind(mkList[position])
     }
 
+
+    interface OnItemClickListener {
+        fun onClick(v : View, position: Int)
+    }
+
+    private lateinit var itemClickListener:OnItemClickListener
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
+    }
+
     override fun getItemCount(): Int = mkList.size
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 }
