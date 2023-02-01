@@ -61,7 +61,7 @@ class EmailFragment : Fragment() {
         })
 
         viewBinding.btOk.setOnClickListener{
-            activity.changeFragment(2)
+            activity.changeFragment(1)
         }
 
         return viewBinding.root
