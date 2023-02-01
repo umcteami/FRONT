@@ -45,10 +45,10 @@ class LoginActivity : AppCompatActivity() {
         // 로그인
         viewBinding.btLogin.setOnClickListener {
 
-            // 이메일 확인
-            if (!validateEmail()) {
-                return@setOnClickListener
-            }
+//            // 이메일 확인
+//            if (!validateEmail()) {
+//                return@setOnClickListener
+//            }
 
             // 메인 화면으로 이동
             val intent = Intent(this, Main2Activity::class.java)

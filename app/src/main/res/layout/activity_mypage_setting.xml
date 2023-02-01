@@ -177,6 +177,7 @@
                                 android:background="@color/white"
                                 android:inputType="textMultiLine"
                                 android:maxLength="50"
+                                android:maxLines="3"
                                 android:textSize="14dp" />
                         </com.google.android.material.textfield.TextInputLayout>
 

@@ -18,40 +18,9 @@ class SearchActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 //
         viewBinding.searchBackBtn.setOnClickListener {
-            val intent = Intent(this, Main2Activity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
+            finish()
         }
-        //
-//        val searchList: ArrayList<Search> = arrayListOf()
-//
-//        searchList.apply {
-//            add(Search("1.","강아지 간식"))
-//            add(Search("1.","강아지 간식"))
-//            add(Search("1.","강아지 간식"))
-//            add(Search("1.","강아지 간식"))
-//            add(Search("1.","강아지 간식"))
-//            add(Search("1.","강아지 간식"))
-//            add(Search("1.","강아지 간식"))
-//            add(Search("1.","강아지 간식"))
-//        }
-//        val searchRVAdapter = SearchRVAdapter(searchList)
-//        viewBinding.searchRV.adapter = searchRVAdapter
-//        viewBinding.searchRV.layoutManager = LinearLayoutManager(this)
-//
-//    }
-//
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        when (id) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
 }
