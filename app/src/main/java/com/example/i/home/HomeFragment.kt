@@ -9,14 +9,22 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
+import com.example.i.chat.MessageListFragment
+import com.example.i.community.CommunityTalkroomActivity
+import com.example.i.community.DiaryActivity
+import com.example.i.community.ReviewActivity
 import com.example.i.databinding.FragmentHomeBinding
+import com.example.i.market.MarketFragment
+import com.example.i.mypage.MypageFragment
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
 @Suppress("UNREACHABLE_CODE")
 class HomeFragment :Fragment() {
     private lateinit var viewBinding: FragmentHomeBinding
+
 //    private lateinit var viewBinding2: ActivityMain2Binding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,18 +34,36 @@ class HomeFragment :Fragment() {
 
     ): View? {
         viewBinding = FragmentHomeBinding.inflate(layoutInflater)
-//        viewBinding2 = ActivityMain2Binding.inflate(layoutInflater)
-
-
-
-//        fun clearToolbarMenu() {
-//            viewBinding.homeToolbar.menu.clear()
-//        }
 
 
         viewBinding.homeMenuBtn.setOnClickListener {
             viewBinding.homeLayout.openDrawer(GravityCompat.START)
         }
+
+        viewBinding.drawerView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.drawer_community -> {
+                    val intent = Intent(context, CommunityTalkroomActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                }
+                R.id.drawer_diary -> {
+                    val intent = Intent(context, DiaryActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
+                }
+                R.id.drawer_review -> {
+                    val intent = Intent(context, ReviewActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
+                }
+            }
+            true
+        }
+
+
 
         viewBinding.homeSearchBtn.setOnClickListener {
             val intent = Intent(context, SearchActivity::class.java)
@@ -51,7 +77,7 @@ class HomeFragment :Fragment() {
             startActivity(intent)
         }
 
-//
+
 
         //인기글 RV
         val pplList: ArrayList<Ppls> = arrayListOf()
