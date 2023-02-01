@@ -18,9 +18,7 @@ class NotiActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         viewBinding.notiBackBtn.setOnClickListener {
-            val intent = Intent(this, Main2Activity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
+            finish()
         }
 
         val notiList: ArrayList<Noti> = arrayListOf()

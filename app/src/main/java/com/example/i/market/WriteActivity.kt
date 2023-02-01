@@ -13,5 +13,9 @@ class WriteActivity : AppCompatActivity() {
         viewBinding = ActivityWriteBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
+
+        viewBinding.backBtn.setOnClickListener {
+            finish()
+        }
     }
 }

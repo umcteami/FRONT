@@ -22,25 +22,18 @@ class MarketFragment : Fragment() {
     ): View {
         viewBinding = FragmentMarketBinding.inflate(layoutInflater)
 
-        viewBinding.marketToolbar.inflateMenu(R.menu.home_toolbar)
-
-        viewBinding.marketToolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-
-                R.id.home_search -> {
-                    val intent = Intent(context, SearchActivity::class.java)
-                    intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    true
-                }
-                R.id.home_noti -> {
-                    val intent = Intent(context, NotiActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
+        viewBinding.homeSearchBtn.setOnClickListener {
+            val intent = Intent(context, SearchActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
         }
+
+        viewBinding.homeNotiBtn.setOnClickListener {
+            val intent = Intent(context, NotiActivity::class.java)
+            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+
         return viewBinding.root
     }
 
