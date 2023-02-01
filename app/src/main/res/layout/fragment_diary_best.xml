@@ -52,7 +52,7 @@
             android:id="@+id/rv_board"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/post_list_layout" />
+            tools:listitem="@layout/diary_list_layout" />
     </LinearLayout>
 
 

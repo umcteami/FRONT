@@ -34,7 +34,6 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
             viewBinding.tvTitle.text = item.title
             viewBinding.tvHearts.text = item.heart
             viewBinding.tvChat.text = item.comment
-
             itemView.setOnClickListener{
 
             }
