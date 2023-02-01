@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEmailCodeBinding
+import com.example.i.signup.models.*
 
-class EmailCodeFragment : Fragment() {
+
+class EmailCodeFragment : Fragment(), GetEmailInterface {
     private lateinit var viewBinding : FragmentEmailCodeBinding
 
     override fun onCreateView(
@@ -57,10 +60,20 @@ class EmailCodeFragment : Fragment() {
         })
 
         viewBinding.btOk.setOnClickListener{
+            GetEmailService(this).tryGetEmail()
             activity.changeFragment(2)
         }
 
         return viewBinding.root
 
+    }
+
+    override fun onGetEmailSuccess(response: EmailCheckResponse) {
+        viewBinding.btOk.text = "response.message"
+        Toast.makeText(activity, "Get JWT 성공", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onGetEmailFailure(message: String) {
+        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 }

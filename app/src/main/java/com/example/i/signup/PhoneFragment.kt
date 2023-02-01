@@ -12,8 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentPhoneBinding
+import com.example.i.signup.models.*
 
-class PhoneFragment : Fragment() {
+class PhoneFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding : FragmentPhoneBinding
 
     override fun onCreateView(
@@ -58,9 +59,27 @@ class PhoneFragment : Fragment() {
         })
 
         viewBinding.btOk.setOnClickListener{
+            val auth = viewBinding.etPhone.text.toString()
+            val PhoneRequest = PostCodeRequest(type = 2, auth = auth)
+            PostCodeService(this).tryPostPhone(PhoneRequest)
             activity.changeFragment(3)
         }
 
         return viewBinding.root
+    }
+
+    override fun onPostEmailSuccess(response: CodeResponse) {
+    }
+
+    override fun onPostEmailFailure(message: String) {
+    }
+
+    override fun onPostPhoneSuccess(response: CodeResponse) {
+        viewBinding.btOk.text = response.message
+        //response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onPostPhoneFailure(message: String) {
+        //Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 }

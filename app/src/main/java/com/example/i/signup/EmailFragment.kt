@@ -1,6 +1,5 @@
 package com.example.i.signup
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -9,13 +8,12 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEmailBinding
 import com.example.i.signup.models.*
 
-class EmailFragment : Fragment(), SignUpInterface {
+class EmailFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding : FragmentEmailBinding
 
     override fun onCreateView(
@@ -32,7 +30,6 @@ class EmailFragment : Fragment(), SignUpInterface {
         }
 
         val activity = activity as SignupActivity
-        val mContext: Context? = getActivity()
 
         viewBinding.btOk.isEnabled = false
 
@@ -62,20 +59,30 @@ class EmailFragment : Fragment(), SignUpInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            activity.changeFragment(1)
             val auth = viewBinding.etEmail.text.toString()
-            val EmailRequest = PostEmailRequest(type = 1, auth = auth)
-            SignUpService(this).tryPostEmail(EmailRequest)
+            val EmailRequest = PostCodeRequest(type = 1, auth = auth)
+            PostCodeService(this).tryPostEmail(EmailRequest)
+
+            activity.changeFragment(1)
         }
 
         return viewBinding.root
     }
 
-    override fun onPostEmailSuccess(response: EmailResponse) {
-        response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
+    override fun onPostEmailSuccess(response: CodeResponse) {
+        viewBinding.btOk.text = response.message
+        //response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
     }
 
     override fun onPostEmailFailure(message: String) {
-        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPostPhoneSuccess(response: CodeResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostPhoneFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }
