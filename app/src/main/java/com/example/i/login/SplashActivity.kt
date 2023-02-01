@@ -4,26 +4,26 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import com.example.i.MainActivity
-import com.example.i.R
+import com.example.i.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var viewBinding: ActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        viewBinding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
 
-        Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
-            finish()
-        },DURATION)
-    }
-    companion object {
-        private const val DURATION : Long = 1000 // 1초
-    }
+        // postDelayed : 일정 시간 후 함수 실행 가능
+        // Looper.getMainLooper() : 에러 방지
+        Handler(Looper.getMainLooper()).postDelayed({
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+            startActivity(Intent(this, MainActivity::class.java)) // MainActivity로 이동
+            finish(); // 현재 Activity 닫기
+
+        }, 1000) // 지연시간 1초
     }
 }

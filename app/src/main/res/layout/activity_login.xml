@@ -76,7 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_email"
+            android:id="@+id/idLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +88,7 @@
             android:textColorHint="@color/grey">
 
             <EditText
+                android:id="@+id/loginEtId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bt_yellow"
@@ -97,7 +98,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_pw"
+            android:id="@+id/pwLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -108,10 +109,10 @@
             app:errorIconDrawable="@drawable/error_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_email">
+            app:layout_constraintTop_toBottomOf="@+id/idLayout">
 
             <EditText
-                android:id="@+id/input_pwd"
+                android:id="@+id/loginEtPw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bt_yellow" />
@@ -121,7 +122,7 @@
             android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:layout_marginTop="61dp"
+            android:layout_marginTop="56dp"
             android:background="@drawable/bt_rectangle"
             android:clickable="false"
             android:fontFamily="@font/roboto_bold"
@@ -129,8 +130,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_pw" />
-
+            app:layout_constraintTop_toBottomOf="@+id/pwLayout" />
 
         <TextView
             android:id="@+id/find_account"
