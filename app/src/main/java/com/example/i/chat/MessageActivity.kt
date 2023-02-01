@@ -11,7 +11,6 @@ class MessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMessageBinding.inflate(layoutInflater)
-
         setContentView(viewBinding.root)
     }
 }

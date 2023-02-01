@@ -29,7 +29,7 @@ class DiaryActivity : AppCompatActivity() {
         val viewPager = viewBinding.viewpager
         val tabLayout = viewBinding.tabLayout
 
-        viewPager.adapter = ReviewViewPagerAdapter(supportFragmentManager, lifecycle)
+        viewPager.adapter = DiaryViewPagerAdapter(supportFragmentManager, lifecycle)
         TabLayoutMediator(tabLayout, viewPager) {tab, position ->
             tab.text = tabTitleArray[position]
         }.attach()

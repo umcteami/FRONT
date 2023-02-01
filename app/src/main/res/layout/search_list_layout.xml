@@ -26,6 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
+            android:id="@+id/tv_writer"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:fontFamily="@font/roboto_regular"
@@ -35,6 +36,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginStart="6dp"
@@ -44,6 +46,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_view"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginStart="8dp"

@@ -20,7 +20,7 @@ class ReviewSearchActivity : AppCompatActivity() {
 
         val viewPager = viewBinding.viewPager
         val tabLayout = viewBinding.tabLayout
-        viewPager.adapter = SearchviewPagerAdapter(supportFragmentManager, lifecycle)
+        viewPager.adapter = ReviewSearchviewPagerAdapter(supportFragmentManager, lifecycle)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabTitleArray[position]
