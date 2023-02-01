@@ -112,13 +112,13 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fb_mk_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/main_2"
+        android:src="@drawable/ic_write"
         app:borderWidth="0dp"
-        android:src="@drawable/edit_profile"
-        android:layout_marginBottom="40dp"
-        android:layout_marginRight="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
