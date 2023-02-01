@@ -3,6 +3,7 @@ package com.example.i
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import com.example.i.chat.MessageListFragment
 import com.example.i.databinding.ActivityMain2Binding
 import com.example.i.home.HomeFragment
@@ -11,7 +12,6 @@ import com.example.i.mypage.MypageFragment
 
 class Main2Activity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMain2Binding
-    lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +58,8 @@ class Main2Activity : AppCompatActivity() {
 
 
     }
+
+
 
 
 }

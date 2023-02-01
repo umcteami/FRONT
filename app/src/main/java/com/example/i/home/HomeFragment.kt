@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.chat.MessageListFragment
 import com.example.i.community.CommunityTalkroomActivity
@@ -119,8 +120,11 @@ class HomeFragment :Fragment() {
         viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
         viewBinding.homeTtlRV.adapter = TtlRVAdapter(ttlList)
 
+
         return viewBinding.root
     }
+
+
 
 
 }
