@@ -14,6 +14,10 @@ class LikePostActivity : AppCompatActivity() {
         viewBinding = ActivityLikePostBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        viewBinding.backBtn.setOnClickListener {
+            finish()
+        }
+
         val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
         viewBinding.viewPager.adapter = adapter
 

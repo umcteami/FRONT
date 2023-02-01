@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.i.R
+import com.example.i.databinding.FragmentBlockedBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +19,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class BlockedFragment : Fragment() {
+    private lateinit var viewBinding: FragmentBlockedBinding
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,8 +37,22 @@ class BlockedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewBinding = FragmentBlockedBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blocked, container, false)
+        backFragment()
+        return viewBinding.root
+    }
+
+    //뒤로가기
+    private fun backFragment() {
+        viewBinding.backBtn.setOnClickListener {
+            activity?.let {
+                activity?.supportFragmentManager
+                    ?.beginTransaction()
+                    ?.remove(this)
+                    ?.commit()
+            }
+        }
     }
 
     companion object {
