@@ -6,43 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".market.WriteActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <Toolbar
         android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/backBtn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="@color/main_1"
-                android:src="@drawable/ic_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                android:text="게시글 작성"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/backBtn"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="54dp">
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:src="@drawable/bt_back" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="게시글 작성"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/bt_upload"
+            android:layout_width="60dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical|right"
+            android:src="@drawable/btn_post_upload" />
+    </Toolbar>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
