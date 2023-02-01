@@ -1,20 +1,21 @@
 package com.example.i.signup
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.i.MainActivity
-import com.example.i.databinding.ActivitySignupBinding
 import com.example.i.databinding.FragmentEmailBinding
+import com.example.i.signup.models.*
 
-class EmailFragment : Fragment() {
+class EmailFragment : Fragment(), SignUpInterface {
     private lateinit var viewBinding : FragmentEmailBinding
 
     override fun onCreateView(
@@ -31,6 +32,7 @@ class EmailFragment : Fragment() {
         }
 
         val activity = activity as SignupActivity
+        val mContext: Context? = getActivity()
 
         viewBinding.btOk.isEnabled = false
 
@@ -61,9 +63,19 @@ class EmailFragment : Fragment() {
 
         viewBinding.btOk.setOnClickListener{
             activity.changeFragment(1)
+            val auth = viewBinding.etEmail.text.toString()
+            val EmailRequest = PostEmailRequest(type = 1, auth = auth)
+            SignUpService(this).tryPostEmail(EmailRequest)
         }
 
         return viewBinding.root
     }
 
+    override fun onPostEmailSuccess(response: EmailResponse) {
+        response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onPostEmailFailure(message: String) {
+        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+    }
 }
