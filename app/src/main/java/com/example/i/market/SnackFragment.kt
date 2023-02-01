@@ -2,6 +2,7 @@ package com.example.i.market
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class SnackFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mkList: ArrayList<Market> = arrayListOf()
+        val adapter = MarketRVAdapter(mkList)
         val customDecoration = CustomDecoration(2f, 2f, Color.GRAY)
 
         mkList.apply{
@@ -41,7 +43,7 @@ class SnackFragment: Fragment() {
         }
 
         viewBinding.rvSnack.layoutManager = LinearLayoutManager(context)
-        viewBinding.rvSnack.adapter = MarketRVAdapter(mkList)
+        viewBinding.rvSnack.adapter = adapter
         viewBinding.rvSnack.addItemDecoration(customDecoration)
     }
 }
