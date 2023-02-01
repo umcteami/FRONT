@@ -110,9 +110,57 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_phone">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_phonecode"
+            android:inputType="number"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_ok"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/bt_rectangle"
+        android:clickable="false"
+        android:fontFamily="@font/roboto_bold"
+        android:text="확인"
+        android:textColor="#6B6666"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_phonecode" />
+
+    <TextView
+        android:id="@+id/tv_nocode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto"
+        android:text="인증 번호를 받지 못하셨나요?"
+        android:textColor="#727272"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_nocode"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_ok" />
+
+    <Button
+        android:id="@+id/bt_nocode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:fontFamily="@font/roboto_bold"
+        android:text="재전송"
+        android:textColor="#6B6666"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_nocode"
+        app:layout_constraintTop_toBottomOf="@+id/bt_ok" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
