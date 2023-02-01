@@ -22,6 +22,7 @@ class MarketMainFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentMarketMainBinding.inflate(layoutInflater)
+
         return viewBinding.root
     }
 
@@ -76,6 +77,5 @@ class MarketMainFragment: Fragment() {
         viewBinding.rvMarket.layoutManager = LinearLayoutManager(context)
         viewBinding.rvMarket.adapter = MarketRVAdapter(mkList)
         viewBinding.rvMarket.addItemDecoration(customDecoration)
-
     }
 }
