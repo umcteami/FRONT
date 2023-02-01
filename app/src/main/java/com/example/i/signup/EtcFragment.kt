@@ -25,6 +25,16 @@ class EtcFragment : Fragment() {
             startActivity(intent)
         }
 
+        val activity = activity as SignupActivity
+
+        viewBinding.btEnd1.setOnClickListener{
+            activity.changeFragment(7)
+        }
+
+        viewBinding.btEnd2.setOnClickListener {
+            activity.changeFragment(8)
+        }
+
         return viewBinding.root
     }
 }

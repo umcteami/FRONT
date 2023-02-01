@@ -30,8 +30,6 @@ class EmailCodeFragment : Fragment() {
 
         val activity = activity as SignupActivity
 
-        var message: String = ""
-
         viewBinding.btOk.isEnabled = false
 
         viewBinding.etEmailCode.addTextChangedListener(object: TextWatcher {
@@ -41,8 +39,8 @@ class EmailCodeFragment : Fragment() {
 
             // 입력 중
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                message = viewBinding.etEmailCode.text.toString()
-                viewBinding.btOk.isEnabled = message.isNotEmpty()
+                var ecode = viewBinding.etEmailCode.text.toString()
+                viewBinding.btOk.isEnabled = ecode.isNotEmpty()
 
                 if (viewBinding.btOk.isEnabled == false) {
                     viewBinding.btOk.setTextColor(Color.rgb(0x6B,0x66,0x66))

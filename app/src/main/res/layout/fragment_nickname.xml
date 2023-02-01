@@ -104,7 +104,7 @@
         android:text="닉네임"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto_bold"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="19dp"
         app:layout_constraintTop_toBottomOf="@+id/fl_profile"
@@ -135,6 +135,9 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_nickname2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_nickname"
+            android:inputType="text"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -147,7 +150,7 @@
         android:text="(선택) 한 줄 소개"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto_bold"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="19dp"
         app:layout_constraintTop_toBottomOf="@+id/ti_nickname"
@@ -177,9 +180,28 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_intro">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_ok"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="50dp"
+        android:text="확인"
+        android:textColor="#6B6666"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_bold"
+        android:background="@drawable/bt_rectangle"
+        android:clickable="false"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_intro"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

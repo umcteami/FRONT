@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="인증 번호를 입력해주세요"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto_bold"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:lineSpacingExtra="-3sp"

@@ -30,8 +30,6 @@ class PhoneCodeFragment : Fragment() {
 
         val activity = activity as SignupActivity
 
-        var message: String = ""
-
         viewBinding.btOk.isEnabled = false
 
         viewBinding.etPhonecode.addTextChangedListener(object: TextWatcher {
@@ -41,8 +39,8 @@ class PhoneCodeFragment : Fragment() {
 
             // 입력 중
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                message = viewBinding.etPhonecode.text.toString()
-                viewBinding.btOk.isEnabled = message.isNotEmpty()
+                var pcode = viewBinding.etPhonecode.text.toString()
+                viewBinding.btOk.isEnabled = pcode.isNotEmpty()
 
                 if (viewBinding.btOk.isEnabled == false) {
                     viewBinding.btOk.setTextColor(Color.rgb(0x6B,0x66,0x66))
