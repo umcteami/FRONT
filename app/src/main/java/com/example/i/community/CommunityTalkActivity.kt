@@ -9,7 +9,7 @@ import com.example.i.R
 import com.example.i.chat.MessageListFragment
 import com.example.i.databinding.ActivityCommunityTalkBinding
 import com.example.i.market.MarketFragment
-import com.example.i.mypage.MypageFragment
+import com.example.i.mypage.fragment.MypageFragment
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 import com.google.android.material.tabs.TabLayoutMediator

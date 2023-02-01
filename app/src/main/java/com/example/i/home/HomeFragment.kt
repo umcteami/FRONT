@@ -8,15 +8,11 @@ import androidx.core.view.GravityCompat
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.Main2Activity
 import com.example.i.R
-import com.example.i.chat.MessageListFragment
 import com.example.i.community.CommunityTalkroomActivity
 import com.example.i.community.DiaryActivity
 import com.example.i.community.ReviewActivity
 import com.example.i.databinding.FragmentHomeBinding
-import com.example.i.market.MarketFragment
-import com.example.i.mypage.MypageFragment
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
