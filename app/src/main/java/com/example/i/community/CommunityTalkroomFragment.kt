@@ -30,5 +30,6 @@ class CommunityTalkroomFragment : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         viewBinding.rvBoard.adapter = CommunityBoardAdapter(itemList)
         return viewBinding.root
+
     }
 }

@@ -2,6 +2,7 @@ package com.example.i.community
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import com.example.i.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
@@ -11,5 +12,7 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+
     }
 }

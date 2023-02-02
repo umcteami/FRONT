@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.R
+import com.example.i.databinding.ActivityCommunityQnaBinding
 import com.example.i.databinding.PostListLayoutBinding
 
 class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) :
@@ -34,7 +35,7 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
             viewBinding.tvTitle.text = item.title
             viewBinding.tvHearts.text = item.heart
             viewBinding.tvChat.text = item.comment
-            itemView.setOnClickListener{
+            viewBinding.rootLayout.setOnClickListener {
 
             }
 
