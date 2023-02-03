@@ -50,55 +50,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
             android:layout_width="260dp"
             android:layout_height="57dp"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="탈퇴하기 전에 아래 주의사항을 꼭 확인해 주세요."
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:fontFamily="@font/roboto_bold"/>
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="350dp"
             android:layout_height="match_parent"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="· 회원 탈퇴 시 계정과 관련된 정보는 복구가 불가능합니다."
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_regular"/>
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="350dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="· 기존에 작성한 게시글과 댓글, 나눔장터는 삭제되지 않고 유지됩니다. 등록한 게시글과 댓글을 삭제하기 원하신다면 탈퇴 전 삭제해 주시기 바랍니다."
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_regular"/>
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="350dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="· 좋아요나 찜 내역, 알림 설정한 게시글 정보, 신고 내역, 차단 내역 등은 모두 소멸되며 복구되지 않습니다."
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_regular"/>
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="350dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="· 탈퇴 후 7일 동안은 동일한 이메일 주소로 재가입하실 수 없습니다."
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_regular"/>
+            android:textSize="14sp"/>
 
     </LinearLayout>
 
@@ -106,22 +109,25 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_marginTop="145dp"
         android:layout_marginBottom="16dp"
         android:background="#B4B4B4"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginBottom="140dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/bt_call"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
@@ -134,10 +140,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="3dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="상단 주의사항을 모두 확인했으며 탈퇴에 동의합니다."
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:fontFamily="@font/roboto_regular"/>
+            android:textSize="12sp" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -146,9 +152,9 @@
         android:layout_height="66dp"
         android:background="@drawable/bt_rectangle"
         android:clickable="false"
+        android:fontFamily="@font/roboto_bold"
         android:text="문의 접수하기"
         android:textSize="16sp"
-        android:fontFamily="@font/roboto_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

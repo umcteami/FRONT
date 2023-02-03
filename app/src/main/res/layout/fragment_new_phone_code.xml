@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity"
+    tools:context=".mypage.fragment.NewPhoneCodeFragment"
     android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/main_1"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="계정 찾기"
+                android:text="전화번호 변경"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:fontFamily="@font/roboto_bold"
@@ -54,28 +54,26 @@
             android:layout_marginTop="80dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:text="인증 번호를 입력해주세요"
             android:textSize="20sp"/>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="141dp"
+            android:layout_marginTop="119dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/user_email"
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:hint="aiaiaiaiaiaiaiai@000.com"
-                android:textSize="20sp"
-                android:fontFamily="@font/roboto_regular"/>
+                android:hint="000 0000 0000"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,35 +85,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/grey"
-                app:helperText="@string/email_code_helper"
+                app:helperText="@string/phone_code_helper"
                 app:hintTextColor="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email_code"
+                    android:id="@+id/et_phone_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/roboto_regular"
                     android:hint="인증 번호를 입력해주세요"
                     android:maxLines="1"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="35dp"
-                android:fontFamily="@font/roboto_regular"
-                android:text="00:00"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -123,10 +110,12 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="50dp"
-            android:text="확인"
+            android:text="변경 완료"
+            android:textColor="#6B6666"
             android:textSize="18sp"
             android:fontFamily="@font/roboto_bold"
-            android:background="@drawable/bt_rectangle" />
+            android:background="@drawable/bt_rectangle"
+            android:clickable="false"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,13 +127,12 @@
                 android:layout_height="match_parent"
                 android:text="인증 번호를 받지 못하셨나요?"
                 android:textSize="11sp"
-                android:fontFamily="@font/roboto_regular"
                 android:layout_marginLeft="92dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
                 android:text="재전송"
-                android:fontFamily="@font/roboto_regular"
                 android:textColor="#6B6666"
                 android:textSize="12sp"/>
         </LinearLayout>

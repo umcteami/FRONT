@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity"
+    tools:context=".mypage.fragment.NewEmailCodeFragment"
     android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/main_1"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="계정 찾기"
+                android:text="이메일 변경"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:fontFamily="@font/roboto_bold"
@@ -52,26 +52,26 @@
 
         <TextView
             android:layout_marginTop="62dp"
-            android:layout_width="214dp"
-            android:layout_height="57dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="계정을 설정할 때 입력한 전화번호를 입력해주세요"
+            android:text="새로운 이메일을 입력해주세요"
             android:textSize="20sp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:hint="000 0000 0000"
+            android:layout_marginTop="90dp"
+            android:hint="이메일 주소를 입력해주세요"
             android:textSize="20sp"
             android:fontFamily="@font/roboto_regular">
         </EditText>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_call"
+            android:id="@+id/bt_email"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:text="인증 번호 받기"
             android:textSize="16sp"
