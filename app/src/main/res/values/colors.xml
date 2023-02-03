@@ -16,4 +16,6 @@
     <color name="login_active">#E4E4E4</color>
     <color name="login_unActive">#6B6666</color>
     <color name="button">#5F896D</color>
+
+    <color name="transparent">#00ff0000</color>
 </resources>

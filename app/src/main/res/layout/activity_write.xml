@@ -245,14 +245,13 @@
         app:layout_constraintStart_toEndOf="@+id/tv_price"
         app:layout_constraintTop_toBottomOf="@id/write_divider3" />
 
-    <ImageButton
-        android:id="@+id/ib_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:src="@drawable/ic_unchecked"
+    <CheckBox
+        android:id="@+id/cb_share"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:background="@drawable/custom_checkbox"
+        android:button="@color/transparent"
+        android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/et_price"
         app:layout_constraintEnd_toStartOf="@id/tv_check"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -269,9 +268,9 @@
         android:text="나눔"
         android:textColor="@color/black"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ib_check"
+        app:layout_constraintBottom_toBottomOf="@+id/cb_share"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ib_check"/>
+        app:layout_constraintTop_toTopOf="@id/cb_share"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/write_divider4"
