@@ -32,10 +32,9 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
         viewBinding.rvBoard.adapter = CommunityBoardAdapter(itemList)
         return viewBinding.root
     }
-
     override fun onClick(view:View?){
         when(view?.id){
-            viewBinding.filterLayout.id ->{
+            viewBinding.btnSelectDate.id ->{
                 val dlg = MkFilterDialog(main)
                 dlg.setOnOkClickedListener { content ->
                     viewBinding.tvViewDate.text = content

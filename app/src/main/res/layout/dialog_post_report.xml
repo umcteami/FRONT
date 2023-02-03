@@ -26,7 +26,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/Ic_Report_Siren"
+            android:src="@drawable/ic_report_siren"
             android:layout_gravity="center_horizontal"/>
         <TextView
             android:id="@+id/tv_reason"
