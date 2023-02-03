@@ -1,14 +1,11 @@
 package com.example.i.community
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.R
-import com.example.i.databinding.ActivityCommunityQnaBinding
 import com.example.i.databinding.PostListLayoutBinding
 
 class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) :
@@ -21,6 +18,15 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
 
     override fun onBindViewHolder(holder: CommunityBoardAdapter.BoardViewHolder, position: Int) {
         holder.bind(itemList[position])
+        holder.itemView.setOnClickListener {
+            val fragment = PostFragment()
+            val fragmentManager =
+                (holder.itemView.context as AppCompatActivity).supportFragmentManager
+            fragmentManager.beginTransaction()
+                .replace(R.id.frameFragment, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +35,7 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
 
     inner class BoardViewHolder(private val viewBinding: PostListLayoutBinding) :
         RecyclerView.ViewHolder(viewBinding.root){
-        fun bind(item : BoardItem){
+        fun bind(item: BoardItem) {
             viewBinding.tvRoominfo.text = item.room
             viewBinding.tvWriter.text = item.writer
             viewBinding.tvWriteTime.text = item.date
@@ -39,4 +45,16 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
             viewBinding.tvChat.text = item.comment
         }
     }
+
+    interface OnItemClickListener {
+        fun onClick(view: View, position: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListner = onItemClickListener
+    }
+
+    //전달된 객체를 저장할 변수 정의
+    private lateinit var itemClickListner: OnItemClickListener
+
 }

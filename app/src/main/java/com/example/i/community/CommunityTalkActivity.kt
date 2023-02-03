@@ -1,8 +1,8 @@
 package com.example.i.community
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.example.i.Main2Activity
 import com.example.i.R
@@ -33,6 +33,7 @@ class CommunityTalkActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout, viewPager){tab, position ->
             tab.text = tabTitleArray[position]
         }.attach()
+
 
         viewBinding.searchBtn.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
