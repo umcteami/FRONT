@@ -49,7 +49,7 @@
 
         <activity
             android:name=".market.WriteActivity"
-            android:windowSoftInputMode="adjustResize"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".mypage.FriendProfileActivity"

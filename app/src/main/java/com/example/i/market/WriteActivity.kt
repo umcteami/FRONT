@@ -11,6 +11,10 @@ import com.example.i.databinding.ActivityWriteBinding
 class WriteActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var viewBinding: ActivityWriteBinding
+    private var title: String = ""
+    private var price: String = ""
+    private var content: String = ""
+    private var catagory: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +26,29 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
             finish()
         }
 
+        viewBinding.btUpload.isEnabled = false
+
         viewBinding.btCatagory.setOnClickListener(this)
+
+        viewBinding.etTitle.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                title = viewBinding.etTitle.text.toString()
+                price = viewBinding.etPrice.text!!.toString()
+                content = viewBinding.etContent.text.toString()
+                catagory = viewBinding.btCatagory.text.toString()
+
+                viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
 
         viewBinding.etPrice.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -30,7 +56,12 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                var price = viewBinding.etPrice.text!!
+                price = viewBinding.etPrice.text!!.toString()
+                title = viewBinding.etTitle.text.toString()
+                content = viewBinding.etContent.text.toString()
+                catagory = viewBinding.btCatagory.text.toString()
+
+                viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
 
                 if (price.isEmpty() == true) {
                     viewBinding.tvPrice.setTextColor(Color.rgb(0xA6,0xA6,0xA6))
@@ -53,14 +84,46 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
                 viewBinding.etPrice.setText("")
             }
         }
+
+        viewBinding.etContent.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                title = viewBinding.etTitle.text.toString()
+                price = viewBinding.etPrice.text!!.toString()
+                content = viewBinding.etContent.text.toString()
+                catagory = viewBinding.btCatagory.text.toString()
+
+                viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
+
+        viewBinding.btUpload.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onClick(view:View?) {
         when(view?.id) {
             viewBinding.btCatagory.id -> {
                 val dlg = CatagoryDialog(this)
-                dlg.setOnOkClickedListener { content ->
-                    viewBinding.tvCatagory.text = content
+                dlg.setOnOkClickedListener { cText ->
+                    viewBinding.btCatagory.text = cText
+
+                    title = viewBinding.etTitle.text.toString()
+                    price = viewBinding.etPrice.text!!.toString()
+                    content = viewBinding.etContent.text.toString()
+                    catagory = viewBinding.btCatagory.text.toString()
+
+                    viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
                 }
                 dlg.show()
             }

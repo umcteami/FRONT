@@ -32,7 +32,6 @@ class EmailFragment : Fragment(), SignUpInterface {
         }
 
         val activity = activity as SignupActivity
-        val mContext: Context? = getActivity()
 
         viewBinding.btOk.isEnabled = false
 
@@ -53,6 +52,7 @@ class EmailFragment : Fragment(), SignUpInterface {
                 else {
                     viewBinding.btOk.setTextColor(Color.WHITE)
                 }
+
             }
 
             // 입력 후
