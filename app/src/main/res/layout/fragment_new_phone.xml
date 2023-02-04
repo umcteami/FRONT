@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity"
+    tools:context=".mypage.fragment.NewPhoneFragment"
     android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/main_1"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="계정 찾기"
+                android:text="전화번호 변경"
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:fontFamily="@font/roboto_bold"
@@ -56,7 +56,7 @@
             android:layout_height="57dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="계정을 설정할 때 입력한 전화번호를 입력해주세요"
+            android:text="새로운 휴대폰 번호를\n입력해주세요"
             android:textSize="20sp"/>
 
         <EditText
