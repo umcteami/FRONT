@@ -58,7 +58,8 @@ class NicknameFragment : Fragment() {
         })
 
         viewBinding.btOk.setOnClickListener{
-            activity.changeFragment(6)
+            val dialog = NicknameDialog()
+            dialog.show(activity.supportFragmentManager, "Custom Dialog")
         }
 
         return viewBinding.root
