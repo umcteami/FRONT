@@ -23,7 +23,7 @@ class EmailFragment : Fragment(), SignUpInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentEmailBinding.inflate(layoutInflater)
+        viewBinding = FragmentEmailBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)

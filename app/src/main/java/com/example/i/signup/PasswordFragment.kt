@@ -14,13 +14,15 @@ import com.example.i.databinding.FragmentPasswordBinding
 
 class PasswordFragment : Fragment() {
     private lateinit var viewBinding : FragmentPasswordBinding
+    private var pw: String = ""
+    private var pwCheck: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentPasswordBinding.inflate(layoutInflater)
+        viewBinding = FragmentPasswordBinding.inflate(inflater, container, false)
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -28,9 +30,6 @@ class PasswordFragment : Fragment() {
         }
 
         val activity = activity as SignupActivity
-
-        var pw: String = ""
-        var pwCheck: String = ""
 
         viewBinding.btOk.isEnabled = false
 
@@ -56,6 +55,31 @@ class PasswordFragment : Fragment() {
 
             // 입력 후
             override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
+        viewBinding.etPwcheck.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                pw = viewBinding.etPw.text.toString()
+                pwCheck = viewBinding.etPwcheck.text.toString()
+
+                viewBinding.btOk.isEnabled = pw.isNotEmpty() && pwCheck.isNotEmpty()
+
+                if (viewBinding.btOk.isEnabled == false) {
+                    viewBinding.btOk.setTextColor(Color.rgb(0x6B,0x66,0x66))
+                }
+                else {
+                    viewBinding.btOk.setTextColor(Color.WHITE)
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
             }
 
         })

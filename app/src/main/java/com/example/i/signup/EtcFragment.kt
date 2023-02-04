@@ -17,7 +17,7 @@ class EtcFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentEtcBinding.inflate(layoutInflater)
+        viewBinding = FragmentEtcBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)

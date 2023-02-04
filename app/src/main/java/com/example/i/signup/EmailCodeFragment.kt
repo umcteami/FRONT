@@ -20,7 +20,7 @@ class EmailCodeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentEmailCodeBinding.inflate(layoutInflater)
+        viewBinding = FragmentEmailCodeBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)

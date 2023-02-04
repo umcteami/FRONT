@@ -20,7 +20,7 @@ class NicknameFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentNicknameBinding.inflate(layoutInflater)
+        viewBinding = FragmentNicknameBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)

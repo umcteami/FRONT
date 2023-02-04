@@ -21,7 +21,7 @@ class PhoneCodeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentPhoneCodeBinding.inflate(layoutInflater)
+        viewBinding = FragmentPhoneCodeBinding.inflate(inflater, container, false)
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
