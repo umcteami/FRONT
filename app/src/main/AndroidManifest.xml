@@ -6,7 +6,6 @@
 
     <application
         android:name=".config.ApplicationClass"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,7 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.I"
-        tools:targetApi="31">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31" >
+        <activity
+            android:name=".MarketPostActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".community.DiaryRainActivity"
             android:exported="false" />
@@ -33,85 +40,72 @@
             android:exported="false" />
         <activity
             android:name=".signup.SignupFinActivity"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".community.ReviewWriteActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.ReviewSearchActivity"
             android:exported="false" />
-
         <activity
             android:name=".market.WriteActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".mypage.FriendProfileActivity"
-            android:exported="true">
+            android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.MyProfileActivity"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.LikeMarketActivity"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.MyMarketActivity"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".chat.MessageActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".community.DiaryActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.SearchActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.ReviewActivity"
             android:exported="false" />
-
         <activity
             android:name=".community.CommunityWriteActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -122,13 +116,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Main2Activity"
-            android:exported="true">
-
+            android:exported="true" >
         </activity>
-
         <activity
             android:name=".community.CommunityTalkroomActivity"
             android:exported="false" />
@@ -137,7 +128,7 @@
             android:exported="false" />
         <activity
             android:name=".login.LoginActivity"
-            android:exported="true">
+            android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -149,7 +140,7 @@
         <activity
             android:name=".signup.SignupActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustPan" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
