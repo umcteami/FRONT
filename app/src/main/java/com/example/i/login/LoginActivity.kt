@@ -1,14 +1,17 @@
 package com.example.i.login
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.i.Main2Activity
 import com.example.i.MainActivity
 import com.example.i.databinding.ActivityLoginBinding
-import com.example.i.login.models.PostLoginRequest
 import com.example.i.login.models.LoginResponse
+import com.example.i.login.models.PostLoginRequest
 
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
@@ -26,12 +29,6 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             startActivity(writeIntent)
         }
 
-        // 메인 화면으로 이동
-        viewBinding.btLogin.setOnClickListener {
-              val intent = Intent(this, Main2Activity::class.java)
-             this.startActivity(intent)
-        }
-
         // 계정 찾기로 이동
         viewBinding.findAccount.setOnClickListener {
             changeFragment(1)
@@ -41,6 +38,32 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
         viewBinding.newPwd.setOnClickListener {
             changeFragment(2)
         }
+
+        viewBinding.btLogin.isEnabled = false
+
+        viewBinding.loginEtPw.addTextChangedListener(object: TextWatcher {
+            // 입력 전
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            // 입력 중
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                var login = viewBinding.loginEtPw.text.toString()
+                viewBinding.btLogin.isEnabled = login.isNotEmpty()
+
+                if (viewBinding.btLogin.isEnabled == false) {
+                    viewBinding.btLogin.setTextColor(Color.rgb(0x6B,0x66,0x66))
+                }
+                else {
+                    viewBinding.btLogin.setTextColor(Color.WHITE)
+                }
+            }
+
+            // 입력 후
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
 
         // 로그인
         viewBinding.btLogin.setOnClickListener {
@@ -58,14 +81,21 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
         }
     }
 
-
+    // 서버 연결 성공
     override fun onPostLoginSuccess(response: LoginResponse) {
+
+        // 계정이 있는 경우
+        if(response.isSuccess){
+            // 메인 화면으로 이동
+            val intent = Intent(this, Main2Activity::class.java)
+            this.startActivity(intent)
+        }
+
+        // Result message
         response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
-        // 메인 화면으로 이동
-        val intent = Intent(this, Main2Activity::class.java)
-        this.startActivity(intent)
     }
 
+    // 서버 연결 실패
     override fun onPostLoginFailure(message: String) {
         Toast.makeText(this, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
