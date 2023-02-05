@@ -6,11 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.i.R
 import com.example.i.databinding.FragmentMypageBinding
-import com.example.i.home.HomeFragment
-import com.example.i.login.AccountCodeFragment
-import com.example.i.login.CodeCorrectFragment
 import com.example.i.mypage.*
 
 class MypageFragment : Fragment() {
@@ -33,6 +29,7 @@ class MypageFragment : Fragment() {
         setUpBlock()
         setUpAnncm()
         setUpSupport()
+        setUpPolicy()
 
         return viewBinding.root
     }
@@ -40,7 +37,7 @@ class MypageFragment : Fragment() {
     private fun setUpSetting() {
         viewBinding.mypageSettingBtn.setOnClickListener {
             activity?.let {
-                val intent = Intent(context, mypageSetting::class.java)
+                val intent = Intent(context, mypageSettingActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
             }
@@ -123,6 +120,14 @@ class MypageFragment : Fragment() {
     private fun setUpSupport() {
         viewBinding.mypageSupportTv.setOnClickListener {
             val intent = Intent(context, SupportActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+    }
+
+    private fun setUpPolicy() {
+        viewBinding.mypagePolicyTv.setOnClickListener {
+            val intent = Intent(context, PolicyActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
