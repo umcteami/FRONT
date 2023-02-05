@@ -1,5 +1,6 @@
 package com.example.i.market
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.databinding.FragmentToyBinding
 
-class ToyFragment: Fragment() {
+class ToyFragment: Fragment(), View.OnClickListener {
 
     private lateinit var viewBinding: FragmentToyBinding
+    private lateinit var main: Main2Activity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,6 +22,8 @@ class ToyFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentToyBinding.inflate(layoutInflater)
+
+        viewBinding.btSort.setOnClickListener(this)
 
         return viewBinding.root
     }
@@ -43,5 +48,23 @@ class ToyFragment: Fragment() {
         viewBinding.rvToy.layoutManager = LinearLayoutManager(context)
         viewBinding.rvToy.adapter = MarketRVAdapter(mkList)
         viewBinding.rvToy.addItemDecoration(customDecoration)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        main = context as Main2Activity
+    }
+
+    override fun onClick(view:View?) {
+        when(view?.id) {
+            viewBinding.btSort.id -> {
+                val dlg = MkFilterDialog(main)
+                dlg.setOnOkClickedListener { content ->
+                    viewBinding.btSort.text = content
+                }
+                dlg.show()
+            }
+        }
     }
 }

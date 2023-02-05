@@ -18,7 +18,7 @@ class CommunityWriteActivity : AppCompatActivity() {
             startActivity(uploadIntent)
         }
 
-        viewBinding.btBack.setOnClickListener {
+        viewBinding.backBtn.setOnClickListener {
             finish()
         }
     }

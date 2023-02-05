@@ -76,7 +76,7 @@
         android:id="@+id/tv_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hazz@-ai-.com"
+        android:text="000 0000 0000"
         android:fontFamily="@font/roboto"
         android:textSize="20sp"
         android:gravity="center|left"

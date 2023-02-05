@@ -10,12 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.i.Main2Activity
 import com.example.i.MainActivity
 import com.example.i.databinding.ActivityLoginBinding
-import com.example.i.login.models.LoginResponse
 import com.example.i.login.models.PostLoginRequest
+import com.example.i.login.models.LoginResponse
 
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
     private lateinit var viewBinding: ActivityLoginBinding
+    private var id: String = ""
+    private var pw: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,27 +31,19 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             startActivity(writeIntent)
         }
 
-        // 계정 찾기로 이동
-        viewBinding.findAccount.setOnClickListener {
-            changeFragment(1)
-        }
-
-        // 비밀번호 재설정으로 이동
-        viewBinding.newPwd.setOnClickListener {
-            changeFragment(2)
-        }
-
         viewBinding.btLogin.isEnabled = false
 
-        viewBinding.loginEtPw.addTextChangedListener(object: TextWatcher {
+        viewBinding.loginEtId.addTextChangedListener(object: TextWatcher {
             // 입력 전
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
             // 입력 중
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                var login = viewBinding.loginEtPw.text.toString()
-                viewBinding.btLogin.isEnabled = login.isNotEmpty()
+                id = viewBinding.loginEtId.text.toString()
+                pw = viewBinding.loginEtPw.text.toString()
+
+                viewBinding.btLogin.isEnabled = id.isNotEmpty() && pw.isNotEmpty()
 
                 if (viewBinding.btLogin.isEnabled == false) {
                     viewBinding.btLogin.setTextColor(Color.rgb(0x6B,0x66,0x66))
@@ -64,6 +58,52 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             }
 
         })
+
+        viewBinding.loginEtPw.addTextChangedListener(object: TextWatcher {
+            // 입력 전
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            // 입력 중
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                id = viewBinding.loginEtId.text.toString()
+                pw = viewBinding.loginEtPw.text.toString()
+
+                viewBinding.btLogin.isEnabled = id.isNotEmpty() && pw.isNotEmpty()
+
+                if (viewBinding.btLogin.isEnabled == false) {
+                    viewBinding.btLogin.setTextColor(Color.rgb(0x6B,0x66,0x66))
+                }
+                else {
+                    viewBinding.btLogin.setTextColor(Color.WHITE)
+                }
+            }
+
+            // 입력 후
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
+        // 메인 화면으로 이동
+        viewBinding.btLogin.setOnClickListener {
+              val intent = Intent(this, Main2Activity::class.java)
+             this.startActivity(intent)
+        }
+
+        // 계정 찾기로 이동
+        viewBinding.findAccount.setOnClickListener {
+            val intent = Intent(this, AccountSearchActivity::class.java)
+            intent.putExtra("index",1)
+            this.startActivity(intent)
+        }
+
+        // 비밀번호 재설정으로 이동
+        viewBinding.newPwd.setOnClickListener {
+            val intent = Intent(this, AccountSearchActivity::class.java)
+            intent.putExtra("index",2)
+            this.startActivity(intent)
+        }
 
         // 로그인
         viewBinding.btLogin.setOnClickListener {
@@ -81,21 +121,14 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
         }
     }
 
-    // 서버 연결 성공
+
     override fun onPostLoginSuccess(response: LoginResponse) {
-
-        // 계정이 있는 경우
-        if(response.isSuccess){
-            // 메인 화면으로 이동
-            val intent = Intent(this, Main2Activity::class.java)
-            this.startActivity(intent)
-        }
-
-        // Result message
         response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+        // 메인 화면으로 이동
+        val intent = Intent(this, Main2Activity::class.java)
+        this.startActivity(intent)
     }
 
-    // 서버 연결 실패
     override fun onPostLoginFailure(message: String) {
         Toast.makeText(this, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
@@ -120,54 +153,6 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             viewBinding.idLayout.error = null
             viewBinding.idLayout.isErrorEnabled = false // 에러 메시지 사용X
             true
-        }
-    }
-
-    // 화면 이동
-    fun changeFragment(index: Int){
-        when(index){
-            // 계정 찾기
-            1 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, AccountSearchFragment())
-                    .commit()
-            }
-            // 비번 찾기
-            2 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, PwSearchFragment())
-                    .commit()
-            }
-            // 인증번호 받기
-            3 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, AccountCodeFragment())
-                    .commit()
-            }
-            // 이메일 확인
-            4 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, CodeCorrectFragment())
-                    .commit()
-            }
-            // 인증번호 받기
-            5 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, PwCodeFragment())
-                    .commit()
-            }
-            // 비번 재설정
-            6 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, NewPwFragment())
-                    .commit()
-            }
         }
     }
 }
