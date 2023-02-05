@@ -20,7 +20,7 @@ class NicknameFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentNicknameBinding.inflate(layoutInflater)
+        viewBinding = FragmentNicknameBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
@@ -58,7 +58,8 @@ class NicknameFragment : Fragment() {
         })
 
         viewBinding.btOk.setOnClickListener{
-            activity.changeFragment(6)
+            val dialog = NicknameDialog()
+            dialog.show(activity.supportFragmentManager, "Custom Dialog")
         }
 
         return viewBinding.root
