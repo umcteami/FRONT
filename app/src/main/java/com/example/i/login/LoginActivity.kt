@@ -85,12 +85,6 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
 
         })
 
-        // 메인 화면으로 이동
-        viewBinding.btLogin.setOnClickListener {
-              val intent = Intent(this, Main2Activity::class.java)
-             this.startActivity(intent)
-        }
-
         // 계정 찾기로 이동
         viewBinding.findAccount.setOnClickListener {
             val intent = Intent(this, AccountSearchActivity::class.java)
@@ -122,17 +116,23 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
     }
 
 
+    // 서버 연결 성공
     override fun onPostLoginSuccess(response: LoginResponse) {
+        // 계정이 있는 경우
+        if(response.isSuccess){
+            // 메인 화면으로 이동
+            val intent = Intent(this, Main2Activity::class.java)
+            this.startActivity(intent)
+        }
+
+        // Result message
         response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
-        // 메인 화면으로 이동
-        val intent = Intent(this, Main2Activity::class.java)
-        this.startActivity(intent)
     }
 
+    // 서버 연결 실패
     override fun onPostLoginFailure(message: String) {
         Toast.makeText(this, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
-
     // 이메일 확인
     fun validateEmail(): Boolean {
         val value = viewBinding.idLayout.editText?.text.toString()

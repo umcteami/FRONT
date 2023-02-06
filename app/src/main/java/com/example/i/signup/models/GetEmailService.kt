@@ -9,7 +9,8 @@ class GetEmailService(val GetEmailInterface: GetEmailInterface) {
 
     fun tryGetEmail(){
         val SignUpRetrofitInterface = ApplicationClass.sRetrofit.create(SignUpRetrofitInterface::class.java)
-        SignUpRetrofitInterface.getEmail().enqueue(object : Callback<EmailCheckResponse>{
+        SignUpRetrofitInterface.getEmail(1).enqueue(object : Callback<EmailCheckResponse>{
+
             override fun onResponse(call: Call<EmailCheckResponse>, response: Response<EmailCheckResponse>) {
                 (response.body() as EmailCheckResponse?)?.let {
                     GetEmailInterface.onGetEmailSuccess(
@@ -24,4 +25,5 @@ class GetEmailService(val GetEmailInterface: GetEmailInterface) {
         })
     }
 }
+
 

@@ -3,11 +3,7 @@ package com.example.i.mypage.fragment
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.Main2Activity
-import com.example.i.MainActivity
-import com.example.i.R
 import com.example.i.databinding.FragmentMypostBinding
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter

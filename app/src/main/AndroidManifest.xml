@@ -54,12 +54,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".community.ReviewWriteActivity"
             android:exported="false" />
+
         <activity
             android:name=".community.ReviewSearchActivity"
             android:exported="false" />
+
         <activity
             android:name=".market.WriteActivity"
             android:exported="false"
@@ -71,6 +74,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".mypage.MyProfileActivity"
             android:exported="false">
@@ -78,6 +82,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".mypage.LikeMarketActivity"
             android:exported="false">
@@ -85,6 +90,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".mypage.MyMarketActivity"
             android:exported="false">
@@ -92,14 +98,16 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".chat.MessageActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".community.DiaryActivity"
             android:exported="false" />
@@ -155,6 +163,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity android:name=".mypage.AnnounceActivity" />
         <activity
             android:name=".mypage.SupportActivity"
