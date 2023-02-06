@@ -5,14 +5,16 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEmailCodeBinding
-import com.example.i.signup.models.*
+import com.example.i.signup.models.EmailCheckResponse
+import com.example.i.signup.models.GetEmailInterface
+import com.example.i.signup.models.GetEmailService
 
 
 class EmailCodeFragment : Fragment(), GetEmailInterface {
@@ -24,6 +26,13 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
         savedInstanceState: Bundle?
     ): View {
         viewBinding = FragmentEmailCodeBinding.inflate(inflater, container, false)
+
+        // 데이터 불러오기
+//        if (getArguments() != null)
+//        {
+//            val email = getArguments()?.getString("email"); // 프래그먼트1에서 받아온 값 넣기
+//            viewBinding.tvEmail.text = email
+//        }
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
@@ -61,7 +70,6 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
 
         viewBinding.btOk.setOnClickListener{
             GetEmailService(this).tryGetEmail()
-            activity.changeFragment(2)
         }
 
         return viewBinding.root
@@ -69,10 +77,18 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
     }
 
     override fun onGetEmailSuccess(response: EmailCheckResponse) {
-        viewBinding.btOk.text = "response.message"
-        Toast.makeText(activity, "Get JWT 성공", Toast.LENGTH_SHORT).show()
+        // 계정이 있는 경우
+        if(response.isSuccess){
+            // 인증번호 발송이 성공한 경우
+            val Activity = activity as SignupActivity
+            Activity.changeFragment(2)
+        }
+
+        // Result message
+        Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
     }
 
+    // 서버 연결 실패
     override fun onGetEmailFailure(message: String) {
         Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
     }

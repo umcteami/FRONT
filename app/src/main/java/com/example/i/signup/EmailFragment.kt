@@ -8,10 +8,12 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEmailBinding
 import com.example.i.signup.models.*
+
 
 class EmailFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding : FragmentEmailBinding
@@ -29,7 +31,6 @@ class EmailFragment : Fragment(), PostCodeInterface {
             startActivity(intent)
         }
 
-        val activity = activity as SignupActivity
 
         viewBinding.btOk.isEnabled = false
 
@@ -64,19 +65,39 @@ class EmailFragment : Fragment(), PostCodeInterface {
             val EmailRequest = PostCodeRequest(type = 1, auth = auth)
             PostCodeService(this).tryPostEmail(EmailRequest)
 
-            activity.changeFragment(1)
+            // Activity.changeFragment(1)
         }
 
         return viewBinding.root
     }
 
+    // 서버 연결 성공
     override fun onPostEmailSuccess(response: CodeResponse) {
-        viewBinding.btOk.text = response.message
-        //response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
+        // 인증번호 발송이 성공한 경우
+        if(response.isSuccess){
+            val Activity = activity as SignupActivity
+            Activity.changeFragment(1)
+
+//            // 사용자가 입력한 email 전달
+//            val bundle = Bundle() // 번들을 통해 값 전달
+//            bundle.putString("email", viewBinding.etEmail.toString()) //번들에 넘길 값 저장
+//
+//            val fragment2 = EmailCodeFragment() //프래그먼트2 선언
+//            fragment2.setArguments(bundle) //번들을 프래그먼트2로 보낼 준비
+//
+//            requireActivity().supportFragmentManager
+//                .beginTransaction()
+//                .replace(viewBinding.frameFragment.id, fragment2)
+//                .commit()
+        }
+
+        // Result message
+        Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
     }
 
+    // 서버 연결 실패
     override fun onPostEmailFailure(message: String) {
-        //Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPostPhoneSuccess(response: CodeResponse) {
