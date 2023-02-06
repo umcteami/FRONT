@@ -1,20 +1,20 @@
-package com.example.i.market
+package com.example.i.community.customdialog
 
 import android.app.Dialog
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import com.example.i.databinding.DialogMarketCatagoryBinding
+import com.example.i.databinding.DialogDiaryCategoryBinding
 
-class CatagoryDialog(private val context: AppCompatActivity) {
+class CMCategoryDialog (private val context: AppCompatActivity) {
 
-    private lateinit var binding: DialogMarketCatagoryBinding
+    private lateinit var binding: DialogDiaryCategoryBinding
     private lateinit var listener: CatagoryDialogOKClickListener
     // 부모 액티비티의 context가 들어감
     private val dlg = Dialog(context)
     private var content: String = ""
 
     fun show(){
-        binding = DialogMarketCatagoryBinding.inflate(context.layoutInflater)
+        binding = DialogDiaryCategoryBinding.inflate(context.layoutInflater)
 
         // 타이틀바 제거
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -23,27 +23,39 @@ class CatagoryDialog(private val context: AppCompatActivity) {
         // 다이얼로그의 바깥 화면을 눌렀을 때 다이얼로그가 닫히지 않도록 함
         dlg.setCancelable(false)
 
-        binding.btMkAlert1.setOnClickListener{
-            content = binding.btMkAlert1.text.toString()
+        binding.btFree.setOnClickListener{
+            content = binding.btFree.text.toString()
             listener.onOKClicked(content)
             dlg.dismiss()
         }
 
-        binding.btMkAlert2.setOnClickListener {
-            content = binding.btMkAlert2.text.toString()
+        binding.btAsk.setOnClickListener {
+            content = binding.btAsk.text.toString()
             listener.onOKClicked(content)
             dlg.dismiss()
         }
 
         // cancel 버튼 동작
-        binding.btMkAlert3.setOnClickListener {
-            content = binding.btMkAlert3.text.toString()
+        binding.btInfo.setOnClickListener {
+            content = binding.btInfo.text.toString()
             listener.onOKClicked(content)
             dlg.dismiss()
         }
 
-        binding.btMkAlert4.setOnClickListener{
-            content = binding.btMkAlert4.text.toString()
+        binding.btNurse.setOnClickListener{
+            content = binding.btNurse.text.toString()
+            listener.onOKClicked(content)
+            dlg.dismiss()
+        }
+
+        binding.btMarket.setOnClickListener{
+            content = binding.btMarket.text.toString()
+            listener.onOKClicked(content)
+            dlg.dismiss()
+        }
+
+        binding.btRainbow.setOnClickListener{
+            content = binding.btRainbow.text.toString()
             listener.onOKClicked(content)
             dlg.dismiss()
         }

@@ -114,7 +114,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view:View?) {
         when(view?.id) {
             viewBinding.btCatagory.id -> {
-                val dlg = CatagoryDialog(this)
+                val dlg = CategoryDialog(this)
                 dlg.setOnOkClickedListener { cText ->
                     viewBinding.btCatagory.text = cText
 
