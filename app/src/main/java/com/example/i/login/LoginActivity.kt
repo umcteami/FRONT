@@ -123,10 +123,13 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             // 메인 화면으로 이동
             val intent = Intent(this, Main2Activity::class.java)
             this.startActivity(intent)
-        }
 
-        // Result message
-        response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+            // Result message
+            response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+        }
+        else{
+            viewBinding.pwLayout.error = response.message
+        }
     }
 
     // 서버 연결 실패

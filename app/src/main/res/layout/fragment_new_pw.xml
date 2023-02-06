@@ -31,7 +31,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
-            app:endIconTint="@color/grey">
+            app:endIconTint="@color/grey"
+            android:textColorHint="@color/grey"
+            app:errorIconDrawable="@drawable/error_icon"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:boxStrokeErrorColor="@color/red">
 
             <EditText
                 android:id="@+id/et_pw"
@@ -50,9 +55,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:helperText="· 비밀번호는 8~16자이어야 합니다.\n· 비밀번호는 영문과 특수문자, 숫자를 모두 포함해야 합니다.\n· 새로운 비밀번호는 이전 비밀번호와는 달라야합니다."
-            android:layout_marginTop="10dp"
             app:passwordToggleEnabled="true"
-            app:endIconTint="@color/grey">
+            app:endIconTint="@color/grey"
+            android:hint="비밀번호 재확인"
+            android:textColorHint="@color/grey"
+            app:errorIconDrawable="@drawable/error_icon"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:boxStrokeErrorColor="@color/red"
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/et_pwcode"
@@ -61,7 +72,6 @@
                 android:backgroundTint="@color/white"
                 android:maxLines="1"
                 android:inputType="textWebPassword"
-                android:hint="비밀번호 재확인"
                 android:textSize="20sp"
                 android:fontFamily="@font/roboto_regular"/>
         </com.google.android.material.textfield.TextInputLayout>
