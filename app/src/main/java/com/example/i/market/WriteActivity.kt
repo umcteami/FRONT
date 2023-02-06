@@ -28,7 +28,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
 
         viewBinding.btUpload.isEnabled = false
 
-        viewBinding.btCatagory.setOnClickListener(this)
+        viewBinding.btCategory.setOnClickListener(this)
 
         viewBinding.etTitle.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -39,7 +39,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
                 title = viewBinding.etTitle.text.toString()
                 price = viewBinding.etPrice.text!!.toString()
                 content = viewBinding.etContent.text.toString()
-                catagory = viewBinding.btCatagory.text.toString()
+                catagory = viewBinding.btCategory.text.toString()
 
                 viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
             }
@@ -59,7 +59,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
                 price = viewBinding.etPrice.text!!.toString()
                 title = viewBinding.etTitle.text.toString()
                 content = viewBinding.etContent.text.toString()
-                catagory = viewBinding.btCatagory.text.toString()
+                catagory = viewBinding.btCategory.text.toString()
 
                 viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
 
@@ -94,7 +94,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
                 title = viewBinding.etTitle.text.toString()
                 price = viewBinding.etPrice.text!!.toString()
                 content = viewBinding.etContent.text.toString()
-                catagory = viewBinding.btCatagory.text.toString()
+                catagory = viewBinding.btCategory.text.toString()
 
                 viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
 
@@ -113,15 +113,15 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view:View?) {
         when(view?.id) {
-            viewBinding.btCatagory.id -> {
+            viewBinding.btCategory.id -> {
                 val dlg = CategoryDialog(this)
                 dlg.setOnOkClickedListener { cText ->
-                    viewBinding.btCatagory.text = cText
+                    viewBinding.btCategory.text = cText
 
                     title = viewBinding.etTitle.text.toString()
                     price = viewBinding.etPrice.text!!.toString()
                     content = viewBinding.etContent.text.toString()
-                    catagory = viewBinding.btCatagory.text.toString()
+                    catagory = viewBinding.btCategory.text.toString()
 
                     viewBinding.btUpload.isEnabled = title.isNotEmpty() && price.isNotEmpty() && content.isNotEmpty() && catagory != ("카테고리")
                 }

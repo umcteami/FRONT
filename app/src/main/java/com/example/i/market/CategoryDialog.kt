@@ -3,18 +3,18 @@ package com.example.i.market
 import android.app.Dialog
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import com.example.i.databinding.DialogMarketCatagoryBinding
+import com.example.i.databinding.DialogMarketCategoryBinding
 
 class CategoryDialog(private val context: AppCompatActivity) {
 
-    private lateinit var binding: DialogMarketCatagoryBinding
-    private lateinit var listener: CatagoryDialogOKClickListener
+    private lateinit var binding: DialogMarketCategoryBinding
+    private lateinit var listener: CategoryDialogOKClickListener
     // 부모 액티비티의 context가 들어감
     private val dlg = Dialog(context)
     private var content: String = ""
 
     fun show(){
-        binding = DialogMarketCatagoryBinding.inflate(context.layoutInflater)
+        binding = DialogMarketCategoryBinding.inflate(context.layoutInflater)
 
         // 타이틀바 제거
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -51,14 +51,14 @@ class CategoryDialog(private val context: AppCompatActivity) {
     }
 
     fun setOnOkClickedListener(listener: (String) -> Unit) {
-        this.listener = object: CatagoryDialogOKClickListener {
+        this.listener = object: CategoryDialogOKClickListener {
             override fun onOKClicked(content: String) {
                 listener(content)
             }
         }
     }
 
-    interface CatagoryDialogOKClickListener {
+    interface CategoryDialogOKClickListener {
         fun onOKClicked(content: String)
 
     }

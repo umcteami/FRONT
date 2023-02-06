@@ -113,6 +113,7 @@ class ReviewActivity : AppCompatActivity() {
         val buttonWrite = viewBinding.btnWrite
         buttonWrite.setOnClickListener {
             val writeIntent = Intent(this, ReviewWriteActivity::class.java)
+            writeIntent.putExtra("cindex", 2)
             startActivity(writeIntent)
         }
 

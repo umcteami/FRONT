@@ -3,18 +3,18 @@ package com.example.i.community.customdialog
 import android.app.Dialog
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
-import com.example.i.databinding.DialogDiaryCategoryBinding
+import com.example.i.databinding.DialogTalkroomCategoryBinding
 
-class CMCategoryDialog (private val context: AppCompatActivity) {
+class TalkroomDialog(private val context: AppCompatActivity) {
 
-    private lateinit var binding: DialogDiaryCategoryBinding
+    private lateinit var binding: DialogTalkroomCategoryBinding
     private lateinit var listener: CategoryDialogOKClickListener
     // 부모 액티비티의 context가 들어감
     private val dlg = Dialog(context)
     private var content: String = ""
 
     fun show(){
-        binding = DialogDiaryCategoryBinding.inflate(context.layoutInflater)
+        binding = DialogTalkroomCategoryBinding.inflate(context.layoutInflater)
 
         // 타이틀바 제거
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -38,24 +38,6 @@ class CMCategoryDialog (private val context: AppCompatActivity) {
         // cancel 버튼 동작
         binding.btInfo.setOnClickListener {
             content = binding.btInfo.text.toString()
-            listener.onOKClicked(content)
-            dlg.dismiss()
-        }
-
-        binding.btNurse.setOnClickListener{
-            content = binding.btNurse.text.toString()
-            listener.onOKClicked(content)
-            dlg.dismiss()
-        }
-
-        binding.btMarket.setOnClickListener{
-            content = binding.btMarket.text.toString()
-            listener.onOKClicked(content)
-            dlg.dismiss()
-        }
-
-        binding.btRainbow.setOnClickListener{
-            content = binding.btRainbow.text.toString()
             listener.onOKClicked(content)
             dlg.dismiss()
         }
