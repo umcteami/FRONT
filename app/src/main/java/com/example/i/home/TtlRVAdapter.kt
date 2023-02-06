@@ -64,7 +64,7 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
 
 }
 
-private object Const {
+object Const {
     const val HASIMAGE = 0
     const val NOIMAGE = 1
 }
