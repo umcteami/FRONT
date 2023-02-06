@@ -28,11 +28,12 @@ class EtcFragment : Fragment() {
         val activity = activity as SignupActivity
 
         viewBinding.btEnd1.setOnClickListener{
-            activity.changeFragment(7)
+            val dialog = SignupDialog()
+            dialog.show(activity.supportFragmentManager, "Custom Dialog")
         }
 
         viewBinding.btEnd2.setOnClickListener {
-            activity.changeFragment(8)
+            activity.changeFragment(7)
         }
 
         return viewBinding.root
