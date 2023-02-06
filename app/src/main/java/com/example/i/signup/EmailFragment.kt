@@ -80,7 +80,7 @@ class EmailFragment : Fragment(), PostCodeInterface {
 
 //            // 사용자가 입력한 email 전달
 //            val bundle = Bundle() // 번들을 통해 값 전달
-//            bundle.putString("email", viewBinding.etEmail.toString()) //번들에 넘길 값 저장
+//            bundle.putString("email", viewBinding.etEmail.text.toString()) //번들에 넘길 값 저장
 //
 //            val fragment2 = EmailCodeFragment() //프래그먼트2 선언
 //            fragment2.setArguments(bundle) //번들을 프래그먼트2로 보낼 준비

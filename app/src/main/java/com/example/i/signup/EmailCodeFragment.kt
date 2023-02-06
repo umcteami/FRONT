@@ -28,11 +28,11 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
         viewBinding = FragmentEmailCodeBinding.inflate(inflater, container, false)
 
         // 데이터 불러오기
-//        if (getArguments() != null)
-//        {
-//            val email = getArguments()?.getString("email"); // 프래그먼트1에서 받아온 값 넣기
-//            viewBinding.tvEmail.text = email
-//        }
+        if (getArguments() != null)
+        {
+            val email = getArguments()?.getString("email"); // 프래그먼트1에서 받아온 값 넣기
+            viewBinding.tvEmail.text = email
+        }
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)

@@ -1,13 +1,10 @@
 package com.example.i.signup
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.appcompat.app.AlertDialog
-import com.example.i.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.i.databinding.ActivitySignupBinding
-import com.example.i.databinding.DialogNicknameBinding
 
 class SignupActivity : AppCompatActivity() {
 

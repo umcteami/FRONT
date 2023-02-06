@@ -59,8 +59,9 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
             val addres = viewBinding.editAddress.toString()
             val addresPlus = viewBinding.editAddress2.toString()
 
+            //profile = "\\\\image\\\\202301/1673956976696_git.png"
             val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
-                birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus)
+                birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus )
             SettingService(this).tryPatchSetting(settingRequest)
         }
     }
