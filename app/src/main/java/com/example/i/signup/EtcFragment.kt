@@ -17,7 +17,7 @@ class EtcFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentEtcBinding.inflate(layoutInflater)
+        viewBinding = FragmentEtcBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
@@ -28,11 +28,12 @@ class EtcFragment : Fragment() {
         val activity = activity as SignupActivity
 
         viewBinding.btEnd1.setOnClickListener{
-            activity.changeFragment(7)
+            val dialog = SignupDialog()
+            dialog.show(activity.supportFragmentManager, "Custom Dialog")
         }
 
         viewBinding.btEnd2.setOnClickListener {
-            activity.changeFragment(8)
+            activity.changeFragment(7)
         }
 
         return viewBinding.root

@@ -22,7 +22,7 @@ class PhoneFragment : Fragment(), PostCodeInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentPhoneBinding.inflate(layoutInflater)
+        viewBinding = FragmentPhoneBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
