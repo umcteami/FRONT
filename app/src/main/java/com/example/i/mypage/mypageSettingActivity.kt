@@ -3,6 +3,7 @@ package com.example.i.mypage
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.i.databinding.ActivityMypageSettingBinding
 import com.example.i.login.AccountSearchFragment
 import com.example.i.login.NewPwFragment
@@ -28,7 +29,8 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
 
         // 생일
         viewBinding.changeBirth.setOnClickListener {
-            viewBinding.editBrith.isEnabled = true
+//            viewBinding.editBrith.isEnabled = true
+
 
         }
         // 전화번호
