@@ -15,5 +15,5 @@ interface SignUpRetrofitInterface {
 
     // 인증번호 조회 API
     @GET("/member/join/auth")
-    fun getEmail(): Call<EmailCheckResponse>
+    fun getEmail(@Query("ma_idx") ma_idx: Int): Call<EmailCheckResponse>
 }

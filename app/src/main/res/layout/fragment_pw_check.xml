@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".login.LoginActivity"
     android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/main_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/bt_back">
@@ -19,46 +20,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="전화번호 변경"
+            android:text="비밀번호 확인"
             android:textSize="16sp"
             android:fontFamily="@font/roboto_bold"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="개인 정보 보호를 위해 \n비밀번호를 입력해 주세요."
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pwLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:layout_editor_absoluteX="16dp">
-
-        <TextView
-            android:layout_marginTop="62dp"
-            android:layout_width="214dp"
-            android:layout_height="57dp"
-            android:textColor="@color/black"
-            android:text="새로운 휴대폰 번호를 \n입력해주세요"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="20sp"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        app:boxStrokeColor="@color/grey_line"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <EditText
+            android:id="@+id/newEtPw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
             android:fontFamily="@font/roboto_regular"
+            android:hint="비밀번호를 입력해주세요."
             android:textSize="16sp"
-            android:hint="000 0000 0000">
-        </EditText>
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="373dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_call"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/bt_rectangle"
-            android:text="인증 번호 받기"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto_bold"
-            android:clickable="false"/>
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_call"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bt_rectangle"
+        android:clickable="false"
+        android:fontFamily="@font/roboto_bold"
+        android:text="확인"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwLayout" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

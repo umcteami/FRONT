@@ -1,6 +1,5 @@
 package com.example.i.login
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -9,12 +8,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import com.example.i.R
+import android.widget.Toast
 import com.example.i.databinding.FragmentNewPwBinding
+import com.example.i.login.models.NewPwResponse
+import com.example.i.login.models.PatchNewPwRequest
+import com.example.i.login.models.PostLoginRequest
 
-class NewPwFragment : Fragment() {
+class NewPwFragment : Fragment(), NewPwInterface {
 
     private lateinit var viewBinding: FragmentNewPwBinding
     private var pw: String = ""
@@ -80,11 +80,27 @@ class NewPwFragment : Fragment() {
 
         })
 
-        // 로그인 화면으로 이동
         viewBinding.btOk.setOnClickListener{
-            val intent = Intent(activity, LoginActivity::class.java)
-            startActivity(intent)
+            val pw = viewBinding.etPwcode.text.toString()
+            val NewPwRequest = PatchNewPwRequest(pw = pw)
+            NewPwService(this).tryPatchNewPw(NewPwRequest)
+            Toast.makeText(activity, "요청보냄", Toast.LENGTH_SHORT).show()
+
+//            val intent = Intent(activity, LoginActivity::class.java)
+//            startActivity(intent)
         }
+
         return viewBinding.root
+    }
+
+    // 서버 연결 성공
+    override fun onPatchNewPwSuccess(response: NewPwResponse) {
+        viewBinding.btOk.text = response.message
+        response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
+    }
+
+    // 서버 연결 실패
+    override fun onPatchNewPwFailure(message: String) {
+        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 }

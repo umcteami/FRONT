@@ -2,6 +2,6 @@ package com.example.i.signup.models
 
 import com.google.gson.annotations.SerializedName
 
-data class ResultCode(
-        @SerializedName("authIdx") val auth : Int
+data class GetCodeRequest(
+        @SerializedName("ma_idx") val ma_idx: Int
 )

@@ -13,7 +13,7 @@ class PostCodeService(val SignUpInterface: PostCodeInterface) {
         val EmailRetrofitInterface = ApplicationClass.sRetrofit.create(SignUpRetrofitInterface::class.java)
         EmailRetrofitInterface.postEmail(PostEmailRequest).enqueue(object : Callback<CodeResponse>{
             override fun onResponse(call: Call<CodeResponse>, response: Response<CodeResponse>) {
-                this@PostCodeService.SignUpInterface.onPostEmailSuccess(response.body() as CodeResponse)
+                SignUpInterface.onPostEmailSuccess(response.body() as CodeResponse)
             }
 
             override fun onFailure(call: Call<CodeResponse>, t: Throwable) {

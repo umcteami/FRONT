@@ -1,8 +1,8 @@
-package com.example.i.signup.models
+package com.example.i.login.models
 
 import com.example.i.config.BaseResponse
 import com.google.gson.annotations.SerializedName
 
-data class EmailCheckResponse(
-        @SerializedName("result") val result: ResultCheckEmail
+data class NewPwResponse(
+        @SerializedName("result") val result: String
 ): BaseResponse() // 베이스 리스폰스를 상속 받음
