@@ -11,5 +11,6 @@ data class SettingRequest(
         @SerializedName("birth") val birth: String,
         @SerializedName("addresCode") val addresCode: String,
         @SerializedName("addres") val addres: String,
-        @SerializedName("addresPlus") val addresPlus: String
+        @SerializedName("addresPlus") val addresPlus: String,
+        //@SerializedName("profile") val profile: String
 )

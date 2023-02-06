@@ -81,6 +81,12 @@ class NewPwFragment : Fragment(), NewPwInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
+
+            // 비밀번호 확인
+            if (!checkPw()) {
+                return@setOnClickListener
+            }
+
             val pw = viewBinding.etPwcode.text.toString()
             val NewPwRequest = PatchNewPwRequest(pw = pw)
             NewPwService(this).tryPatchNewPw(NewPwRequest)
@@ -102,5 +108,23 @@ class NewPwFragment : Fragment(), NewPwInterface {
     // 서버 연결 실패
     override fun onPatchNewPwFailure(message: String) {
         Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+    }
+
+    // 비밀번호 확인
+    fun checkPw() : Boolean {
+        val newPwd = viewBinding.newPwd.editText?.text.toString()
+        val checkPw = viewBinding.checkPw.editText?.text.toString()
+
+        // 비밀번호 확인
+        return if (newPwd != checkPw) {
+            viewBinding.checkPw.error = "비밀번호가 일치하지 않습니다"
+            false
+        }
+        // 에러가 없는 경우
+        else {
+            viewBinding.checkPw.error = null
+            viewBinding.checkPw.isErrorEnabled = false // 에러 메시지 사용X
+            true
+        }
     }
 }
