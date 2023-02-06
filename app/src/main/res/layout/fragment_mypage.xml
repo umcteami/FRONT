@@ -362,13 +362,33 @@
                             android:text="약관 및 개인정보처리방침"
                             android:textColor="@color/black" />
 
-                        <TextView
-                            android:id="@+id/mypage_versionTv"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:gravity="center_vertical"
-                            android:text="앱 버전"
-                            android:textColor="@color/black" />
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/mypage_versionTv"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:gravity="center_vertical"
+                                android:text="앱 버전"
+                                android:textColor="@color/black"
+                                card_view:layout_constraintBottom_toBottomOf="parent"
+                                card_view:layout_constraintStart_toStartOf="parent"
+                                card_view:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:gravity="center_vertical"
+                                android:text="1.0.0"
+                                android:textColor="@color/grey"
+                                card_view:layout_constraintBottom_toBottomOf="parent"
+                                card_view:layout_constraintEnd_toEndOf="parent"
+                                card_view:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <TextView
                             android:id="@+id/mypage_logoutTv"

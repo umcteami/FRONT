@@ -9,28 +9,30 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import com.example.i.R
+import com.example.i.databinding.FragmentCodeCorrectBinding
 
 class CodeCorrectFragment : Fragment() {
+
+    private lateinit var viewBinding: FragmentCodeCorrectBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_code_correct, container, false)
-        val bt_ok = rootView.findViewById<Button>(R.id.bt_ok)
-        val bt_find_pw = rootView.findViewById<Button>(R.id.bt_find_pw)
+        viewBinding = FragmentCodeCorrectBinding.inflate(inflater, container, false)
 
-        val activity = activity as LoginActivity
+        val activity = activity as AccountSearchActivity
 
         // 로그인 화면으로 이동
-        bt_ok.setOnClickListener{
+        viewBinding.btOk.setOnClickListener{
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
 
         // 비밀번호 찾기
-        bt_find_pw.setOnClickListener{
+        viewBinding.btFindPw.setOnClickListener{
             activity.changeFragment(2)
         }
-        return rootView
+        return viewBinding.root
     }
 }

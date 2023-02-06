@@ -1,13 +1,13 @@
 package com.example.i.mypage
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import com.example.i.databinding.ActivityMypageSettingBinding
 
 
 
-class mypageSetting : AppCompatActivity() {
+class mypageSettingActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMypageSettingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +19,13 @@ class mypageSetting : AppCompatActivity() {
        viewBinding.backBtn.setOnClickListener {
             finish()
         }
+
+
+        viewBinding.editPwd.setOnClickListener {
+
+        }
+
+
     }
 
 }

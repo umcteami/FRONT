@@ -21,5 +21,6 @@ class CommunityWriteActivity : AppCompatActivity() {
         viewBinding.backBtn.setOnClickListener {
             finish()
         }
+
     }
 }

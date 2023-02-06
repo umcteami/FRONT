@@ -1,7 +1,10 @@
 package com.example.i.login
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.i.Main2Activity
@@ -13,6 +16,8 @@ import com.example.i.login.models.LoginResponse
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
     private lateinit var viewBinding: ActivityLoginBinding
+    private var id: String = ""
+    private var pw: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +31,60 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             startActivity(writeIntent)
         }
 
+        viewBinding.btLogin.isEnabled = false
+
+        viewBinding.loginEtId.addTextChangedListener(object: TextWatcher {
+            // 입력 전
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            // 입력 중
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                id = viewBinding.loginEtId.text.toString()
+                pw = viewBinding.loginEtPw.text.toString()
+
+                viewBinding.btLogin.isEnabled = id.isNotEmpty() && pw.isNotEmpty()
+
+                if (viewBinding.btLogin.isEnabled == false) {
+                    viewBinding.btLogin.setTextColor(Color.rgb(0x6B,0x66,0x66))
+                }
+                else {
+                    viewBinding.btLogin.setTextColor(Color.WHITE)
+                }
+            }
+
+            // 입력 후
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
+        viewBinding.loginEtPw.addTextChangedListener(object: TextWatcher {
+            // 입력 전
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            // 입력 중
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                id = viewBinding.loginEtId.text.toString()
+                pw = viewBinding.loginEtPw.text.toString()
+
+                viewBinding.btLogin.isEnabled = id.isNotEmpty() && pw.isNotEmpty()
+
+                if (viewBinding.btLogin.isEnabled == false) {
+                    viewBinding.btLogin.setTextColor(Color.rgb(0x6B,0x66,0x66))
+                }
+                else {
+                    viewBinding.btLogin.setTextColor(Color.WHITE)
+                }
+            }
+
+            // 입력 후
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
         // 메인 화면으로 이동
         viewBinding.btLogin.setOnClickListener {
               val intent = Intent(this, Main2Activity::class.java)
@@ -34,12 +93,16 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
 
         // 계정 찾기로 이동
         viewBinding.findAccount.setOnClickListener {
-            changeFragment(1)
+            val intent = Intent(this, AccountSearchActivity::class.java)
+            intent.putExtra("index",1)
+            this.startActivity(intent)
         }
 
         // 비밀번호 재설정으로 이동
         viewBinding.newPwd.setOnClickListener {
-            changeFragment(2)
+            val intent = Intent(this, AccountSearchActivity::class.java)
+            intent.putExtra("index",2)
+            this.startActivity(intent)
         }
 
         // 로그인
@@ -90,54 +153,6 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             viewBinding.idLayout.error = null
             viewBinding.idLayout.isErrorEnabled = false // 에러 메시지 사용X
             true
-        }
-    }
-
-    // 화면 이동
-    fun changeFragment(index: Int){
-        when(index){
-            // 계정 찾기
-            1 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, AccountSearchFragment())
-                    .commit()
-            }
-            // 비번 찾기
-            2 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, PwSearchFragment())
-                    .commit()
-            }
-            // 인증번호 받기
-            3 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, AccountCodeFragment())
-                    .commit()
-            }
-            // 이메일 확인
-            4 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, CodeCorrectFragment())
-                    .commit()
-            }
-            // 인증번호 받기
-            5 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, PwCodeFragment())
-                    .commit()
-            }
-            // 비번 재설정
-            6 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(viewBinding.frameFragment.id, NewPwFragment())
-                    .commit()
-            }
         }
     }
 }

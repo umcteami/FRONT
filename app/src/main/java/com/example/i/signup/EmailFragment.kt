@@ -21,7 +21,7 @@ class EmailFragment : Fragment(), PostCodeInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentEmailBinding.inflate(layoutInflater)
+        viewBinding = FragmentEmailBinding.inflate(inflater, container, false)
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
@@ -50,6 +50,7 @@ class EmailFragment : Fragment(), PostCodeInterface {
                 else {
                     viewBinding.btOk.setTextColor(Color.WHITE)
                 }
+
             }
 
             // 입력 후
