@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="54dp">
         <ImageButton
-            android:id="@+id/back_btn"
+            android:id="@+id/backBtn"
             android:layout_width="44dp"
             android:layout_height="44dp"
             android:layout_gravity="center_vertical"
@@ -28,17 +28,14 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
-
         <ImageButton
             android:id="@+id/bt_upload"
             android:layout_width="60dp"
             android:layout_height="36dp"
             android:layout_marginRight="16dp"
             android:layout_gravity="center_vertical|right"
-            android:src="@drawable/bt_comment_upload"
-            android:background="@color/transparent"/>
+            android:src="@drawable/btn_post_upload" />
     </Toolbar>
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -169,36 +166,47 @@
         android:background="@color/semi_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_title"
-        app:layout_constraintBottom_toTopOf="@+id/bt_catagory"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
-    <Button
-        android:id="@+id/bt_catagory"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_catagory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:text="카테고리"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:textAlignment="viewStart"
-        android:drawableRight="@drawable/arrow_forward"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="18dp"
+        android:fontFamily="@font/roboto"
+        android:text="카테고리"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/write_divider3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/write_divider2"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/write_divider2" />
+
+    <ImageButton
+        android:id="@+id/bt_catagory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/bt_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_catagory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_catagory"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/write_divider3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="18dp"
         android:background="@color/semi_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_catagory" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_catagory" />
 
     <TextView
         android:id="@+id/tv_price"
@@ -218,7 +226,6 @@
         android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:layout_marginLeft="8dp"
         android:background="@null"
         android:fontFamily="@font/roboto"
         android:hint="가격"
@@ -231,13 +238,14 @@
         app:layout_constraintStart_toEndOf="@+id/tv_price"
         app:layout_constraintTop_toBottomOf="@id/write_divider3" />
 
-    <CheckBox
-        android:id="@+id/cb_share"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
-        android:background="@drawable/custom_checkbox"
-        android:button="@color/transparent"
-        android:layout_marginRight="16dp"
+    <ImageButton
+        android:id="@+id/ib_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_unchecked"
         app:layout_constraintBottom_toBottomOf="@+id/et_price"
         app:layout_constraintEnd_toStartOf="@id/tv_check"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -254,9 +262,9 @@
         android:text="나눔"
         android:textColor="@color/black"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cb_share"
+        app:layout_constraintBottom_toBottomOf="@+id/ib_check"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/cb_share"/>
+        app:layout_constraintTop_toTopOf="@id/ib_check"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/write_divider4"
@@ -280,8 +288,7 @@
         android:background="@null"
         android:fontFamily="@font/roboto"
         android:hint="나누실 품목의 게시글 내용을 작성해주세요."
-        android:inputType="textMultiLine"
-        android:scrollHorizontally="true"
+        android:inputType="text"
         android:minHeight="48dp"
         android:textColor="@color/black"
         android:textSize="16dp"

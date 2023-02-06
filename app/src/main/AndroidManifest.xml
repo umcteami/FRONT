@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
     <!-- 인터넷 사용권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".config.ApplicationClass"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,23 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.I"
-        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".login.AccountSearchActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".market.MarketPostActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name=".community.DiaryRainActivity"
             android:exported="false" />
@@ -61,8 +46,8 @@
             android:exported="false" />
         <activity
             android:name=".market.WriteActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".mypage.FriendProfileActivity"
             android:exported="true">
@@ -94,7 +79,7 @@
         <activity
             android:name=".chat.MessageActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -126,7 +111,7 @@
         </activity>
         <activity
             android:name=".Main2Activity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".community.CommunityTalkroomActivity"
             android:exported="false" />
@@ -147,11 +132,15 @@
         <activity
             android:name=".signup.SignupActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity android:name=".mypage.AnnounceActivity" />
+        <activity android:name=".mypage.SupportActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
         <meta-data
             android:name="preloaded_fonts"
