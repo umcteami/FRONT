@@ -49,7 +49,7 @@
             android:background="@color/grey" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_board"
+            android:id="@+id/rv_diary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/diary_list_layout" />
