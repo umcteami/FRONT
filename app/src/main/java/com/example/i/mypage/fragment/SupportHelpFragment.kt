@@ -55,6 +55,70 @@ class SupportHelpFragment : Fragment() {
             }
         }
 
+        viewBinding.layoutBtn3.setOnClickListener {
+            if(viewBinding.layout03A.visibility == View.VISIBLE) {
+                viewBinding.layout03A.visibility = View.GONE
+                viewBinding.layoutBtn3.animate().apply {
+                    duration = 300
+                    rotation(0f)
+                }
+            }else {
+                viewBinding.layout03A.visibility = View.VISIBLE
+                viewBinding.layoutBtn3.animate().apply {
+                    duration = 300
+                    rotation(180f)
+                }
+            }
+        }
+
+        viewBinding.layoutBtn4.setOnClickListener {
+            if(viewBinding.layout04A.visibility == View.VISIBLE) {
+                viewBinding.layout04A.visibility = View.GONE
+                viewBinding.layoutBtn4.animate().apply {
+                    duration = 300
+                    rotation(0f)
+                }
+            }else {
+                viewBinding.layout04A.visibility = View.VISIBLE
+                viewBinding.layoutBtn4.animate().apply {
+                    duration = 300
+                    rotation(180f)
+                }
+            }
+        }
+
+        viewBinding.layoutBtn5.setOnClickListener {
+            if(viewBinding.layout05A.visibility == View.VISIBLE) {
+                viewBinding.layout05A.visibility = View.GONE
+                viewBinding.layoutBtn5.animate().apply {
+                    duration = 300
+                    rotation(0f)
+                }
+            }else {
+                viewBinding.layout05A.visibility = View.VISIBLE
+                viewBinding.layoutBtn5.animate().apply {
+                    duration = 300
+                    rotation(180f)
+                }
+            }
+        }
+
+        viewBinding.layoutBtn6.setOnClickListener {
+            if(viewBinding.layout06A.visibility == View.VISIBLE) {
+                viewBinding.layout06A.visibility = View.GONE
+                viewBinding.layoutBtn6.animate().apply {
+                    duration = 300
+                    rotation(0f)
+                }
+            }else {
+                viewBinding.layout06A.visibility = View.VISIBLE
+                viewBinding.layoutBtn6.animate().apply {
+                    duration = 300
+                    rotation(180f)
+                }
+            }
+        }
+
 
     }
 }

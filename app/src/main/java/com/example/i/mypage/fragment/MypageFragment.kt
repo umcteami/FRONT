@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.i.R
+import com.example.i.MainActivity
 import com.example.i.databinding.FragmentMypageBinding
-import com.example.i.home.HomeFragment
-import com.example.i.login.AccountCodeFragment
-import com.example.i.login.CodeCorrectFragment
 import com.example.i.mypage.*
 
 class MypageFragment : Fragment() {
@@ -33,6 +30,15 @@ class MypageFragment : Fragment() {
         setUpBlock()
         setUpAnncm()
         setUpSupport()
+        setUpPolicy()
+        setUpRevoke()
+
+        viewBinding.mypageLogoutTv.setOnClickListener {
+            //커스텀 다이얼로그 필요(추후에 추가하기)
+            val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
 
         return viewBinding.root
     }
@@ -40,7 +46,7 @@ class MypageFragment : Fragment() {
     private fun setUpSetting() {
         viewBinding.mypageSettingBtn.setOnClickListener {
             activity?.let {
-                val intent = Intent(context, mypageSetting::class.java)
+                val intent = Intent(context, mypageSettingActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
             }
@@ -127,6 +133,23 @@ class MypageFragment : Fragment() {
             startActivity(intent)
         }
     }
+
+    private fun setUpPolicy() {
+        viewBinding.mypagePolicyTv.setOnClickListener {
+            val intent = Intent(context, PolicyActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+    }
+
+    private fun setUpRevoke(){
+        viewBinding.mypageRevokeTv.setOnClickListener {
+            val intent = Intent(context, RevokeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+    }
+
 }
 
 
