@@ -30,6 +30,7 @@ class MypageFragment : Fragment() {
         setUpAnncm()
         setUpSupport()
         setUpPolicy()
+        setUpRevoke()
 
         return viewBinding.root
     }
@@ -128,6 +129,14 @@ class MypageFragment : Fragment() {
     private fun setUpPolicy() {
         viewBinding.mypagePolicyTv.setOnClickListener {
             val intent = Intent(context, PolicyActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+    }
+
+    private fun setUpRevoke(){
+        viewBinding.mypageRevokeTv.setOnClickListener {
+            val intent = Intent(context, RevokeActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
