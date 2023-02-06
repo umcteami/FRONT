@@ -17,29 +17,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="wrap_content"
             android:background="@color/light_grey">
 
-            <TextView
-                android:id="@+id/tv_viewDate"
+            <Button
+                android:id="@+id/btn_sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/roboto_regular"
-                android:gravity="center"
                 android:text="하루"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <ImageButton
-                android:id="@+id/btn_selectDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="25dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/frame_44" />
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto"
+                android:drawableRight="@drawable/bt_down"
+                android:background="@color/transparent"
+                android:layout_marginLeft="10dp" />
 
         </LinearLayout>
 
