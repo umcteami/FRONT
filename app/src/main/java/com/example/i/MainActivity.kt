@@ -3,6 +3,7 @@ package com.example.i
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import com.example.i.signup.SignupActivity
 import com.example.i.databinding.ActivityMainBinding
 import com.example.i.login.*
@@ -11,9 +12,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        window.statusBarColor = ContextCompat.getColor(this, R.color.transparent)
 
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)

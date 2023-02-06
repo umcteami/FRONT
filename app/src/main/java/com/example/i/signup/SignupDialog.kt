@@ -5,22 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.i.databinding.DialogNicknameBinding
+import com.example.i.databinding.DialogSignupBinding
 
-class NicknameDialog: DialogFragment() {
-    private lateinit var viewBinding: DialogNicknameBinding
+class SignupDialog: DialogFragment() {
+    private lateinit var viewBinding: DialogSignupBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = DialogNicknameBinding.inflate(inflater, container, false)
+        viewBinding = DialogSignupBinding.inflate(inflater, container, false)
 
         val activity = activity as SignupActivity
 
         viewBinding.btYes.setOnClickListener {
-            activity.changeFragment(6)
+            activity.changeFragment(7)
             dialog?.dismiss()
         }
 
@@ -30,4 +30,5 @@ class NicknameDialog: DialogFragment() {
 
         return viewBinding.root
     }
+
 }

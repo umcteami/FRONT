@@ -12,15 +12,26 @@ import com.example.i.market.MarketFragment
 import com.example.i.mypage.fragment.MypageFragment
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
+import com.google.android.material.tabs.TabLayoutMediator
 
 class CommunityQnaActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityCommunityQnaBinding
-
+    private var tabTitleArray = arrayOf(
+        "질문방",
+        "인기글"
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityQnaBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        val viewPager = viewBinding.viewpager
+        val tabLayout = viewBinding.tabLayout
+
+        viewPager.adapter = CommunityQnaViewpagerAdapter(supportFragmentManager, lifecycle)
+        TabLayoutMediator(tabLayout, viewPager){tab, position ->
+            tab.text = tabTitleArray[position]
+        }.attach()
 
         viewBinding.searchBtn.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
