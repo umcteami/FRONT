@@ -8,7 +8,6 @@ import com.example.i.community.customdialog.CMCategoryDialog
 import com.example.i.community.customdialog.DialogPost
 import com.example.i.community.customdialog.TalkroomDialog
 import com.example.i.databinding.ActivityCommunityWriteBinding
-import com.example.i.signup.NicknameDialog
 
 class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewBinding: ActivityCommunityWriteBinding

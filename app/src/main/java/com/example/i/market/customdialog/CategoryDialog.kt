@@ -1,4 +1,4 @@
-package com.example.i.market
+package com.example.i.market.customdialog
 
 import android.app.Dialog
 import android.view.Window

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.databinding.FragmentMyDiaryBinding
-import com.example.i.market.MkFilterDialog
+import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.DiaryRVAdapter
 import com.example.i.mypage.data.MyPost
 

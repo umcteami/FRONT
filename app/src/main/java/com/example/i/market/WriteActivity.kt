@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import com.example.i.databinding.ActivityWriteBinding
+import com.example.i.market.customdialog.CategoryDialog
 
 class WriteActivity : AppCompatActivity(), View.OnClickListener {
 
