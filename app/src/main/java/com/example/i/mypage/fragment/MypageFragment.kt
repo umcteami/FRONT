@@ -37,14 +37,15 @@ class MypageFragment : Fragment() {
 
         viewBinding.mypageLogoutTv.setOnClickListener {
             //커스텀 다이얼로그 필요(추후에 추가하기)
-            val dialog = PopupEndDialog(1)
+            val dialog = PopupEndDialog()
             dialog.show((activity as Main2Activity).supportFragmentManager, "custom dialog")
         }
 
         viewBinding.mypageRevokeTv.setOnClickListener {
             //커스텀 다이얼로그 필요(추후에 추가하기)
-            val dialog = PopupEndDialog(2)
-            dialog.show((activity as Main2Activity).supportFragmentManager, "custom dialog")
+            val intent = Intent(activity, RevokeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
         }
 
         return viewBinding.root

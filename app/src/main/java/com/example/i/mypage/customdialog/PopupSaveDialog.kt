@@ -12,7 +12,7 @@ import com.example.i.databinding.DialogNicknameBinding
 import com.example.i.login.NewPwFragment
 import com.example.i.mypage.mypageSettingActivity
 
-class PopupSaveDialog(): DialogFragment() {
+class PopupSaveDialog: DialogFragment() {
 
     private lateinit var viewBinding: DialogNicknameBinding
 

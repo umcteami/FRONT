@@ -10,7 +10,7 @@ import com.example.i.Main2Activity
 import com.example.i.databinding.DialogNicknameBinding
 import com.example.i.mypage.mypageSettingActivity
 
-class PopupOutDialog(): DialogFragment() {
+class PopupOutDialog: DialogFragment() {
     private lateinit var viewBinding: DialogNicknameBinding
 
     override fun onCreateView(
