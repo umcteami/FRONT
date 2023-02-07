@@ -16,6 +16,9 @@
         android:theme="@style/Theme.I"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".community.UploadPhotoActivity"
+            android:exported="false" />
 
         <activity
             android:name=".login.AccountSearchActivity"
@@ -33,19 +36,19 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".community.DiaryRainActivity"
+            android:name=".community.diary.DiaryRainActivity"
             android:exported="false" />
         <activity
-            android:name=".community.DiaryCareActivity"
+            android:name=".community.diary.DiaryCareActivity"
             android:exported="false" />
         <activity
-            android:name=".community.CommunityQnaActivity"
+            android:name=".community.talk.CommunityQnaActivity"
             android:exported="false" />
         <activity
-            android:name=".community.CommunityTalkActivity"
+            android:name=".community.talk.CommunityTalkActivity"
             android:exported="false" />
         <activity
-            android:name=".community.CommunityInfoActivity"
+            android:name=".community.talk.CommunityInfoActivity"
             android:exported="false" />
         <activity
             android:name=".signup.SignupFinActivity"
@@ -54,15 +57,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".community.ReviewWriteActivity"
+            android:name=".community.review.ReviewWriteActivity"
             android:exported="false" />
-
         <activity
-            android:name=".community.ReviewSearchActivity"
+            android:name=".community.review.ReviewSearchActivity"
             android:exported="false" />
-
         <activity
             android:name=".market.WriteActivity"
             android:exported="false"
@@ -74,7 +74,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.MyProfileActivity"
             android:exported="false">
@@ -82,7 +81,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.LikeMarketActivity"
             android:exported="false">
@@ -90,7 +88,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mypage.MyMarketActivity"
             android:exported="false">
@@ -98,7 +95,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".chat.MessageActivity"
             android:exported="false"
@@ -107,18 +103,17 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".community.DiaryActivity"
+            android:name=".community.diary.DiaryActivity"
             android:exported="false" />
         <activity
             android:name=".community.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".community.ReviewActivity"
+            android:name=".community.review.ReviewActivity"
             android:exported="false" />
         <activity
-            android:name=".community.CommunityWriteActivity"
+            android:name=".community.talk.CommunityWriteActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -137,7 +132,7 @@
             android:name=".Main2Activity"
             android:exported="true" />
         <activity
-            android:name=".community.CommunityTalkroomActivity"
+            android:name=".community.talk.CommunityTalkroomActivity"
             android:exported="false" />
         <activity
             android:name=".mypage.LikePostActivity"
@@ -163,7 +158,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity android:name=".mypage.AnnounceActivity" />
         <activity
             android:name=".mypage.SupportActivity"
