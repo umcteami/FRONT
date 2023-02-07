@@ -56,7 +56,7 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
         // 회원정보 수정
         viewBinding.mypageSaveChange.setOnClickListener {
 
-            var dialog = PopupSaveDialog(1)
+            var dialog = PopupSaveDialog()
             dialog.show(supportFragmentManager,"custom dialog")
         }
     }

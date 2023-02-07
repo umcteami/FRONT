@@ -12,7 +12,7 @@ import com.example.i.databinding.DialogNicknameBinding
 import com.example.i.login.NewPwFragment
 import com.example.i.mypage.mypageSettingActivity
 
-class PopupSaveDialog(var index: Int): DialogFragment() {
+class PopupSaveDialog(): DialogFragment() {
 
     private lateinit var viewBinding: DialogNicknameBinding
 
@@ -25,50 +25,18 @@ class PopupSaveDialog(var index: Int): DialogFragment() {
 
         var activity = activity as mypageSettingActivity
 
-        when (index) {
+        viewBinding.tvLimit.text = "저장하시겠습니까?\n(닉네임은 3회까지만 변경이 가능합니다)"
 
-            1 -> {
-                viewBinding.tvLimit.text = "저장하시겠습니까?\n(닉네임은 3회까지만 변경이 가능합니다)"
+        viewBinding.btYes.setOnClickListener {
+            activity.serverConnect()
+            dialog?.dismiss()
+        }
 
-                viewBinding.btYes.setOnClickListener {
-                    activity.serverConnect()
-                    dialog?.dismiss()
-                }
+        viewBinding.btNo.setOnClickListener {
+            var dlg = PopupOutDialog()
+            dlg.show(activity.supportFragmentManager,"custom dialog")
+            dialog?.dismiss()
 
-                viewBinding.btNo.setOnClickListener {
-                    var dlg = PopupOutDialog()
-                    dlg.show(activity.supportFragmentManager,"custom dialog")
-                    dialog?.dismiss()
-                }
-            }
-
-            2 -> {
-                viewBinding.tvLimit.text = "로그아웃 하시겠습니까?"
-
-                viewBinding.btYes.setOnClickListener {
-                    val intent = Intent(activity, MainActivity::class.java)
-                    dialog?.dismiss()
-                    startActivity(intent)
-                }
-
-                viewBinding.btNo.setOnClickListener {
-                    dialog?.dismiss()
-                }
-            }
-
-            else -> {
-                viewBinding.tvLimit.text = "탈퇴 하시겠습니까?"
-
-                viewBinding.btYes.setOnClickListener {
-                    val intent = Intent(activity, MainActivity::class.java)
-                    dialog?.dismiss()
-                    startActivity(intent)
-                }
-
-                viewBinding.btNo.setOnClickListener {
-                    dialog?.dismiss()
-                }
-            }
         }
 
         return viewBinding.root
