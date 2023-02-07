@@ -32,6 +32,15 @@ class SearchActivity : AppCompatActivity() {
 //                .replace(viewBinding.frameFragment.id, SearchResultFragment())
 //                .commitAllowingStateLoss()
 //        }
+
+        viewBinding.chip1.setOnClickListener{
+            search(viewBinding.chip1.toString())
+        }
+        viewBinding.chip1.setOnCloseIconClickListener{
+            
+        }
+
+
         viewBinding.etSearch.setOnEditorActionListener{_, actionId, _->
             if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_SEARCH || EditorInfo.IME_ACTION_UNSPECIFIED == actionId)
             {

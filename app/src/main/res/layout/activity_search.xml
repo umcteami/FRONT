@@ -189,10 +189,10 @@
 
             <ImageView
                 android:id="@+id/iv_arrow1st"
-                android:layout_width="11dp"
-                android:layout_height="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/arrow_back" />
+                android:src="@drawable/ic_search_up" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -216,10 +216,10 @@
                 />
             <ImageView
                 android:id="@+id/iv_arrow2nd"
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/arrow_back"
-                android:layout_gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -243,10 +243,10 @@
                 />
             <ImageView
                 android:id="@+id/iv_arrow3rd"
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -270,10 +270,10 @@
                 />
             <ImageView
                 android:id="@+id/iv_arrow4th"
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -298,10 +298,10 @@
                 />
             <ImageView
                 android:id="@+id/iv_arrow5th"
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -325,10 +325,10 @@
                 />
             <ImageView
                 android:id="@+id/iv_arrow6th"
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -352,10 +352,10 @@
                 android:textColor="@color/black" />
             <ImageView
                 android:id="@+id/iv_arrow7th"
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
