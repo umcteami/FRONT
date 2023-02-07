@@ -12,9 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEmailCodeBinding
-import com.example.i.signup.models.EmailCheckResponse
-import com.example.i.signup.models.GetEmailInterface
-import com.example.i.signup.models.GetEmailService
+import com.example.i.signup.models.*
 
 
 class EmailCodeFragment : Fragment(), GetEmailInterface {
@@ -39,8 +37,6 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
-
-        val activity = activity as SignupActivity
 
         viewBinding.btOk.isEnabled = false
 
@@ -69,7 +65,8 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            GetEmailService(this).tryGetEmail()
+            GetEmailService(this).tryGetEmail(authIdx)
+            Toast.makeText(activity,"authIdx : {$authIdx}",Toast.LENGTH_SHORT).show()
         }
 
         return viewBinding.root
