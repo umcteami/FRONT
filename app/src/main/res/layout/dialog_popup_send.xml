@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle_white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="문의가 접수되었습니다.\n작성해주신 이메일로 답변이 전송될\n예정입니다."
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bt_ok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/bt_ok"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_bold"
+        android:background="@drawable/bt_rectangle"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_popup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

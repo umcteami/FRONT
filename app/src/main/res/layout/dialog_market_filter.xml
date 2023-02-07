@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/bt_last"
-        android:layout_width="match_parent"
+        android:layout_width="286dp"
         android:layout_height="47dp"
         android:backgroundTint="@color/white"
         style="@style/Widget.AppCompat.Button.Borderless"

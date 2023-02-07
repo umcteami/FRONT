@@ -1,4 +1,4 @@
-package com.example.i.signup
+package com.example.i.signup.customdialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.i.databinding.DialogSignupBinding
+import com.example.i.signup.SignupActivity
 
 class SignupDialog: DialogFragment() {
     private lateinit var viewBinding: DialogSignupBinding

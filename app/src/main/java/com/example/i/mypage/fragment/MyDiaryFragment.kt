@@ -1,23 +1,29 @@
 package com.example.i.mypage.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.databinding.FragmentMyDiaryBinding
+import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.DiaryRVAdapter
 import com.example.i.mypage.data.MyPost
 
-class MyDiaryFragment : Fragment() {
+class MyDiaryFragment : Fragment(), View.OnClickListener {
     private lateinit var viewBinding: FragmentMyDiaryBinding
+    private lateinit var main: Main2Activity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentMyDiaryBinding.inflate(layoutInflater)
+
+        viewBinding.btSort.setOnClickListener(this)
 
         backFragment() // 뒤로가기
 
@@ -53,6 +59,24 @@ class MyDiaryFragment : Fragment() {
                     ?.beginTransaction()
                     ?.remove(this)
                     ?.commit()
+            }
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        main = context as Main2Activity
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            viewBinding.btSort.id -> {
+                val dlg = MkFilterDialog(main)
+                dlg.setOnOkClickedListener { content ->
+                    viewBinding.btSort.text = content
+                }
+                dlg.show()
             }
         }
     }

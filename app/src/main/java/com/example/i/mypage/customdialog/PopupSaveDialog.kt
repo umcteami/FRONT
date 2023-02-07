@@ -1,13 +1,19 @@
-package com.example.i.signup
+package com.example.i.mypage.customdialog
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.i.Main2Activity
+import com.example.i.MainActivity
 import com.example.i.databinding.DialogNicknameBinding
+import com.example.i.login.NewPwFragment
+import com.example.i.mypage.mypageSettingActivity
 
-class NicknameDialog: DialogFragment() {
+class PopupSaveDialog(): DialogFragment() {
+
     private lateinit var viewBinding: DialogNicknameBinding
 
     override fun onCreateView(
@@ -17,15 +23,20 @@ class NicknameDialog: DialogFragment() {
     ): View? {
         viewBinding = DialogNicknameBinding.inflate(inflater, container, false)
 
-        val activity = activity as SignupActivity
+        var activity = activity as mypageSettingActivity
+
+        viewBinding.tvLimit.text = "저장하시겠습니까?\n(닉네임은 3회까지만 변경이 가능합니다)"
 
         viewBinding.btYes.setOnClickListener {
-            activity.changeFragment(6)
+            activity.serverConnect()
             dialog?.dismiss()
         }
 
         viewBinding.btNo.setOnClickListener {
+            var dlg = PopupOutDialog()
+            dlg.show(activity.supportFragmentManager,"custom dialog")
             dialog?.dismiss()
+
         }
 
         return viewBinding.root

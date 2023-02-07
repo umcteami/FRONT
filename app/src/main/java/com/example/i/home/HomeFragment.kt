@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.community.*
 import com.example.i.databinding.FragmentHomeBinding
@@ -140,6 +141,12 @@ class HomeFragment :Fragment() {
 
         viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
         viewBinding.homeTtlRV.adapter = TtlRVAdapter(ttlList)
+
+        viewBinding.btnWrite.setOnClickListener {
+            val intent = Intent((activity as Main2Activity), CommunityWriteActivity::class.java)
+            intent.putExtra("cindex", 2)
+            startActivity(intent)
+        }
 
         return viewBinding.root
     }
