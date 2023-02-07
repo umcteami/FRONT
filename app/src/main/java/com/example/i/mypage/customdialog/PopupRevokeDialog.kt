@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.i.Main2Activity
 import com.example.i.MainActivity
 import com.example.i.databinding.DialogNicknameBinding
+import com.example.i.mypage.RevokeActivity
 
-class PopupEndDialog: DialogFragment() {
-
+class PopupRevokeDialog: DialogFragment() {
     private lateinit var viewBinding: DialogNicknameBinding
 
     override fun onCreateView(
@@ -21,9 +20,9 @@ class PopupEndDialog: DialogFragment() {
     ): View? {
         viewBinding = DialogNicknameBinding.inflate(inflater, container, false)
 
-        val activity = activity as Main2Activity
+        val activity = activity as RevokeActivity
 
-        viewBinding.tvLimit.text = "로그아웃 하시겠습니까?"
+        viewBinding.tvLimit.text = "탈퇴하시겠습니까?"
 
         viewBinding.btYes.setOnClickListener {
             val intent = Intent(activity, MainActivity::class.java)
@@ -34,6 +33,7 @@ class PopupEndDialog: DialogFragment() {
 
         viewBinding.btNo.setOnClickListener {
             dialog?.dismiss()
+            activity.finish()
         }
 
         return viewBinding.root
