@@ -1,11 +1,7 @@
 package com.example.i.login
-
-import com.example.i.login.models.NewPwResponse
-
+import com.example.i.config.BaseResponse
 
 interface NewPwInterface {
-
-    fun onPatchNewPwSuccess(response: NewPwResponse)
-
+    fun onPatchNewPwSuccess(response: BaseResponse)
     fun onPatchNewPwFailure(message: String)
 }

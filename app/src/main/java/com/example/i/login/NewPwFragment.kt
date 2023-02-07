@@ -1,5 +1,6 @@
 package com.example.i.login
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -9,10 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.i.MainActivity
+import com.example.i.config.BaseResponse
 import com.example.i.databinding.FragmentNewPwBinding
-import com.example.i.login.models.NewPwResponse
-import com.example.i.login.models.PatchNewPwRequest
-import com.example.i.login.models.PostLoginRequest
+import com.example.i.login.models.PostNewPwRequest
 
 class NewPwFragment : Fragment(), NewPwInterface {
 
@@ -88,20 +89,25 @@ class NewPwFragment : Fragment(), NewPwInterface {
             }
 
             val pw = viewBinding.etPwcode.text.toString()
-            val NewPwRequest = PatchNewPwRequest(pw = pw)
+            val NewPwRequest = PostNewPwRequest(email = email, pw = pw)
             NewPwService(this).tryPatchNewPw(NewPwRequest)
-            Toast.makeText(activity, "요청보냄", Toast.LENGTH_SHORT).show()
-
-//            val intent = Intent(activity, LoginActivity::class.java)
-//            startActivity(intent)
         }
 
         return viewBinding.root
     }
 
     // 서버 연결 성공
-    override fun onPatchNewPwSuccess(response: NewPwResponse) {
-        viewBinding.btOk.text = response.message
+    override fun onPatchNewPwSuccess(response: BaseResponse) {
+
+        // 계정이 있는 경우
+        if(response.isSuccess){
+            // 메인 화면으로 이동
+            activity?.let{
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        // Result message
         response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
     }
 
