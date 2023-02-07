@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.R
+import com.example.i.chat.customdialog.MessageOptionDialog
 import com.example.i.databinding.FragmentMessageListBinding
 
 class MessageListFragment : Fragment() {
@@ -20,11 +22,7 @@ class MessageListFragment : Fragment() {
     ): View {
         viewBinding = FragmentMessageListBinding.inflate(layoutInflater)
 
-        return viewBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        val activity = activity as Main2Activity
 
         val mList: ArrayList<Message> = arrayListOf()
         val adapter = MessageRVAdapter(mList)
@@ -45,11 +43,20 @@ class MessageListFragment : Fragment() {
         viewBinding.rvChat.adapter = adapter
 
         adapter!!.itemClick = object : MessageRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
+            override fun onClick(view: View,  data: CharSequence, position: Int) {
                 val intent = Intent(context, MessageActivity::class.java)
+                intent.putExtra("nickname", data)
                 startActivity(intent)
             }
-
         }
+
+        adapter!!.itemLongClick = object : MessageRVAdapter.ItemLongClick{
+            override fun onClick(view: View, position: Int) {
+                val dialog = MessageOptionDialog()
+                dialog.show(activity.supportFragmentManager, "custom dialog")
+            }
+        }
+
+        return viewBinding.root
     }
 }

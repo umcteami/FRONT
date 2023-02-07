@@ -9,6 +9,7 @@ import com.example.i.databinding.ItemMessageListBinding
 class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adapter<MessageRVAdapter.ViewHolder>() {
 
     var itemClick: ItemClick? = null
+    var itemLongClick: ItemLongClick? = null
 
     inner class ViewHolder(val viewBinding: ItemMessageListBinding): RecyclerView.ViewHolder(viewBinding.root) {
 
@@ -31,9 +32,17 @@ class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(mList[position])
 
-        if (itemClick != null){
-            holder?.viewBinding!!.itemMessageList.setOnClickListener(View.OnClickListener {
-                itemClick?.onClick(it, position)
+        if (itemLongClick != null) {
+            holder.viewBinding!!.itemMessageList.setOnLongClickListener(View.OnLongClickListener {
+                itemLongClick?.onClick(it, position)
+
+                return@OnLongClickListener true
+            })
+        }
+        if (itemClick != null) {
+
+            holder.viewBinding!!.itemMessageList.setOnClickListener(View.OnClickListener {
+                itemClick?.onClick(it, holder.viewBinding!!.tvNickname.text ,position)
             })
         }
     }
@@ -41,6 +50,10 @@ class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adap
     override fun getItemCount(): Int = mList.size
 
     interface ItemClick {
+        fun onClick(view: View, data: CharSequence, position: Int)
+    }
+
+    interface ItemLongClick {
         fun onClick(view: View, position: Int)
     }
 }

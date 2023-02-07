@@ -12,5 +12,9 @@ class MessageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMessageBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        var nickname = intent.getStringExtra("nickname")
+
+        viewBinding.tvName.text = nickname
     }
 }
