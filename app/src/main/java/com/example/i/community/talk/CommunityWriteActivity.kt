@@ -17,6 +17,10 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener {
     private var title: String = ""
     private var content: String = ""
     private var category: String = ""
+    private var boardId : Int? = null
+    private var roomId : Int? = null
+    private var userId : Int? = null
+    private var imgCnt : Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +84,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener {
             finish()
         }
     }
-
     override fun onClick(view: View?) {
         when (view?.id) {
             viewBinding.btChoiceCategory.id -> {
