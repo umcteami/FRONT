@@ -1,5 +1,6 @@
 package com.example.i.chat
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ class MessageListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mList: ArrayList<Message> = arrayListOf()
+        val adapter = MessageRVAdapter(mList)
 
         mList.apply{
             add(Message("Summer", "멀고도 험한 개발의 길", "19:00",""))
@@ -40,6 +42,14 @@ class MessageListFragment : Fragment() {
         }
 
         viewBinding.rvChat.layoutManager = LinearLayoutManager(context)
-        viewBinding.rvChat.adapter = MessageRVAdapter(mList)
+        viewBinding.rvChat.adapter = adapter
+
+        adapter!!.itemClick = object : MessageRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(context, MessageActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
     }
 }

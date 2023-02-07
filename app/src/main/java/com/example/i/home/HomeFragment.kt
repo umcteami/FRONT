@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.community.*
 import com.example.i.community.diary.DiaryActivity
@@ -117,7 +118,7 @@ class HomeFragment :Fragment() {
         pplList.apply {
 
             add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
             add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
             add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
             add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
@@ -148,6 +149,12 @@ class HomeFragment :Fragment() {
 
         viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
         viewBinding.homeTtlRV.adapter = TtlRVAdapter(ttlList)
+
+        viewBinding.btnWrite.setOnClickListener {
+            val intent = Intent((activity as Main2Activity), CommunityWriteActivity::class.java)
+            intent.putExtra("cindex", 2)
+            startActivity(intent)
+        }
 
         return viewBinding.root
     }

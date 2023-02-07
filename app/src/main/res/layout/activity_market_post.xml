@@ -322,6 +322,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
+            android:id="@+id/bt_chat"
             android:layout_width="330dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"

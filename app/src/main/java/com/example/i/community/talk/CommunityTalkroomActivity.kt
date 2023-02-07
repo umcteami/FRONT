@@ -119,6 +119,7 @@ class CommunityTalkroomActivity : AppCompatActivity() {
         val buttonWrite = viewBinding.btnWrite
         buttonWrite.setOnClickListener{
             val writeIntent = Intent(this, CommunityWriteActivity::class.java)
+            writeIntent.putExtra("cindex", 1)
             startActivity(writeIntent)
         }
 

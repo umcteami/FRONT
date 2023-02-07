@@ -59,63 +59,46 @@
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/grey"
+        android:layout_height="1dp"
+        android:background="@color/grey_line"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout2" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
+    <Button
+        android:id="@+id/bt_choice_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="카테고리 선택"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="left|center_vertical"
+        android:background="@color/transparent"
+        android:drawableRight="@drawable/arrow_forward"
         android:layout_marginHorizontal="16dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginVertical="20dp"
-            android:gravity="bottom"
-            android:text="카테고리 선택"
-            android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/bt_choiceCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:src="@drawable/arrow_forward" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/line1" />
 
     <View
         android:id="@+id/line2"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#B4B4B4"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/grey_line"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@id/bt_choice_category" />
 
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="420dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="8dp"
         android:background="@android:color/transparent"
         android:gravity="top"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="true"
+        android:padding="16dp"
         android:hint="내용을 입력해주세요."
         android:fontFamily="@font/roboto_regular"
         android:textSize="16sp"
@@ -126,8 +109,8 @@
     <View
         android:id="@+id/line3"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#B4B4B4"
+        android:layout_height="1dp"
+        android:background="@color/grey_line"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_content" />
 

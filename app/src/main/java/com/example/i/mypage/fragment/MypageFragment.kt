@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.i.Main2Activity
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentMypageBinding
 import com.example.i.mypage.*
+import com.example.i.mypage.customdialog.PopupEndDialog
 
 class MypageFragment : Fragment() {
     private lateinit var viewBinding: FragmentMypageBinding
@@ -35,7 +37,13 @@ class MypageFragment : Fragment() {
 
         viewBinding.mypageLogoutTv.setOnClickListener {
             //커스텀 다이얼로그 필요(추후에 추가하기)
-            val intent = Intent(context, MainActivity::class.java)
+            val dialog = PopupEndDialog()
+            dialog.show((activity as Main2Activity).supportFragmentManager, "custom dialog")
+        }
+
+        viewBinding.mypageRevokeTv.setOnClickListener {
+            //커스텀 다이얼로그 필요(추후에 추가하기)
+            val intent = Intent(activity, RevokeActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }

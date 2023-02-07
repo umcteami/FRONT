@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.databinding.FragmentMarketEtcBinding
+import com.example.i.market.customdialog.MkFilterDialog
 
 class MarketEtcFragment: Fragment(), View.OnClickListener {
 

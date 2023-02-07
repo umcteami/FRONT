@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEtcBinding
+import com.example.i.signup.customdialog.SignupDialog
 
 class EtcFragment : Fragment() {
     private lateinit var viewBinding : FragmentEtcBinding

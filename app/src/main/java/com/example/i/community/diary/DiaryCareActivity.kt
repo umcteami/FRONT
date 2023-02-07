@@ -100,6 +100,7 @@ class DiaryCareActivity : AppCompatActivity() {
         val buttonWrite = viewBinding.btnWrite
         buttonWrite.setOnClickListener{
             val writeIntent = Intent(this, CommunityWriteActivity::class.java)
+            writeIntent.putExtra("cindex", 2)
             startActivity(writeIntent)
         }
 

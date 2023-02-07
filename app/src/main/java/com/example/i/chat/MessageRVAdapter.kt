@@ -8,7 +8,10 @@ import com.example.i.databinding.ItemMessageListBinding
 
 class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adapter<MessageRVAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val viewBinding: ItemMessageListBinding): RecyclerView.ViewHolder(viewBinding.root) {
+    var itemClick: ItemClick? = null
+
+    inner class ViewHolder(val viewBinding: ItemMessageListBinding): RecyclerView.ViewHolder(viewBinding.root) {
+
         fun bind(Message: Message) {
             viewBinding.tvNickname.text = Message.nickname
             viewBinding.tvChat.text = Message.chat
@@ -27,7 +30,17 @@ class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(mList[position])
+
+        if (itemClick != null){
+            holder?.viewBinding!!.itemMessageList.setOnClickListener(View.OnClickListener {
+                itemClick?.onClick(it, position)
+            })
+        }
     }
 
     override fun getItemCount(): Int = mList.size
+
+    interface ItemClick {
+        fun onClick(view: View, position: Int)
+    }
 }
