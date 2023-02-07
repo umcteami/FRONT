@@ -2,82 +2,101 @@ package com.example.i.community.talk
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.i.community.UploadPhotoActivity
 import com.example.i.community.customdialog.CMCategoryDialog
-import com.example.i.community.customdialog.DialogPost
-import com.example.i.community.customdialog.TalkroomDialog
 import com.example.i.databinding.ActivityCommunityWriteBinding
+import com.example.i.databinding.DialogComminityWritingBinding
 
 class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewBinding: ActivityCommunityWriteBinding
-    private var index: Int = 1
+    private val PICK_IMAGE_REQUEST = 1000
+    private var title: String = ""
+    private var content: String = ""
+    private var category: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityWriteBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        val buttonUpload = viewBinding.btUpload
-        var title: String = ""
-        var content: String = ""
-        var category: String = ""
+        viewBinding.btUpload.setOnClickListener {
+            val uploadIntent = Intent(this, CommunityTalkroomActivity::class.java)
+            startActivity(uploadIntent)
+        }
 
-        index = intent.getIntExtra("cindex", 1)
+        viewBinding.btCamera.setOnClickListener {
+            val cameraIntent = Intent(this, UploadPhotoActivity::class.java)
+            startActivity(cameraIntent)
+        }
+
+        viewBinding.btUpload.isEnabled = false
 
         viewBinding.btChoiceCategory.setOnClickListener(this)
 
-        buttonUpload.setOnClickListener{
+        viewBinding.etTitle.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-            title = viewBinding.etTitle.text.toString()
-            content = viewBinding.etContent.text.toString()
-            category = viewBinding.btChoiceCategory.text.toString()
+            }
 
-            if (title.isEmpty() == true) {
-                val dialog = DialogPost(1)
-                dialog.show(supportFragmentManager, "Custom Dialog")
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                title = viewBinding.etTitle.text.toString()
+                content = viewBinding.etContent.text.toString()
+                category = viewBinding.btChoiceCategory.text.toString()
+
+                viewBinding.btUpload.isEnabled =
+                    title.isNotEmpty() && content.isNotEmpty() && category != ("카테고리")
             }
-            else if (category.equals("카테고리 선택") == true) {
-                val dialog = DialogPost(2)
-                dialog.show(supportFragmentManager, "Custom Dialog")
+
+            override fun afterTextChanged(p0: Editable?) {
+
             }
-            else if (content.isEmpty() == true) {
-                val dialog = DialogPost(3)
-                dialog.show(supportFragmentManager, "Custom Dialog")
+        })
+
+        viewBinding.etContent.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
-            else {
-                val uploadIntent = Intent(this, CommunityTalkroomActivity::class.java)
-                startActivity(uploadIntent)
-                finish()
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                title = viewBinding.etTitle.text.toString()
+                content = viewBinding.etContent.text.toString()
+                category = viewBinding.btChoiceCategory.text.toString()
+
+                viewBinding.btUpload.isEnabled =
+                    title.isNotEmpty() && content.isNotEmpty() && category != ("카테고리")
+
             }
-        }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
 
         viewBinding.backBtn.setOnClickListener {
             finish()
         }
-
     }
 
     override fun onClick(view: View?) {
-        when(view?.id) {
+        when (view?.id) {
             viewBinding.btChoiceCategory.id -> {
-                if (index == 1) {
-                    val dlg = TalkroomDialog(this)
+                val dlg = CMCategoryDialog(this)
+                dlg.setOnOkClickedListener { cText ->
+                    viewBinding.btChoiceCategory.text = cText
+                    title = viewBinding.etTitle.text.toString()
+                    content = viewBinding.etContent.text.toString()
+                    category = viewBinding.btChoiceCategory.text.toString()
 
-                    dlg.setOnOkClickedListener { cText ->
-                        viewBinding.btChoiceCategory.text = cText
-                    }
-                    dlg.show()
+                    viewBinding.btUpload.isEnabled =
+                        title.isNotEmpty() && content.isNotEmpty() && category != ("카테고리")
                 }
-                else {
-                    val dlg = CMCategoryDialog(this)
-
-                    dlg.setOnOkClickedListener { cText ->
-                        viewBinding.btChoiceCategory.text = cText
-                    }
-                    dlg.show()
-                }
+                dlg.show()
             }
+
         }
     }
 }
