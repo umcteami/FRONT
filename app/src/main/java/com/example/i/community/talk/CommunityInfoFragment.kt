@@ -1,0 +1,35 @@
+package com.example.i.community.talk
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.community.BoardRoomXItem
+import com.example.i.databinding.FragmentCommunityInfoBinding
+
+class CommunityInfoFragment : Fragment() {
+    private lateinit var viewBinding: FragmentCommunityInfoBinding
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewBinding = FragmentCommunityInfoBinding.inflate(layoutInflater)
+        val itemList = ArrayList<BoardRoomXItem>()
+        itemList.apply {
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem("22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+        }
+
+        viewBinding.rvBoard.layoutManager =
+            LinearLayoutManager(context)
+        viewBinding.rvBoard.adapter = CommunityRoomXBoardAdapter(itemList)
+        return viewBinding.root
+
+    }
+}

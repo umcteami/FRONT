@@ -10,6 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
 import com.example.i.community.*
+import com.example.i.community.diary.DiaryActivity
+import com.example.i.community.diary.DiaryCareActivity
+import com.example.i.community.diary.DiaryRainActivity
+import com.example.i.community.review.ReviewActivity
+import com.example.i.community.talk.CommunityInfoActivity
+import com.example.i.community.talk.CommunityQnaActivity
+import com.example.i.community.talk.CommunityTalkActivity
+import com.example.i.community.talk.CommunityTalkroomActivity
 import com.example.i.databinding.FragmentHomeBinding
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
