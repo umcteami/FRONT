@@ -1,15 +1,14 @@
-package com.example.i.community.review
+package com.example.i.community.review.models
 
 import com.example.i.config.ApplicationClass
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
-import retrofit2.http.GET
 
 class ReviewWriteService(val ReviewWriteInterface : ReviewWriteInterface) {
     fun tryPostReviewWrite(PostReviewWriteRequest : PostReviewWriteRequest){
-        val reviewWriteRetrofitInterface = ApplicationClass.sRetrofit.create(ReviewWriteRetrofitInterface::class.java)
+        val reviewWriteRetrofitInterface = ApplicationClass.sRetrofit.create(
+            ReviewWriteRetrofitInterface::class.java)
         reviewWriteRetrofitInterface.postReviewWrite(PostReviewWriteRequest).enqueue(object :
             Callback<ReviewWriteResponse>{
             override fun onResponse(

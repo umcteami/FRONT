@@ -1,16 +1,19 @@
 package com.example.i.community.review
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.i.community.UploadPhotoActivity
+import com.example.i.community.review.models.PostReviewWriteRequest
+import com.example.i.community.review.models.ReviewWriteInterface
+import com.example.i.community.review.models.ReviewWriteResponse
+import com.example.i.community.review.models.ReviewWriteService
 import com.example.i.databinding.ActivityReviewWriteBinding
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Url
 
 class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
     private lateinit var viewBinding: ActivityReviewWriteBinding
@@ -19,6 +22,9 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
     private var category: String = ""
     private var userId: Int? = null
     private var imgCnt: Int = 0
+    private var imageList : ArrayList<Uri> = ArrayList()
+
+
      override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityReviewWriteBinding.inflate(layoutInflater)
@@ -30,8 +36,10 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
 //        }
 
         viewBinding.btCamera.setOnClickListener {
-            val cameraIntent = Intent(this, UploadPhotoActivity::class.java)
-            startActivity(cameraIntent)
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+            activityResult.launch(intent)
         }
 
         viewBinding.btUpload.isEnabled = false
@@ -102,6 +110,23 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
                 buyerIdx = 0, sellerIdx = 0, content = content, goods = goods, imgCnt = imgCount
             )
             ReviewWriteService(this).tryPostReviewWrite(postRequest)
+        }
+    }
+    private val activityResult : ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == RESULT_OK){
+            if(it.data!!.clipData != null){
+                val count = it.data!!.clipData!!.itemCount
+
+                for(index in 0 until count){
+                    val imageUri = it.data!!.clipData!!.getItemAt(index).uri
+                    imageList.add(imageUri)
+                }
+            }
+            else{
+                val imageUri = it.data!!.data
+//                viewBinding.ivUplodaImage.setImageURI(imageUri)
+            }
         }
     }
 
