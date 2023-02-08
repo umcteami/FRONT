@@ -1,8 +1,11 @@
 package com.example.i.community.talk
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +16,7 @@ import com.example.i.databinding.DialogComminityWritingBinding
 
 class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewBinding: ActivityCommunityWriteBinding
-    private val PICK_IMAGE_REQUEST = 1000
+    private val REQUEST_CODE = 1000
     private var title: String = ""
     private var content: String = ""
     private var category: String = ""
@@ -21,7 +24,24 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener {
     private var roomId : Int? = null
     private var userId : Int? = null
     private var imgCnt : Int? = 0
+    private val imageUri = getImageUri()
 
+
+    private fun getImageUri(): Uri {
+        return imageUri
+    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
+//            val croppedImageUri = data?.getStringExtra("croppedImageUri")
+//            if(!TextUtils.isEmpty(croppedImageUri)){
+//                val uri = Uri.parse(croppedImageUri)
+//                imageView.setImageURI(uri)
+//
+//            }
+//        }
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityWriteBinding.inflate(layoutInflater)
@@ -34,6 +54,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener {
 
         viewBinding.btCamera.setOnClickListener {
             val cameraIntent = Intent(this, UploadPhotoActivity::class.java)
+            cameraIntent.putExtra("imageUri", imageUri.toString())
             startActivity(cameraIntent)
         }
 

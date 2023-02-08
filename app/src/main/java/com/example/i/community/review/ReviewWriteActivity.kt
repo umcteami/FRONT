@@ -7,6 +7,8 @@ import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.example.i.community.UploadPhotoActivity
 import com.example.i.databinding.ActivityReviewWriteBinding
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ReviewWriteActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityReviewWriteBinding
@@ -15,6 +17,10 @@ class ReviewWriteActivity : AppCompatActivity() {
     private var category : String = ""
     private var userId : Int? = null
     private var imgCnt : Int? = null
+    var retrofit = Retrofit.Builder()
+        .baseUrl("www.iandpet.kr")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
