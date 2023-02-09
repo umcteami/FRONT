@@ -21,6 +21,7 @@
             android:src="@drawable/bt_back"
             android:layout_gravity="center_vertical|left"/>
         <TextView
+            android:id="@+id/tv_roomType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="수다방"
