@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.i.Main2Activity
 import com.example.i.databinding.DialogMessageOptionBinding
 
-class MessageOptionDialog: DialogFragment() {
+class MessageOptionDialog(): DialogFragment() {
     private lateinit var viewBinding: DialogMessageOptionBinding
 
     override fun onCreateView(
@@ -19,21 +19,20 @@ class MessageOptionDialog: DialogFragment() {
     ): View? {
         viewBinding = DialogMessageOptionBinding.inflate(inflater, container, false)
 
-        var activity = activity as Main2Activity
-
         viewBinding.btAlarm.setOnClickListener {
-            Toast.makeText(activity, "알람끄기", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "알람끄기", Toast.LENGTH_SHORT).show()
             dialog?.dismiss()
 
         }
 
         viewBinding.btBan.setOnClickListener {
-            Toast.makeText(activity, "차단하기", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "차단하기", Toast.LENGTH_SHORT).show()
             dialog?.dismiss()
         }
 
         viewBinding.btEnd.setOnClickListener {
-            Toast.makeText(activity, "채팅방 나가기", Toast.LENGTH_SHORT).show()
+            val dlg = MessageNoticeDialog()
+            dlg.show(requireActivity().supportFragmentManager, "custom dialog")
             dialog?.dismiss()
         }
 
