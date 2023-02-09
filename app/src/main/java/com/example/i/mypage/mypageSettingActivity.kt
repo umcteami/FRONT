@@ -78,8 +78,8 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
     // 회원정보 조회 API
     override fun onGetUserSuccess(response: userSearchgResponse){
 
+        // 받아온 정보와 UI 연결
         if(response.isSuccess){
-            // 메인 화면으로 이동
             viewBinding.editEmail.setText(response.result.email)
             viewBinding.editCall.setText(response.result.phone)
             viewBinding.editNickName.setText(response.result.nick)
