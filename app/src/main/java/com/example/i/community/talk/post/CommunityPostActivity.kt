@@ -33,7 +33,7 @@ class CommunityPostActivity : AppCompatActivity() {
 //댓글창
         val commentList : ArrayList<ItemComment> = arrayListOf()
         commentList.apply{
-            add(ItemComment("누구엄마","2023.02.10 01:47","나야나","살려주시라요"))
+            add(ItemComment("누구엄마","2023.02.10 01:47",null,"살려주시라요"))
             add(ItemComment("누구엄마","2023.02.10 01:47","나야나","살려주시라요"))
             add(ItemComment("누구엄마","2023.02.10 01:47","나야나","살려주시라요"))
             add(ItemComment("누구엄마","2023.02.10 01:47","나야나","살려주시라요"))
