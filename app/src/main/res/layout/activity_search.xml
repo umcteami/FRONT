@@ -17,8 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <ImageButton
                 android:id="@+id/search_backBtn"
@@ -46,7 +45,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/search_backBtn"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -93,6 +91,7 @@
         android:layout_marginHorizontal="16dp"
         app:layout_constraintLeft_toLeftOf="parent">
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip1"
             style="@style/Widget.MaterialComponents.Chip.Entry"
             app:chipBackgroundColor="@color/main_2"
             android:layout_width="wrap_content"
@@ -103,6 +102,7 @@
             app:chipStrokeColor="@color/grey"
             android:textColor="@color/black"/>
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip2"
             style="@style/Widget.MaterialComponents.Chip.Entry"
             app:chipBackgroundColor="@color/main_2"
             android:layout_width="wrap_content"
@@ -113,6 +113,7 @@
             android:textColor="@color/black"
             android:text="가나다라 마바사 아자차"/>
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip3"
             style="@style/Widget.MaterialComponents.Chip.Entry"
             app:chipBackgroundColor="@color/main_2"
             android:layout_width="wrap_content"
@@ -123,6 +124,7 @@
             android:textColor="@color/black"
             android:text="가나다라"/>
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip4"
             style="@style/Widget.MaterialComponents.Chip.Entry"
             app:chipBackgroundColor="@color/main_2"
             android:layout_width="wrap_content"
@@ -133,6 +135,7 @@
             android:textColor="@color/black"
             android:text="가나다차"/>
         <com.google.android.material.chip.Chip
+            android:id="@+id/chip5"
             style="@style/Widget.MaterialComponents.Chip.Entry"
             app:chipBackgroundColor="@color/main_2"
             android:layout_width="wrap_content"
@@ -175,6 +178,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_search1st"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -184,10 +188,11 @@
                 />
 
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="4dp"
+                android:id="@+id/iv_arrow1st"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/arrow_back" />
+                android:src="@drawable/ic_search_up" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -201,6 +206,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_search2nd"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -209,10 +215,11 @@
                 android:textColor="@color/black"
                 />
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/arrow_back"
-                android:layout_gravity="center"/>
+                android:id="@+id/iv_arrow2nd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -226,6 +233,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_search3rd"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -234,10 +242,11 @@
                 android:textColor="@color/black"
                 />
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:id="@+id/iv_arrow3rd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -251,6 +260,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_search4th"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -259,10 +269,11 @@
                 android:textColor="@color/black"
                 />
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:id="@+id/iv_arrow4th"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -277,6 +288,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
+                android:id="@+id/tv_search5th"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -285,10 +297,11 @@
                 android:textColor="@color/black"
                 />
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:id="@+id/iv_arrow5th"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -303,6 +316,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
+                android:id="@+id/tv_search6th"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -310,10 +324,11 @@
                 android:textColor="@color/black"
                 />
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:id="@+id/iv_arrow6th"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -327,23 +342,20 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 />
-
             <TextView
+                android:id="@+id/tv_search7th"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="강아지 약"
                 android:textColor="@color/black" />
-
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="5.5dp"
-                android:src="@drawable/bt_back"
-                android:layout_gravity="center"/>
+                android:id="@+id/iv_arrow7th"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_search_up"/>
         </LinearLayout>
-
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

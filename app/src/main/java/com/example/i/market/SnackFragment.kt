@@ -3,7 +3,6 @@ package com.example.i.market
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.databinding.FragmentSnackBinding
+import com.example.i.market.customdialog.MkFilterDialog
 
 class SnackFragment: Fragment(), View.OnClickListener {
 
