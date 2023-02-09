@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/ttl_title"
         android:layout_width="wrap_content"
-        android:maxWidth="250dp"
+        android:maxWidth="230dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:text="다니고 계시는 병원 정보 좀 부탁드립니다.(서울/경기)"
