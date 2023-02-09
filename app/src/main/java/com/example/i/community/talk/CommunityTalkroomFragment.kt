@@ -23,7 +23,7 @@ class CommunityTalkroomFragment : Fragment() {
             add(
                 BoardItem(
                     false,
-                    null,
+                    R.drawable.img_profile,
                     R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
@@ -51,7 +51,7 @@ class CommunityTalkroomFragment : Fragment() {
             add(
                 BoardItem(
                     false,
-                    null,
+                    R.drawable.img_1,
                     R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
@@ -107,11 +107,9 @@ class CommunityTalkroomFragment : Fragment() {
 
         }
 
-
         viewBinding.rvBoard.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         viewBinding.rvBoard.adapter = CommunityBoardAdapter(itemList)
         return viewBinding.root
-
     }
 }

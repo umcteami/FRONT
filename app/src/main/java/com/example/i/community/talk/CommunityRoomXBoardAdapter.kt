@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.community.BoardRoomXItem
+import com.example.i.community.talk.models.Const
 import com.example.i.databinding.PostListRoomxLayoutBinding
 import com.example.i.databinding.PostListRoomxLayoutImgxBinding
 
@@ -21,9 +22,9 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onBindViewHolder(holder : RecyclerView.ViewHolder, position: Int){
         if(getItemViewType(position) == Const.HASIMAGE){
-            (holder as CommunityRoomXBoardAdapter.RoomXBoardViewHolder).bind(itemList[position])
+            (holder as RoomXBoardViewHolder).bind(itemList[position])
         }else{
-            (holder as CommunityRoomXBoardAdapter.RoomXBoardViewNoImgHolder).bind(itemList[position])
+            (holder as RoomXBoardViewNoImgHolder).bind(itemList[position])
         }
     }
 

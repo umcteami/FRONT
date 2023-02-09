@@ -27,7 +27,7 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
             add(
                 BoardItem(
                     false,
-                    null,
+                    R.drawable.img_1,
                     R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
@@ -55,7 +55,7 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
             add(
                 BoardItem(
                     false,
-                    null,
+                    R.drawable.img_1,
                     R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
