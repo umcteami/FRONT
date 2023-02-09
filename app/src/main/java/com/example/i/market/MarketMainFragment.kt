@@ -44,37 +44,6 @@ class MarketMainFragment: Fragment() {
             }
         })
 
-//        var snapHelper = PagerSnapHelper()
-//        val mkpList: ArrayList<MarketP> = arrayListOf()
-//        val indicator = IndicatorDecoration()
-//
-//        mkpList.apply{
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//            add(MarketP("무료나눔", "강아지 껌", "2"))
-//
-//        }
-//
-//        viewBinding.rvPpl.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
-//        viewBinding.rvPpl.adapter = MarketPplRVAdapter(mkpList)
-//        viewBinding.rvPpl.addItemDecoration(indicator)
-//        snapHelper.attachToRecyclerView(viewBinding.rvPpl)
-
-
         val mkList: ArrayList<Market> = arrayListOf()
         val adapter = MarketRVAdapter(mkList)
         val customDecoration = CustomDecoration(2f, 2f, Color.rgb(0xB4,0xB4,0xB4))

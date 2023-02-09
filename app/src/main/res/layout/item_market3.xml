@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="12dp"
     android:layout_margin="5dp"
+    android:descendantFocusability="blocksDescendants"
     android:background="#FFFFFF">
 
         <ImageView
@@ -16,6 +17,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
+            android:id="@+id/ib_heart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
