@@ -32,18 +32,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private fun getImageUri(): Uri {
         return imageUri
     }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
-//            val croppedImageUri = data?.getStringExtra("croppedImageUri")
-//            if(!TextUtils.isEmpty(croppedImageUri)){
-//                val uri = Uri.parse(croppedImageUri)
-//                imageView.setImageURI(uri)
-//
-//            }
-//        }
-//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityWriteBinding.inflate(layoutInflater)

@@ -1,9 +1,9 @@
 package com.example.i.community
 
 data class BoardItem(
-    var hasImage : Boolean,
-    var picture : Int?,
-    var profile : Int?,
+//    var hasImage : Boolean,
+//    var picture : Int?,
+//    var profile : Int?,
     val date: String,
     val writer: String,
     val title: String,

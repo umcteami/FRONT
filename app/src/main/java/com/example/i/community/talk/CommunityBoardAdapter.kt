@@ -22,17 +22,9 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
     override fun onBindViewHolder(holder: CommunityBoardAdapter.BoardViewHolder, position: Int) {
         holder.bind(itemList[position])
         holder.itemView.setOnClickListener {
-//            val fragment = PostFragment()
-//            val fragmentManager =
-//                (holder.itemView.context as AppCompatActivity).supportFragmentManager
-//            fragmentManager.beginTransaction()
-//                .replace(R.id.frameFragment, fragment)
-//                .addToBackStack(null)
-//                .commit()
         }
 
         if (itemClick != null) {
-
             holder.viewBinding!!.rootLayout.setOnClickListener(View.OnClickListener {
                 itemClick?.onClick(it ,position)
             })
@@ -59,14 +51,6 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
     interface OnItemClickListener {
         fun onClick(view: View, position: Int)
     }
-
-    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
-        this.itemClickListner = onItemClickListener
-    }
-
-    //전달된 객체를 저장할 변수 정의
-    private lateinit var itemClickListner: OnItemClickListener
-
     interface ItemClick {
         fun onClick(view: View, position: Int)
     }
