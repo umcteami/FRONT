@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".community.CommunityWriteActivity">
+    tools:context=".community.talk.CommunityWriteActivity">
     <Toolbar
         android:id="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,6 +33,7 @@
         android:layout_height="36dp"
         android:layout_marginRight="16dp"
         android:layout_gravity="center_vertical|right"
+        android:background="@android:color/transparent"
         android:src="@drawable/bt_comment_upload" />
     </Toolbar>
 
@@ -129,18 +130,10 @@
             android:layout_marginLeft="11dp"
             android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/icon_camera" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_option" />
+            android:src="@drawable/ic_review_camera" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

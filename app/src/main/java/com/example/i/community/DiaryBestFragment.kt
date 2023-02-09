@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.community.customdialog.PFilterDialog
+import com.example.i.community.diary.DiaryActivity
+import com.example.i.community.diary.DiaryBoardAdapter
+import com.example.i.community.diary.DiaryItem
 import com.example.i.databinding.FragmentDiaryBestBinding
 
 class DiaryBestFragment : Fragment(), View.OnClickListener {

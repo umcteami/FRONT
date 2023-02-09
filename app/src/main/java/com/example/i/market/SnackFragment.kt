@@ -1,6 +1,7 @@
 package com.example.i.market
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,7 +34,7 @@ class SnackFragment: Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         val mkList: ArrayList<Market> = arrayListOf()
-        val adapter = MarketRVAdapter(mkList)
+        val adapter = MarketRVAdapter(mkList, requireActivity())
         val customDecoration = CustomDecoration(2f, 2f, Color.GRAY)
 
         mkList.apply{
@@ -50,6 +51,14 @@ class SnackFragment: Fragment(), View.OnClickListener {
         viewBinding.rvSnack.layoutManager = LinearLayoutManager(context)
         viewBinding.rvSnack.adapter = adapter
         viewBinding.rvSnack.addItemDecoration(customDecoration)
+
+        adapter!!.itemClick = object : MarketRVAdapter.ItemClick {
+
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(activity, MarketPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onAttach(context: Context) {

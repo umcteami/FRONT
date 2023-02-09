@@ -1,21 +1,32 @@
 package com.example.i.market
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
+import android.provider.MediaStore.Images
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
+import com.example.i.Main2Activity
 import com.example.i.databinding.ActivityWriteBinding
 import com.example.i.market.customdialog.CategoryDialog
+import com.example.i.market.model.MarketWriteInterface
+import com.example.i.market.model.MarketWriteResponse
+import com.example.i.market.model.MarketWriteService
+import com.example.i.market.model.PostMarketWriteRequest
+import com.google.gson.annotations.SerializedName
 
-class WriteActivity : AppCompatActivity(), View.OnClickListener {
+class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInterface{
 
     private lateinit var viewBinding: ActivityWriteBinding
     private var title: String = ""
     private var price: String = ""
     private var content: String = ""
     private var catagory: String = ""
+    private var userId : Int = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,8 +119,37 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener {
         })
 
         viewBinding.btUpload.setOnClickListener {
+            val title = viewBinding.etTitle.text.toString()
+            val content = viewBinding.etContent.text.toString()
+            val userIdx = userId
+            val price = viewBinding.etPrice.text.toString().toInt()
+            val category = viewBinding.btCategory.text.toString()
+            val images = Images()
+            val postRequest = PostMarketWriteRequest(
+                title = title, content = content, price = price, userIdx = userIdx, category = category, images = images
+            )
+            MarketWriteService(this).tryPostMarketWrite(postRequest)
+
+//                    @SerializedName("userIdx") val userIdx : Int,
+//            @SerializedName("title") val title : String,
+//            @SerializedName("category") val category : String,
+//            @SerializedName("price") val price : Int,
+//            @SerializedName("content") val content : String,
+//            @SerializedName("images") val images : MediaStore.Images
+        }
+    }
+
+    override fun onPostMarketWriteSuccess(response: MarketWriteResponse) {
+        if(response.isSuccess){
             finish()
         }
+        else{
+
+        }
+    }
+
+    override fun onPostMarketWriteFailure(message: String) {
+        Toast.makeText(this, "오류 $message", Toast.LENGTH_SHORT).show()
     }
 
     override fun onClick(view:View?) {

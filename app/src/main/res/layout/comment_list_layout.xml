@@ -13,17 +13,25 @@
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/iv_writer"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:src="@drawable/ic_comment_writer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_profile"
+        android:layout_marginLeft="13dp"/>
 
     <TextView
         android:id="@+id/tv_writer"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="8dp"
         android:fontFamily="@font/roboto_bold"
         android:text="춘배귀여워"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@id/iv_profile"
+        app:layout_constraintLeft_toRightOf="@id/iv_writer"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -56,6 +64,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_writer">
         <TextView
+            android:id="@+id/tv_commentWriter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="아이디아이디"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="14sp"
+            android:paddingVertical="4sp"
+            android:textColor="@color/black"/>
+        <TextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +84,7 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tv_commentWriter" />
 
         <TextView
             android:id="@+id/tv_writeTime"
