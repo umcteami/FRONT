@@ -4,16 +4,19 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.i.config.BaseResponse
 import com.example.i.databinding.FragmentSupportAskBinding
-import com.example.i.databinding.FragmentSupportHelpBinding
 import com.example.i.mypage.SupportActivity
 import com.example.i.mypage.customdialog.PopupSendDialog
+import com.example.i.mypage.data.*
 
-class SupportAskFragment : Fragment() {
+class SupportAskFragment : Fragment(), AskInterface {
 
     private lateinit var viewBinding: FragmentSupportAskBinding
     override fun onCreateView(
@@ -133,8 +136,32 @@ class SupportAskFragment : Fragment() {
         viewBinding.button.setOnClickListener {
             val dialog = PopupSendDialog()
             dialog.show(activity.supportFragmentManager, "Custom Dialog")
+
+            // 서버에 값 보냄
+            val postRequest = PostAskRequest(title = title, content = content, email = email)
+            AskService(this).tryPostAsk(postRequest) // 문의하기 API
+        }
+        return viewBinding.root
+    }
+
+    // 문의하기 API
+    override fun onPostAskSuccess(response: BaseResponse) {
+        // 받아온 정보와 UI 연결
+        if(response.isSuccess){
+            activity?.let{
+                activity?.supportFragmentManager
+                    ?.beginTransaction()
+                    ?.remove(this)
+                    ?.commit()
+            }
         }
 
-        return viewBinding.root
+        // Result message
+        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
+    }
+
+    // 서버 연결 실패
+    override fun onPostAskFailure(message: String) {
+        Log.d("error", "오류 : $message")
     }
 }
