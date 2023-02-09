@@ -17,6 +17,10 @@ class MarketPostActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
+        viewBinding.btBack.setOnClickListener {
+            finish()
+        }
+
         viewBinding.btChat.setOnClickListener {
             val intent = Intent(this, MessageActivity::class.java)
             startActivity(intent)
