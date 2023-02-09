@@ -11,8 +11,10 @@ class SearchResultActivity : AppCompatActivity() {
         viewBinding = ActivitySearchResultBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        val searchTerm = intent.getStringExtra("search_term")
+        val searchTerm = intent.getStringExtra("searchTerm")
         viewBinding.etSearch.setText(searchTerm)
+        viewBinding.tvSearchTerm.text = searchTerm
+
 
     }
 }

@@ -27,7 +27,7 @@
 
             <EditText
                 android:id="@+id/et_search"
-                android:layout_width="340dp"
+                android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/border_search"
@@ -49,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
             <TextView
-                android:id="@+id/tv_recent"
+                android:id="@+id/tv_searchTerm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -68,7 +68,7 @@
                 android:text="키워드의 검색 결과"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintLeft_toRightOf="@id/tv_recent"
+                app:layout_constraintLeft_toRightOf="@id/tv_searchTerm"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

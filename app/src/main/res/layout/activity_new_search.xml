@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".community.SearchActivity">
-
+    tools:context=".community.NewSearchActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
@@ -32,7 +31,7 @@
 
             <EditText
                 android:id="@+id/et_search"
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:background="@drawable/searchborder"
                 android:hint="검색할 내용을 입력하세요."
@@ -45,17 +44,6 @@
                 app:layout_constraintLeft_toRightOf="@id/search_backBtn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <Button
-                android:id="@+id/bt_search"
-                android:layout_width="60dp"
-                android:layout_height="40dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginLeft="6dp"
-                app:layout_constraintLeft_toRightOf="@id/et_search"
-                android:text="검색"
-                android:textSize="12dp"
-                android:textAlignment="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -369,4 +357,5 @@
                 android:src="@drawable/ic_search_up"/>
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
