@@ -5,6 +5,6 @@ import retrofit2.http.*
 
 interface BlockRetrofitInterface {
     // 차단한 사용자 API
-    @GET("/block/33")
+    @GET("/mypage/block/33")
     fun getBlock(): Call<BlockResponse>
 }

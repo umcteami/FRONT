@@ -1,6 +1,7 @@
 package com.example.i.mypage.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,11 +35,9 @@ class BlockedFragment : Fragment(), BlockInterface {
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
             val BlockList: ArrayList<Blocked> = arrayListOf()
-
             BlockList.apply{
-                add(Blocked(response.result.nick, response.result.intro))
+                add(Blocked(response.result[3].toString(), response.result[4].toString()))
             }
-
             viewBinding.recyclerview.layoutManager = LinearLayoutManager(context)
             viewBinding.recyclerview.adapter = BlockedRVAdapter(BlockList)
         }
@@ -49,9 +48,8 @@ class BlockedFragment : Fragment(), BlockInterface {
 
     // 서버 연결 실패
     override fun onGetBlockFailure(message: String) {
-        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("error", "오류 : $message")
     }
-
 
     //뒤로가기
     private fun backFragment() {
