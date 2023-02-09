@@ -2,7 +2,6 @@ package com.example.i.community.talk
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.i.R
 import com.example.i.databinding.ActivityCommunityPostBinding
 
 class CommunityPostActivity : AppCompatActivity() {

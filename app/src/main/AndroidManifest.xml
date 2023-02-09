@@ -23,6 +23,7 @@
         <activity
             android:name=".community.NewSearchActivity"
             android:exported="false" />
+        <activity android:name=".community.talk.CommunityPostActivity"/>
         <activity
             android:name=".community.SearchActivity"
             android:exported="false" />

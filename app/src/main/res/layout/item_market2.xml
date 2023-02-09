@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:id="@+id/item_market2"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -37,11 +38,12 @@
         app:layout_constraintStart_toEndOf="@id/marketPost_pictureCv"
         app:layout_constraintTop_toTopOf="@id/marketPost_pictureCv"/>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_market_heart_greyline"
-        android:background="@null"
+    <CheckBox
+        android:id="@+id/cb_heart"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/heart_checkbox"
+        android:button="@color/transparent"
         android:layout_marginRight="16dp"
         app:layout_constraintTop_toTopOf="@id/marketPost_pictureCv"
         app:layout_constraintEnd_toEndOf="parent"/>

@@ -10,6 +10,7 @@ class MarketPplRVAdapter(private val mkpList: ArrayList<MarketP>): RecyclerView.
     inner class ViewHolder(private val viewBinding: ItemMarket3Binding) :
         RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(mp: MarketP) {
+            viewBinding.ivMk.setImageResource(mp.image)
             viewBinding.tvMkTitle.text = mp.title
             viewBinding.tvMkContent.text = mp.content
             viewBinding.tvMkView.text = mp.view
@@ -26,5 +27,5 @@ class MarketPplRVAdapter(private val mkpList: ArrayList<MarketP>): RecyclerView.
         holder.bind(mkpList[position])
     }
 
-    override fun getItemCount(): Int = 9
+    override fun getItemCount(): Int = mkpList.size
 }
