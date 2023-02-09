@@ -153,7 +153,7 @@
         <activity android:name=".toolbar.MenuActivity" />
         <activity android:name=".toolbar.NotiActivity" />
         <activity android:name=".toolbar.SearchActivity" />
-        <activity android:name=".mypage.mypageSettingActivity" />
+        <activity android:name=".mypage.MypageSettingActivity" />
         <activity android:name=".mypage.PolicyActivity" />
         <activity android:name=".mypage.RevokeActivity" />
         <activity

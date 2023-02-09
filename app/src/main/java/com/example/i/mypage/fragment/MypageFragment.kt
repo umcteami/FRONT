@@ -86,7 +86,7 @@ class MypageFragment : Fragment(), MyPageInterface {
     private fun setUpSetting() {
         viewBinding.mypageSettingBtn.setOnClickListener {
             activity?.let {
-                val intent = Intent(context, mypageSettingActivity::class.java)
+                val intent = Intent(context, MypageSettingActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(intent)
             }

@@ -9,7 +9,7 @@ import com.example.i.mypage.customdialog.PopupSaveDialog
 import com.example.i.mypage.data.*
 
 
-class mypageSettingActivity : AppCompatActivity(), SettingInterface {
+class MypageSettingActivity : AppCompatActivity(), SettingInterface {
     private lateinit var viewBinding: ActivityMypageSettingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,12 +46,11 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
         }
 
         // 회원정보 get
-        SettingService(this).tryGetUser(30)
+        SettingService(this).tryGetUser()
         Toast.makeText(this,"불러옴",Toast.LENGTH_SHORT).show()
 
         // 회원정보 수정
         viewBinding.mypageSaveChange.setOnClickListener {
-
             var dialog = PopupSaveDialog()
             dialog.show(supportFragmentManager,"custom dialog")
         }
@@ -109,7 +108,7 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
         val addresPlus = viewBinding.editAddress2.text.toString()
 
         val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
-            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus, profile = "\\image\\202301/1673956976696_git.png")
+            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus)
         SettingService(this).tryPatchSetting(settingRequest)
 
         finish()
