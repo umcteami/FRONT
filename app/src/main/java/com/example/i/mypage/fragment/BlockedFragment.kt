@@ -36,7 +36,7 @@ class BlockedFragment : Fragment(), BlockInterface {
         if(response.isSuccess){
             val BlockList: ArrayList<Blocked> = arrayListOf()
             BlockList.apply{
-                add(Blocked(response.result[3].toString(), response.result[4].toString()))
+                add(Blocked(response.result[2].toString(), response.result[3].toString()))
             }
             viewBinding.recyclerview.layoutManager = LinearLayoutManager(context)
             viewBinding.recyclerview.adapter = BlockedRVAdapter(BlockList)
