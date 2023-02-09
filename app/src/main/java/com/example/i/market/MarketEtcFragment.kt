@@ -1,6 +1,7 @@
 package com.example.i.market
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,6 +35,7 @@ class MarketEtcFragment: Fragment(), View.OnClickListener {
 
         val mkList: ArrayList<Market> = arrayListOf()
         val customDecoration = CustomDecoration(2f, 2f, Color.GRAY)
+        val adapter = MarketRVAdapter(mkList, requireActivity())
 
         mkList.apply{
             add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
@@ -47,8 +49,16 @@ class MarketEtcFragment: Fragment(), View.OnClickListener {
         }
 
         viewBinding.rvEtc.layoutManager = LinearLayoutManager(context)
-        viewBinding.rvEtc.adapter = MarketRVAdapter(mkList)
+        viewBinding.rvEtc.adapter = adapter
         viewBinding.rvEtc.addItemDecoration(customDecoration)
+
+        adapter!!.itemClick = object : MarketRVAdapter.ItemClick {
+
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(activity, MarketPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onAttach(context: Context) {

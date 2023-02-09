@@ -28,7 +28,7 @@ class Ppl3Fragment : Fragment() {
         item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
         item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
 
-        val adapter = MarketGVAdapter(item)
+        val adapter = MarketGVAdapter(item, requireActivity())
         viewBinding.gvPpl.adapter = adapter
 
         viewBinding.gvPpl.setOnItemClickListener { adapterView, view, i, l ->

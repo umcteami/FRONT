@@ -1,5 +1,6 @@
 package com.example.i.market
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.Toast
 import com.example.i.databinding.ItemMarket3Binding
 
-class MarketGVAdapter(private val items: MutableList<MarketP>): BaseAdapter() {
+class MarketGVAdapter(private val items: MutableList<MarketP>, private var context: Context): BaseAdapter() {
     override fun getCount(): Int = items.size
 
     override fun getItem(position: Int): MarketP = items[position]
@@ -22,6 +23,15 @@ class MarketGVAdapter(private val items: MutableList<MarketP>): BaseAdapter() {
         viewBinding.tvMkTitle.text = item.title
         viewBinding.tvMkContent.text = item.content
         viewBinding.tvMkView.text = item.view
+
+        viewBinding.cbHeart.setOnCheckedChangeListener { compoundButton, b ->
+            if (viewBinding.cbHeart.isChecked == true) {
+                Toast.makeText(context, "게시글을 찜 했습니다.", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(context, "게시글 찜을 해제했습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         return viewBinding.root
     }

@@ -16,6 +16,7 @@ class Main2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMain2Binding.inflate(layoutInflater)
+
         setContentView(viewBinding.root)
 
         viewBinding.bottomNavi.run {

@@ -1,5 +1,6 @@
 package com.example.i.market
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.databinding.FragmentMarketMainBinding
 
@@ -45,7 +47,7 @@ class MarketMainFragment: Fragment() {
         })
 
         val mkList: ArrayList<Market> = arrayListOf()
-        val adapter = MarketRVAdapter(mkList)
+        val adapter = MarketRVAdapter(mkList, requireActivity())
         val customDecoration = CustomDecoration(2f, 2f, Color.rgb(0xB4,0xB4,0xB4))
 
         mkList.apply{
@@ -62,6 +64,14 @@ class MarketMainFragment: Fragment() {
         viewBinding.rvMarket.layoutManager = LinearLayoutManager(context)
         viewBinding.rvMarket.adapter = adapter
         viewBinding.rvMarket.addItemDecoration(customDecoration)
+
+        adapter!!.itemClick = object : MarketRVAdapter.ItemClick {
+
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(activity, MarketPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun dotsIndicator() {

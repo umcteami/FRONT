@@ -22,8 +22,6 @@ class MessageListFragment : Fragment() {
     ): View {
         viewBinding = FragmentMessageListBinding.inflate(layoutInflater)
 
-        val activity = activity as Main2Activity
-
         val mList: ArrayList<Message> = arrayListOf()
         val adapter = MessageRVAdapter(mList)
 
@@ -53,7 +51,7 @@ class MessageListFragment : Fragment() {
         adapter!!.itemLongClick = object : MessageRVAdapter.ItemLongClick{
             override fun onClick(view: View, position: Int) {
                 val dialog = MessageOptionDialog()
-                dialog.show(activity.supportFragmentManager, "custom dialog")
+                dialog.show(requireActivity().supportFragmentManager, "custom dialog")
             }
         }
 
