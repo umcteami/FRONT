@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.community.*
+import com.example.i.community.diary.DiaryActivity
+import com.example.i.community.diary.DiaryCareActivity
+import com.example.i.community.diary.DiaryRainActivity
+import com.example.i.community.review.ReviewActivity
+import com.example.i.community.talk.*
 import com.example.i.databinding.FragmentHomeBinding
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
@@ -18,6 +23,7 @@ import com.example.i.toolbar.SearchActivity
 @Suppress("UNREACHABLE_CODE")
 class HomeFragment :Fragment() {
     private lateinit var viewBinding: FragmentHomeBinding
+    private var searchText : String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
