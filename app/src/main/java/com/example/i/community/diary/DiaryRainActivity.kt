@@ -47,17 +47,23 @@ class DiaryRainActivity : AppCompatActivity() {
                     val intent = Intent(this, CommunityTalkroomActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
+                    finish()
+
                 }
                 R.id.drawer_diary -> {
                     val intent = Intent(this, DiaryActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
+                    finish()
+
 
                 }
                 R.id.drawer_review -> {
                     val intent = Intent(this, ReviewActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
+                    finish()
+
 
                 }
             }
@@ -80,6 +86,7 @@ class DiaryRainActivity : AppCompatActivity() {
                         val intent = Intent(context, Main2Activity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
+
                     }
                     R.id.navi_market -> {
                         supportFragmentManager

@@ -3,22 +3,20 @@ package com.example.i.community
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
-import com.example.i.community.review.ReviewSearchActivity
 import com.example.i.databinding.ActivitySearchBinding
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewBinding: ActivitySearchBinding
-    private val SEARCH_REQUEST = 1
+    private var searchTerm : String = ""
 
     private fun search(searchTerm : String){
         val searchIntent = Intent(this, SearchResultActivity::class.java)
         intent.putExtra("search_term", searchTerm)
-        startActivityForResult(searchIntent, SEARCH_REQUEST)
+        startActivity(searchIntent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,20 +24,14 @@ class SearchActivity : AppCompatActivity() {
         viewBinding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-//        viewBinding.btnSearch.setOnClickListener{
-//            supportFragmentManager
-//                .beginTransaction()
-//                .replace(viewBinding.frameFragment.id, SearchResultFragment())
-//                .commitAllowingStateLoss()
-//        }
-
         viewBinding.chip1.setOnClickListener{
             search(viewBinding.chip1.toString())
         }
-        viewBinding.chip1.setOnCloseIconClickListener{
-            
+        viewBinding.btSearch.setOnClickListener{
+//            searchTerm = viewBinding.etSearch.text.toString()
+//            search(searchTerm)
+            finish()
         }
-
 
         viewBinding.etSearch.setOnEditorActionListener{_, actionId, _->
             if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_SEARCH || EditorInfo.IME_ACTION_UNSPECIFIED == actionId)
@@ -52,6 +44,14 @@ class SearchActivity : AppCompatActivity() {
             else{
                 Toast.makeText(this,"Search를 잘못 누름",Toast.LENGTH_SHORT).show()
                 false
+            }
+        }
+    }
+
+    override fun onClick(view: View?) {
+        when(view?.id){
+            viewBinding.btSearch.id ->{
+                finish()
             }
         }
     }

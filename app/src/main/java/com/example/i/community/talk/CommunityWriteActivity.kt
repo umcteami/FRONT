@@ -123,7 +123,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                     }
                 }
                 else if(category == "간호 일기" || category == "무지개 일기"){
-                    boardId = 1
+                    boardId = 2
                     if(category == "간호 일기"){
                         roomType = 1
                     }
@@ -144,18 +144,19 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             val roomType = roomType
             val userIdx = userId
 
-            if(imgCnt == 0){
+            if (imgCnt == 0) {
                 val postRequest = PostFeedsWriteRequest(
-                    title = title, contents = contents, boardIdx = boardIdx, rommType = roomType, userIdx = userIdx, imgCnt = imgCnt
+                    title = title,
+                    contents = contents,
+                    boardIdx = boardIdx,
+                    rommType = roomType,
+                    userIdx = userIdx,
+                    imgCnt = imgCnt
                 )
                 FeedsWriteService(this).tryPostFeedsWrite(postRequest)
-            }
-            else{
+            } else {
 
             }
-
-            val uploadIntent = Intent(this, CommunityTalkroomActivity::class.java)
-            startActivity(uploadIntent)
         }
 
         viewBinding.backBtn.setOnClickListener {
@@ -165,8 +166,9 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
     override fun onPostFeedsWriteSuccess(response: FeedsWriteResponse) {
         if(response.isSuccess){
-            val intent = Intent(this, CommunityTalkroomActivity::class.java)
-            this.startActivity(intent)
+//            val intent = Intent(this, CommunityTalkroomActivity::class.java)
+//            this.startActivity(intent)
+            finish()
             response.message?.let{
                 Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
             }
