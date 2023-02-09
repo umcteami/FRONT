@@ -6,7 +6,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyPageService(val MyPageInterface: MyPageInterface) {
-    // 마이페이지 시작창 조회API
+    // 마이페이지 시작창 조회 API
     fun tryGetMyPage(){
         val MyPageRetrofitInterface = ApplicationClass.sRetrofit.create(MyPageRetrofitInterface::class.java)
         MyPageRetrofitInterface.getMyPage().enqueue(object : Callback<MyPageResponse>{

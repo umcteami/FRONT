@@ -108,7 +108,7 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
         val addresPlus = viewBinding.editAddress2.text.toString()
 
         val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
-            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus)
+            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus, profile = "")
         SettingService(this).tryPatchSetting(settingRequest)
 
         finish()
