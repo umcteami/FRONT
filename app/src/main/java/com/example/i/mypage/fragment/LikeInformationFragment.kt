@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.chat.MessageActivity
-import com.example.i.chat.MessageRVAdapter
-import com.example.i.community.talk.CommunityPostActivity
+import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentLikeInformationBinding
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter

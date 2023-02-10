@@ -9,12 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
-import com.example.i.community.talk.CommunityPostActivity
+import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentMyDiaryBinding
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.DiaryRVAdapter
 import com.example.i.mypage.data.MyPost
-import com.example.i.mypage.data.PostRVAdapter
 
 class MyDiaryFragment : Fragment(), View.OnClickListener {
     private lateinit var viewBinding: FragmentMyDiaryBinding

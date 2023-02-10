@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.i.R
-import com.example.i.community.talk.CommunityPostActivity
 import com.example.i.databinding.ActivityMyMarketBinding
 import com.example.i.market.MarketP
 import com.example.i.market.MarketPostActivity
