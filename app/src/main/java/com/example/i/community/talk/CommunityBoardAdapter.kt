@@ -21,8 +21,6 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
 
     override fun onBindViewHolder(holder: CommunityBoardAdapter.BoardViewHolder, position: Int) {
         holder.bind(itemList[position])
-        holder.itemView.setOnClickListener {
-        }
 
         if (itemClick != null) {
             holder.viewBinding!!.rootLayout.setOnClickListener(View.OnClickListener {
