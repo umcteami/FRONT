@@ -28,7 +28,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private var category: String = ""
     private var boardId : Int = 0
     private var roomType : Int = 0
-    private var userId : Int = 30
+    private var userId : Int = 33
     private var imgCnt : Int = 0
 
     private lateinit var recyclerView: RecyclerView
@@ -148,7 +148,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             if (imgCnt == 0) {
                 val postRequest = PostFeedsWriteRequest(
                     title = title,
-                    content = content,
+                    contents = content,
                     boardIdx = boardIdx,
                     roomType = roomType,
                     userIdx = userIdx,
@@ -158,7 +158,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             } else {
                 val postRequest = FeedsWriteRequest(
                     title = title,
-                    content = content,
+                    contents = content,
                     boardIdx = boardIdx,
                     roomType = roomType,
                     userIdx = userIdx,
