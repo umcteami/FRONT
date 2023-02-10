@@ -2,7 +2,7 @@ package com.example.i.community.talk.models
 
 import com.google.gson.annotations.SerializedName
 
-data class PostFeedsWriteRequest(
+data class FeedsWriteRequest(
     @SerializedName("boardIdx") val boardIdx : Int,
     @SerializedName("userIdx") val userIdx : Int,
     @SerializedName("roomType") val roomType : Int,

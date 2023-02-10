@@ -1,24 +1,28 @@
 package com.example.i.community.talk
 
+import android.content.ContentUris
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.i.community.UploadPhotoActivity
 import com.example.i.community.customdialog.CMCategoryDialog
-import com.example.i.community.talk.models.FeedsWriteInterface
-import com.example.i.community.talk.models.FeedsWriteResponse
-import com.example.i.community.talk.models.FeedsWriteService
-import com.example.i.community.talk.models.PostFeedsWriteRequest
+import com.example.i.community.talk.models.*
 import com.example.i.databinding.ActivityCommunityWriteBinding
+import java.io.File
+import java.nio.file.Files
 
 class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsWriteInterface {
     private lateinit var viewBinding: ActivityCommunityWriteBinding
-    private val REQUEST_CODE = 1000
     private var title: String = ""
     private var content: String = ""
     private var category: String = ""
@@ -26,25 +30,29 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private var roomType : Int = 0
     private var userId : Int = 30
     private var imgCnt : Int = 0
-    private val imageUri = getImageUri()
 
-
-    private fun getImageUri(): Uri {
-        return imageUri
-    }
-
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var writeImageAdapter: WriteImageAdapter
+    private var imageList : ArrayList<Uri> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityWriteBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+        //이미지 업로드
+        writeImageAdapter = WriteImageAdapter(imageList, this)
+        recyclerView = viewBinding.rvPhoto
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = writeImageAdapter
 
-        viewBinding.btCamera.setOnClickListener {
-            val cameraIntent = Intent(this, UploadPhotoActivity::class.java)
-            cameraIntent.putExtra("imageUri", imageUri.toString())
-            startActivity(cameraIntent)
+        //업로드 버튼 클릭 리스너
+        val imageButton = viewBinding.clPhoto
+
+        imageButton.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true)
+            activityResult.launch(intent)
         }
-
-        viewBinding.btUpload.isEnabled = false
 
         viewBinding.btChoiceCategory.setOnClickListener(this)
 
@@ -84,7 +92,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
             override fun afterTextChanged(p0: Editable?) {
             }
-
         })
         viewBinding.btChoiceCategory.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -99,7 +106,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                 viewBinding.btUpload.isEnabled =
                     title.isNotEmpty() && content.isNotEmpty() && category != ("카테고리 선택")
 
-                if(category == "수다방" || category == "질문방" || category == "이야기방"){
+                if(category == "수다방" || category == "질문방" || category == "정보방"){
                     boardId = 1
                     if(category == "수다방"){
                         roomType = 1
@@ -107,7 +114,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                     else if(category == "질문방"){
                         roomType = 2
                     }
-                    else if(category == "이야기방"){
+                    else if(category == "정보방"){
                         roomType = 3
                     }
                 }
@@ -127,29 +134,64 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
         })
         viewBinding.btUpload.setOnClickListener {
             val title = viewBinding.etTitle.text.toString()
-            val contents = viewBinding.etContent.text.toString()
-            val imgCnt = imgCnt
+            val content = viewBinding.etContent.text.toString()
+            val imgCnt = imageList.size
             val boardIdx = boardId
             val roomType = roomType
             val userIdx = userId
+            val fileList = ArrayList<File>()
+            for(uri in imageList){
+                val file = File(uri.path)
+                fileList.add(file)
+            }
 
             if (imgCnt == 0) {
                 val postRequest = PostFeedsWriteRequest(
                     title = title,
-                    contents = contents,
+                    content = content,
                     boardIdx = boardIdx,
-                    rommType = roomType,
+                    roomType = roomType,
                     userIdx = userIdx,
-                    imgCnt = imgCnt
+                    imgCnt = 0
                 )
                 FeedsWriteService(this).tryPostFeedsWrite(postRequest)
             } else {
+                val postRequest = FeedsWriteRequest(
+                    title = title,
+                    content = content,
+                    boardIdx = boardIdx,
+                    roomType = roomType,
+                    userIdx = userIdx,
+                    imgCnt = imgCnt,
+                )
+//                val postImageRequest = PostFeedsWriteImageRequest(
+//                    request = postRequest,
+//                    image =
+//                )
 
             }
         }
 
         viewBinding.backBtn.setOnClickListener {
             finish()
+        }
+    }
+
+    private val activityResult : ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == RESULT_OK){
+            if(it.data!!.clipData != null){
+                val count = it.data!!.clipData!!.itemCount
+                for(index in 0 until count){
+                    val imageUri = it.data!!.clipData!!.getItemAt(index).uri
+                    imageList.add(imageUri)
+                }
+            }else{
+                val imageUri = it.data!!.data
+                imageList.add(imageUri!!)
+            }
+            viewBinding.tvCount.text = imageList.size.toString()
+            writeImageAdapter.notifyDataSetChanged()
         }
     }
 
@@ -165,6 +207,9 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
         }
     }
+
+
+
     override fun onPostFeedsWriteFailure(message: String) {
         Toast.makeText(this, "오류 $message", Toast.LENGTH_SHORT).show()
     }
