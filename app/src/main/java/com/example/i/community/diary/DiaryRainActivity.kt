@@ -15,14 +15,27 @@ import com.example.i.market.MarketFragment
 import com.example.i.mypage.fragment.MypageFragment
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
+import com.google.android.material.tabs.TabLayoutMediator
 
 class DiaryRainActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivityDiaryRainBinding
+    private val tabTitleArray = arrayOf(
+        "무지개 일기",
+        "인기글"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityDiaryRainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        val viewPager = viewBinding.viewpager
+        val tabLayout = viewBinding.tabLayout
+
+        viewPager.adapter = DiaryRainViewPagerAdapter(supportFragmentManager, lifecycle)
+        TabLayoutMediator(tabLayout, viewPager){tab, position ->
+            tab.text = tabTitleArray[position]
+        }.attach()
 
         viewBinding.searchBtn.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)

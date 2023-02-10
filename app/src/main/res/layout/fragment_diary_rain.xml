@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".community.diary.DiaryRainFragment"
+    android:background="@color/light_grey">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_diary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/diary_list_layout2"
+        />
+</LinearLayout>

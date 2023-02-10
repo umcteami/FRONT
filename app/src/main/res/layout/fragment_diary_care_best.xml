@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_grey"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".community.diary.DiaryBestFragment">
+    tools:context=".community.diary.DiaryCareBestFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -44,7 +45,7 @@
             android:id="@+id/rv_diary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/diary_list_layout" />
+            tools:listitem="@layout/diary_list_layout2" />
     </LinearLayout>
 
 
