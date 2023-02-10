@@ -10,5 +10,9 @@ class CommunityPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityPostBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        viewBinding.btBack.setOnClickListener {
+            finish()
+        }
     }
 }
