@@ -14,7 +14,5 @@ class SearchResultActivity : AppCompatActivity() {
         val searchTerm = intent.getStringExtra("searchTerm")
         viewBinding.etSearch.setText(searchTerm)
         viewBinding.tvSearchTerm.text = searchTerm
-
-
     }
 }

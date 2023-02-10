@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:paddingVertical="4sp"
-            android:text="저는 분당에 있는 XX 동물병원 다녀요~ 수의사님이 친절하세요 ㅎㅎ"
+            android:text="저는 분당에 있는 XX  ㅎㅎ"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintLeft_toLeftOf="parent"
