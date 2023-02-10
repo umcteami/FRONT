@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.R
 import com.example.i.community.BoardItem
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentTalkroomBinding
@@ -25,6 +26,9 @@ class CommunityTalkroomFragment : Fragment() {
         itemList.apply {
             add(
                 BoardItem(
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 (서울/경기도)",
@@ -36,6 +40,9 @@ class CommunityTalkroomFragment : Fragment() {
             )
             add(
                 BoardItem(
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -47,6 +54,9 @@ class CommunityTalkroomFragment : Fragment() {
             )
             add(
                 BoardItem(
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -58,6 +68,9 @@ class CommunityTalkroomFragment : Fragment() {
             )
             add(
                 BoardItem(
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -69,6 +82,9 @@ class CommunityTalkroomFragment : Fragment() {
             )
             add(
                 BoardItem(
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -80,6 +96,9 @@ class CommunityTalkroomFragment : Fragment() {
             )
             add(
                 BoardItem(
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",

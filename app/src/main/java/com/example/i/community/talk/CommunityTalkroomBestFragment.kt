@@ -30,9 +30,9 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
         itemList.apply {
             add(
                 BoardItem(
-//                    false,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -44,9 +44,9 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
             )
             add(
                 BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
+                    true,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -58,9 +58,9 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
             )
             add(
                 BoardItem(
-//                    false,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
+                    false,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -72,9 +72,9 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
             )
             add(
                 BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
+                    true,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
@@ -86,9 +86,9 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
             )
             add(
                 BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
+                    true,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 알려 (서울/경기도)",
@@ -100,9 +100,9 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
             )
             add(
                 BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
+                    true,
+                    R.drawable.img_1,
+                    R.drawable.img_1,
                     "22.12.28",
                     "별이엄마",
                     "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
