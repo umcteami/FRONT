@@ -16,8 +16,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MarketMainFragment: Fragment() {
     private lateinit var viewBinding: FragmentMarketMainBinding
 
-    //private var dots = arrayOfNulls<Button>(3)
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
