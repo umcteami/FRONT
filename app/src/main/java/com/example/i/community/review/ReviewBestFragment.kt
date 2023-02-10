@@ -5,32 +5,47 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
+import com.example.i.community.BoardRoomXItem
+import com.example.i.community.talk.CommunityRoomXBoardAdapter
+import com.example.i.databinding.FragmentReviewBestBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ReviewBestFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReviewBestFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var viewBinding : FragmentReviewBestBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_review_best, container, false)
-    }
+        viewBinding = FragmentReviewBestBinding.inflate(layoutInflater)
 
-    companion object {
+        val itemList = ArrayList<BoardRoomXItem>()
+        itemList.apply{
+            add(BoardRoomXItem(false,
+                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem(true,
+                R.drawable.img_1,
+                R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem(false,
+                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem(true,
+                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem(false,
+                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem(true,
+                R.drawable.img_1,
+                R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem(false,
+                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+            add(BoardRoomXItem(true,
+                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
+        }
+        viewBinding.rvBoard.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        viewBinding.rvBoard.adapter = CommunityRoomXBoardAdapter(itemList)
 
+        return viewBinding.root
     }
 }

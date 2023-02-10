@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class PostFeedsWriteRequest(
     @SerializedName("boardIdx") val boardIdx : Int,
     @SerializedName("userIdx") val userIdx : Int,
-    @SerializedName("roomType") val rommType : Int,
+    @SerializedName("roomType") val roomType : Int,
     @SerializedName("title") val title : String,
-    @SerializedName("contents") val contents : String,
+    @SerializedName("content") val content : String,
     @SerializedName("imgCnt") val imgCnt : Int
 )

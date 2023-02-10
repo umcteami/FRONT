@@ -129,13 +129,6 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInte
                 title = title, content = content, price = price, userIdx = userIdx, category = category, images = images
             )
             MarketWriteService(this).tryPostMarketWrite(postRequest)
-
-//                    @SerializedName("userIdx") val userIdx : Int,
-//            @SerializedName("title") val title : String,
-//            @SerializedName("category") val category : String,
-//            @SerializedName("price") val price : Int,
-//            @SerializedName("content") val content : String,
-//            @SerializedName("images") val images : MediaStore.Images
         }
     }
 
