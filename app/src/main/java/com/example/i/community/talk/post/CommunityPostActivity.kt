@@ -16,6 +16,10 @@ class CommunityPostActivity : AppCompatActivity() {
         viewBinding = ActivityCommunityPostBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        viewBinding.btBack.setOnClickListener {
+            finish()
+        }
+
         viewBinding.btnPostHeart.setOnClickListener{
             if(!heartClick){
                 heartClick = true

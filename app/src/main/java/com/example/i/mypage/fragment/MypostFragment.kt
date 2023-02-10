@@ -7,7 +7,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
-import com.example.i.community.talk.CommunityPostActivity
+import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentMypostBinding
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.MyPost

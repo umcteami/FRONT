@@ -5,10 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.GravityCompat
-
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.community.*
 import com.example.i.community.diary.DiaryActivity
@@ -16,6 +14,7 @@ import com.example.i.community.diary.DiaryCareActivity
 import com.example.i.community.diary.DiaryRainActivity
 import com.example.i.community.review.ReviewActivity
 import com.example.i.community.talk.*
+import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentHomeBinding
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
