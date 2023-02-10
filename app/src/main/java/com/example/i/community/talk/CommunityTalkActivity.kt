@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat
 import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.chat.MessageListFragment
+import com.example.i.community.NewSearchActivity
 import com.example.i.community.review.ReviewActivity
 import com.example.i.community.diary.DiaryActivity
 import com.example.i.community.diary.DiaryCareActivity
@@ -40,7 +41,7 @@ class CommunityTalkActivity : AppCompatActivity() {
 
 
         viewBinding.searchBtn.setOnClickListener {
-            val intent = Intent(this, SearchActivity::class.java)
+            val intent = Intent(this, NewSearchActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }

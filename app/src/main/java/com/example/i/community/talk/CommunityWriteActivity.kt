@@ -197,14 +197,11 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
     override fun onPostFeedsWriteSuccess(response: FeedsWriteResponse) {
         if(response.isSuccess){
-//            val intent = Intent(this, CommunityTalkroomActivity::class.java)
-//            this.startActivity(intent)
             finish()
             response.message?.let{
                 Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
             }
         }else{
-
         }
     }
 
