@@ -7,18 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.i.Main2Activity
-import com.example.i.R
 import com.example.i.databinding.FragmentMarketMainBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MarketMainFragment: Fragment() {
     private lateinit var viewBinding: FragmentMarketMainBinding
 
-    private var dots = arrayOfNulls<Button>(3)
+    //private var dots = arrayOfNulls<Button>(3)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,15 +34,9 @@ class MarketMainFragment: Fragment() {
         val marketVPAdapter = MarketVPAdapter(requireActivity())
         viewBinding.vpPpl.adapter = marketVPAdapter
 
-        dotsIndicator()
-
-        viewBinding.vpPpl.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-
-                selectedIndicator(position)
-            }
-        })
+        TabLayoutMediator(viewBinding.dotsLayout!!, viewBinding.vpPpl!!){tab, position ->
+            viewBinding.vpPpl.setCurrentItem(tab.position)
+        }.attach()
 
         val mkList: ArrayList<Market> = arrayListOf()
         val adapter = MarketRVAdapter(mkList, requireActivity())
@@ -70,34 +62,6 @@ class MarketMainFragment: Fragment() {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(activity, MarketPostActivity::class.java)
                 startActivity(intent)
-            }
-        }
-    }
-
-    private fun dotsIndicator() {
-        for (i: Int in 0 until 3) {
-            dots[i] = Button(requireActivity())
-
-            var params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-
-            //params.leftMargin = 30
-            dots[i]?.layoutParams = params
-            viewBinding.dotsLayout.addView(dots[i])
-
-
-        }
-    }
-
-    private fun selectedIndicator(position: Int) {
-
-        for (i: Int in 0 until 3){
-
-            if (i == position) {
-                dots[i]?.setBackgroundResource(R.drawable.select_dot)
-            }else {
-                dots[i]?.setBackgroundResource(R.drawable.default_dot)
             }
         }
     }
