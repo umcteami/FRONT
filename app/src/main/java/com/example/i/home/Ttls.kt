@@ -1,5 +1,7 @@
 package com.example.i.home
 
+import com.example.i.home.HasImage
+
 data class Ttls(
     var hasImage : HasImage,
     var title: String,

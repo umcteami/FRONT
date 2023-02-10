@@ -1,4 +1,4 @@
-package com.example.i.home
+package com.example.i.home.total
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.databinding.ListItemTtl2Binding
 import com.example.i.databinding.ListItemTtlBinding
-import com.example.i.home.Const.HASIMAGE
-import com.example.i.home.Const.NOIMAGE
+import com.example.i.home.HasImage
+import com.example.i.home.total.Ttls
+import com.example.i.home.total.Const.HASIMAGE
+import com.example.i.home.total.Const.NOIMAGE
 
-class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TtlRVAdapter(private var ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var itemClick: TtlRVAdapter.ItemClick? = null
 
@@ -17,7 +19,7 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
         RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(ttls: Ttls) {
             viewBinding.ttlTitle.text = ttls.title
-            viewBinding.ttlPicture.setImageResource(ttls.picture!!)
+            viewBinding.ttlPicture.text = ttls.img
             viewBinding.ttlWriter.text = ttls.writer
             viewBinding.ttlDate.text = ttls.date
             viewBinding.ttlViewNum.text = ttls.view
@@ -78,6 +80,10 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
 
     override fun getItemCount(): Int = ttlList.size
 
+//    fun SetTTlList(list: List<Total1Data>){
+//        ttlList = list
+//    }
+
     interface ItemClick {
         fun onClick(view: View, position: Int)
     }
@@ -88,3 +94,5 @@ object Const {
     const val HASIMAGE = 0
     const val NOIMAGE = 1
 }
+
+

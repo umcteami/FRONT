@@ -8,7 +8,6 @@ import androidx.core.view.GravityCompat
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.community.*
 import com.example.i.community.diary.DiaryActivity
@@ -16,7 +15,9 @@ import com.example.i.community.diary.DiaryCareActivity
 import com.example.i.community.diary.DiaryRainActivity
 import com.example.i.community.review.ReviewActivity
 import com.example.i.community.talk.*
+import com.example.i.config.ApplicationClass.Companion.sRetrofit
 import com.example.i.databinding.FragmentHomeBinding
+import com.example.i.home.total.ViewTotalService
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
@@ -24,12 +25,13 @@ import com.example.i.toolbar.SearchActivity
 class HomeFragment :Fragment() {
     private lateinit var viewBinding: FragmentHomeBinding
     private var searchText : String = ""
+    val viewTotalService = sRetrofit.create(ViewTotalService::class.java)
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-
 
     ): View? {
         viewBinding = FragmentHomeBinding.inflate(layoutInflater)
@@ -136,6 +138,9 @@ class HomeFragment :Fragment() {
             }
         }
 
+
+
+
         //전체글 RV
 
         val ttlList: ArrayList<Ttls> = arrayListOf()
@@ -170,6 +175,7 @@ class HomeFragment :Fragment() {
             intent.putExtra("cindex", 2)
             startActivity(intent)
         }
+
 
         return viewBinding.root
     }
