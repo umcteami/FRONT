@@ -1,13 +1,16 @@
 package com.example.i.market
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.databinding.ItemMarket3Binding
 
 class MarketPplRVAdapter(private val mkpList: ArrayList<MarketP>): RecyclerView.Adapter<MarketPplRVAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val viewBinding: ItemMarket3Binding) :
+    var itemClick: ItemClick? = null
+
+    inner class ViewHolder(val viewBinding: ItemMarket3Binding) :
         RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(mp: MarketP) {
             viewBinding.ivMk.setImageResource(mp.image)
@@ -25,7 +28,17 @@ class MarketPplRVAdapter(private val mkpList: ArrayList<MarketP>): RecyclerView.
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(mkpList[position])
+
+        if (itemClick != null) {
+            holder.viewBinding!!.itemMarket3.setOnClickListener(View.OnClickListener {
+                itemClick?.onClick(it, position)
+            })
+        }
     }
 
     override fun getItemCount(): Int = mkpList.size
+
+    interface ItemClick {
+        fun onClick(view: View, position: Int)
+    }
 }

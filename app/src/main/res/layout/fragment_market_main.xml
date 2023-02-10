@@ -26,27 +26,25 @@
             app:layout_constraintBottom_toTopOf="@+id/vp_ppl"
             app:layout_constraintStart_toStartOf="parent"/>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_ppl"
-        android:layout_width="match_parent"
-        android:layout_height="427dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ppl_title"
-        app:layout_constraintBottom_toTopOf="@+id/dotsLayout"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_ppl"
+            android:layout_width="match_parent"
+            android:layout_height="427dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ppl_title"
+            app:layout_constraintBottom_toTopOf="@+id/dotsLayout"/>
 
-    <LinearLayout
-        android:id="@+id/dotsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tv_last_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vp_ppl">
-
-    </LinearLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/dotsLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:tabIndicator="@color/transparent"
+            app:tabBackground="@drawable/dots"
+            app:tabGravity="center"
+            app:tabMinWidth="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_last_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vp_ppl"/>
 
         <TextView
             android:id="@+id/tv_last_title"

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_ttl2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="15dp"
@@ -13,16 +14,17 @@
 
     <TextView
         android:id="@+id/ttl_title"
-        android:layout_width="wrap_content"
-        android:maxWidth="360dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
         android:gravity="center_vertical"
+        android:maxWidth="300dp"
+        android:maxLines="2"
         android:text="다니고 계시는 병원 정보 좀 부탁드립니다.(서울/경기)"
         android:textColor="@color/black"
         android:textSize="16dp"
-        android:ellipsize="end"
-        android:maxLines="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

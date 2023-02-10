@@ -1,6 +1,7 @@
 package com.example.i.signup
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -13,9 +14,12 @@ import androidx.fragment.app.Fragment
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentEmailBinding
 import com.example.i.signup.models.*
+import retrofit2.Retrofit
 
+var authIdx : Int = 0 // 전역 변수
 
 class EmailFragment : Fragment(), PostCodeInterface {
+
     private lateinit var viewBinding : FragmentEmailBinding
 
     override fun onCreateView(
@@ -77,6 +81,8 @@ class EmailFragment : Fragment(), PostCodeInterface {
         if(response.isSuccess){
             val Activity = activity as SignupActivity
             Activity.changeFragment(1)
+
+            authIdx = response.result.authIdx
 
 //            // 사용자가 입력한 email 전달
 //            val bundle = Bundle() // 번들을 통해 값 전달

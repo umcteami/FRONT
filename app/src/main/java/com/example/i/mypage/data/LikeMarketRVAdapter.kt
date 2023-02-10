@@ -1,14 +1,18 @@
 package com.example.i.mypage.data
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.databinding.ItemLikeMarketBinding
 import com.example.i.databinding.ItemMypostBinding
 
 class LikeMarketRVAdapter(private val LikeList: ArrayList<LikeMarket>): RecyclerView.Adapter<LikeMarketRVAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val viewBinding: ItemLikeMarketBinding): RecyclerView.ViewHolder(viewBinding.root) {
+    var itemClick: LikeMarketRVAdapter.ItemClick? = null
+
+    inner class ViewHolder(val viewBinding: ItemLikeMarketBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind (LikeMarket: LikeMarket) {
             viewBinding.tvTitle.text = LikeMarket.title
             viewBinding.tvContent.text = LikeMarket.content
@@ -32,7 +36,18 @@ class LikeMarketRVAdapter(private val LikeList: ArrayList<LikeMarket>): Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(LikeList[position])
+
+        if (itemClick != null) {
+
+            holder.viewBinding!!.itemLikeMarket.setOnClickListener(View.OnClickListener {
+                itemClick?.onClick(it, position)
+            })
+        }
     }
 
     override fun getItemCount(): Int = LikeList.size
+
+    interface ItemClick {
+        fun onClick(view: View, position: Int)
+    }
 }
