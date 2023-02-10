@@ -15,8 +15,8 @@ class ReviewSearchviewPagerAdapter(fragmentManager: FragmentManager, lifecycle: 
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> return ReviewSearchResult1Fragment()
-            1 -> return ReviewSearchResult1Fragment()
-            2 -> return ReviewSearchResult1Fragment()
+            1 -> return ReviewSearchResult2Fragment()
+            2 -> return ReviewSearchResult3Fragment()
         }
         return ReviewSearchResult1Fragment()
     }

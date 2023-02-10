@@ -1,5 +1,7 @@
 package com.example.i.community
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
 import com.example.i.community.talk.CommunityBoardAdapter
 import com.example.i.community.talk.CommunityTalkroomActivity
+import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentCommunityTalkroomBestBinding
 import com.example.i.market.customdialog.MkFilterDialog
 
@@ -23,6 +26,7 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
         viewBinding = FragmentCommunityTalkroomBestBinding.inflate(layoutInflater)
 
         val itemList = ArrayList<BoardItem>()
+        val adapter = CommunityBoardAdapter(itemList)
         itemList.apply {
             add(
                 BoardItem(
@@ -107,18 +111,33 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
                     "2",
                     "3"
                 )
-            ) }
+            )
+        }
         viewBinding.rvBoard.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        viewBinding.rvBoard.adapter = CommunityBoardAdapter(itemList)
+        viewBinding.rvBoard.adapter = adapter
+
+
+        adapter!!.itemClick = object : CommunityBoardAdapter.ItemClick{
+            override fun onClick(view : View, position : Int){
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
         return viewBinding.root
     }
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//
+//        main = context as CommunityTalkroomActivity
+//    }
     override fun onClick(view:View?){
         when(view?.id){
-            viewBinding.btnSelectDate.id ->{
+            viewBinding.btSort.id ->{
                 val dlg = MkFilterDialog(main)
                 dlg.setOnOkClickedListener { content ->
-                    viewBinding.tvViewDate.text = content
+                    viewBinding.btSort.text = content
                 }
                 dlg.show()
             }

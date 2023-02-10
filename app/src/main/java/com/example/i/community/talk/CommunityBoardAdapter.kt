@@ -47,10 +47,6 @@ RecyclerView.Adapter<CommunityBoardAdapter.BoardViewHolder>(){
             viewBinding.tvChat.text = item.comment
         }
     }
-
-    interface OnItemClickListener {
-        fun onClick(view: View, position: Int)
-    }
     interface ItemClick {
         fun onClick(view: View, position: Int)
     }
