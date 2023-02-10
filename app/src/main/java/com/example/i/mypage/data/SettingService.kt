@@ -7,6 +7,25 @@ import retrofit2.Response
 
 class SettingService(val SettingInterface: SettingInterface) {
 
+    // 회원정보 조회 API
+    fun tryGetUser(){
+        val SettingRetrofitInterface = ApplicationClass.sRetrofit.create(SettingRetrofitInterface::class.java)
+        SettingRetrofitInterface.getUser().enqueue(object : Callback<userSearchgResponse>{
+            override fun onResponse(call: Call<userSearchgResponse>, response: Response<userSearchgResponse>) {
+                (response.body() as userSearchgResponse?)?.let {
+                    SettingInterface.onGetUserSuccess(
+                        it
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<userSearchgResponse>, t: Throwable) {
+                SettingInterface.onGetuserFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+
+    // 회원정보 수정 API
     fun tryPatchSetting(SettingRequest: SettingRequest){
         val SettingRetrofitInterface = ApplicationClass.sRetrofit.create(SettingRetrofitInterface::class.java)
         SettingRetrofitInterface.postSetting(SettingRequest).enqueue(object : Callback<SettingResponse>{
@@ -23,5 +42,4 @@ class SettingService(val SettingInterface: SettingInterface) {
             }
         })
     }
-
 }

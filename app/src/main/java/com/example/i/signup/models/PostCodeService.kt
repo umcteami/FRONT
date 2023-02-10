@@ -9,9 +9,9 @@ import retrofit2.Response
 class PostCodeService(val SignUpInterface: PostCodeInterface) {
 
     // 인증번호 보내기
-    fun tryPostEmail(PostEmailRequest: PostCodeRequest){
+    fun tryPostEmail(PostCodeRequest: PostCodeRequest){
         val EmailRetrofitInterface = ApplicationClass.sRetrofit.create(SignUpRetrofitInterface::class.java)
-        EmailRetrofitInterface.postEmail(PostEmailRequest).enqueue(object : Callback<CodeResponse>{
+        EmailRetrofitInterface.postEmail(PostCodeRequest).enqueue(object : Callback<CodeResponse>{
             override fun onResponse(call: Call<CodeResponse>, response: Response<CodeResponse>) {
                 SignUpInterface.onPostEmailSuccess(response.body() as CodeResponse)
             }

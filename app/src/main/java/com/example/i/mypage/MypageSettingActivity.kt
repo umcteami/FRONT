@@ -1,22 +1,15 @@
 package com.example.i.mypage
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.i.Main2Activity
 import com.example.i.databinding.ActivityMypageSettingBinding
-import com.example.i.login.AccountSearchFragment
 import com.example.i.login.NewPwFragment
 import com.example.i.mypage.customdialog.PopupSaveDialog
-import com.example.i.mypage.data.SettingInterface
-import com.example.i.mypage.data.SettingRequest
-import com.example.i.mypage.data.SettingResponse
-import com.example.i.mypage.data.SettingService
-import com.example.i.signup.customdialog.NicknameDialog
+import com.example.i.mypage.data.*
 
 
-class mypageSettingActivity : AppCompatActivity(), SettingInterface {
+class MypageSettingActivity : AppCompatActivity(), SettingInterface {
     private lateinit var viewBinding: ActivityMypageSettingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +18,7 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
         setContentView(viewBinding.root)
 
         // 툴바 뒤로가기 -> 첫 화면으로 이동
-       viewBinding.backBtn.setOnClickListener {
+        viewBinding.backBtn.setOnClickListener {
             finish()
         }
 
@@ -52,16 +45,18 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
                 .commit()
         }
 
+        // 회원정보 get
+        SettingService(this).tryGetUser()
+        Toast.makeText(this,"불러옴",Toast.LENGTH_SHORT).show()
 
         // 회원정보 수정
         viewBinding.mypageSaveChange.setOnClickListener {
-
             var dialog = PopupSaveDialog()
             dialog.show(supportFragmentManager,"custom dialog")
         }
     }
 
-    // 서버 연결 성공
+    // 회원정보 수정 API (서버 연결 성공)
     override fun onPatchSettingSuccess(response: SettingResponse) {
 
         // 계정이 있는 경우
@@ -79,22 +74,43 @@ class mypageSettingActivity : AppCompatActivity(), SettingInterface {
         Toast.makeText(this, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 
+    // 회원정보 조회 API
+    override fun onGetUserSuccess(response: userSearchgResponse){
+
+        // 받아온 정보와 UI 연결
+        if(response.isSuccess){
+            viewBinding.editEmail.setText(response.result.email)
+            viewBinding.editCall.setText(response.result.phone)
+            viewBinding.editNickName.setText(response.result.nick)
+            viewBinding.editIntroduce.setText(response.result.intro)
+            viewBinding.editBrith.setText(response.result.birth)
+            viewBinding.editAdressNum.setText(response.result.addresCode)
+            viewBinding.editAddress.setText(response.result.addres)
+            viewBinding.editAddress2.setText(response.result.addresPlus)
+        }
+
+        // Result message
+        response.message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+    }
+    override fun onGetuserFailure(message: String){
+        Toast.makeText(this, "오류 : $message", Toast.LENGTH_SHORT).show()
+    }
+
     // 서버에 값 보냄
     fun serverConnect() {
-        val email = viewBinding.editEmail.toString()
-        val phone = viewBinding.editCall.toString()
-        val nick = viewBinding.editNickName.toString()
-        val intro = viewBinding.editIntroduce.toString()
-        val birth = viewBinding.editBrith.toString()
-        val addresCode = viewBinding.editAddressNum.toString()
-        val addres = viewBinding.editAddress.toString()
-        val addresPlus = viewBinding.editAddress2.toString()
+        val email = viewBinding.editEmail.text.toString()
+        val phone = viewBinding.editCall.text.toString()
+        val nick = viewBinding.editNickName.text.toString()
+        val intro = viewBinding.editIntroduce.text.toString()
+        val birth = viewBinding.editBrith.text.toString()
+        val addresCode = viewBinding.editAdressNum.text.toString()
+        val addres = viewBinding.editAddress.text.toString()
+        val addresPlus = viewBinding.editAddress2.text.toString()
 
         val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
-            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus)
+            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus, profile = "")
         SettingService(this).tryPatchSetting(settingRequest)
 
         finish()
-
     }
 }
