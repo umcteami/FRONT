@@ -239,6 +239,7 @@
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:background="@drawable/bottom_comment_rectangle"
+        app:layout_constraintTop_toBottomOf="@id/rv_comment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

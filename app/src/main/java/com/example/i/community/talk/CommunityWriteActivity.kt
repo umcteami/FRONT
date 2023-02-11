@@ -1,7 +1,8 @@
 package com.example.i.community.talk
 
-import android.content.ContentUris
+import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,12 +15,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.i.community.UploadPhotoActivity
 import com.example.i.community.customdialog.CMCategoryDialog
 import com.example.i.community.talk.models.*
 import com.example.i.databinding.ActivityCommunityWriteBinding
 import java.io.File
-import java.nio.file.Files
 
 class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsWriteInterface {
     private lateinit var viewBinding: ActivityCommunityWriteBinding
@@ -153,21 +152,21 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             if (imgCnt == 0) {
                 val postRequest = PostFeedsWriteRequest(
                     title = title,
-                    contents = content,
+                    content = content,
                     boardIdx = boardIdx,
                     roomType = roomType,
-                    userIdx = userIdx
-//                    imgCnt = 0
+                    userIdx = userIdx,
+                    imgCnt = 0
                 )
                 FeedsWriteService(this).tryPostFeedsWrite(postRequest)
             } else {
-                val postRequest = FeedsWriteRequest(
+                val postRequest = ImageFeedsWriteRequest(
                     title = title,
-                    contents = content,
+                    content = content,
                     boardIdx = boardIdx,
                     roomType = roomType,
-                    userIdx = userIdx
-//                    imgCnt = imgCnt,
+                    userIdx = userIdx,
+                    imgCnt = imgCnt,
                 )
 //                val postImageRequest = PostFeedsWriteImageRequest(
 //                    request = postRequest,
@@ -181,6 +180,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
         }
     }
 
+    //이미지 갤럴리에서 가져오기
     private val activityResult : ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()){
         if(it.resultCode == RESULT_OK){
@@ -188,6 +188,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                 val count = it.data!!.clipData!!.itemCount
                 for(index in 0 until count){
                     val imageUri = it.data!!.clipData!!.getItemAt(index).uri
+                    val file = File(absolutelyPath(imageUri, this))
                     imageList.add(imageUri)
                 }
             }else{
@@ -198,6 +199,17 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             writeImageAdapter.notifyDataSetChanged()
         }
     }
+    fun absolutelyPath(path: Uri?, context : Context): String {
+        var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        var c: Cursor? = context.contentResolver.query(path!!, proj, null, null, null)
+        var index = c?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        c?.moveToFirst()
+
+        var result = c?.getString(index!!)
+
+        return result!!
+    }
+
 
     override fun onPostFeedsWriteSuccess(response: FeedsWriteResponse) {
         if(response.isSuccess){

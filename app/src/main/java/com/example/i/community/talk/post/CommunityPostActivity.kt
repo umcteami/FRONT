@@ -11,11 +11,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
 import com.example.i.community.customdialog.CMCategoryDialog
 import com.example.i.databinding.ActivityCommunityPostBinding
+import java.io.File
 
 class CommunityPostActivity : AppCompatActivity() {
     private lateinit var viewBinding : ActivityCommunityPostBinding
     private var heartClick : Boolean = false
     private var cntHeart : Int = 0
+    private val memIdx : Int = 0
+    private val boardType : Int = 0
+    private val roomType : Int = 0
+    private val feedIdx : Int = 0
+    private val title : String = ""
+    private val memNick : String = ""
+    private val content : String = ""
+    private val hit : Int = 0
+    private val commentCnt : Int = 0
+    private val time : String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityPostBinding.inflate(layoutInflater)
