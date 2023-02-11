@@ -1,41 +1,59 @@
 package com.example.i.chat
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.databinding.ItemMeChatBinding
 import com.example.i.databinding.ItemYouChatBinding
 
-class ChatRVAdpater(private val meList: ArrayList<ChatMe>, private val youList: ArrayList<ChatYou>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    inner class meHolder(val viewBinding: ItemMeChatBinding): RecyclerView.ViewHolder(viewBinding.root) {
-        fun bind(me: ChatMe) {
-            viewBinding.tvMessage.text = me.content
-            viewBinding.tvDate.text = me.time
-            if (me.Check) {
+class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+
+    inner class meHolder(private val viewBinding: ItemMeChatBinding): RecyclerView.ViewHolder(viewBinding.root) {
+        fun mbind(chat: Chat) {
+            viewBinding.tvMessage.text = chat.message
+            viewBinding.tvDate.text = chat.date_time
+            if (chat.check) {
                 viewBinding.ivShow.visibility = View.VISIBLE
+            }
+            else {
+                viewBinding.ivShow.visibility = View.INVISIBLE
             }
         }
     }
 
-    inner class youHolder(val viewBinding: ItemYouChatBinding): RecyclerView.ViewHolder(viewBinding.root) {
-        fun bind(you: ChatYou) {
-            viewBinding.tvMessage.text = you.content
-
+    inner class youHolder(private val viewBinding: ItemYouChatBinding): RecyclerView.ViewHolder(viewBinding.root) {
+        fun ybind(chat: Chat) {
+            viewBinding.ivProfile.setImageURI(chat.profile.toUri())
+            viewBinding.tvMessage.text = chat.message
+            viewBinding.tvDate.text = chat.date_time
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        TODO("Not yet implemented")
+
+        if (viewType == 1) {
+            val viewBinding = ItemMeChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return meHolder(viewBinding)
+        }
+        else {
+            val viewBinding = ItemYouChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return youHolder(viewBinding)
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        if (holder is meHolder) {
+            (holder as meHolder).mbind(cList[position])
+        }
+        else {
+            (holder as youHolder).ybind(cList[position])
+        }
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
-
+    override fun getItemCount(): Int = cList.size
 
 }

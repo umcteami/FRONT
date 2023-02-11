@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.R
 import com.example.i.databinding.ItemMessageListBinding
 
@@ -16,12 +17,14 @@ class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adap
     inner class ViewHolder(val viewBinding: ItemMessageListBinding): RecyclerView.ViewHolder(viewBinding.root) {
 
         fun bind(Message: Message) {
-            viewBinding.ivProfile.setImageURI(Message.profile.toUri())
+            Glide.with(viewBinding.ivProfile)
+                .load(Message.profile)
+                .into(viewBinding.ivProfile)
             viewBinding.tvNickname.text = Message.nickname
             viewBinding.tvChat.text = Message.chat
             viewBinding.tvTime.text = Message.time
-            if (Message.num.isEmpty() || Message.num.equals(0)){
-                viewBinding.tvNum.visibility = View.GONE
+            if (Message.num?.isEmpty() == true || Message.num!!.equals(0)){
+                viewBinding.tvNum.visibility = View.INVISIBLE
             }
             else {
                 viewBinding.tvNum.visibility=View.VISIBLE
