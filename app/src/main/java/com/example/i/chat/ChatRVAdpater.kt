@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemMeChatBinding
 import com.example.i.databinding.ItemYouChatBinding
 
@@ -16,7 +17,7 @@ class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<Re
         fun mbind(chat: Chat) {
             viewBinding.tvMessage.text = chat.message
             viewBinding.tvDate.text = chat.date_time
-            if (chat.check) {
+            if (chat.check == true) {
                 viewBinding.ivShow.visibility = View.VISIBLE
             }
             else {
@@ -27,7 +28,9 @@ class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<Re
 
     inner class youHolder(private val viewBinding: ItemYouChatBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun ybind(chat: Chat) {
-            viewBinding.ivProfile.setImageURI(chat.profile.toUri())
+            Glide.with(viewBinding.ivProfile)
+                .load(chat.profile)
+                .into(viewBinding.ivProfile)
             viewBinding.tvMessage.text = chat.message
             viewBinding.tvDate.text = chat.date_time
         }
