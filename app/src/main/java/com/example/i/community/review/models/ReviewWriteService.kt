@@ -22,7 +22,7 @@ class ReviewWriteService(val ReviewWriteInterface : ReviewWriteInterface) {
                 }
             }
             override fun onFailure(call: Call<ReviewWriteResponse>, t: Throwable) {
-                ReviewWriteInterface.onPostReviewWriteFailure(t.message ?: "오류")
+                ReviewWriteInterface.onPostReviewWriteFailure(t.message ?: "통신 오류")
             }
             })
     }

@@ -54,6 +54,9 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             activityResult.launch(intent)
         }
 
+
+
+
         viewBinding.btChoiceCategory.setOnClickListener(this)
 
         viewBinding.etTitle.addTextChangedListener(object : TextWatcher {
@@ -132,6 +135,8 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
             }
         })
+
+        //업로드
         viewBinding.btUpload.setOnClickListener {
             val title = viewBinding.etTitle.text.toString()
             val content = viewBinding.etContent.text.toString()
@@ -151,8 +156,8 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                     contents = content,
                     boardIdx = boardIdx,
                     roomType = roomType,
-                    userIdx = userIdx,
-                    imgCnt = 0
+                    userIdx = userIdx
+//                    imgCnt = 0
                 )
                 FeedsWriteService(this).tryPostFeedsWrite(postRequest)
             } else {
@@ -161,12 +166,11 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                     contents = content,
                     boardIdx = boardIdx,
                     roomType = roomType,
-                    userIdx = userIdx,
-                    imgCnt = imgCnt,
+                    userIdx = userIdx
+//                    imgCnt = imgCnt,
                 )
 //                val postImageRequest = PostFeedsWriteImageRequest(
 //                    request = postRequest,
-//                    image =
 //                )
 
             }
@@ -204,8 +208,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
         }else{
         }
     }
-
-
 
     override fun onPostFeedsWriteFailure(message: String) {
         Toast.makeText(this, "오류 $message", Toast.LENGTH_SHORT).show()
