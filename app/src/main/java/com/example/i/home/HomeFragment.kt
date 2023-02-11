@@ -9,7 +9,6 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
-import com.example.i.community.*
 import com.example.i.community.diary.DiaryActivity
 import com.example.i.community.diary.DiaryCareActivity
 import com.example.i.community.diary.DiaryRainActivity
@@ -19,6 +18,7 @@ import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentHomeBinding
 import com.example.i.home.model.TtlListInterface
 import com.example.i.home.model.TtlListResponse
+import com.example.i.home.model.TtlListService
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
@@ -166,6 +166,8 @@ class HomeFragment :Fragment(), TtlListInterface {
 //            }
 //        }
 
+        TtlListService(this).tryGetTtlList(5)
+
         viewBinding.btnWrite.setOnClickListener {
             val intent = Intent(requireActivity(), CommunityWriteActivity::class.java)
             intent.putExtra("cindex", 2)
@@ -182,7 +184,7 @@ class HomeFragment :Fragment(), TtlListInterface {
 
 
             ttlList.apply {
-                add(Ttls(response.result.title,response.result.img.toString(),response.result.memNick,response.result.createAt,response.result.hit.toString(),response.result.likeCnt.toString(),response.result.commentCnt.toString()))
+                add(Ttls(response.result[5].toString(),response.result[6].toString(),response.result[4].toString(),response.result[10].toString(),response.result[7].toString(),response.result[9].toString(),response.result[8].toString()))
             }
 
             viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
