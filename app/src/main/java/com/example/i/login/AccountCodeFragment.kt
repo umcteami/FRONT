@@ -67,12 +67,17 @@ class AccountCodeFragment : Fragment(), FindInterface {
 
     // 이메일 찾기 API
     override fun onGetFindSuccess(response: FindResponse) {
-        // 계정이 있는 경우
+        // 인증번호 발송이 성공한 경우
         if(response.isSuccess){
-            // 인증번호 발송이 성공한 경우
             val Activity = activity as AccountSearchActivity
             Activity.changeFragment(4)
-            accountEmail = response.result.toString()
+
+            if(response.result != null)
+            {
+                accountEmail = response.result.toString() //이메일 가져오기
+            }
+            else
+            {   accountEmail = "가입하신 이메일 주소가 없습니다."    }
         }
         // Result message
         Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
