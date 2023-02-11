@@ -14,5 +14,4 @@ data class TtlList(
     @SerializedName("commentCnt") val commentCnt : Int,
     @SerializedName("likeCnt") val likeCnt : Int,
     @SerializedName("createAt") val createAt: String
-
     )

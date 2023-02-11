@@ -1,7 +1,8 @@
 package com.example.i.home
 
 data class Ttls(
-//    var hasImage : HasImage,
+    var hasImage : HasImage,
+    var type: String,
     var title: String,
     var picture : String,
     var writer: String,

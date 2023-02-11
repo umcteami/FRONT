@@ -110,6 +110,11 @@ class HomeFragment :Fragment(), TtlListInterface {
             startActivity(intent)
         }
 
+        viewBinding.btnWrite.setOnClickListener {
+            val intent = Intent(requireActivity(), CommunityWriteActivity::class.java)
+            intent.putExtra("cindex", 2)
+            startActivity(intent)
+        }
 
 
         //인기글 RV
@@ -137,42 +142,9 @@ class HomeFragment :Fragment(), TtlListInterface {
             }
         }
 
-        //전체글 RV
-//
-//        val ttlList: ArrayList<Ttls> = arrayListOf()
-//        val Tadapter = TtlRVAdapter(ttlList)
-
-//        ttlList.apply {
-//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",null,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-//        }
-
-//
-
-//        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
-//        viewBinding.homeTtlRV.adapter = Tadapter
-//
-//        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
-//            override fun onClick(view: View, position: Int) {
-//                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-//                startActivity(intent)
-//            }
-//        }
-
+        //전체글
         TtlListService(this).tryGetTtlList(5)
 
-        viewBinding.btnWrite.setOnClickListener {
-            val intent = Intent(requireActivity(), CommunityWriteActivity::class.java)
-            intent.putExtra("cindex", 2)
-            startActivity(intent)
-        }
 
         return viewBinding.root
     }
@@ -181,10 +153,17 @@ class HomeFragment :Fragment(), TtlListInterface {
         if (response.isSuccess) {
             val ttlList: ArrayList<Ttls> = arrayListOf()
             val Tadapter = TtlRVAdapter(ttlList)
+            val hasImage: HasImage
+
+            if(response.result[6]!=null) {
+                hasImage = HasImage.TRUE
+            }else{
+                hasImage = HasImage.FALSE
+            }
 
 
             ttlList.apply {
-                add(Ttls(response.result[5].toString(),response.result[6].toString(),response.result[4].toString(),response.result[10].toString(),response.result[7].toString(),response.result[9].toString(),response.result[8].toString()))
+                add(Ttls(hasImage,response.result[5].toString(),response.result[0].toString(),response.result[6].toString(),response.result[4].toString(),response.result[10].toString(),response.result[7].toString(),response.result[9].toString(),response.result[8].toString()))
             }
 
             viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
