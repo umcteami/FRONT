@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.example.i.databinding.FragmentEmailBinding
 import com.example.i.signup.models.*
 import retrofit2.Retrofit
 
+var signUpEmail : String = "" // 전역 변수
 var authIdx : Int = 0 // 전역 변수
 
 class EmailFragment : Fragment(), PostCodeInterface {
@@ -65,8 +67,8 @@ class EmailFragment : Fragment(), PostCodeInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            val auth = viewBinding.etEmail.text.toString()
-            val EmailRequest = PostCodeRequest(type = 1, auth = auth)
+            signUpEmail = viewBinding.etEmail.text.toString()
+            val EmailRequest = PostCodeRequest(type = 1, auth = signUpEmail)
             PostCodeService(this).tryPostEmail(EmailRequest)
 
             // Activity.changeFragment(1)
@@ -81,29 +83,15 @@ class EmailFragment : Fragment(), PostCodeInterface {
         if(response.isSuccess){
             val Activity = activity as SignupActivity
             Activity.changeFragment(1)
-
             authIdx = response.result.authIdx
-
-//            // 사용자가 입력한 email 전달
-//            val bundle = Bundle() // 번들을 통해 값 전달
-//            bundle.putString("email", viewBinding.etEmail.text.toString()) //번들에 넘길 값 저장
-//
-//            val fragment2 = EmailCodeFragment() //프래그먼트2 선언
-//            fragment2.setArguments(bundle) //번들을 프래그먼트2로 보낼 준비
-//
-//            requireActivity().supportFragmentManager
-//                .beginTransaction()
-//                .replace(viewBinding.frameFragment.id, fragment2)
-//                .commit()
         }
-
         // Result message
         Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
     }
 
     // 서버 연결 실패
     override fun onPostEmailFailure(message: String) {
-        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("error", "오류 : $message")
     }
 
     override fun onPostPhoneSuccess(response: CodeResponse) {

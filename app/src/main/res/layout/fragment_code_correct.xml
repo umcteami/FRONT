@@ -24,12 +24,12 @@
             android:text="가입하신 이메일 주소"
             android:textSize="20sp"/>
         <TextView
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="79dp"
             android:layout_marginTop="120dp"
             android:background="@drawable/rectangle_email"
-            android:paddingTop="25dp"
-            android:paddingLeft="110dp"
+            android:gravity="center"
             android:text="aaa***@gma****"
             android:textSize="21sp"/>
 

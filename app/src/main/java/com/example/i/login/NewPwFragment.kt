@@ -89,7 +89,7 @@ class NewPwFragment : Fragment(), NewPwInterface {
             }
 
             val pw = viewBinding.etPwcode.text.toString()
-            val NewPwRequest = PostNewPwRequest(email = email, pw = pw)
+            val NewPwRequest = PostNewPwRequest(email = pwEmail, pw = pw)
             NewPwService(this).tryPatchNewPw(NewPwRequest)
         }
 

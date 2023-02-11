@@ -6,9 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import com.example.i.R
 import com.example.i.databinding.FragmentCodeCorrectBinding
 
 class CodeCorrectFragment : Fragment() {
@@ -22,6 +19,8 @@ class CodeCorrectFragment : Fragment() {
         viewBinding = FragmentCodeCorrectBinding.inflate(inflater, container, false)
 
         val activity = activity as AccountSearchActivity
+
+        viewBinding.tvEmail.text = accountEmail // 이메일 가져오기
 
         // 로그인 화면으로 이동
         viewBinding.btOk.setOnClickListener{
