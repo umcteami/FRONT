@@ -46,7 +46,7 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
         }
 
         // 회원정보 get
-        SettingService(this).tryGetUser()
+        SettingService(this).tryGetUser(33)
         Toast.makeText(this,"불러옴",Toast.LENGTH_SHORT).show()
 
         // 회원정보 수정
