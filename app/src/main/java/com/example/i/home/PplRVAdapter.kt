@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i.databinding.ListItemPpl2Binding
 import com.example.i.databinding.ListItemPplBinding
+import com.example.i.home.total.Const
+import com.example.i.home.total.Const.HASIMAGE
 
 class PplRVAdapter (private val pplList: ArrayList<Ppls>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -42,7 +44,7 @@ class PplRVAdapter (private val pplList: ArrayList<Ppls>): RecyclerView.Adapter<
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == Const.HASIMAGE) {
+        return if (viewType == HASIMAGE) {
             val view = ListItemPplBinding.inflate(LayoutInflater.from(parent.context),parent, false)
             PplWithImageViewHolder(view)
         } else {

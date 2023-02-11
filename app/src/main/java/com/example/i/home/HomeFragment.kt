@@ -17,15 +17,14 @@ import com.example.i.community.review.ReviewActivity
 import com.example.i.community.talk.*
 import com.example.i.config.ApplicationClass.Companion.sRetrofit
 import com.example.i.databinding.FragmentHomeBinding
-import com.example.i.home.total.ViewTotalService
+import com.example.i.home.total.*
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
 @Suppress("UNREACHABLE_CODE")
-class HomeFragment :Fragment() {
+class HomeFragment : Fragment(), ViewTtlInterface {
     private lateinit var viewBinding: FragmentHomeBinding
     private var searchText : String = ""
-    val viewTotalService = sRetrofit.create(ViewTotalService::class.java)
 
 
     override fun onCreateView(
@@ -42,7 +41,7 @@ class HomeFragment :Fragment() {
         }
 
         viewBinding.drawerView.setNavigationItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.drawer_community -> { //이야기방 전체
                     val intent = Intent(context, CommunityTalkroomActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -56,7 +55,7 @@ class HomeFragment :Fragment() {
                 }
 
                 R.id.drawer_qna -> { //질문방
-                   val intent = Intent(context, CommunityQnaActivity::class.java)
+                    val intent = Intent(context, CommunityQnaActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                 }
@@ -101,16 +100,15 @@ class HomeFragment :Fragment() {
 
         viewBinding.homeSearchBtn.setOnClickListener {
             val intent = Intent(context, SearchActivity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
         viewBinding.homeNotiBtn.setOnClickListener {
             val intent = Intent(context, NotiActivity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
-
 
 
         //인기글 RV
@@ -119,19 +117,86 @@ class HomeFragment :Fragment() {
 
         pplList.apply {
 
-            add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+            add(
+                Ppls(
+                    HasImage.FALSE,
+                    "안녕하세요 오늘 처음 가입해서 인사드립니다.",
+                    null,
+                    "별이언니",
+                    "2022.11.17",
+                    "10",
+                    "8",
+                    "3"
+                )
+            )
+            add(
+                Ppls(
+                    HasImage.TRUE,
+                    "고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요 귀여워요.",
+                    R.drawable.img_1,
+                    "별이언니",
+                    "2022.11.17",
+                    "10",
+                    "8",
+                    "3"
+                )
+            )
+            add(
+                Ppls(
+                    HasImage.FALSE,
+                    "안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",
+                    null,
+                    "별이언니",
+                    "2022.11.17",
+                    "10",
+                    "8",
+                    "3"
+                )
+            )
+            add(
+                Ppls(
+                    HasImage.TRUE,
+                    "고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",
+                    R.drawable.img_1,
+                    "별이언니",
+                    "2022.11.17",
+                    "10",
+                    "8",
+                    "3"
+                )
+            )
+            add(
+                Ppls(
+                    HasImage.FALSE,
+                    "안녕하세요 오늘 처음 가입해서 인사드립니다.",
+                    null,
+                    "별이언니",
+                    "2022.11.17",
+                    "10",
+                    "8",
+                    "3"
+                )
+            )
+            add(
+                Ppls(
+                    HasImage.TRUE,
+                    "고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",
+                    R.drawable.img_1,
+                    "별이언니",
+                    "2022.11.17",
+                    "10",
+                    "8",
+                    "3"
+                )
+            )
 
         }
 
-        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        viewBinding.homePplRV.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         viewBinding.homePplRV.adapter = Padapter
 
-        Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
+        Padapter!!.itemClick = object : PplRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
                 startActivity(intent)
@@ -139,36 +204,23 @@ class HomeFragment :Fragment() {
         }
 
 
-
-
-        //전체글 RV
-
-        val ttlList: ArrayList<Ttls> = arrayListOf()
-        val Tadapter = TtlRVAdapter(ttlList)
-
-        ttlList.apply {
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-        }
+         //ttl 리사이클러뷰 연결?
+       ViewTtlService(this).tryGetViewTtl()
+        viewTtlRV()
 
 //
+//        ttlList.apply {
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//        }
 
-        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
-        viewBinding.homeTtlRV.adapter = Tadapter
-
-        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
 
         viewBinding.btnWrite.setOnClickListener {
             val intent = Intent(requireActivity(), CommunityWriteActivity::class.java)
@@ -179,6 +231,33 @@ class HomeFragment :Fragment() {
 
         return viewBinding.root
     }
+
+    private fun viewTtlRV(){
+        val ttlList: ArrayList<Ttls> = arrayListOf()
+        val Tadapter = TtlRVAdapter(ttlList)
+
+        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
+        viewBinding.homeTtlRV.adapter = Tadapter
+
+
+        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+    }
+
+    override fun onGetViewTtlSuccess(response: ViewTtlResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetViewTtlFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+
 
 
 }

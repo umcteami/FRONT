@@ -3,11 +3,13 @@ package com.example.i.home.total
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ListItemTtl2Binding
 import com.example.i.databinding.ListItemTtlBinding
 import com.example.i.home.HasImage
-import com.example.i.home.total.Ttls
+import com.example.i.home.Ttls
 import com.example.i.home.total.Const.HASIMAGE
 import com.example.i.home.total.Const.NOIMAGE
 
@@ -18,13 +20,16 @@ class TtlRVAdapter(private var ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
     inner class TtlWithImageViewHolder(val viewBinding: ListItemTtlBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(ttls: Ttls) {
-            viewBinding.ttlTitle.text = ttls.title
-            viewBinding.ttlPicture.text = ttls.img
-            viewBinding.ttlWriter.text = ttls.writer
-            viewBinding.ttlDate.text = ttls.date
-            viewBinding.ttlViewNum.text = ttls.view
-            viewBinding.ttlHaertNum.text = ttls.heart
-            viewBinding.tlCommentNum.text = ttls.comment
+            viewBinding.ttlTitle.text = ttls.title //제목
+            viewBinding.ttlType.text = ttls.boardType.toString() //이야기방, 일기장, 장터후기
+            Glide.with(viewBinding.ttlImg.context)
+                .load(ttls.img)
+                .into(viewBinding.ttlImg)
+            viewBinding.ttlWriter.text = ttls.memNick //글쓴이 닉네임
+            viewBinding.ttlDate.text = ttls.createAt //글쓴 날짜 및 시간
+            viewBinding.ttlViewNum.text = ttls.hit.toString() //조회수
+            viewBinding.ttlHaertNum.text = ttls.likeCnt.toString() //하트수
+            viewBinding.tlCommentNum.text = ttls.commentCnt.toString() //댓글수
         }
     }
 
@@ -32,11 +37,12 @@ class TtlRVAdapter(private var ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
         RecyclerView.ViewHolder(viewBinding2.root) {
         fun bind(ttls: Ttls) {
             viewBinding2.ttlTitle.text = ttls.title
-            viewBinding2.ttlWriter.text = ttls.writer
-            viewBinding2.ttlDate.text = ttls.date
-            viewBinding2.ttlViewNum.text = ttls.view
-            viewBinding2.ttlHaertNum.text = ttls.heart
-            viewBinding2.tlCommentNum.text = ttls.comment
+            viewBinding2.ttlType.text = ttls.boardType.toString()
+            viewBinding2.ttlWriter.text = ttls.memNick
+            viewBinding2.ttlDate.text = ttls.createAt
+            viewBinding2.ttlViewNum.text = ttls.hit.toString()
+            viewBinding2.ttlHaertNum.text = ttls.likeCnt.toString()
+            viewBinding2.tlCommentNum.text = ttls.commentCnt.toString()
         }
     }
 
@@ -79,10 +85,7 @@ class TtlRVAdapter(private var ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
     }
 
     override fun getItemCount(): Int = ttlList.size
-
-//    fun SetTTlList(list: List<Total1Data>){
-//        ttlList = list
-//    }
+    
 
     interface ItemClick {
         fun onClick(view: View, position: Int)
@@ -94,5 +97,7 @@ object Const {
     const val HASIMAGE = 0
     const val NOIMAGE = 1
 }
+
+
 
 
