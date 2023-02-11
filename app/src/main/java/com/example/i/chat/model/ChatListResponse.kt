@@ -4,5 +4,5 @@ import com.example.i.config.BaseResponse
 import com.google.gson.annotations.SerializedName
 
 data class ChatListResponse(
-    @SerializedName("result") val result: ResultChatList
+    @SerializedName("result") val result: ArrayList<ResultChatList>
 ): BaseResponse()
