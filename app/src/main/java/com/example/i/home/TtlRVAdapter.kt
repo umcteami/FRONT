@@ -8,9 +8,8 @@ import com.bumptech.glide.Glide
 import com.example.i.databinding.ListItemTtl2Binding
 import com.example.i.databinding.ListItemTtlBinding
 import com.example.i.home.Const.HASIMAGE
-import com.example.i.home.Const.NOIMAGE
 
-class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TtlRVAdapter(private val ttlList: ArrayList<Ttls>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var itemClick: TtlRVAdapter.ItemClick? = null
 
