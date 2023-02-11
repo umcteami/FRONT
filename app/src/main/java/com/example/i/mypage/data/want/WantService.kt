@@ -1,8 +1,6 @@
 package com.example.i.mypage.data.want
 
 import com.example.i.config.ApplicationClass
-import com.example.i.mypage.data.BlockInterface
-import com.example.i.mypage.data.BlockRetrofitInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
