@@ -1,6 +1,7 @@
 package com.example.i.chat
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,8 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.Main2Activity
-import com.example.i.R
 import com.example.i.chat.customdialog.MessageOptionDialog
 import com.example.i.chat.model.ChatListInterface
 import com.example.i.chat.model.ChatListResponse
@@ -26,7 +25,7 @@ class MessageListFragment : Fragment(), ChatListInterface {
     ): View {
         viewBinding = FragmentMessageListBinding.inflate(layoutInflater)
 
-        ChatListService(this).tryGetChatList(2)
+        ChatListService(this).tryGetChatList(8)
 
         return viewBinding.root
     }
@@ -35,19 +34,32 @@ class MessageListFragment : Fragment(), ChatListInterface {
         if (response.isSuccess) {
             val mList: ArrayList<Message> = arrayListOf()
             val adapter = MessageRVAdapter(mList)
+            val customDecoration = ChatRVDecoration(2f, 2f, Color.rgb(0xB4,0xB4,0xB4))
+            val index: Int = response.result.size - 1
 
-            mList.apply {
-                add(Message(response.result.profile,response.result.nick, response.result.recentChat, response.result.recentTime, response.result.noReadNum.toString()))
+            for (i in 0 .. index) {
+                mList.apply {
+                    add(
+                        Message(
+                            response.result[i]?.profile,
+                            response.result[i]?.nick,
+                            response.result[i]?.recentChat,
+                            response.result[i]?.recentTime,
+                            response.result[i]?.noReadNum.toString()
+                        )
+                    )
+                }
             }
 
             viewBinding.rvChat.layoutManager = LinearLayoutManager(requireActivity())
             viewBinding.rvChat.adapter = adapter
+            viewBinding.rvChat.addItemDecoration(customDecoration)
 
             adapter!!.itemClick = object : MessageRVAdapter.ItemClick{
                 override fun onClick(view: View,  data: CharSequence, position: Int) {
                     val intent = Intent(context, MessageActivity::class.java)
-                    intent.putExtra("memIdx", response.result.sender)
-                    intent.putExtra("roomIdx", response.result.roomIdx)
+                    intent.putExtra("memIdx", response.result[0].sender)
+                    intent.putExtra("roomIdx", response.result[0].roomIdx)
                     startActivity(intent)
                 }
             }

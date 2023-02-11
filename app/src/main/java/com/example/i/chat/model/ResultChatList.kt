@@ -3,7 +3,7 @@ package com.example.i.chat.model
 import com.google.gson.annotations.SerializedName
 
 data class ResultChatList(
-    @SerializedName("romeIdx") val roomIdx: Int,
+    @SerializedName("roomIdx") val roomIdx: Int,
     @SerializedName("sender") val sender: Int,
     @SerializedName("profile") val profile: String,
     @SerializedName("nick") val nick: String,
