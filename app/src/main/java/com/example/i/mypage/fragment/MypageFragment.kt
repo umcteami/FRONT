@@ -16,6 +16,7 @@ import com.example.i.mypage.data.MyPageInterface
 import com.example.i.mypage.data.MyPageResponse
 import com.example.i.mypage.data.MyPageService
 
+@Suppress("UNREACHABLE_CODE")
 class MypageFragment : Fragment(), MyPageInterface {
     private lateinit var viewBinding: FragmentMypageBinding
 
@@ -82,6 +83,7 @@ class MypageFragment : Fragment(), MyPageInterface {
     override fun onGetMyPageFailure(message: String) {
         Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
+
 
     private fun setUpSetting() {
         viewBinding.mypageSettingBtn.setOnClickListener {

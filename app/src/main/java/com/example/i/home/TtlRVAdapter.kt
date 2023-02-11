@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ListItemTtl2Binding
 import com.example.i.databinding.ListItemTtlBinding
 import com.example.i.home.Const.HASIMAGE
@@ -17,7 +18,9 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
         RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(ttls: Ttls) {
             viewBinding.ttlTitle.text = ttls.title
-            viewBinding.ttlPicture.setImageResource(ttls.picture!!)
+            Glide.with(viewBinding.ttlImg)
+                .load(ttls.picture)
+                .into(viewBinding.ttlImg)
             viewBinding.ttlWriter.text = ttls.writer
             viewBinding.ttlDate.text = ttls.date
             viewBinding.ttlViewNum.text = ttls.view
@@ -38,9 +41,9 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (ttlList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
-    }
+//    override fun getItemViewType(position: Int): Int {
+//        return if (ttlList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
+//    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -61,19 +64,19 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
             (holder as TtlWithoutImageViewHolder).bind(ttlList[position])
         }
 
-        if (itemClick != null) {
-            if (ttlList[position].hasImage == HasImage.TRUE) {
-                (holder as TtlRVAdapter.TtlWithImageViewHolder).viewBinding!!.itemTtl.setOnClickListener(
-                    View.OnClickListener {
-                        itemClick?.onClick(it, position)
-                    })
-            }  else {
-                (holder as TtlRVAdapter.TtlWithoutImageViewHolder).viewBinding2!!.itemTtl2.setOnClickListener(
-                    View.OnClickListener {
-                        itemClick?.onClick(it, position)
-                    })
-            }
-        }
+//        if (itemClick != null) {
+//            if (ttlList[position].hasImage == HasImage.TRUE) {
+//                (holder as TtlRVAdapter.TtlWithImageViewHolder).viewBinding!!.itemTtl.setOnClickListener(
+//                    View.OnClickListener {
+//                        itemClick?.onClick(it, position)
+//                    })
+//            }  else {
+//                (holder as TtlRVAdapter.TtlWithoutImageViewHolder).viewBinding2!!.itemTtl2.setOnClickListener(
+//                    View.OnClickListener {
+//                        itemClick?.onClick(it, position)
+//                    })
+//            }
+//        }
     }
 
     override fun getItemCount(): Int = ttlList.size
