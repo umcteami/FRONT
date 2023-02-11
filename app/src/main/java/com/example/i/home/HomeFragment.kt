@@ -184,7 +184,7 @@ class HomeFragment :Fragment(), TtlListInterface {
 
 
             ttlList.apply {
-                add(Ttls(response.result.title,response.result.img.toString(),response.result.memNick,response.result.createAt,response.result.hit.toString(),response.result.likeCnt.toString(),response.result.commentCnt.toString()))
+                add(Ttls(response.result[5].toString(),response.result[6].toString(),response.result[4].toString(),response.result[10].toString(),response.result[7].toString(),response.result[9].toString(),response.result[8].toString()))
             }
 
             viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
