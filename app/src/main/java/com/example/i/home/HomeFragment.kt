@@ -143,7 +143,7 @@ class HomeFragment :Fragment(), TtlListInterface {
         }
 
         //전체글
-        TtlListService(this).tryGetTtlList(5)
+        TtlListService(this).tryGetTtlList()
 
 
         return viewBinding.root
