@@ -34,20 +34,20 @@ class MessageListFragment : Fragment(), ChatListInterface {
     override fun onGetChatListSuccess(response: ChatListResponse) {
         if (response.isSuccess) {
             val mList: ArrayList<Message> = arrayListOf()
-            val memIdx = response.result.sender
             val adapter = MessageRVAdapter(mList)
 
             mList.apply {
                 add(Message(response.result.profile,response.result.nick, response.result.recentChat, response.result.recentTime, response.result.noReadNum.toString()))
             }
 
-            viewBinding.rvChat.layoutManager = LinearLayoutManager(context)
+            viewBinding.rvChat.layoutManager = LinearLayoutManager(requireActivity())
             viewBinding.rvChat.adapter = adapter
 
             adapter!!.itemClick = object : MessageRVAdapter.ItemClick{
                 override fun onClick(view: View,  data: CharSequence, position: Int) {
                     val intent = Intent(context, MessageActivity::class.java)
-                    intent.putExtra("nickname", data)
+                    intent.putExtra("memIdx", response.result.sender)
+                    intent.putExtra("roomIdx", response.result.roomIdx)
                     startActivity(intent)
                 }
             }
