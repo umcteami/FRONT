@@ -16,6 +16,7 @@ import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter
 import com.example.i.mypage.data.like.LikeResponse
 import com.example.i.mypage.data.post.PostInterface
+import com.example.i.mypage.data.post.PostResponse
 import com.example.i.mypage.data.post.PostService
 
 class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
@@ -52,7 +53,7 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
     }
 
     // 작성 글 조회 API
-    override fun onGetPostSuccess(response: LikeResponse) {
+    override fun onGetPostSuccess(response: PostResponse) {
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
 
@@ -75,6 +76,14 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
         Log.d("error", "오류 : $message")
     }
 
+    override fun onGetDiarySuccess(response: PostResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetDiaryFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
     //뒤로가기
     private fun backFragment() {
         viewBinding.backBtn.setOnClickListener {
@@ -86,6 +95,7 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
             }
         }
     }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

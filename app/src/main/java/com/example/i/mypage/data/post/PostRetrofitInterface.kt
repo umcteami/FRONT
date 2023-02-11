@@ -10,5 +10,12 @@ interface PostRetrofitInterface {
     fun getPost(
         @Path("memIdx") memIdx: Int,
         @Path("page") page: Int
-    ): Call<LikeResponse>
+    ): Call<PostResponse>
+
+    // 일기장 작성 글 조회API
+    @GET("/mypage/DWrite/{memIdx}/{end}")
+    fun getDiary(
+        @Path("memIdx") memIdx: Int,
+        @Path("page") page: Int
+    ): Call<PostResponse>
 }
