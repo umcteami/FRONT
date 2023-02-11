@@ -4,6 +4,7 @@ package com.example.i.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 
 import androidx.fragment.app.Fragment
@@ -206,7 +207,6 @@ class HomeFragment : Fragment(), ViewTtlInterface {
 
          //ttl 리사이클러뷰 연결?
        ViewTtlService(this).tryGetViewTtl()
-        viewTtlRV()
 
 //
 //        ttlList.apply {
@@ -232,29 +232,29 @@ class HomeFragment : Fragment(), ViewTtlInterface {
         return viewBinding.root
     }
 
-    private fun viewTtlRV(){
-        val ttlList: ArrayList<Ttls> = arrayListOf()
-        val Tadapter = TtlRVAdapter(ttlList)
-
-        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
-        viewBinding.homeTtlRV.adapter = Tadapter
-
-
-        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
-    }
 
     override fun onGetViewTtlSuccess(response: ViewTtlResponse) {
-        TODO("Not yet implemented")
+        if(response.isSuccess){
+            val ttlList: ArrayList<Ttls> = arrayListOf()
+            val Tadapter = TtlRVAdapter(ttlList)
+
+            viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
+            viewBinding.homeTtlRV.adapter = Tadapter
+
+
+            Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
+        }
+        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onGetViewTtlFailure(message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
     }
 
 
