@@ -16,6 +16,8 @@ import com.example.i.MainActivity
 import com.example.i.databinding.FragmentPhoneBinding
 import com.example.i.signup.models.*
 
+var signUpPhone : String = "" // 전역 변수
+
 class PhoneFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding : FragmentPhoneBinding
 
@@ -59,8 +61,8 @@ class PhoneFragment : Fragment(), PostCodeInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            val auth = viewBinding.etPhone.text.toString()
-            val PhoneRequest = PostCodeRequest(type = 2, auth = auth)
+            signUpPhone = viewBinding.etPhone.text.toString()
+            val PhoneRequest = PostCodeRequest(type = 2, auth = signUpPhone)
             PostCodeService(this).tryPostPhone(PhoneRequest)
         }
 
