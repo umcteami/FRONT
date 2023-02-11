@@ -59,8 +59,7 @@ class AccountCodeFragment : Fragment(), FindInterface {
             val Activity = activity as AccountSearchActivity
             Activity.changeFragment(4)
 
-            FindService(this).tryGetFind(phone) // 차단한 사용자 API
-            Log.d("Body", "phone : {$phone}")
+            FindService(this).tryGetFind(phone) // 이메일 찾기 API
         }
 
         return viewBinding.root
