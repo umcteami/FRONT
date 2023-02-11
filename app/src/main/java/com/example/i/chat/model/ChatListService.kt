@@ -1,5 +1,4 @@
 package com.example.i.chat.model
-
 import com.example.i.config.ApplicationClass
 import retrofit2.Call
 import retrofit2.Callback

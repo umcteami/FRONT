@@ -3,6 +3,7 @@ package com.example.i.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -16,11 +17,12 @@ import com.example.i.community.review.ReviewActivity
 import com.example.i.community.talk.*
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentHomeBinding
+import com.example.i.home.model.TtlListInterface
+import com.example.i.home.model.TtlListResponse
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
-@Suppress("UNREACHABLE_CODE")
-class HomeFragment :Fragment() {
+class HomeFragment :Fragment(), TtlListInterface {
     private lateinit var viewBinding: FragmentHomeBinding
     private var searchText : String = ""
 
@@ -136,33 +138,33 @@ class HomeFragment :Fragment() {
         }
 
         //전체글 RV
+//
+//        val ttlList: ArrayList<Ttls> = arrayListOf()
+//        val Tadapter = TtlRVAdapter(ttlList)
 
-        val ttlList: ArrayList<Ttls> = arrayListOf()
-        val Tadapter = TtlRVAdapter(ttlList)
-
-        ttlList.apply {
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-        }
+//        ttlList.apply {
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//            add(Ttls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
+//        }
 
 //
 
-        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
-        viewBinding.homeTtlRV.adapter = Tadapter
-
-        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
+//        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
+//        viewBinding.homeTtlRV.adapter = Tadapter
+//
+//        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
+//            override fun onClick(view: View, position: Int) {
+//                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+//                startActivity(intent)
+//            }
+//        }
 
         viewBinding.btnWrite.setOnClickListener {
             val intent = Intent(requireActivity(), CommunityWriteActivity::class.java)
@@ -171,6 +173,33 @@ class HomeFragment :Fragment() {
         }
 
         return viewBinding.root
+    }
+
+    override fun onGetTtlListSuccess(response: TtlListResponse) {
+        if (response.isSuccess) {
+            val ttlList: ArrayList<Ttls> = arrayListOf()
+            val Tadapter = TtlRVAdapter(ttlList)
+
+
+            ttlList.apply {
+                add(Ttls(response.result.title,response.result.img.toString(),response.result.memNick,response.result.createAt,response.result.hit.toString(),response.result.likeCnt.toString(),response.result.commentCnt.toString()))
+            }
+
+            viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
+            viewBinding.homeTtlRV.adapter = Tadapter
+
+            Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
+        }
+    }
+
+    override fun onGetTtlListFailure(message: String) {
+        Log.d("error","카테고리 전체글 오류: $message")
     }
 
 
