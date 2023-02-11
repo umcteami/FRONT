@@ -1,14 +1,12 @@
 package com.example.i.community.talk.models
 
 import com.google.gson.annotations.SerializedName
-import java.io.File
 
-data class ImageFeedsWriteRequest(
+data class PatchFeedsEditRequest(
     @SerializedName("boardIdx") val boardIdx : Int,
     @SerializedName("userIdx") val userIdx : Int,
     @SerializedName("roomType") val roomType : Int,
     @SerializedName("title") val title : String,
     @SerializedName("content") val content : String,
-    @SerializedName("imgCnt") val imgCnt : Int,
-    val img : File
+    @SerializedName("feedIdx") val feedIdx : Int
 )

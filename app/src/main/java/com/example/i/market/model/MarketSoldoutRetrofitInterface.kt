@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface MarketSoldoutRetrofitInterface {
     //거래완료 설정API
-    @PUT("/market/soldout?marketIdx")
+    @PUT("/market/soldout?")
     fun putMarketSoldout(
         @Body params : MarketSoldoutRequest,
         @Query("marketIdx") marketIdx : Int
