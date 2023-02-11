@@ -133,7 +133,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nickname2">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/et_nickname"
             android:inputType="text"
             android:maxLines="1"
@@ -143,7 +143,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tv_intro"
+        android:id="@+id/tv_intro_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="(선택) 한 줄 소개"
@@ -162,7 +162,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
-        android:hint="@string/intro_hint"
         app:boxStrokeWidthFocused="0dp"
         app:boxStrokeWidth="0dp"
         app:boxBackgroundColor="@color/main_2"
@@ -176,9 +175,11 @@
         app:helperText="@string/intro_helper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_intro">
+        app:layout_constraintTop_toBottomOf="@+id/tv_intro_title">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/et_intro"
+            android:hint="@string/intro_hint"
             android:inputType="textMultiLine"
             android:scrollHorizontally="true"
             android:layout_width="match_parent"

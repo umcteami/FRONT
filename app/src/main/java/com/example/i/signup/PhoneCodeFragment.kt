@@ -31,7 +31,7 @@ class PhoneCodeFragment : Fragment() {
         val activity = activity as SignupActivity
 
         viewBinding.btOk.isEnabled = false
-        viewBinding.tvPhone.text = signUpPhone // 값 적용
+        viewBinding.tvPhone.text = signUp_phone // 값 적용
 
         viewBinding.etPhonecode.addTextChangedListener(object: TextWatcher {
             // 입력 전

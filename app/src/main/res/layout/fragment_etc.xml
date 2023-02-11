@@ -100,7 +100,7 @@
             tools:layout_editor_absoluteX="16dp">
 
             <Button
-                android:id="@+id/et_bir"
+                android:id="@+id/et_birth"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="14dp"
@@ -129,7 +129,7 @@
                 android:src="@drawable/calendar_month"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_bir"
+                app:layout_constraintStart_toEndOf="@+id/et_birth"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -204,7 +204,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
-                android:id="@+id/tv_add2"
+                android:id="@+id/tv_adresCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="11dp"
@@ -233,7 +233,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
-                android:id="@+id/tv_add3"
+                android:id="@+id/tv_adres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="11dp"
@@ -268,6 +268,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_add3">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tv_adresPlus"
                 android:inputType="textMultiLine"
                 android:scrollHorizontally="true"
                 android:maxLines="2"

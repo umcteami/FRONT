@@ -16,7 +16,7 @@ import com.example.i.MainActivity
 import com.example.i.databinding.FragmentPhoneBinding
 import com.example.i.signup.models.*
 
-var signUpPhone : String = "" // 전역 변수
+var signUp_phone : String = "" // 전역 변수
 
 class PhoneFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding : FragmentPhoneBinding
@@ -61,8 +61,9 @@ class PhoneFragment : Fragment(), PostCodeInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            signUpPhone = viewBinding.etPhone.text.toString()
-            val PhoneRequest = PostCodeRequest(type = 2, auth = signUpPhone)
+            signUp_phone = viewBinding.etPhone.text.toString()
+
+            val PhoneRequest = PostCodeRequest(type = 2, auth = signUp_phone)
             PostCodeService(this).tryPostPhone(PhoneRequest)
         }
 
@@ -77,8 +78,6 @@ class PhoneFragment : Fragment(), PostCodeInterface {
 
     // 인증번호 발송 API
     override fun onPostPhoneSuccess(response: CodeResponse) {
-        viewBinding.btOk.text = response.message
-
         // 인증번호 발송이 성공한 경우
         if(response.isSuccess){
             val Activity = activity as SignupActivity
