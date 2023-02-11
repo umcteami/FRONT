@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.community.talk.CommunityPostActivity
 import com.example.i.databinding.ActivityLikeMarketBinding
 import com.example.i.market.MarketPostActivity
 import com.example.i.mypage.data.LikeMarket
