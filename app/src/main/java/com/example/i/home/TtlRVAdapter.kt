@@ -10,7 +10,7 @@ import com.example.i.databinding.ListItemTtlBinding
 import com.example.i.home.Const.HASIMAGE
 import com.example.i.home.Const.NOIMAGE
 
-class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TtlRVAdapter(private val ttlList: ArrayList<Ttls>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var itemClick: TtlRVAdapter.ItemClick? = null
 
@@ -21,6 +21,7 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
             Glide.with(viewBinding.ttlImg)
                 .load(ttls.picture)
                 .into(viewBinding.ttlImg)
+            viewBinding.ttlType.text = ttls.type
             viewBinding.ttlWriter.text = ttls.writer
             viewBinding.ttlDate.text = ttls.date
             viewBinding.ttlViewNum.text = ttls.view
@@ -41,9 +42,9 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
         }
     }
 
-//    override fun getItemViewType(position: Int): Int {
-//        return if (ttlList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
-//    }
+    override fun getItemViewType(position: Int): Int {
+        return if (ttlList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -64,19 +65,19 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
             (holder as TtlWithoutImageViewHolder).bind(ttlList[position])
         }
 
-//        if (itemClick != null) {
-//            if (ttlList[position].hasImage == HasImage.TRUE) {
-//                (holder as TtlRVAdapter.TtlWithImageViewHolder).viewBinding!!.itemTtl.setOnClickListener(
-//                    View.OnClickListener {
-//                        itemClick?.onClick(it, position)
-//                    })
-//            }  else {
-//                (holder as TtlRVAdapter.TtlWithoutImageViewHolder).viewBinding2!!.itemTtl2.setOnClickListener(
-//                    View.OnClickListener {
-//                        itemClick?.onClick(it, position)
-//                    })
-//            }
-//        }
+        if (itemClick != null) {
+            if (ttlList[position].hasImage == HasImage.TRUE) {
+                (holder as TtlRVAdapter.TtlWithImageViewHolder).viewBinding!!.itemTtl.setOnClickListener(
+                    View.OnClickListener {
+                        itemClick?.onClick(it, position)
+                    })
+            }  else {
+                (holder as TtlRVAdapter.TtlWithoutImageViewHolder).viewBinding2!!.itemTtl2.setOnClickListener(
+                    View.OnClickListener {
+                        itemClick?.onClick(it, position)
+                    })
+            }
+        }
     }
 
     override fun getItemCount(): Int = ttlList.size
@@ -84,6 +85,7 @@ class TtlRVAdapter(private val ttlList:ArrayList<Ttls>) : RecyclerView.Adapter<R
     interface ItemClick {
         fun onClick(view: View, position: Int)
     }
+
 
 }
 

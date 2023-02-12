@@ -8,9 +8,9 @@ import retrofit2.Response
 class SettingService(val SettingInterface: SettingInterface) {
 
     // 회원정보 조회 API
-    fun tryGetUser(){
+    fun tryGetUser(memIdx:Int){
         val SettingRetrofitInterface = ApplicationClass.sRetrofit.create(SettingRetrofitInterface::class.java)
-        SettingRetrofitInterface.getUser().enqueue(object : Callback<userSearchgResponse>{
+        SettingRetrofitInterface.getUser(memIdx).enqueue(object : Callback<userSearchgResponse>{
             override fun onResponse(call: Call<userSearchgResponse>, response: Response<userSearchgResponse>) {
                 (response.body() as userSearchgResponse?)?.let {
                     SettingInterface.onGetUserSuccess(

@@ -1,3 +1,5 @@
+
+
 package com.example.i.community
 
 import android.os.Bundle
@@ -23,91 +25,91 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
         viewBinding = FragmentCommunityTalkroomBestBinding.inflate(layoutInflater)
 
         val itemList = ArrayList<BoardItem>()
-        itemList.apply {
-            add(
-                BoardItem(
-//                    false,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
-                    "22.12.28",
-                    "별이엄마",
-                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
-                    "정보방",
-                    "12",
-                    "2",
-                    "3"
-                )
-            )
-            add(
-                BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
-                    "22.12.28",
-                    "별이엄마",
-                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
-                    "정보방",
-                    "12",
-                    "2",
-                    "3"
-                )
-            )
-            add(
-                BoardItem(
-//                    false,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
-                    "22.12.28",
-                    "별이엄마",
-                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
-                    "정보방",
-                    "12",
-                    "2",
-                    "3"
-                )
-            )
-            add(
-                BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
-                    "22.12.28",
-                    "별이엄마",
-                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
-                    "정보방",
-                    "12",
-                    "2",
-                    "3"
-                )
-            )
-            add(
-                BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
-                    "22.12.28",
-                    "별이엄마",
-                    "다니고 계신 병원 정보 알려 (서울/경기도)",
-                    "정보방",
-                    "12",
-                    "2",
-                    "3"
-                )
-            )
-            add(
-                BoardItem(
-//                    true,
-//                    R.drawable.img_1,
-//                    R.drawable.img_1,
-                    "22.12.28",
-                    "별이엄마",
-                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
-                    "정보방",
-                    "12",
-                    "2",
-                    "3"
-                )
-            ) }
+//        itemList.apply {
+//            add(
+//                BoardItem(
+////                    false,
+////                    R.drawable.img_1,
+////                    R.drawable.img_1,
+//                    "22.12.28",
+//                    "별이엄마",
+//                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
+//                    "정보방",
+//                    "12",
+//                    "2",
+//                    "3"
+//                )
+//            )
+//            add(
+//                BoardItem(
+////                    true,
+////                    R.drawable.img_1,
+////                    R.drawable.img_1,
+//                    "22.12.28",
+//                    "별이엄마",
+//                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
+//                    "정보방",
+//                    "12",
+//                    "2",
+//                    "3"
+//                )
+//            )
+//            add(
+//                BoardItem(
+////                    false,
+////                    R.drawable.img_1,
+////                    R.drawable.img_1,
+//                    "22.12.28",
+//                    "별이엄마",
+//                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
+//                    "정보방",
+//                    "12",
+//                    "2",
+//                    "3"
+//                )
+//            )
+//            add(
+//                BoardItem(
+////                    true,
+////                    R.drawable.img_1,
+////                    R.drawable.img_1,
+//                    "22.12.28",
+//                    "별이엄마",
+//                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
+//                    "정보방",
+//                    "12",
+//                    "2",
+//                    "3"
+//                )
+//            )
+//            add(
+//                BoardItem(
+////                    true,
+////                    R.drawable.img_1,
+////                    R.drawable.img_1,
+//                    "22.12.28",
+//                    "별이엄마",
+//                    "다니고 계신 병원 정보 알려 (서울/경기도)",
+//                    "정보방",
+//                    "12",
+//                    "2",
+//                    "3"
+//                )
+//            )
+//            add(
+//                BoardItem(
+////                    true,
+////                    R.drawable.img_1,
+////                    R.drawable.img_1,
+//                    "22.12.28",
+//                    "별이엄마",
+//                    "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)",
+//                    "정보방",
+//                    "12",
+//                    "2",
+//                    "3"
+//                )
+//            ) }
         viewBinding.rvBoard.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         viewBinding.rvBoard.adapter = CommunityBoardAdapter(itemList)

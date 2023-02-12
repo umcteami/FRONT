@@ -1,13 +1,14 @@
 package com.example.i.home
 
 data class Ttls(
-//    var hasImage : HasImage,
-    var title: String,
-    var picture : String,
-    var writer: String,
-    var date: String,
-    var view : String,
-    var heart : String,
-    var comment: String
+    var hasImage : HasImage? = null,
+    var type: String? = null,
+    var title: String? = null,
+    var picture : String? = null,
+    var writer: String? = null,
+    var date: String? = null,
+    var view : String? = null,
+    var heart : String? = null,
+    var comment: String? = null
 
 )

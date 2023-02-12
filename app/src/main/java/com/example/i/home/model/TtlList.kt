@@ -1,5 +1,6 @@
 package com.example.i.home.model
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class TtlList(
@@ -14,5 +15,4 @@ data class TtlList(
     @SerializedName("commentCnt") val commentCnt : Int,
     @SerializedName("likeCnt") val likeCnt : Int,
     @SerializedName("createAt") val createAt: String
-
     )
