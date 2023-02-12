@@ -11,7 +11,6 @@ interface FeedsWriteImageRetrofitInterface {
     @Multipart
     @POST("/feeds/write")
     fun postFeedsImageWrite(
-//        @PartMap request : Map<String, @JvmSuppressWildcards RequestBody>,
         @Part("request") request : RequestBody,
         @Part img : List<MultipartBody.Part?>
     ) : Call<FeedsWriteImageResponse>

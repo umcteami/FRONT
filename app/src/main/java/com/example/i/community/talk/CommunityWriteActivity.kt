@@ -46,7 +46,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private var boardId : Int = 0
     private var roomType : Int = 0
     private var userId : Int = 33
-    private var imgCnt : Int = 0
     private var feedIdx : Int = -1
     private lateinit var recyclerView: RecyclerView
     private lateinit var writeImageAdapter: WriteImageAdapter
@@ -167,20 +166,19 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
             if(feedIdx == -1){
             if (imageList.size == 0) {
-                val postRequest = PostFeedsWriteImageRequest(
-                    title = title,
-                    content = content,
-                    boardIdx = boardIdx,
-                    roomType = roomType,
-                    userIdx = userIdx
-//                    imgCnt = 0,
-                )
-                val requestJson = Gson().toJson(postRequest)
-                val request = requestJson.toRequestBody("application/json".toMediaTypeOrNull())
+                //이미지가 없을 경우
                 val service =
                     ApplicationClass.sRetrofit.create(FeedsWriteImageRetrofitInterface::class.java)
+                val requestBody = PostFeedsWriteImageRequest(userIdx, boardIdx, roomType, title, content)
+                val newRequestBody = Gson().toJson(requestBody)
+                    .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
+//                val images = emptyList<MultipartBody.Part>()
 
-                val call = service.postFeedsImageWrite(request, emptyList())
+                val emptyImage = RequestBody.create("image/jpeg".toMediaTypeOrNull(), ByteArray(0))
+                val image = MultipartBody.Part.createFormData("img", "image.jpg", emptyImage)
+                val images = listOf(image)
+
+                val call = service.postFeedsImageWrite(newRequestBody,images)
                 call.enqueue(object : Callback<FeedsWriteImageResponse> {
                     override fun onResponse(
                         call: Call<FeedsWriteImageResponse>,
@@ -198,24 +196,20 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                 }
                 )
             } else {
+                //이미지가 존재할 경우
                 val service =
                     ApplicationClass.sRetrofit.create(FeedsWriteImageRetrofitInterface::class.java)
                 if (imageList.size != 0) {
                     val requestBody =
                         PostFeedsWriteImageRequest(userIdx, boardIdx, roomType, title, content)
-                    val requestJson = Gson().toJson(requestBody)
                     val images = ArrayList<MultipartBody.Part>()
                     for(i in 0 until imageList.size){
                         val file = File(getRealPathFromURI(imageList[i]))
                         val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
                         images.add(MultipartBody.Part.createFormData("img", file.name, requestFile))
                     }
-                    val request = requestJson.toRequestBody("application/json".toMediaTypeOrNull())
                     val newRequestBody = Gson().toJson(requestBody)
                         .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
-
-                    val requestString = Gson().toJson(requestBody)
-                    Log.d("JSON Request", requestString)
                     val call = service.postFeedsImageWrite(newRequestBody, images)
                     call.enqueue(object : Callback<FeedsWriteImageResponse> {
                         override fun onResponse(
@@ -226,24 +220,15 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                                 onPostFeedsImageWriteSuccess(it)
                             }
                         }
-
                         override fun onFailure(call: Call<FeedsWriteImageResponse>, t: Throwable) {
                             onPostFeedsImageWriteFailure(t.message ?: "통신 오류")
                         }
                     })
-                } else {
-
                 }
             }
-//                val images = ArrayList<MultipartBody.Part>()
-//                for (i in 0 until imageList.size) {
-//                    val file = File(getRealPathFromURI(imageList[i]))
-//                    val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-//                    images.add(MultipartBody.Part.createFormData("image$i", file.name, requestFile))
-//                }
-//                FeedsWriteImageService(this).sendPostFeedsWriteRequest(request, image)
             }
             else{
+                //게시글을 수정하는 경우
                 val patchRequest = PatchFeedsEditRequest(
                     feedIdx = feedIdx,
                     title = title,
@@ -253,7 +238,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                     userIdx = userIdx
                 )
                 FeedsEditService(this).tryPatchFeedsEdit(patchRequest)
-
             }
         }
 
