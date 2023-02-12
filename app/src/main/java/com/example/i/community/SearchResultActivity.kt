@@ -7,6 +7,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class SearchResultActivity : AppCompatActivity() {
     private lateinit var viewBinding : ActivitySearchResultBinding
+//    private var searchKeyword : String = ""
+    private var searchTarget : String = ""
+    private var page : Int = 1
     private val tabTitleArray = arrayOf(
         "제목+내용",
         "제목",
@@ -19,14 +22,15 @@ class SearchResultActivity : AppCompatActivity() {
 
         val viewPager = viewBinding.viewPager
         val tabLayout = viewBinding.tabLayout
+        searchTarget = tabTitleArray.toString()
 
         viewPager.adapter = ReviewSearchviewPagerAdapter(supportFragmentManager, lifecycle)
         TabLayoutMediator(tabLayout, viewPager){tab, position ->
             tab.text = tabTitleArray[position]
         }.attach()
 
-        val searchTerm = intent.getStringExtra("searchTerm")
-        viewBinding.etSearch.setText(searchTerm)
-        viewBinding.tvSearchTerm.text = searchTerm
+        var searchKeyword = intent.getStringExtra("searchTerm")
+        viewBinding.etSearch.setText(searchKeyword)
+        viewBinding.tvSearchTerm.text = searchKeyword
     }
 }

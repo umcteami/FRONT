@@ -41,7 +41,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private var category: String = ""
     private var boardId : Int = 0
     private var roomType : Int = 0
-    private var userId : Int = 33
+    private var userId : Int = 30
     private var imgCnt : Int = 0
     private var feedIdx : Int = -1
     private lateinit var recyclerView: RecyclerView
@@ -162,8 +162,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             val feedIdx = feedIdx
 
             if(feedIdx == -1){
-
-
             if (imageList.size == 0) {
                 val postRequest = PostFeedsWriteRequest(
                     title = title,
@@ -179,7 +177,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                     ApplicationClass.sRetrofit.create(FeedsWriteImageRetrofitInterface::class.java)
                 if (imageList.size != 0) {
                     val file = File(getRealPathFromURI(imageList[0]))
-                    val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                    val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
                     val image = MultipartBody.Part.createFormData("image", file.name, requestFile)
                     val requestBody =
                         PostFeedsWriteRequest(userIdx, boardIdx, roomType, title, content)
