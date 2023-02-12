@@ -150,10 +150,25 @@ class HomeFragment :Fragment(), TtlListInterface {
         //전체글
         TtlListService(this).tryGetTtlList()
 
+//        ttlList.apply {
+//            add(
+//                Ttls(
+//                    hasImage, "1","2","2","4","2022.12.20","5","5","5")
+//            )
+//
+//        }
+
+
+        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
+        viewBinding.homeTtlRV.adapter = Tadapter
+
+
+
         return viewBinding.root
     }
 
     override fun onGetTtlListSuccess(response: TtlListResponse) {
+        super.onAttach(requireActivity())
         Log.d("coco","확인")
         if (response.isSuccess) {
             Log.d("코코","전체글 확인")
@@ -167,8 +182,6 @@ class HomeFragment :Fragment(), TtlListInterface {
                 }else{
                     hasImage = HasImage.FALSE
                 }
-
-
 
                ttlList.apply {
                     add(
@@ -185,8 +198,7 @@ class HomeFragment :Fragment(), TtlListInterface {
                         )
                     )
                 }
-                viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
-                viewBinding.homeTtlRV.adapter = Tadapter
+
 
                 Tadapter.notifyDataSetChanged()
             }
@@ -211,3 +223,5 @@ class HomeFragment :Fragment(), TtlListInterface {
 
 
 }
+
+
