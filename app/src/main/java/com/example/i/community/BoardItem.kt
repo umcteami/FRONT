@@ -6,7 +6,7 @@ data class BoardItem(
     var hasImage : HasImage,
     var type: String,
     var title: String,
-    var postImg : String,
+    var postImg : String?,
    // var memPic : String,
     var writer: String,
     var date: String,
