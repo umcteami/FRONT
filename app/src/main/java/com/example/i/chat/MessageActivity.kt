@@ -3,6 +3,7 @@ package com.example.i.chat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.chat.model.ChatInterface
 import com.example.i.chat.model.ChatResponse
@@ -47,8 +48,6 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
 
             val index: Int = response.result.size!! - 1
 
-            //viewBinding.tvName.text = response.result[i]!!.senderNick!!
-
             cList.apply {
                 for (i in 0..index) {
                     add(
@@ -81,7 +80,7 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
         val now = System.currentTimeMillis()
         val date = Date(now)
         // 20xx년 xx월 xx일만 나오게 하는 식
-        val sdf = SimpleDateFormat("hh:mm")
+        val sdf = SimpleDateFormat("yy-MM-dd hh:mm")
 
         val getTime = sdf.format(date)
         val chatImg: List<String> = mutableListOf()

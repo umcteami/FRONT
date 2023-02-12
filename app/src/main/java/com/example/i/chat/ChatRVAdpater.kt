@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.i.databinding.ItemChatDateBinding
 import com.example.i.databinding.ItemMeChatBinding
 import com.example.i.databinding.ItemYouChatBinding
+import java.text.SimpleDateFormat
 
 
 class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -14,7 +16,15 @@ class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<Re
     inner class meHolder(private val viewBinding: ItemMeChatBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(chat: Chat) {
             viewBinding.tvMessage.text = chat.message
-            viewBinding.tvDate.text = chat.date_time
+
+            val formatter = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+            val date = formatter.parse(chat.date_time)
+
+            val sdf = SimpleDateFormat("hh:mm")
+
+            val getTime = sdf.format(date)
+            viewBinding.tvDate.text = getTime
+
             if (chat.check == true) {
                 viewBinding.ivShow.visibility = View.VISIBLE
             }
@@ -35,7 +45,13 @@ class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<Re
                     .into(viewBinding2.ivProfile)
             }
             viewBinding2.tvMessage.text = chat.message
-            viewBinding2.tvDate.text = chat.date_time
+            val formatter = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+            val date = formatter.parse(chat.date_time)
+
+            val sdf = SimpleDateFormat("hh:mm")
+
+            val getTime = sdf.format(date)
+            viewBinding2.tvDate.text = getTime
         }
     }
 
