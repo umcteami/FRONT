@@ -2,13 +2,12 @@ package com.example.i.chat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.chat.model.ChatInterface
 import com.example.i.chat.model.ChatResponse
-import com.example.i.chat.model.ChatService
 import com.example.i.databinding.ActivityMessageBinding
+import com.example.i.home.model.ChatService
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -16,6 +15,12 @@ import kotlin.collections.ArrayList
 class MessageActivity : AppCompatActivity(), ChatInterface {
 
     private lateinit var viewBinding: ActivityMessageBinding
+    val cList: ArrayList<Chat> = arrayListOf()
+    val adapter = ChatRVAdpater(cList)
+   // var memIdx = intent.getIntExtra("memIdx", 1)
+   // var roomIdx = intent.getIntExtra("roomIdx", 1)
+    var memIdx: Int = 8
+    var roomIdx: Int = 17
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +31,14 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
             finish()
         }
 
-        var memIdx = intent.getIntExtra("memIdx", 1)
-        var roomIdx = intent.getIntExtra("roomIdx", 1)
+        ChatService(this).tryGetChat(roomIdx, memIdx)
 
-        ChatService(this).tryGetChat(17,8)
+        viewBinding.btSend.setOnClickListener {
+            var item = sendMessage()
+
+            cList.add(item)
+            adapter.notifyDataSetChanged()
+        }
 
     }
 
@@ -38,35 +47,29 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
 
             val index: Int = response.result.size!! - 1
 
-            val cList: ArrayList<Chat> = arrayListOf()
-            val adapter = ChatRVAdpater(cList)
+            //viewBinding.tvName.text = response.result[i]!!.senderNick!!
 
-            for (i in 0 .. index) {
-
-                viewBinding.tvName.text = response.result[i]!!.senderNick!!
-
-                for (j in 0 .. response.result[i].chatImg.size!! - 1) {
-                    cList.apply {
-                        add(
-                            Chat(
-                                response.result[i].message,
-                                response.result[i].chatImg[j],
-                                response.result[i].chatTime,
-                                false
-                            )
+            cList.apply {
+                for (i in 0..index) {
+                    add(
+                        Chat(
+                            memIdx,
+                            response.result[i].sender,
+                            response.result[i].message,
+                            response.result[i].chatImg,
+                            response.result[i].senderProfile,
+                            response.result[i].chatTime,
+                            false
                         )
-                    }
+                    )
                 }
             }
 
-            viewBinding.rvChatting.layoutManager = LinearLayoutManager(this)
+            adapter.notifyDataSetChanged()
 
-            viewBinding.btSend.setOnClickListener {
-                var item = sendMessage()
+            viewBinding.rvChatting.layoutManager = LinearLayoutManager(this@MessageActivity)
+            viewBinding.rvChatting.adapter = adapter
 
-                cList.add(item)
-                adapter.notifyDataSetChanged()
-            }
         }
     }
 
@@ -78,11 +81,12 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
         val now = System.currentTimeMillis()
         val date = Date(now)
         // 20xx년 xx월 xx일만 나오게 하는 식
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf = SimpleDateFormat("hh:mm")
 
         val getTime = sdf.format(date)
+        val chatImg: List<String> = mutableListOf()
 
-        val item = Chat(viewBinding.etChat.text.toString(), "url", getTime, false)
+        val item = Chat(memIdx,memIdx, viewBinding.etChat.text.toString(), chatImg, null, getTime, false)
 
         viewBinding.etChat.setText("")
 
