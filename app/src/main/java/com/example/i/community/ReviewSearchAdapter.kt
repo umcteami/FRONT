@@ -1,4 +1,4 @@
-package com.example.i.community.review
+package com.example.i.community
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

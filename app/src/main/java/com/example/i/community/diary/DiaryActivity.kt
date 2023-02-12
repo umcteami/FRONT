@@ -39,7 +39,7 @@ class DiaryActivity : AppCompatActivity() {
 
         //툴바 -> 검색
         viewBinding.searchBtn.setOnClickListener {
-            val intent = Intent(this, SearchActivity::class.java)
+            val intent = Intent(this, NewSearchActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }

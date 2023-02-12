@@ -1,11 +1,13 @@
 package com.example.i.community.diary
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentDiaryBinding
 
 class DiaryFragment : Fragment() {
@@ -69,7 +71,15 @@ class DiaryFragment : Fragment() {
         }
         viewBinding.rvDiary.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        viewBinding.rvDiary.adapter = DiaryBoardAdapter(itemList)
+        val adapter = DiaryBoardAdapter(itemList)
+        viewBinding.rvDiary.adapter = adapter
+
+        adapter!!.itemClick = object : DiaryBoardAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
         return viewBinding.root
     }
 }

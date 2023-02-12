@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
+import com.example.i.community.NewSearchActivity
 import com.example.i.community.diary.DiaryActivity
 import com.example.i.community.diary.DiaryCareActivity
 import com.example.i.community.diary.DiaryRainActivity

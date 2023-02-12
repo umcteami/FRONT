@@ -43,7 +43,7 @@ class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) : RecyclerView.A
 
         if (itemClick != null) {
             if (itemList[position].hasImage == HasImage.TRUE) {
-                (holder as CommunityBoardAdapter.BoardWithImgViewHolder).viewBinding!!.rootLayout.setOnClickListener(
+                (holder as CommunityBoardAdapter.BoardWithImgViewHolder).viewBinding!!.itemRoomo.setOnClickListener(
                     View.OnClickListener {
                         itemClick?.onClick(it, position)
                     })

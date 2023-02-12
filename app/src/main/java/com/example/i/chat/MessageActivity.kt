@@ -29,25 +29,44 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
         var memIdx = intent.getIntExtra("memIdx", 1)
         var roomIdx = intent.getIntExtra("roomIdx", 1)
 
-        ChatService(this).tryGetChat(roomIdx, memIdx)
+        ChatService(this).tryGetChat(17,8)
 
-
-        val cList: ArrayList<Chat> = arrayListOf()
-        val adapter = ChatRVAdpater(cList)
-
-        viewBinding.rvChatting.layoutManager = LinearLayoutManager(this@MessageActivity)
-
-        viewBinding.btSend.setOnClickListener {
-            var item = sendMessage()
-
-            cList.add(item)
-            adapter.notifyDataSetChanged()
-        }
     }
 
     override fun onGetChatSuccess(response: ChatResponse) {
         if (response.isSuccess) {
-            viewBinding.tvName.text = response.result.senderNick
+
+            val index: Int = response.result.size!! - 1
+
+            val cList: ArrayList<Chat> = arrayListOf()
+            val adapter = ChatRVAdpater(cList)
+
+            for (i in 0 .. index) {
+
+                viewBinding.tvName.text = response.result[i]!!.senderNick!!
+
+                for (j in 0 .. response.result[i].chatImg.size!! - 1) {
+                    cList.apply {
+                        add(
+                            Chat(
+                                response.result[i].message,
+                                response.result[i].chatImg[j],
+                                response.result[i].chatTime,
+                                false
+                            )
+                        )
+                    }
+                }
+            }
+
+            viewBinding.rvChatting.layoutManager = LinearLayoutManager(this)
+
+            viewBinding.btSend.setOnClickListener {
+                var item = sendMessage()
+
+                cList.add(item)
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 

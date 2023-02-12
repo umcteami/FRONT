@@ -91,7 +91,6 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:minHeight="48dp"
-                android:text="제발리젝하지말아주세요"
                 android:layout_marginLeft="10dp"
                 android:inputType="textMultiLine"
                 android:scrollHorizontally="true"

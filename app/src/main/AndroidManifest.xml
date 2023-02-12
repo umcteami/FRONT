@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.I"
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
         <activity
             android:name=".community.review.post.ReviewPostActivity"
@@ -75,9 +76,9 @@
         <activity
             android:name=".community.review.ReviewWriteActivity"
             android:exported="false" />
-        <activity
-            android:name=".community.review.ReviewSearchActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".community.review.ReviewSearchActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".market.WriteActivity"
             android:exported="false"

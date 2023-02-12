@@ -7,6 +7,6 @@ data class PostFeedsWriteRequest(
     @SerializedName("userIdx") val userIdx : Int,
     @SerializedName("roomType") val roomType : Int,
     @SerializedName("title") val title : String,
-    @SerializedName("content") val content : String,
-    @SerializedName("imgCnt") val imgCnt : Int
+    @SerializedName("content") val content : String
+//    @SerializedName("imgCnt") val imgCnt : Int
 )

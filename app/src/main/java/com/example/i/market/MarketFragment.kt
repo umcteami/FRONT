@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.i.R
+import com.example.i.community.NewSearchActivity
 import com.example.i.databinding.FragmentMarketBinding
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
@@ -23,7 +24,7 @@ class MarketFragment : Fragment() {
         viewBinding = FragmentMarketBinding.inflate(layoutInflater)
 
         viewBinding.homeSearchBtn.setOnClickListener {
-            val intent = Intent(context, SearchActivity::class.java)
+            val intent = Intent(context, NewSearchActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
