@@ -16,15 +16,18 @@ class MessageActivity : AppCompatActivity(), ChatInterface, ChatDeleteInterface 
     private lateinit var viewBinding: ActivityMessageBinding
     val cList: ArrayList<Chat> = arrayListOf()
     val adapter = ChatRVAdpater(cList)
-   // var memIdx = intent.getIntExtra("memIdx", 1)
-   // var roomIdx = intent.getIntExtra("roomIdx", 1)
-    var memIdx: Int = 8
-    var roomIdx: Int = 17
+    var memIdx: Int = 0
+    var roomIdx: Int = 0
+    //var memIdx: Int = 8
+    //var roomIdx: Int = 17
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMessageBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        memIdx = intent.getIntExtra("memIdx", 1)
+        roomIdx = intent.getIntExtra("roomIdx", 1)
 
         viewBinding.backBtn.setOnClickListener {
             val body =  ChatDeleteRequest (roomIdx, memIdx)
