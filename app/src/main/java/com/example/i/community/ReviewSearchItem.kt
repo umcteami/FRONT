@@ -1,4 +1,4 @@
-package com.example.i.community.review
+package com.example.i.community
 
 data class ReviewSearchItem(
     val title : String,

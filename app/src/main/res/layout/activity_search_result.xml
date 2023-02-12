@@ -164,7 +164,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="졔목+내용" />
+                android:text="제목+내용" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -183,7 +183,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabLayout"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_write"
@@ -196,9 +196,5 @@
             android:backgroundTint="@color/white"
             app:borderWidth="0dp"
             android:src="@drawable/arrow_back" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>
