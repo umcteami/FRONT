@@ -35,11 +35,11 @@
                 android:layout_height="wrap_content"
                 android:text="Nickname"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -48,19 +48,20 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_chatting"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:layout_height="596dp"
+        app:layout_constraintBottom_toTopOf="@+id/cl_chat"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/ib_add"
@@ -89,10 +90,10 @@
                 android:id="@+id/et_chat"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:minHeight="48dp"
                 android:layout_marginLeft="10dp"
+                android:background="@null"
                 android:inputType="textMultiLine"
+                android:minHeight="48dp"
                 android:scrollHorizontally="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/bt_send"

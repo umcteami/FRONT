@@ -73,6 +73,7 @@ class MessageActivity : AppCompatActivity(), ChatInterface, ChatDeleteInterface 
 
             viewBinding.rvChatting.layoutManager = LinearLayoutManager(this@MessageActivity)
             viewBinding.rvChatting.adapter = adapter
+            viewBinding.rvChatting.smoothScrollToPosition(cList.size - 1)
 
         }
     }
@@ -105,6 +106,7 @@ class MessageActivity : AppCompatActivity(), ChatInterface, ChatDeleteInterface 
         }
 
         adapter.notifyDataSetChanged()
+        viewBinding.rvChatting.smoothScrollToPosition(cList.size - 1)
 
         viewBinding.etChat.setText("")
     }
