@@ -10,8 +10,6 @@ import retrofit2.http.Query
 interface TtlListRetrofitInterface {
 
         @GET("/feeds")
-        fun getTtlList(
-                @Query("page") page: Int
-        ): Call<TtlListResponse>
+        fun getTtlList(): Call<TtlListResponse>
 
 }

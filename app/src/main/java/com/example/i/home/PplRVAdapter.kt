@@ -76,5 +76,7 @@ class PplRVAdapter (private val pplList: ArrayList<Ppls>): RecyclerView.Adapter<
     interface ItemClick {
         fun onClick(view: View, position: Int)
     }
+
 }
+
 

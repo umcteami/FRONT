@@ -1,5 +1,6 @@
 package com.example.i.home.model
 
+import android.util.Log
 import com.example.i.config.ApplicationClass
 import com.example.i.home.TtlRVAdapter
 import retrofit2.Call
@@ -8,9 +9,9 @@ import retrofit2.Response
 
 
 class TtlListService(val TtlListInterface: TtlListInterface){
-    fun tryGetTtlList(page: Int) {
+    fun tryGetTtlList() {
         val TtlListRetrofitInterface = ApplicationClass.sRetrofit.create(TtlListRetrofitInterface::class.java)
-        TtlListRetrofitInterface.getTtlList(page).enqueue(object : Callback<TtlListResponse> {
+        TtlListRetrofitInterface.getTtlList().enqueue(object : Callback<TtlListResponse> {
             override fun onResponse( call: Call<TtlListResponse>, response: Response<TtlListResponse>) {
                     response.body()?.let {
                         it
