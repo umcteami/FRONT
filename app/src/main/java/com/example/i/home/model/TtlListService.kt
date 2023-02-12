@@ -14,6 +14,7 @@ class TtlListService(val TtlListInterface: TtlListInterface){
                 (response.body() as TtlListResponse?)?.let {
                     TtlListInterface.onGetTtlListSuccess(
                         it
+
                     )
                 }
             }
