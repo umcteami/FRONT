@@ -86,6 +86,7 @@ class TtlRVAdapter(private val ttlList: ArrayList<Ttls>) : RecyclerView.Adapter<
         fun onClick(view: View, position: Int)
     }
 
+
 }
 
 object Const {

@@ -1,5 +1,6 @@
 package com.example.i.home.model
 
+import android.util.Log
 import com.example.i.config.ApplicationClass
 import com.example.i.home.TtlRVAdapter
 import retrofit2.Call

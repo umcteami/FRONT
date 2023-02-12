@@ -12,7 +12,7 @@ class TalkroomService (val TalkroomInterface: TalkroomInterface){
         TalkroomRetrofitInterface.getTalkroom(page).enqueue(object :Callback<TalkroomResponse>{
             override fun onResponse( call: Call<TalkroomResponse>,  response: Response<TalkroomResponse>) {
                 response.body()?.let {
-                    it
+
                 }
             }
 

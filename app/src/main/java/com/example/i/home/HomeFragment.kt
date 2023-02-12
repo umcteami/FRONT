@@ -16,6 +16,8 @@ import com.example.i.community.review.ReviewActivity
 import com.example.i.community.talk.*
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentHomeBinding
+import com.example.i.home.Const.HASIMAGE
+import com.example.i.home.model.TtlList
 import com.example.i.home.model.TtlListInterface
 import com.example.i.home.model.TtlListResponse
 import com.example.i.home.model.TtlListService
@@ -25,6 +27,9 @@ import com.example.i.toolbar.SearchActivity
 class HomeFragment :Fragment(), TtlListInterface {
     private lateinit var viewBinding: FragmentHomeBinding
     private var searchText : String = ""
+    val ttlList: ArrayList<Ttls> = arrayListOf()
+    val Tadapter = TtlRVAdapter(ttlList)
+    var hasImage: HasImage = HasImage.TRUE
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -145,29 +150,48 @@ class HomeFragment :Fragment(), TtlListInterface {
         //전체글
         TtlListService(this).tryGetTtlList()
 
-
         return viewBinding.root
     }
 
     override fun onGetTtlListSuccess(response: TtlListResponse) {
+        Log.d("coco","확인")
         if (response.isSuccess) {
-            val ttlList: ArrayList<Ttls> = arrayListOf()
-            val Tadapter = TtlRVAdapter(ttlList)
-            val hasImage: HasImage
+            Log.d("코코","전체글 확인")
 
-            if(response.result[6]!=null) {
-                hasImage = HasImage.TRUE
-            }else{
-                hasImage = HasImage.FALSE
+            val index: Int = response.result.size - 1
+
+            for (i in 0 ..index) {
+
+                if(response.result[i].img!="") {
+                    hasImage = HasImage.TRUE
+                }else{
+                    hasImage = HasImage.FALSE
+                }
+
+
+
+               ttlList.apply {
+                    add(
+                        Ttls(
+                            hasImage,
+                            response.result[i].boardType.toString(),
+                            response.result[i].title,
+                            response.result[i].img,
+                            response.result[i].memNick,
+                            response.result[i].createAt,
+                            response.result[i].hit.toString(),
+                            response.result[i].likeCnt.toString(),
+                            response.result[i].commentCnt.toString()
+                        )
+                    )
+                }
+                viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
+                viewBinding.homeTtlRV.adapter = Tadapter
+
+                Tadapter.notifyDataSetChanged()
             }
 
 
-            ttlList.apply {
-                add(Ttls(hasImage,response.result[5].toString(),response.result[0].toString(),response.result[6].toString(),response.result[4].toString(),response.result[10].toString(),response.result[7].toString(),response.result[9].toString(),response.result[8].toString()))
-            }
-
-            viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(context)
-            viewBinding.homeTtlRV.adapter = Tadapter
 
             Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
                 override fun onClick(view: View, position: Int) {
@@ -176,12 +200,14 @@ class HomeFragment :Fragment(), TtlListInterface {
                 }
             }
 
+
         }
     }
 
-    override fun onGetTtlListFailure(message: String) {
+    override fun onGetTtlListFailure(message: String)  {
         Log.d("error","카테고리 전체글 오류: $message")
     }
+
 
 
 }
