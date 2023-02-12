@@ -7,6 +7,7 @@ import com.example.i.databinding.ActivityMypageSettingBinding
 import com.example.i.login.NewPwFragment
 import com.example.i.mypage.customdialog.PopupSaveDialog
 import com.example.i.mypage.data.*
+import de.hdodenhof.circleimageview.CircleImageView
 
 
 class MypageSettingActivity : AppCompatActivity(), SettingInterface {
