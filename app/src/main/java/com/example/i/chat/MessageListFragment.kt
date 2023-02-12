@@ -58,8 +58,9 @@ class MessageListFragment : Fragment(), ChatListInterface {
             adapter!!.itemClick = object : MessageRVAdapter.ItemClick{
                 override fun onClick(view: View,  data: CharSequence, position: Int) {
                     val intent = Intent(context, MessageActivity::class.java)
-                    intent.putExtra("memIdx", response.result[0].sender)
-                    intent.putExtra("roomIdx", response.result[0].roomIdx)
+                    intent.putExtra("memIdx", response.result[position].sender)
+                    intent.putExtra("roomIdx", response.result[position].roomIdx)
+                    intent.putExtra("nick", response.result[position].nick)
                     startActivity(intent)
                 }
             }

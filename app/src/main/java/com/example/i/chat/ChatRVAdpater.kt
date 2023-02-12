@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.i.databinding.ItemChatDateBinding
 import com.example.i.databinding.ItemMeChatBinding
 import com.example.i.databinding.ItemYouChatBinding
 import java.text.SimpleDateFormat
@@ -20,7 +19,7 @@ class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<Re
             val formatter = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
             val date = formatter.parse(chat.date_time)
 
-            val sdf = SimpleDateFormat("hh:mm")
+            val sdf = SimpleDateFormat("yy-MM-dd hh:mm")
 
             val getTime = sdf.format(date)
             viewBinding.tvDate.text = getTime
@@ -48,7 +47,7 @@ class ChatRVAdpater(private val cList: ArrayList<Chat>): RecyclerView.Adapter<Re
             val formatter = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
             val date = formatter.parse(chat.date_time)
 
-            val sdf = SimpleDateFormat("hh:mm")
+            val sdf = SimpleDateFormat("yy-MM-dd hh:mm")
 
             val getTime = sdf.format(date)
             viewBinding2.tvDate.text = getTime

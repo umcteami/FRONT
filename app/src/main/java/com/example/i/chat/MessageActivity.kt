@@ -3,14 +3,12 @@ package com.example.i.chat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.chat.model.ChatInterface
 import com.example.i.chat.model.ChatResponse
 import com.example.i.databinding.ActivityMessageBinding
 import com.example.i.home.model.ChatService
 import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MessageActivity : AppCompatActivity(), ChatInterface {
@@ -32,13 +30,15 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
             finish()
         }
 
+        var nick = intent.getStringExtra("nick")
+        viewBinding.tvName.text = nick
+
         ChatService(this).tryGetChat(roomIdx, memIdx)
 
         viewBinding.btSend.setOnClickListener {
-            var item = sendMessage()
 
-            cList.add(item)
-            adapter.notifyDataSetChanged()
+            sendMessage()
+
         }
 
     }
@@ -76,19 +76,31 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
         Log.d("error", "오류: $message")
     }
 
-    fun sendMessage(): Chat {
-        val now = System.currentTimeMillis()
-        val date = Date(now)
+    fun sendMessage() {
+        val date: Long = System.currentTimeMillis()
+
         // 20xx년 xx월 xx일만 나오게 하는 식
-        val sdf = SimpleDateFormat("yy-MM-dd hh:mm")
+        val sdf = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 
         val getTime = sdf.format(date)
         val chatImg: List<String> = mutableListOf()
 
-        val item = Chat(memIdx,memIdx, viewBinding.etChat.text.toString(), chatImg, null, getTime, false)
+        cList.apply {
+            add(
+                Chat(
+                    memIdx,
+                    memIdx,
+                    viewBinding.etChat.text.toString(),
+                    chatImg,
+                    null,
+                    getTime.toString(),
+                    false
+                )
+            )
+        }
+
+        adapter.notifyDataSetChanged()
 
         viewBinding.etChat.setText("")
-
-        return item
     }
 }
