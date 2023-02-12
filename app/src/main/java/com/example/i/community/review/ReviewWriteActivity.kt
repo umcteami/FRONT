@@ -107,7 +107,7 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
             val goods = viewBinding.etKind.text.toString()
             val imgCount = imgCnt
             val postRequest = PostReviewWriteRequest(
-                buyerIdx = 0, sellerIdx = 0, content = content, goods = goods, imgCnt = imgCount
+                buyerIdx = 0, sellerIdx = 0, content = content, goods = goods
             )
             ReviewWriteService(this).tryPostReviewWrite(postRequest)
         }

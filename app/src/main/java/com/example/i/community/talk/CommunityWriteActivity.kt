@@ -1,6 +1,7 @@
 package com.example.i.community.talk
 
 import android.R
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -21,12 +23,14 @@ import com.example.i.community.talk.models.*
 import com.example.i.config.ApplicationClass
 import com.example.i.databinding.ActivityCommunityWriteBinding
 import com.google.gson.Gson
+import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,7 +45,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private var category: String = ""
     private var boardId : Int = 0
     private var roomType : Int = 0
-    private var userId : Int = 30
+    private var userId : Int = 33
     private var imgCnt : Int = 0
     private var feedIdx : Int = -1
     private lateinit var recyclerView: RecyclerView
@@ -163,7 +167,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
             if(feedIdx == -1){
             if (imageList.size == 0) {
-                val postRequest = PostFeedsWriteRequest(
+                val postRequest = PostFeedsWriteImageRequest(
                     title = title,
                     content = content,
                     boardIdx = boardIdx,
@@ -171,19 +175,48 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                     userIdx = userIdx
 //                    imgCnt = 0,
                 )
-                FeedsWriteService(this).tryPostFeedsWrite(postRequest)
+                val requestJson = Gson().toJson(postRequest)
+                val request = requestJson.toRequestBody("application/json".toMediaTypeOrNull())
+                val service =
+                    ApplicationClass.sRetrofit.create(FeedsWriteImageRetrofitInterface::class.java)
+
+                val call = service.postFeedsImageWrite(request, emptyList())
+                call.enqueue(object : Callback<FeedsWriteImageResponse> {
+                    override fun onResponse(
+                        call: Call<FeedsWriteImageResponse>,
+                        response: Response<FeedsWriteImageResponse>
+                    ) {
+                        (response.body() as FeedsWriteImageResponse?)?.let {
+                            onPostFeedsImageWriteSuccess(it)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<FeedsWriteImageResponse>, t: Throwable) {
+                        Log.e(TAG, "에러 : " + (t.message))
+                        onPostFeedsImageWriteFailure(t.message ?: "통신 오류")
+                    }
+                }
+                )
             } else {
                 val service =
                     ApplicationClass.sRetrofit.create(FeedsWriteImageRetrofitInterface::class.java)
                 if (imageList.size != 0) {
-                    val file = File(getRealPathFromURI(imageList[0]))
-                    val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-                    val image = MultipartBody.Part.createFormData("image", file.name, requestFile)
                     val requestBody =
-                        PostFeedsWriteRequest(userIdx, boardIdx, roomType, title, content)
+                        PostFeedsWriteImageRequest(userIdx, boardIdx, roomType, title, content)
                     val requestJson = Gson().toJson(requestBody)
+                    val images = ArrayList<MultipartBody.Part>()
+                    for(i in 0 until imageList.size){
+                        val file = File(getRealPathFromURI(imageList[i]))
+                        val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+                        images.add(MultipartBody.Part.createFormData("img", file.name, requestFile))
+                    }
                     val request = requestJson.toRequestBody("application/json".toMediaTypeOrNull())
-                    val call = service.postFeedsImageWrite(request, image)
+                    val newRequestBody = Gson().toJson(requestBody)
+                        .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
+
+                    val requestString = Gson().toJson(requestBody)
+                    Log.d("JSON Request", requestString)
+                    val call = service.postFeedsImageWrite(newRequestBody, images)
                     call.enqueue(object : Callback<FeedsWriteImageResponse> {
                         override fun onResponse(
                             call: Call<FeedsWriteImageResponse>,
@@ -281,10 +314,11 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             finish()
             response.message?.let{
                 Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "성공 : ")
             }
         }else
         {
-
+            Log.e(TAG, "에러 : ")
         }
     }
 
