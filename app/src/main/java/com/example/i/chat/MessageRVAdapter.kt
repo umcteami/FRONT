@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.i.R
 import com.example.i.databinding.ItemMessageListBinding
+import java.text.SimpleDateFormat
 
 class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adapter<MessageRVAdapter.ViewHolder>() {
 
@@ -22,7 +23,18 @@ class MessageRVAdapter(private val mList: ArrayList<Message>): RecyclerView.Adap
                 .into(viewBinding.ivProfile)
             viewBinding.tvNickname.text = Message.nickname
             viewBinding.tvChat.text = Message.chat
-            viewBinding.tvTime.text = Message.time
+
+            if (Message.time != null) {
+                val formatter = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+                val date = formatter.parse(Message.time)
+
+                val sdf = SimpleDateFormat("hh:mm")
+
+                val getTime = sdf.format(date)
+
+                viewBinding.tvTime.text = getTime
+            }
+
             if (Message.num?.isEmpty() == true || Message.num!!.equals("0")){
                 viewBinding.tvNum.visibility = View.INVISIBLE
             }

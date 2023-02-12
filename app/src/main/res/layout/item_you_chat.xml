@@ -30,9 +30,22 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:fontFamily="@font/roboto"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_profile"
         app:layout_constraintTop_toTopOf="parent"/>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/img_layout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/iv_profile"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_message" >-->
+
+
+
+<!--    </LinearLayout>-->
 
     <TextView
         android:id="@+id/tv_date"
