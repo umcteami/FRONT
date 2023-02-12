@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,9 @@ import com.example.i.home.model.TtlList
 import com.example.i.home.model.TtlListInterface
 import com.example.i.home.model.TtlListResponse
 import com.example.i.home.model.TtlListService
+import com.example.i.mypage.data.BlockResponse
+import com.example.i.mypage.data.Blocked
+import com.example.i.mypage.data.BlockedRVAdapter
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
@@ -60,7 +64,7 @@ class HomeFragment :Fragment(), TtlListInterface {
                 }
 
                 R.id.drawer_qna -> { //질문방
-                   val intent = Intent(context, CommunityQnaActivity::class.java)
+                    val intent = Intent(context, CommunityQnaActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                 }
@@ -150,27 +154,31 @@ class HomeFragment :Fragment(), TtlListInterface {
         //전체글
         TtlListService(this).tryGetTtlList()
 
+
+        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
         return viewBinding.root
     }
-
     override fun onGetTtlListSuccess(response: TtlListResponse) {
-        Log.d("coco","확인")
+        // 받아온 정보와 UI 연결
         if (response.isSuccess) {
-            Log.d("코코","전체글 확인")
 
             val index: Int = response.result.size - 1
 
             for (i in 0 ..index) {
 
-                if(response.result[i].img!="") {
+                if (response.result[i].img != "") {
                     hasImage = HasImage.TRUE
-                }else{
+                } else {
                     hasImage = HasImage.FALSE
                 }
 
-
-
-               ttlList.apply {
+                ttlList.apply {
                     add(
                         Ttls(
                             hasImage,
@@ -185,29 +193,16 @@ class HomeFragment :Fragment(), TtlListInterface {
                         )
                     )
                 }
-                viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
-                viewBinding.homeTtlRV.adapter = Tadapter
-
-                Tadapter.notifyDataSetChanged()
             }
-
-
-
-            Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
-                override fun onClick(view: View, position: Int) {
-                    val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-
-
         }
+        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
+        viewBinding.homeTtlRV.adapter = Tadapter
+
+        // Result message
+        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onGetTtlListFailure(message: String)  {
         Log.d("error","카테고리 전체글 오류: $message")
     }
-
-
-
 }
