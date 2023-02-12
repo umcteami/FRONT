@@ -1,6 +1,6 @@
 
 
-package com.example.i.community
+package com.example.i.community.talk
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
+import com.example.i.community.BoardItem
 import com.example.i.community.talk.CommunityBoardAdapter
 import com.example.i.community.talk.CommunityTalkroomActivity
 import com.example.i.databinding.FragmentCommunityTalkroomBestBinding
