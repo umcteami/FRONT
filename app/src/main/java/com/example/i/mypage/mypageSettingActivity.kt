@@ -3,6 +3,7 @@ package com.example.i.mypage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ActivityMypageSettingBinding
 import com.example.i.login.NewPwFragment
 import com.example.i.mypage.customdialog.PopupSaveDialog
@@ -80,6 +81,11 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
 
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
+            // 프로필
+            Glide.with(viewBinding.editProfile)
+                .load(response.result.profile)
+                .into(viewBinding.editProfile)
+
             viewBinding.editEmail.setText(response.result.email)
             viewBinding.editCall.setText(response.result.phone)
             viewBinding.editNickName.setText(response.result.nick)
