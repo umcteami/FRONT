@@ -33,6 +33,7 @@ class MessageOptionDialog(): DialogFragment() {
         viewBinding.btEnd.setOnClickListener {
             val dlg = MessageNoticeDialog()
             dlg.show(requireActivity().supportFragmentManager, "custom dialog")
+            Toast.makeText(requireActivity(), dlg.roomIdx, Toast.LENGTH_SHORT).show()
             dialog?.dismiss()
         }
 

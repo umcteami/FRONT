@@ -165,6 +165,7 @@ class HomeFragment :Fragment(), TtlListInterface {
 
         return viewBinding.root
     }
+
     override fun onGetTtlListSuccess(response: TtlListResponse) {
         // 받아온 정보와 UI 연결
         if (response.isSuccess) {
@@ -173,7 +174,7 @@ class HomeFragment :Fragment(), TtlListInterface {
 
             for (i in 0 ..index) {
 
-                if (response.result[i].img != "") {
+                if (response.result[i].img != null) {
                     hasImage = HasImage.TRUE
                 } else {
                     hasImage = HasImage.FALSE

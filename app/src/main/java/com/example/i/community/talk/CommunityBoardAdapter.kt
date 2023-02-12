@@ -6,57 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.i.community.BoardItem
-import com.example.i.databinding.ListItemTtl2Binding
-import com.example.i.databinding.ListItemTtlBinding
 import com.example.i.databinding.PostListLayoutBinding
 import com.example.i.databinding.PostListLayoutImgxBinding
 import com.example.i.home.Const.HASIMAGE
 import com.example.i.home.Const.NOIMAGE
 import com.example.i.home.HasImage
-import com.example.i.home.TtlRVAdapter
 
 class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     var itemClick: CommunityBoardAdapter.ItemClick? = null
-
-    override fun getItemViewType(position: Int): Int {
-        return if (itemList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
-    }
-
-    override fun onCreateViewHolder(parent : ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == HASIMAGE) {
-            val view = PostListLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-            BoardWithImgViewHolder(view)
-        } else{
-            val view = PostListLayoutImgxBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-            BoardWithoutImgViewHolder(view)
-        }
-
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == HASIMAGE) {
-            (holder as CommunityBoardAdapter.BoardWithImgViewHolder).bind(itemList[position])
-        }else {
-            (holder as CommunityBoardAdapter.BoardWithoutImgViewHolder).bind(itemList[position])
-        }
-
-        if (itemClick != null) {
-            if (itemList[position].hasImage == HasImage.TRUE) {
-                (holder as CommunityBoardAdapter.BoardWithImgViewHolder).viewBinding!!.itemRoomo.setOnClickListener(
-                    View.OnClickListener {
-                        itemClick?.onClick(it, position)
-                    })
-            }  else {
-                (holder as CommunityBoardAdapter.BoardWithoutImgViewHolder).viewBinding2!!.rootLayout2.setOnClickListener(
-                    View.OnClickListener {
-                        itemClick?.onClick(it, position)
-                    })
-            }
-        }
-    }
-
-    override fun getItemCount(): Int = itemList.size
 
     inner class BoardWithImgViewHolder(val viewBinding: PostListLayoutBinding) :
         RecyclerView.ViewHolder(viewBinding.root){
@@ -87,9 +45,46 @@ class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) : RecyclerView.A
         }
     }
 
-    interface OnItemClickListener {
-        fun onClick(view: View, position: Int)
+    override fun getItemViewType(position: Int): Int {
+        return if (itemList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
     }
+
+    override fun onCreateViewHolder(parent : ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == HASIMAGE) {
+            val view = PostListLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            BoardWithImgViewHolder(view)
+        } else{
+            val view = PostListLayoutImgxBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            BoardWithoutImgViewHolder(view)
+        }
+
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (getItemViewType(position) == HASIMAGE ) {
+            (holder as BoardWithImgViewHolder).bind(itemList[position])
+        }else {
+            (holder as BoardWithoutImgViewHolder).bind(itemList[position])
+        }
+
+        if (itemClick != null) {
+            if (itemList[position].hasImage == HasImage.TRUE) {
+                (holder as CommunityBoardAdapter.BoardWithImgViewHolder).viewBinding!!.rootLayout.setOnClickListener(
+                    View.OnClickListener {
+                        itemClick?.onClick(it, position)
+                    })
+            }  else {
+                (holder as CommunityBoardAdapter.BoardWithoutImgViewHolder).viewBinding2!!.rootLayout2.setOnClickListener(
+                    View.OnClickListener {
+                        itemClick?.onClick(it, position)
+                    })
+            }
+        }
+    }
+
+    override fun getItemCount(): Int = itemList.size
+
+
     interface ItemClick {
         fun onClick(view: View, position: Int)
     }
