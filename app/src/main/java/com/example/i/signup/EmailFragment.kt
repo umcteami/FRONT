@@ -17,7 +17,7 @@ import com.example.i.databinding.FragmentEmailBinding
 import com.example.i.signup.models.*
 import retrofit2.Retrofit
 
-var newEmail : String = "" // 전역 변수
+var signUp_email : String = "" // 전역 변수
 var authIdx : Int = 0 // 전역 변수
 
 class EmailFragment : Fragment(), PostCodeInterface {
@@ -67,12 +67,9 @@ class EmailFragment : Fragment(), PostCodeInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            newEmail = viewBinding.etEmail.text.toString()
-            val EmailRequest = PostCodeRequest(type = 1, auth = newEmail)
+            signUp_email = viewBinding.etEmail.text.toString()
+            val EmailRequest = PostCodeRequest(type = 1, auth = signUp_email)
             PostCodeService(this).tryPostEmail(EmailRequest)
-            val Activity = activity as SignupActivity
-            Activity.changeFragment(1)
-            // Activity.changeFragment(1)
         }
 
         return viewBinding.root
@@ -82,8 +79,9 @@ class EmailFragment : Fragment(), PostCodeInterface {
     override fun onPostEmailSuccess(response: CodeResponse) {
         // 인증번호 발송이 성공한 경우
         if(response.isSuccess){
-
             authIdx = response.result.authIdx
+            val Activity = activity as? SignupActivity
+            Activity?.changeFragment(1)
         }
         // Result message
         Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()

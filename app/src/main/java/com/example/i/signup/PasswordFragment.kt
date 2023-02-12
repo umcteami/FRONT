@@ -12,9 +12,10 @@ import android.view.ViewGroup
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentPasswordBinding
 
+var signUp_pw : String = "" // 전역 변수
+
 class PasswordFragment : Fragment() {
     private lateinit var viewBinding : FragmentPasswordBinding
-    private var pw: String = ""
     private var pwCheck: String = ""
 
     override fun onCreateView(
@@ -40,10 +41,10 @@ class PasswordFragment : Fragment() {
 
             // 입력 중
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                pw = viewBinding.etPw.text.toString()
+                signUp_pw = viewBinding.etPw.text.toString()
                 pwCheck = viewBinding.etPwcheck.text.toString()
 
-                viewBinding.btOk.isEnabled = pw.isNotEmpty() && pwCheck.isNotEmpty()
+                viewBinding.btOk.isEnabled = signUp_pw.isNotEmpty() && pwCheck.isNotEmpty()
 
                 if (viewBinding.btOk.isEnabled == false) {
                     viewBinding.btOk.setTextColor(Color.rgb(0x6B,0x66,0x66))
@@ -65,10 +66,10 @@ class PasswordFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                pw = viewBinding.etPw.text.toString()
+                signUp_pw = viewBinding.etPw.text.toString()
                 pwCheck = viewBinding.etPwcheck.text.toString()
 
-                viewBinding.btOk.isEnabled = pw.isNotEmpty() && pwCheck.isNotEmpty()
+                viewBinding.btOk.isEnabled = signUp_pw.isNotEmpty() && pwCheck.isNotEmpty()
 
                 if (viewBinding.btOk.isEnabled == false) {
                     viewBinding.btOk.setTextColor(Color.rgb(0x6B,0x66,0x66))
@@ -85,9 +86,30 @@ class PasswordFragment : Fragment() {
         })
 
         viewBinding.btOk.setOnClickListener{
+            // 비밀번호 확인
+            if (!checkPw()) {
+                return@setOnClickListener
+            }
+
             activity.changeFragment(5)
         }
 
         return viewBinding.root
+    }
+
+    // 비밀번호 확인
+    fun checkPw() : Boolean {
+
+        // 비밀번호 확인
+        return if (signUp_pw != pwCheck) {
+            viewBinding.tiPwcheck.error = "비밀번호가 일치하지 않습니다"
+            false
+        }
+        // 에러가 없는 경우
+        else {
+            viewBinding.tiPwcheck.error = null
+            viewBinding.tiPwcheck.isErrorEnabled = false // 에러 메시지 사용X
+            true
+        }
     }
 }

@@ -6,13 +6,17 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentPhoneBinding
 import com.example.i.signup.models.*
+
+var signUp_phone : String = "" // 전역 변수
 
 class PhoneFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding : FragmentPhoneBinding
@@ -29,8 +33,6 @@ class PhoneFragment : Fragment(), PostCodeInterface {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
-
-        val activity = activity as SignupActivity
 
         viewBinding.btOk.isEnabled = false
 
@@ -59,10 +61,10 @@ class PhoneFragment : Fragment(), PostCodeInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            val auth = viewBinding.etPhone.text.toString()
-            val PhoneRequest = PostCodeRequest(type = 2, auth = auth)
+            signUp_phone = viewBinding.etPhone.text.toString()
+
+            val PhoneRequest = PostCodeRequest(type = 2, auth = signUp_phone)
             PostCodeService(this).tryPostPhone(PhoneRequest)
-            activity.changeFragment(3)
         }
 
         return viewBinding.root
@@ -74,12 +76,18 @@ class PhoneFragment : Fragment(), PostCodeInterface {
     override fun onPostEmailFailure(message: String) {
     }
 
+    // 인증번호 발송 API
     override fun onPostPhoneSuccess(response: CodeResponse) {
-        viewBinding.btOk.text = response.message
-        //response.message!!.let { Toast.makeText(activity, it, Toast.LENGTH_SHORT).show() }
+        // 인증번호 발송이 성공한 경우
+        if(response.isSuccess){
+            val Activity = activity as SignupActivity
+            Activity.changeFragment(3)
+        }
+        // Result message
+        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
     }
-
+    // 서버 연결 실패
     override fun onPostPhoneFailure(message: String) {
-        //Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("error", "오류 : $message")
     }
 }

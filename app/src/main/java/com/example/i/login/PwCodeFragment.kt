@@ -22,6 +22,7 @@ class PwCodeFragment : Fragment() {
         val activity = activity as AccountSearchActivity
 
         viewBinding.btOk.isEnabled = false
+        viewBinding.tvEmail.text = pwEmail // 데이터 가져오기
 
         viewBinding.pwCode.addTextChangedListener(object: TextWatcher {
             // 입력 전

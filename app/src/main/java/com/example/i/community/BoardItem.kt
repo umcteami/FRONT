@@ -1,14 +1,16 @@
 package com.example.i.community
 
+import com.example.i.home.HasImage
+
 data class BoardItem(
-    var hasImage : Boolean,
-    var picture : Int?,
-    var profile : Int?,
-    val date: String,
-    val writer: String,
-    val title: String,
-    val room: String,
-    var view: String,
-    val heart: String,
+    var hasImage : HasImage,
+    var type: String,
+    var title: String,
+    var postImg : String,
+   // var memPic : String,
+    var writer: String,
+    var date: String,
+    var view : String,
+    var heart : String,
     var comment: String
     )

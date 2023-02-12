@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.i.databinding.FragmentPwSearchBinding
 
-var email : String = "" // 전역 변수
+var pwEmail : String = "" // 전역 변수
 
 class PwSearchFragment : Fragment() {
 
@@ -52,7 +52,7 @@ class PwSearchFragment : Fragment() {
 
         //인증번호 받기
         viewBinding.btCall.setOnClickListener{
-            email = viewBinding.etEmail.text.toString()
+            pwEmail = viewBinding.etEmail.text.toString()
             activity.changeFragment(5)
         }
         return viewBinding.root

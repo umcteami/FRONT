@@ -4,81 +4,91 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.community.BoardItem
+import com.example.i.databinding.ListItemTtl2Binding
+import com.example.i.databinding.ListItemTtlBinding
 import com.example.i.databinding.PostListLayoutBinding
 import com.example.i.databinding.PostListLayoutImgxBinding
-import com.example.i.home.Const
+import com.example.i.home.Const.HASIMAGE
+import com.example.i.home.Const.NOIMAGE
+import com.example.i.home.HasImage
+import com.example.i.home.TtlRVAdapter
 
-class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) :
-RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     var itemClick: CommunityBoardAdapter.ItemClick? = null
 
+    override fun getItemViewType(position: Int): Int {
+        return if (itemList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
+    }
+
     override fun onCreateViewHolder(parent : ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if(viewType == Const.HASIMAGE){
-            val viewBinding = PostListLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            BoardViewHolder(viewBinding)
-        }else{
-            val viewBinding = PostListLayoutImgxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            BoardViewNoImgHolder(viewBinding)
+        return if (viewType == HASIMAGE) {
+            val view = PostListLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            BoardWithImgViewHolder(view)
+        } else{
+            val view = PostListLayoutImgxBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            BoardWithoutImgViewHolder(view)
         }
+
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(getItemViewType(position) == Const.HASIMAGE){
-            (holder as BoardViewHolder).bind(itemList[position])
-        }else{
-            (holder as BoardViewNoImgHolder).bind(itemList[position])
+        if (getItemViewType(position) == HASIMAGE) {
+            (holder as CommunityBoardAdapter.BoardWithImgViewHolder).bind(itemList[position])
+        }else {
+            (holder as CommunityBoardAdapter.BoardWithoutImgViewHolder).bind(itemList[position])
         }
 
         if (itemClick != null) {
-            if(itemList[position].hasImage == true){
-                (holder as CommunityBoardAdapter.BoardViewHolder).viewBinding!!.itemRoomo.setOnClickListener(View.OnClickListener {
-                    itemClick?.onClick(it,position)
-                })
-            }else{
-                (holder as CommunityBoardAdapter.BoardViewNoImgHolder).viewBinding!!.itemRoomo2.setOnClickListener(View.OnClickListener {
-                    itemClick?.onClick(it, position)
-                })
+            if (itemList[position].hasImage == HasImage.TRUE) {
+                (holder as CommunityBoardAdapter.BoardWithImgViewHolder).viewBinding!!.rootLayout.setOnClickListener(
+                    View.OnClickListener {
+                        itemClick?.onClick(it, position)
+                    })
+            }  else {
+                (holder as CommunityBoardAdapter.BoardWithoutImgViewHolder).viewBinding2!!.rootLayout2.setOnClickListener(
+                    View.OnClickListener {
+                        itemClick?.onClick(it, position)
+                    })
             }
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if(itemList[position].hasImage) Const.HASIMAGE else Const.NOIMAGE
-    }
+    override fun getItemCount(): Int = itemList.size
 
-    override fun getItemCount(): Int {
-        return itemList.count()
-    }
-
-    inner class BoardViewHolder(val viewBinding: PostListLayoutBinding) :
+    inner class BoardWithImgViewHolder(val viewBinding: PostListLayoutBinding) :
         RecyclerView.ViewHolder(viewBinding.root){
         fun bind(item: BoardItem) {
-            viewBinding.ivPostimage.setImageResource(item.picture!!)
-            viewBinding.ivProfileImage.setImageResource(item.picture!!)
-            viewBinding.tvRoominfo.text = item.room
+            viewBinding.tvTitle.text = item.title
+            Glide.with(viewBinding.ivPostimage)
+                .load(item.postImg)
+                .into(viewBinding.ivPostimage)
+            viewBinding.tvRoominfo.text = item.type
             viewBinding.tvWriter.text = item.writer
             viewBinding.tvWriteTime.text = item.date
             viewBinding.tvView.text = item.view
-            viewBinding.tvTitle.text = item.title
             viewBinding.tvHearts.text = item.heart
             viewBinding.tvChat.text = item.comment
         }
     }
 
-    inner class BoardViewNoImgHolder(val viewBinding: PostListLayoutImgxBinding) :
-        RecyclerView.ViewHolder(viewBinding.root){
+    inner class BoardWithoutImgViewHolder(val viewBinding2: PostListLayoutImgxBinding) :
+        RecyclerView.ViewHolder(viewBinding2.root){
         fun bind(item: BoardItem) {
-            viewBinding.ivProfileImage.setImageResource(item.picture!!)
-            viewBinding.tvRoominfo.text = item.room
-            viewBinding.tvWriter.text = item.writer
-            viewBinding.tvWriteTime.text = item.date
-            viewBinding.tvView.text = item.view
-            viewBinding.tvTitle.text = item.title
-            viewBinding.tvHearts.text = item.heart
-            viewBinding.tvChat.text = item.comment
+            viewBinding2.tvTitle.text = item.title
+            viewBinding2.tvRoominfo.text = item.type
+            viewBinding2.tvWriter.text = item.writer
+            viewBinding2.tvWriteTime.text = item.date
+            viewBinding2.tvView.text = item.view
+            viewBinding2.tvHearts.text = item.heart
+            viewBinding2.tvChat.text = item.comment
         }
+    }
+
+    interface OnItemClickListener {
+        fun onClick(view: View, position: Int)
     }
     interface ItemClick {
         fun onClick(view: View, position: Int)

@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,11 +27,7 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
         viewBinding = FragmentEmailCodeBinding.inflate(inflater, container, false)
 
         // 데이터 불러오기
-        if (getArguments() != null)
-        {
-            val email = getArguments()?.getString("email"); // 프래그먼트1에서 받아온 값 넣기
-            viewBinding.tvEmail.text = email
-        }
+        viewBinding.tvEmail.text = signUp_email
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
@@ -61,12 +58,14 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
             // 입력 후
             override fun afterTextChanged(p0: Editable?) {
             }
-
         })
 
         viewBinding.btOk.setOnClickListener{
             GetEmailService(this).tryGetEmail(authIdx)
             Toast.makeText(activity,"authIdx : {$authIdx}",Toast.LENGTH_SHORT).show()
+
+            val Activity = activity as SignupActivity
+            Activity.changeFragment(2)
         }
 
         return viewBinding.root
@@ -80,13 +79,12 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
             val Activity = activity as SignupActivity
             Activity.changeFragment(2)
         }
-
         // Result message
         Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
     }
 
     // 서버 연결 실패
     override fun onGetEmailFailure(message: String) {
-        Toast.makeText(activity, "오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("error", "오류 : $message")
     }
 }
