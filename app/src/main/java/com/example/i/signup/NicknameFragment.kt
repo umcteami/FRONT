@@ -13,6 +13,9 @@ import com.example.i.MainActivity
 import com.example.i.databinding.FragmentNicknameBinding
 import com.example.i.signup.customdialog.NicknameDialog
 
+var signUp_nick : String = "" // 전역 변수
+var signUp_intro : String = "" // 전역 변수
+
 class NicknameFragment : Fragment() {
     private lateinit var viewBinding : FragmentNicknameBinding
 
@@ -40,9 +43,9 @@ class NicknameFragment : Fragment() {
 
             // 입력 중
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                var nickname = viewBinding.etNickname.text.toString()
+                signUp_nick = viewBinding.etNickname.text.toString()
 
-                viewBinding.btOk.isEnabled = nickname.isNotEmpty()
+                viewBinding.btOk.isEnabled = signUp_nick.isNotEmpty()
 
                 if (viewBinding.btOk.isEnabled == false) {
                     viewBinding.btOk.setTextColor(Color.rgb(0x6B,0x66,0x66))
@@ -60,6 +63,7 @@ class NicknameFragment : Fragment() {
 
         viewBinding.btOk.setOnClickListener{
             val dialog = NicknameDialog()
+            signUp_intro = viewBinding.etIntro.text.toString()
             dialog.show(activity.supportFragmentManager, "Custom Dialog")
         }
 

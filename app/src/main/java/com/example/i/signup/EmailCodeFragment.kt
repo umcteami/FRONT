@@ -27,7 +27,7 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
         viewBinding = FragmentEmailCodeBinding.inflate(inflater, container, false)
 
         // 데이터 불러오기
-        viewBinding.tvEmail.text = signUpEmail
+        viewBinding.tvEmail.text = signUp_email
 
         viewBinding.backBtn.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)

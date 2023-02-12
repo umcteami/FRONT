@@ -12,8 +12,8 @@ import retrofit2.Response
 class GetEmailService(val GetEmailInterface: GetEmailInterface) {
 
     fun tryGetEmail(authIdx: Int){
-        val SignUpRetrofitInterface = ApplicationClass.sRetrofit.create(SignUpRetrofitInterface::class.java)
-        SignUpRetrofitInterface.getEmail(authIdx).enqueue(object : Callback<EmailCheckResponse>{
+        val CodeRetrofitInterface = ApplicationClass.sRetrofit.create(CodeRetrofitInterface::class.java)
+        CodeRetrofitInterface.getEmail(authIdx).enqueue(object : Callback<EmailCheckResponse>{
             override fun onResponse(call: Call<EmailCheckResponse>, response: Response<EmailCheckResponse>) {
                 (response.body() as EmailCheckResponse?)?.let {
                     GetEmailInterface.onGetEmailSuccess(
