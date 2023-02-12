@@ -9,9 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.i.MainActivity
+import com.example.i.config.ApplicationClass
 import com.example.i.databinding.FragmentEtcBinding
 import com.example.i.signup.customdialog.SignupDialog
 import com.example.i.signup.models.*
+import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 var signUp_birth : String = "22222" // 전역 변수
 var signUp_adresCode : String = ""
@@ -46,10 +55,39 @@ class EtcFragment : Fragment(), PostSignUpInterface {
             val dialog = SignupDialog()
             dialog.show(activity.supportFragmentManager, "Custom Dialog")
 
+//            val SignUpRequest = PostSignUpRequest(email = signUp_email, pw = signUp_pw,
+//                phone = signUp_phone, nick = signUp_nick, intro = signUp_intro, birth = signUp_birth,
+//                adresCode = signUp_adresCode, adres = signUp_adres, adresPlus = signUp_adresPlus, profile = "/image")
+
+            //SignUpRequest 재정의 - profile 제거
             val SignUpRequest = PostSignUpRequest(email = signUp_email, pw = signUp_pw,
                 phone = signUp_phone, nick = signUp_nick, intro = signUp_intro, birth = signUp_birth,
-                adresCode = signUp_adresCode, adres = signUp_adres, adresPlus = signUp_adresPlus, profile = "/image")
-            PostSignUpService(this).tryPostSignUp(SignUpRequest)
+                adresCode = signUp_adresCode, adres = signUp_adres, adresPlus = signUp_adresPlus)
+
+            //Gson으로 묶기
+            val service = ApplicationClass.sRetrofit.create(SignUpRetrofitInterface::class.java)
+            val requestBody = Gson().toJson(SignUpRequest)
+                .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
+            val emptyImage = RequestBody.create("image/jpeg".toMediaTypeOrNull(), ByteArray(0))
+            val image = MultipartBody.Part.createFormData("profile","profile.jpg",emptyImage)
+
+            val call = service.postJoin(requestBody, image)
+            call.enqueue(object : Callback<SignUpResponse>{
+                override fun onResponse(
+                    call: Call<SignUpResponse>,
+                    response: Response<SignUpResponse>
+                ) {
+                    (response.body() as SignUpResponse?)?.let{
+                        onPostSignUpSuccess(it)
+                    }
+                }
+
+                override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
+                    onPostSignUpFailure(t.message?:"통신 오류")
+                }
+            })
+            //
+//            PostSignUpService(this).tryPostSignUp(SignUpRequest)
         }
 
         viewBinding.btEnd2.setOnClickListener {
