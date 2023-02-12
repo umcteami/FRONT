@@ -117,10 +117,10 @@ class CommunityTalkroomBestFragment : Fragment(), View.OnClickListener {
     }
     override fun onClick(view:View?){
         when(view?.id){
-            viewBinding.btnSelectDate.id ->{
+            viewBinding.btSort.id ->{
                 val dlg = MkFilterDialog(main)
                 dlg.setOnOkClickedListener { content ->
-                    viewBinding.tvViewDate.text = content
+                    viewBinding.btSort.text = content
                 }
                 dlg.show()
             }
