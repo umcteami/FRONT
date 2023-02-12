@@ -172,7 +172,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
                 val requestBody = PostFeedsWriteImageRequest(userIdx, boardIdx, roomType, title, content)
                 val newRequestBody = Gson().toJson(requestBody)
                     .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
-//                val images = emptyList<MultipartBody.Part>()
 
                 val emptyImage = RequestBody.create("image/jpeg".toMediaTypeOrNull(), ByteArray(0))
                 val image = MultipartBody.Part.createFormData("img", "image.jpg", emptyImage)
