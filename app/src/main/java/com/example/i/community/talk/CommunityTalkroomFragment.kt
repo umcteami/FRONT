@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.community.BoardItem
 import com.example.i.community.talk.models.talkroom.TalkroomInterface
 import com.example.i.community.talk.models.talkroom.TalkroomResponse
@@ -28,17 +30,12 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
         savedInstanceState: Bundle?
     ): View? {
 
+
         viewBinding = FragmentTalkroomBinding.inflate(layoutInflater)
 
         //리사이클러뷰 데이터 추가
         TalkroomService(this).tryGetTalkroom()
 
-        Tadapter!!.itemClick = object : CommunityBoardAdapter.ItemClick {
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
 
         return viewBinding.root
 
@@ -93,6 +90,15 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
             viewBinding.rvBoard.layoutManager =
                 LinearLayoutManager(requireActivity())
             viewBinding.rvBoard.adapter = Tadapter
+
+            Tadapter!!.itemClick = object : CommunityBoardAdapter.ItemClick {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                    intent.putExtra("memIdx",response.result[position].memIdx)
+                    intent.putExtra("storyIdx",response.result[position].feedIdx)
+                    startActivity(intent)
+                }
+            }
 
             Toast.makeText(activity, response.message, Toast.LENGTH_SHORT).show()
         }

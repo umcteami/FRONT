@@ -1,36 +1,45 @@
 package com.example.i.community.talk.post
 
 import android.content.ClipData.Item
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
 import com.example.i.community.customdialog.CMCategoryDialog
+import com.example.i.community.talk.models.talkroom.ViewTalkroomInterface
+import com.example.i.community.talk.models.talkroom.ViewTalkroomResponse
+import com.example.i.community.talk.models.talkroom.ViewTalkroomService
 import com.example.i.databinding.ActivityCommunityPostBinding
 import java.io.File
 
-class CommunityPostActivity : AppCompatActivity() {
+class CommunityPostActivity : AppCompatActivity(){
     private lateinit var viewBinding : ActivityCommunityPostBinding
     private var heartClick : Boolean = false
     private var cntHeart : Int = 0
-    private val memIdx : Int = 0
-    private val boardType : Int = 0
-    private val roomType : Int = 0
-    private val feedIdx : Int = 0
-    private val title : String = ""
-    private val memNick : String = ""
-    private val content : String = ""
-    private val hit : Int = 0
-    private val commentCnt : Int = 0
-    private val time : String = ""
+//    private val memIdx : Int = 0
+//    private val boardType : Int = 0
+//    private val roomType : Int = 0
+//    private val feedIdx : Int = 0
+//    private val title : String = ""
+//    private val memNick : String = ""
+//    private val content : String = ""
+//    private val hit : Int = 0
+//    private val commentCnt : Int = 0
+//    private val time : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityPostBinding.inflate(layoutInflater)
+
+
+
+
         setContentView(viewBinding.root)
 
 //        setSupportActionBar(viewBinding.toolbar)
@@ -102,4 +111,16 @@ class CommunityPostActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+//    override fun onGetViewTalkroomSuccess(response: ViewTalkroomResponse) {
+//        if (response.isSuccess){
+//            viewBinding.tvTitle.setText()
+//        }
+//    }
+//
+//    override fun onGetViewTalkroomFailure(message: String) {
+//        Toast.makeText(this, "글 상세보기 오류 : $message", Toast.LENGTH_SHORT).show()
+//    }
+
+
 }
