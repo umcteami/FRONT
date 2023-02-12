@@ -4,14 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.chat.model.ChatInterface
-import com.example.i.chat.model.ChatResponse
+import com.example.i.chat.model.*
+import com.example.i.config.BaseResponse
 import com.example.i.databinding.ActivityMessageBinding
 import com.example.i.home.model.ChatService
 import java.text.SimpleDateFormat
 import kotlin.collections.ArrayList
 
-class MessageActivity : AppCompatActivity(), ChatInterface {
+class MessageActivity : AppCompatActivity(), ChatInterface, ChatDeleteInterface {
 
     private lateinit var viewBinding: ActivityMessageBinding
     val cList: ArrayList<Chat> = arrayListOf()
@@ -27,6 +27,8 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
         setContentView(viewBinding.root)
 
         viewBinding.backBtn.setOnClickListener {
+            val body =  ChatDeleteRequest (roomIdx, memIdx)
+            ChatOutService(this).tryPostChatOut(body)
             finish()
         }
 
@@ -102,5 +104,15 @@ class MessageActivity : AppCompatActivity(), ChatInterface {
         adapter.notifyDataSetChanged()
 
         viewBinding.etChat.setText("")
+    }
+
+    override fun onPostChatDeleteSuccess(response: BaseResponse) {
+        if (response.isSuccess) {
+            Log.d("success", "success")
+        }
+    }
+
+    override fun onPostChatDeleteFailure(message: String) {
+        Log.d("error", "오류: $message")
     }
 }
