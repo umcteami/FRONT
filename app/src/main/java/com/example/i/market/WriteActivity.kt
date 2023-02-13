@@ -65,7 +65,6 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInte
         }
 
         viewBinding.btUpload.isEnabled = false
-
         viewBinding.btCategory.setOnClickListener(this)
 
         viewBinding.etTitle.addTextChangedListener(object: TextWatcher{
@@ -149,7 +148,8 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInte
             val content = viewBinding.etContent.text.toString()
             val userIdx = userId
             val price = viewBinding.etPrice.text.toString().toInt()
-            val category = viewBinding.btCategory.text.toString()
+            var category = viewBinding.btCategory.text.toString()
+            category = "1"
             val postRequest = PostMarketWriteRequest(
                 title = title, content = content, price = price, userIdx = userIdx, category = category
             )
@@ -157,7 +157,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInte
             {
                 //이미지가 없을 경우
                 val emptyImage = RequestBody.create("image/jpeg".toMediaTypeOrNull(), ByteArray(0))
-                val image = MultipartBody.Part.createFormData("img", "image.jpg", emptyImage)
+                val image = MultipartBody.Part.createFormData("images", "image.jpg", emptyImage)
                 val images = listOf(image)
                 MarketWriteService(this).tryPostMarketWrite(postRequest, images)
             }

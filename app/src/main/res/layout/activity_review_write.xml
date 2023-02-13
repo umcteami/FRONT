@@ -6,48 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".community.review.ReviewWriteActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+    <Toolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
         <ImageButton
-            android:id="@+id/bt_back"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:id="@+id/back_btn"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
-            android:src="@drawable/bt_back" />
-
+            android:src="@drawable/ic_back" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="17dp"
             android:text="게시글 작성"
+            android:fontFamily="@font/roboto_bold"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <ImageButton
             android:id="@+id/bt_upload"
             android:layout_width="60dp"
             android:layout_height="36dp"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:src="@drawable/btn_comment_upload" />
-    </LinearLayout>
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical|right"
+            android:src="@drawable/bt_comment_upload"
+            android:background="@color/transparent"/>
+    </Toolbar>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -55,7 +45,7 @@
         android:layout_height="74dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <TextView
             android:layout_width="wrap_content"

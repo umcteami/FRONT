@@ -29,7 +29,7 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
     private lateinit var recyclerView: RecyclerView
     private var trader: String = ""
     private var content: String = ""
-    private var category: String = ""
+    private var goods: String = ""
     private var userId: Int = 33
     private var imgCnt: Int = 0
     private var sellerIdx : Int = 33
@@ -63,54 +63,55 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 trader = viewBinding.etId.text.toString()
-                category = viewBinding.etKind.text.toString()
+                goods = viewBinding.etKind.text.toString()
                 content = viewBinding.etContent.text.toString()
 
                 viewBinding.btUpload.isEnabled =
-                    trader.isNotEmpty() && content.isNotEmpty() && category.isNotEmpty()
+                    trader.isNotEmpty() && content.isNotEmpty() && goods.isNotEmpty()
             }
 
             override fun afterTextChanged(p0: Editable?) {
 
             }
         })
-        viewBinding.etId.addTextChangedListener(object : TextWatcher {
+        viewBinding.etKind.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 trader = viewBinding.etId.text.toString()
-                category = viewBinding.etKind.text.toString()
+                goods = viewBinding.etKind.text.toString()
                 content = viewBinding.etContent.text.toString()
 
                 viewBinding.btUpload.isEnabled =
-                    trader.isNotEmpty() && content.isNotEmpty() && category.isNotEmpty()
+                    trader.isNotEmpty() && content.isNotEmpty() && goods.isNotEmpty()
             }
 
             override fun afterTextChanged(p0: Editable?) {
 
             }
         })
-        viewBinding.etId.addTextChangedListener(object : TextWatcher {
+        viewBinding.etContent.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 trader = viewBinding.etId.text.toString()
-                category = viewBinding.etKind.text.toString()
+                goods = viewBinding.etKind.text.toString()
                 content = viewBinding.etContent.text.toString()
 
                 viewBinding.btUpload.isEnabled =
-                    trader.isNotEmpty() && content.isNotEmpty() && category.isNotEmpty()
+                    trader.isNotEmpty() && content.isNotEmpty() && goods.isNotEmpty()
             }
 
             override fun afterTextChanged(p0: Editable?) {
 
             }
         })
-        viewBinding.btBack.setOnClickListener {
+
+        viewBinding.backBtn.setOnClickListener {
             finish()
         }
 
@@ -120,6 +121,7 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
             val goods = viewBinding.etKind.text.toString()
             val sellerIdx = sellerIdx
             val buyerIdx = buyerIdx
+            Toast.makeText(this,"buttonCLck",Toast.LENGTH_SHORT).show()
             val postReviewWriteRequest = PostReviewWriteRequest(sellerIdx, buyerIdx, goods, content)
             if(imageList.size == 0)
             {
