@@ -19,6 +19,7 @@ import com.example.i.mypage.data.DiaryRVAdapter
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.post.PostInterface
 import com.example.i.mypage.data.post.PostResponse
+import com.example.i.mypage.data.post.PostService
 
 class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
     private lateinit var viewBinding: FragmentMyDiaryBinding
@@ -35,6 +36,7 @@ class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
 
         viewBinding.btSort.setOnClickListener(this)
 
+        PostService(this).tryGetDiary(33, 0) // 일기장 작성 글 조회 API
         backFragment() // 뒤로가기
 
         return viewBinding.root

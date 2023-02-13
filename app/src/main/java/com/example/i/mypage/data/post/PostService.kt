@@ -26,9 +26,9 @@ class PostService(val PostInterface: PostInterface) {
     }
 
     // 일기장 작성 글 조회 API
-    fun tryGetDiary(memIdx:Int, page: Int){
+    fun tryGetDiary(memIdx:Int, end: Int){
         val PostRetrofitInterface = ApplicationClass.sRetrofit.create(PostRetrofitInterface::class.java)
-        PostRetrofitInterface.getDiary(memIdx, page).enqueue(object : Callback<PostResponse>{
+        PostRetrofitInterface.getDiary(memIdx, end).enqueue(object : Callback<PostResponse>{
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                 (response.body() as PostResponse?)?.let {
                     PostInterface.onGetDiarySuccess(

@@ -1,36 +1,41 @@
 package com.example.i.community.talk.post
 
 import android.content.ClipData.Item
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.GlideBuilder
 import com.example.i.R
 import com.example.i.community.customdialog.CMCategoryDialog
+import com.example.i.community.talk.models.talkroom.ViewTalkroomInterface
+import com.example.i.community.talk.models.talkroom.ViewTalkroomResponse
+import com.example.i.community.talk.models.talkroom.ViewTalkroomService
 import com.example.i.databinding.ActivityCommunityPostBinding
 import java.io.File
 
-class CommunityPostActivity : AppCompatActivity() {
+class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
+
     private lateinit var viewBinding : ActivityCommunityPostBinding
     private var heartClick : Boolean = false
+    private var feedIdx = 0
+    private var memIdx = 0
     private var cntHeart : Int = 0
-    private val memIdx : Int = 0
-    private val boardType : Int = 0
-    private val roomType : Int = 0
-    private val feedIdx : Int = 0
-    private val title : String = ""
-    private val memNick : String = ""
-    private val content : String = ""
-    private val hit : Int = 0
-    private val commentCnt : Int = 0
-    private val time : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityPostBinding.inflate(layoutInflater)
+
+
+
+        ViewTalkroomService(this).tryGetViewTalkroom(feedIdx,memIdx)
+
         setContentView(viewBinding.root)
 
 //        setSupportActionBar(viewBinding.toolbar)
@@ -73,7 +78,7 @@ class CommunityPostActivity : AppCompatActivity() {
 //            override fun onClick(view: View, position: Int) {
 //                val dlg = CMCategoryDialog(this)
 //                dlg.show()
-////                dlg.setOnOkClickedListener(object : CMCategoryDialog.CategoryDialogOKClickListener{
+//                dlg.setOnOkClickedListener(object : CMCategoryDialog.CategoryDialogOKClickListener{
 //                    override fun onOKClicked(content: String) {
 //                        return
 //                    }
@@ -102,4 +107,33 @@ class CommunityPostActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onGetViewTalkroomSuccess(response: ViewTalkroomResponse) {
+
+
+        feedIdx = intent.getIntExtra("storyIdx",2)
+        memIdx = intent.getIntExtra("memIdx",33)
+
+        if (response.isSuccess){
+            viewBinding.tvRoomType.text = response.result[33].roomType.toString()
+            viewBinding.tvTitle.text = response.result[33].title
+            Glide.with(viewBinding.ivProfileImage)
+                .load(response.result[feedIdx].title)
+                .into(viewBinding.ivProfileImage)
+            viewBinding.tvWriter.text = response.result[feedIdx].memNick
+            viewBinding.tvWriteTime.text = response.result[feedIdx].createAt
+            viewBinding.tvViewCnt.text = response.result[feedIdx].hit.toString()
+           viewBinding.tvContent.text = response.result[feedIdx].content
+            viewBinding.tvCommentCountNum.text = response.result[feedIdx].commentCnt.toString()
+//            Glide.with(viewBinding.ivPost)
+//                .load(response.result[feedIdx].img)
+//                .into(viewBinding.ivPost)
+        }
+    }
+
+    override fun onGetViewTalkroomFailure(message: String) {
+        Toast.makeText(this, "글 상세보기 오류 : $message", Toast.LENGTH_SHORT).show()
+    }
+
+
 }

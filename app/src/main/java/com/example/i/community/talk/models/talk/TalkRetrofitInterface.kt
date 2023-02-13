@@ -8,7 +8,6 @@ interface TalkRetrofitInterface {
 
     @GET("/feeds/story?")
     fun getTalk(
-        @Query("boardType")boardType: Int,
         @Query("roomType")roomType: Int
     ): Call<TalkResponse>
 }

@@ -21,7 +21,7 @@ RecyclerView.Adapter<DiaryBoardRoomxAdapter.BoardViewHolder>(){
     override fun onBindViewHolder(holder: DiaryBoardRoomxAdapter.BoardViewHolder, position: Int) {
         holder.bind(itemList[position])
         if(itemClick != null){
-            holder.viewBinding!!.rootLayout.setOnClickListener(View.OnClickListener{
+            holder.viewBinding!!.rootLayout1.setOnClickListener(View.OnClickListener{
                 itemClick?.onClick(it,position)
 
             })

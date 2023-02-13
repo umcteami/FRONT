@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.Main2Activity
 import com.example.i.community.BoardItem
 import com.example.i.community.talk.models.talkroom.TalkroomInterface
 import com.example.i.community.talk.models.talkroom.TalkroomResponse
@@ -28,17 +30,12 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
         savedInstanceState: Bundle?
     ): View? {
 
+
         viewBinding = FragmentTalkroomBinding.inflate(layoutInflater)
 
         //리사이클러뷰 데이터 추가
         TalkroomService(this).tryGetTalkroom()
 
-        Tadapter!!.itemClick = object : CommunityBoardAdapter.ItemClick {
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
 
         return viewBinding.root
 
@@ -56,22 +53,7 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
                 } else {
                     hasImage = HasImage.FALSE
                 }
-                itemList.apply {
-                    add(
-                        BoardItem(
-                            hasImage
-                        ,"소통방",
-                            "이게멀티뷰타입되고있어요?안되는것같은데",
-                            null,
-                            "코코",
-                            "2020.20.20",
-                            "2",
-                            "3",
-                            "3"
 
-                        )
-                    )
-                }
                 itemList.apply {
                     add(
                         BoardItem(
@@ -93,6 +75,16 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
             viewBinding.rvBoard.layoutManager =
                 LinearLayoutManager(requireActivity())
             viewBinding.rvBoard.adapter = Tadapter
+
+            Tadapter!!.itemClick = object : CommunityBoardAdapter.ItemClick {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                    //글 정보 보내주기: 회원 인덱스, 게시글 인덱스
+                    intent.putExtra("storyIdx",response.result[position].feedIdx)
+                    intent.putExtra("memIdx",response.result[position].memIdx)
+                    startActivity(intent)
+                }
+            }
 
             Toast.makeText(activity, response.message, Toast.LENGTH_SHORT).show()
         }

@@ -156,12 +156,7 @@ class HomeFragment :Fragment(), TtlListInterface {
         TtlListService(this).tryGetTtlList()
 
 
-        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
+
 
         return viewBinding.root
     }
@@ -196,9 +191,26 @@ class HomeFragment :Fragment(), TtlListInterface {
                     )
                 }
             }
+
+
         }
         viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
         viewBinding.homeTtlRV.adapter = Tadapter
+
+        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                if (response.result[position].roomType == 1){
+                    intent.putExtra("storyIdx",response.result[position].feedIdx)
+                } else if (response.result[position].roomType == 2){
+                    intent.putExtra("diaryIdx",response.result[position].feedIdx)
+                } else if (response.result[position].roomType == 3){
+                    intent.putExtra("reviewIdx",response.result[position].feedIdx)
+                }
+                intent.putExtra("memIdx",response.result[position].memIdx)
+                startActivity(intent)
+            }
+        }
 
         // Result message
         Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
