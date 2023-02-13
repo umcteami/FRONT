@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 var myProfile : String? = null
+var myName : String? = null
 
 class MypageSettingActivity : AppCompatActivity(), SettingInterface {
     private lateinit var viewBinding: ActivityMypageSettingBinding
@@ -93,6 +94,7 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
 
             // 프로필
             myProfile = response.result.profile
+            myName = response.result.nick
 
             Glide.with(viewBinding.editProfile)
                 .load(myProfile)
