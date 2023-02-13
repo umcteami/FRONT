@@ -10,9 +10,9 @@ import retrofit2.Response
 
 
 class TalkService(val TalkInterface: TalkInterface) {
-    fun tryGetTalk(boardType:Int, roomType: Int){
+    fun tryGetTalk(roomType: Int){
         val TalkRetrofitInterface = ApplicationClass.sRetrofit.create(TalkRetrofitInterface::class.java)
-        TalkRetrofitInterface.getTalk(boardType, roomType).enqueue(object : Callback<TalkResponse>{
+        TalkRetrofitInterface.getTalk(roomType).enqueue(object : Callback<TalkResponse>{
             override fun onResponse(call: Call<TalkResponse>, response: Response<TalkResponse>) {
                 (response.body() as TalkResponse?)?.let {
                     TalkInterface.onGetTalkSuccess(

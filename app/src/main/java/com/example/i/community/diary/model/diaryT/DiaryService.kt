@@ -1,4 +1,4 @@
-package com.example.i.community.diary.diaryT
+package com.example.i.community.diary.model.diaryT
 
 import com.example.i.config.ApplicationClass
 import com.example.i.home.model.TtlListInterface

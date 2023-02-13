@@ -1,14 +1,14 @@
-package com.example.i.community.diary.diaryT
+package com.example.i.community.diary.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DiaryList(
-    @SerializedName("boardType")val boardType: Int,
+data class DiaryDList(
+    @SerializedName("boardType") val boardType: Int,
     @SerializedName("roomType") val roomType: Int,
     @SerializedName("feedIdx") val feedIdx: Int,
     @SerializedName("memIdx") val memIdx: Int,
-    @SerializedName("memNick") val memNick: String,
     @SerializedName("memProfile") val memProfile: String,
+    @SerializedName("memNick") val memNick: String,
     @SerializedName("title") val title: String,
     @SerializedName("img") val img: String,
     @SerializedName("hit") val hit: Int,

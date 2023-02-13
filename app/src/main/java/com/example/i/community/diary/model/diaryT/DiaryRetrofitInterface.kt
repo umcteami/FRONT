@@ -1,4 +1,4 @@
-package com.example.i.community.diary.diaryT
+package com.example.i.community.diary.model.diaryT
 
 import retrofit2.Call
 import retrofit2.http.GET
