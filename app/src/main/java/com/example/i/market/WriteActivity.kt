@@ -148,10 +148,18 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInte
             val content = viewBinding.etContent.text.toString()
             val userIdx = userId
             val price = viewBinding.etPrice.text.toString().toInt()
-            var category = viewBinding.btCategory.text.toString()
-            category = "1"
+            val category = viewBinding.btCategory.text.toString()
+            var numCategory : String = "1"
+
+            when(category){
+                "맘마/까까" -> numCategory = "1"
+                "장난감" -> numCategory = "2"
+                "영양제/약/간호용품" -> numCategory = "3"
+                "기타" -> numCategory = "4"
+            }
+
             val postRequest = PostMarketWriteRequest(
-                title = title, content = content, price = price, userIdx = userIdx, category = category
+                title = title, content = content, price = price, userIdx = userIdx, category = numCategory
             )
             if(imageList.size == 0)
             {
@@ -167,7 +175,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInte
                 for(i in 0 until imageList.size){
                     val file = File(getRealPathFromURI(imageList[i]))
                     val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-                    images.add(MultipartBody.Part.createFormData("img", file.name, requestFile))
+                    images.add(MultipartBody.Part.createFormData("images", file.name, requestFile))
                 }
                 MarketWriteService(this).tryPostMarketWrite(postRequest, images)
             }
