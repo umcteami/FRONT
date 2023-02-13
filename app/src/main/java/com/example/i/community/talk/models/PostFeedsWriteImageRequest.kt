@@ -5,10 +5,9 @@ import java.io.File
 import java.nio.file.Files
 
 data class PostFeedsWriteImageRequest(
-    val userIdx : Int,
-    val boardIdx : Int,
-    val roomType : Int,
-    val title : String,
-    val content : String,
-    val imgCnt : Int
-)
+    @SerializedName("userIdx") val userIdx : Int,
+    @SerializedName("boardIdx") val boardIdx : Int,
+    @SerializedName("roomType") val roomType : Int,
+    @SerializedName("title") val title : String,
+    @SerializedName("content") val content : String
+    )

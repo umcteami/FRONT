@@ -2,15 +2,21 @@ package com.example.i.market.model
 
 import com.example.i.community.talk.models.FeedsWriteInterface
 import com.example.i.config.ApplicationClass
+import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MarketWriteService (val MarketWriteInterface : MarketWriteInterface){
-    fun tryPostMarketWrite(PostMarketWriteRequest : PostMarketWriteRequest){
+    fun tryPostMarketWrite(PostMarketWriteRequest : PostMarketWriteRequest, images : List<MultipartBody.Part?>){
         val marketWriteRetrofitInterface = ApplicationClass.sRetrofit.create(
             MarketWriteRetrofitInterface::class.java)
-        marketWriteRetrofitInterface.postMarketWrite(PostMarketWriteRequest).enqueue(object :
+        val requestBody = Gson().toJson(PostMarketWriteRequest)
+            .toRequestBody("application/json; charest=utf-8".toMediaTypeOrNull())
+        marketWriteRetrofitInterface.postMarketWrite(requestBody, images).enqueue(object :
             Callback<MarketWriteResponse>
         {
             override fun onResponse(

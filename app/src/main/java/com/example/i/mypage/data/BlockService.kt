@@ -7,9 +7,9 @@ import retrofit2.Response
 
 class BlockService(val BlockInterface: BlockInterface) {
     // 차단한 사용자 API
-    fun tryGetBlock(){
+    fun tryGetBlock(memIdx : Int){
         val BlockRetrofitInterface = ApplicationClass.sRetrofit.create(BlockRetrofitInterface::class.java)
-        BlockRetrofitInterface.getBlock().enqueue(object : Callback<BlockResponse>{
+        BlockRetrofitInterface.getBlock(memIdx).enqueue(object : Callback<BlockResponse>{
             override fun onResponse(call: Call<BlockResponse>, response: Response<BlockResponse>) {
                 (response.body() as BlockResponse?)?.let {
                     BlockInterface.onGetBlockSuccess(

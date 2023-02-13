@@ -11,7 +11,7 @@ interface SignUpRetrofitInterface {
     @Multipart
     @POST("/member/join")
     fun postJoin(
-        @Part("request") request : PostSignUpRequest,
-        @Part profile : MultipartBody.Part? = null
+        @Part("request") request : RequestBody,
+        @Part profile : MultipartBody.Part?
     ): Call<BaseResponse>
 }
