@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentMyDiaryBinding
+import com.example.i.login.memIdx
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.DiaryRVAdapter
 import com.example.i.mypage.data.MyPost
@@ -36,7 +37,7 @@ class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
 
         viewBinding.btSort.setOnClickListener(this)
 
-        PostService(this).tryGetDiary(33, 0) // 일기장 작성 글 조회 API
+        PostService(this).tryGetDiary(memIdx, 0) // 일기장 작성 글 조회 API
         backFragment() // 뒤로가기
 
         return viewBinding.root

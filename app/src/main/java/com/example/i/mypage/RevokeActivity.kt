@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.i.config.BaseResponse
 import com.example.i.databinding.ActivityRevokeBinding
+import com.example.i.login.memIdx
 import com.example.i.mypage.customdialog.PopupRevokeDialog
 import com.example.i.mypage.data.*
 
@@ -33,7 +34,7 @@ class RevokeActivity : AppCompatActivity(), RevokeInterface {
 
             // 서버에 값 보냄
             // val postRequest = PostRevokeRequest(33)
-            RevokeService(this).tryPostRevoke(33)
+            RevokeService(this).tryPostRevoke(memIdx)
         }
     }
     // 탈퇴하기 API

@@ -7,9 +7,9 @@ import retrofit2.Response
 
 class ReportService(val ReportInterface: ReportInterface) {
     // 신고한 게시글 API
-    fun tryGetReport(){
+    fun tryGetReport(memIdx : Int){
         val ReportRetrofitInterface = ApplicationClass.sRetrofit.create(ReportRetrofitInterface::class.java)
-        ReportRetrofitInterface.getReport().enqueue(object : Callback<ReportResponse>{
+        ReportRetrofitInterface.getReport(memIdx).enqueue(object : Callback<ReportResponse>{
             override fun onResponse(call: Call<ReportResponse>, response: Response<ReportResponse>) {
                 (response.body() as ReportResponse?)?.let {
                     ReportInterface.onGetReportSuccess(

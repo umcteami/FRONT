@@ -5,6 +5,8 @@ import retrofit2.http.*
 
 interface BlockRetrofitInterface {
     // 차단한 사용자 API
-    @GET("/mypage/block/33")
-    fun getBlock(): Call<BlockResponse>
+    @GET("/member/{memIdx}")
+    fun getBlock(
+        @Path("memIdx") memIdx: Int
+    ): Call<BlockResponse>
 }

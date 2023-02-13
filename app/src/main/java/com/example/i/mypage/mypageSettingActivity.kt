@@ -1,17 +1,23 @@
 package com.example.i.mypage
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ActivityMypageSettingBinding
 import com.example.i.login.NewPwFragment
 import com.example.i.mypage.customdialog.PopupSaveDialog
 import com.example.i.mypage.data.*
 import de.hdodenhof.circleimageview.CircleImageView
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MypageSettingActivity : AppCompatActivity(), SettingInterface {
     private lateinit var viewBinding: ActivityMypageSettingBinding
+    var calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,16 +29,19 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
             finish()
         }
 
-        // 생일
+        // 생일 : 현재 날짜
+        val myFormat = "yyyy-MM-dd" // mention the format you need
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        viewBinding.editBrith.setText(sdf.format(calendar.time))
         viewBinding.changeBirth.setOnClickListener {
-//            viewBinding.editBrith.isEnabled = true
-
-
+            showDatePicker()
         }
+
         // 전화번호
         viewBinding.changeCall.setOnClickListener {
             viewBinding.editCall.isEnabled = true
         }
+
         // 이메일
         viewBinding.changeEmail.setOnClickListener {
             viewBinding.editEmail.isEnabled = true
@@ -80,6 +89,11 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
 
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
+            // 프로필
+            Glide.with(viewBinding.editProfile)
+                .load(response.result.profile)
+                .into(viewBinding.editProfile)
+
             viewBinding.editEmail.setText(response.result.email)
             viewBinding.editCall.setText(response.result.phone)
             viewBinding.editNickName.setText(response.result.nick)
@@ -113,5 +127,35 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
         SettingService(this).tryPatchSetting(settingRequest)
 
         finish()
+    }
+
+    // DatePicker
+    fun showDatePicker() {
+
+        viewBinding.editBrith.setText(SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()))
+
+        // 시작일 직접 설정
+        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, monthOfYear)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val myFormat = "yyyy-MM-dd" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            viewBinding.editBrith.setText(sdf.format(calendar.time))
+        }
+
+        // "변경" 클릭 시 달력 팝업
+        viewBinding.changeBirth.setOnClickListener {
+
+            Log.d("Clicked", "Interview Date Clicked")
+
+            val dialog = DatePickerDialog(this, dateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH))
+
+            dialog.show()
+        }
     }
 }

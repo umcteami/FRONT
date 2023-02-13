@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.databinding.FragmentBlockedBinding
 import com.example.i.mypage.data.*
+import com.example.i.login.memIdx
 
 class BlockedFragment : Fragment(), BlockInterface {
     private lateinit var viewBinding: FragmentBlockedBinding
@@ -20,7 +21,7 @@ class BlockedFragment : Fragment(), BlockInterface {
     ): View? {
         viewBinding = FragmentBlockedBinding.inflate(layoutInflater)
 
-        BlockService(this).tryGetBlock() // 차단한 사용자 API
+        BlockService(this).tryGetBlock(memIdx) // 차단한 사용자 API
         backFragment() // 뒤로가기
 
         return viewBinding.root

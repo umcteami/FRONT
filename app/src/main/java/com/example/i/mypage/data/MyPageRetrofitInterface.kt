@@ -5,6 +5,8 @@ import retrofit2.http.*
 
 interface MyPageRetrofitInterface {
     // 마이페이지 시작창 조회 API
-    @GET("/mypage/33")
-    fun getMyPage(): Call<MyPageResponse>
+    @GET("/mypage/{memIdx}")
+    fun getMyPage(
+        @Path("memIdx") memIdx: Int
+    ): Call<MyPageResponse>
 }

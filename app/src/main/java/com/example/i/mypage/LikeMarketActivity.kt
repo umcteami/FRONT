@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.databinding.ActivityLikeMarketBinding
+import com.example.i.login.memIdx
 import com.example.i.market.MarketPostActivity
 import com.example.i.mypage.data.LikeMarket
 import com.example.i.mypage.data.LikeMarketRVAdapter
@@ -24,7 +25,7 @@ class LikeMarketActivity : AppCompatActivity(), WantInterface {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityLikeMarketBinding.inflate(layoutInflater)
 
-        WantService(this).tryGetWant(33,3) // 찜한 물품들 API
+        WantService(this).tryGetWant(memIdx,3) // 찜한 물품들 API
 
         adapter!!.itemClick = object : LikeMarketRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
