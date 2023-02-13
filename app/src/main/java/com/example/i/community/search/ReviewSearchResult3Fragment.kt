@@ -18,9 +18,7 @@ class ReviewSearchResult3Fragment : Fragment() {
         viewBinding = FragmentReviewSearchResult3Binding.inflate(layoutInflater)
         val itemList = ArrayList<ReviewSearchItem>()
         itemList.apply{
-            add(ReviewSearchItem("별이엄마와 거래해봤어요", "누리엄마", "22.12.12", "조회 12", "5", "2"))
-            add(ReviewSearchItem("별이엄마와 거래해봤어요", "누리엄마", "22.12.12", "조회 12", "5", "2"))
-            add(ReviewSearchItem("별이엄마와 거래해봤어요", "누리엄마", "22.12.12", "조회 12", "5", "2"))
+
         }
         viewBinding.rvBoard.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

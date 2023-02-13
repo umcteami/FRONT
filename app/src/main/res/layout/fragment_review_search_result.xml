@@ -23,8 +23,17 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
-            android:text="4건의 검색결과가 있어요."
+            android:text="4"
             android:textColor="@color/grey" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="건의 검색결과가 있어요."
+            android:textColor="@color/grey"/>
 
         <View
             android:layout_width="0dp"

@@ -5,10 +5,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StorySearchService (val StorySearchInterface : StorySearchInterface){
+class StorySearchService (val StorySearchInterface : StorySearchInterface, val category : String?, val searchKeyword : String, val page : Int?, val searchTarget : String){
     fun tryGetStorySearch(){
         val StorySearchRetrofitInterface = ApplicationClass.sRetrofit.create(StorySearchRetrofitInterface::class.java)
-        StorySearchRetrofitInterface.getStorySearch(category = "justchat" , searchKeyword = "test", page = 0, searchTarget = "title").enqueue(object:
+        StorySearchRetrofitInterface.getStorySearch(category = category , searchKeyword = searchKeyword, page = 0, searchTarget = searchTarget).enqueue(object:
             Callback<StorySearchResponse>{
             override fun onResponse(
                 call: Call<StorySearchResponse>,
