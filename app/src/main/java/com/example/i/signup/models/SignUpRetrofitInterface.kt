@@ -1,6 +1,5 @@
 package com.example.i.signup.models
 
-import com.example.i.config.BaseResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -11,7 +10,8 @@ interface SignUpRetrofitInterface {
     @Multipart
     @POST("/member/join")
     fun postJoin(
-        @Part("request") request : PostSignUpRequest,
-        @Part profile : MultipartBody.Part? = null
-    ): Call<BaseResponse>
+//        @Body params: PostSignUpRequest,
+        @Part("request") request : RequestBody,
+        @Part profile : MultipartBody.Part?
+    ): Call<SignUpResponse>
 }
