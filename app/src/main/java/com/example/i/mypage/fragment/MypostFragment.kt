@@ -15,15 +15,15 @@ import com.example.i.login.memIdx
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter
-import com.example.i.mypage.data.like.LikeResponse
 import com.example.i.mypage.data.post.PostInterface
 import com.example.i.mypage.data.post.PostResponse
 import com.example.i.mypage.data.post.PostService
+import com.example.i.mypage.myProfile
+
 
 class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
     private lateinit var viewBinding: FragmentMypostBinding
     private lateinit var main: Main2Activity
-
     val PostList: ArrayList<MyPost> = arrayListOf()
     val adapter = PostRVAdapter(PostList)
 
@@ -35,7 +35,7 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
 
         viewBinding.btSort.setOnClickListener(this)
 
-        PostService(this).tryGetPost(memIdx, 0) // 작성 글 조회 API
+        PostService(this).tryGetPost(memIdx = memIdx, 1) // 작성 글 조회 API
         backFragment() // 뒤로가기
 
         return viewBinding.root
@@ -55,15 +55,29 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
 
     // 작성 글 조회 API
     override fun onGetPostSuccess(response: PostResponse) {
+
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
+            val index: Int = response.result.size - 1
 
-            PostList.apply {
-                add(MyPost(response.result[1].toString(), response.result[3].toString(),
-                    response.result[8].toString(), response.result[5].toString(), response.result[6].toString()))
-                // add(MyPost("질문방", "해피가 이런 증상을 보이는데 괜찮은 건가요?", "7시간 전", "조회 12", "2"))
+            for (i in 0 ..index) {
+                if (response.size != 0) {
+
+                    PostList.apply {
+                        add(
+                            MyPost(
+                                myProfile,
+                                response.result[i].feedImg.toString(),
+                                response.result[i].roomType.toString(),
+                                response.result[i].title.toString(),
+                                response.result[i].createAt.toString(),
+                                response.result[i].hit.toString(),
+                                response.result[i].countLike.toString()
+                            )
+                        )
+                    }
+                }
             }
-
             viewBinding.recyclerview.layoutManager = LinearLayoutManager(context)
             viewBinding.recyclerview.adapter = adapter
         }

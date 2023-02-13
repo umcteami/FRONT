@@ -15,6 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
+var myProfile : String? = null
 
 class MypageSettingActivity : AppCompatActivity(), SettingInterface {
     private lateinit var viewBinding: ActivityMypageSettingBinding
@@ -90,9 +91,12 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
 
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
+
             // 프로필
+            myProfile = response.result.profile
+
             Glide.with(viewBinding.editProfile)
-                .load(response.result.profile)
+                .load(myProfile)
                 .into(viewBinding.editProfile)
 
             viewBinding.editEmail.setText(response.result.email)

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemMypostBinding
 
 class PostRVAdapter(private val PostList: ArrayList<MyPost>): RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
@@ -12,6 +13,13 @@ class PostRVAdapter(private val PostList: ArrayList<MyPost>): RecyclerView.Adapt
 
     inner class ViewHolder(val viewBinding: ItemMypostBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind (MyPost: MyPost) {
+            Glide.with(viewBinding.myPostProfile)
+                .load(MyPost.profile)
+                .into(viewBinding.myPostProfile)
+
+            Glide.with(viewBinding.myPostImg)
+                .load(MyPost.img)
+                .into(viewBinding.myPostImg)
             viewBinding.myPostTag.text = MyPost.tag
             viewBinding.myPostContent.text = MyPost.content
             viewBinding.myPostTime.text = MyPost.time

@@ -11,15 +11,17 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentLikeStoryBinding
+import com.example.i.login.memIdx
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter
 import com.example.i.mypage.data.like.LikeInterface
 import com.example.i.mypage.data.like.LikeResponse
+import com.example.i.mypage.data.like.LikeService
+import com.example.i.mypage.myProfile
 
 class LikeStoryFragment : Fragment(), LikeInterface{
 
     private lateinit var viewBinding : FragmentLikeStoryBinding
-
     val PostList: ArrayList<MyPost> = arrayListOf()
     val adapter = PostRVAdapter(PostList)
 
@@ -28,6 +30,7 @@ class LikeStoryFragment : Fragment(), LikeInterface{
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentLikeStoryBinding.inflate(layoutInflater)
+        LikeService(this).tryGetLike(memIdx, 0) // 좋아요한 게시글 API
         return viewBinding.root
     }
 
@@ -46,12 +49,27 @@ class LikeStoryFragment : Fragment(), LikeInterface{
     override fun onGetLikeSuccess(response: LikeResponse) {
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
+            val index: Int = response.result.size - 1
 
-            PostList.apply{
-                add(MyPost(response.result[1].toString(), response.result[3].toString(),
-                    response.result[8].toString(), response.result[5].toString(), response.result[6].toString()))
+            for (i in 0 ..index) {
+                if (response.size != 0) {
+
+                    PostList.apply {
+                        add(
+                            MyPost(
+                                myProfile,
+                                response.result[i].feedImg.toString(),
+                                response.result[i].roomType.toString(),
+                                response.result[i].title.toString(),
+                                response.result[i].createAt.toString(),
+                                response.result[i].hit.toString(),
+                                response.result[i].countLike.toString()
+                            )
+                        )
+                        // add(MyPost("질문방", "해피가 이런 증상을 보이는데 괜찮은 건가요?", "7시간 전", "조회 12", "2"))
+                    }
+                }
             }
-
             viewBinding.recyclerview.layoutManager = LinearLayoutManager(context)
             viewBinding.recyclerview.adapter = adapter
         }
