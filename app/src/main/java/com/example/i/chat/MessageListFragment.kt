@@ -8,12 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.chat.customdialog.MessageNoticeDialog
 import com.example.i.chat.customdialog.MessageOptionDialog
 import com.example.i.chat.model.ChatListInterface
 import com.example.i.chat.model.ChatListResponse
 import com.example.i.chat.model.ChatListService
 import com.example.i.databinding.FragmentMessageListBinding
+import com.example.i.market.MarketMainFragment
 
 class MessageListFragment : Fragment(), ChatListInterface {
     private lateinit var viewBinding : FragmentMessageListBinding

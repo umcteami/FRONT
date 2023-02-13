@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.i.Main2Activity
 import com.example.i.databinding.DialogMessageOptionBinding
 
-class MessageOptionDialog(): DialogFragment() {
+class MessageOptionDialog: DialogFragment() {
     private lateinit var viewBinding: DialogMessageOptionBinding
 
     override fun onCreateView(
@@ -33,7 +33,6 @@ class MessageOptionDialog(): DialogFragment() {
         viewBinding.btEnd.setOnClickListener {
             val dlg = MessageNoticeDialog()
             dlg.show(requireActivity().supportFragmentManager, "custom dialog")
-            Toast.makeText(requireActivity(), dlg.roomIdx, Toast.LENGTH_SHORT).show()
             dialog?.dismiss()
         }
 
