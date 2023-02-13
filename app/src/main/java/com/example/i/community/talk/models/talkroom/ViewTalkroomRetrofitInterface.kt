@@ -6,9 +6,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ViewTalkroomRetrofitInterface {
-    @GET("/feeds/story/:storyIdx?")
+    @GET("/feeds/story/{storyIdx}?")
     fun getViewTalkroom(
-        @Path("storyInx") storyInx: Int,
-        @Query("memInx") memInx: Int
+        @Path("storyIdx") storyIdx: Int,
+        @Query("memIdx")  memIdx: Int
     ): Call<ViewTalkroomResponse>
+
 }

@@ -15,6 +15,6 @@ data class ViewTalkroomList(
     @SerializedName("commentCnt") val commentCnt : Int,
     @SerializedName("createAt") val createAt: String,
     @SerializedName("islike") val islike : Int,
-    @SerializedName("img") val img: ArrayList<String> //맞나..
+    @SerializedName("img") val img: String
 
 )

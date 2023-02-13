@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ViewTalkroomResponse(
 
-    @SerializedName("result") val result: ArrayList<ViewTalkroomList>,
+    @SerializedName("result") val result: ArrayList<ViewTalkroomList>
     //@SerializedName("img") val img:ArrayList<String>
 
 ):BaseResponse()

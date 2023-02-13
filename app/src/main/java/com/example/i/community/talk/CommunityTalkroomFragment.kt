@@ -94,8 +94,9 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
             Tadapter!!.itemClick = object : CommunityBoardAdapter.ItemClick {
                 override fun onClick(view: View, position: Int) {
                     val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                    intent.putExtra("memIdx",response.result[position].memIdx)
+                    //글 정보 보내주기: 회원 인덱스, 게시글 인덱스
                     intent.putExtra("storyIdx",response.result[position].feedIdx)
+                    intent.putExtra("memIdx",response.result[position].memIdx)
                     startActivity(intent)
                 }
             }
