@@ -1,7 +1,8 @@
-package com.example.i.community
+package com.example.i.community.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.i.community.search.ReviewSearchviewPagerAdapter
 import com.example.i.databinding.ActivitySearchResultBinding
 import com.google.android.material.tabs.TabLayoutMediator
 

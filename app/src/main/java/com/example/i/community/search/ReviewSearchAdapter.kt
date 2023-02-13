@@ -1,4 +1,4 @@
-package com.example.i.community
+package com.example.i.community.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

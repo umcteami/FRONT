@@ -12,5 +12,6 @@ data class ResultHomeSearch(
     @SerializedName("img") val img : String,
     @SerializedName("hit") val hit : Int,
     @SerializedName("commentCnt") val commentCnt : Int,
+    @SerializedName("likeCbt") val likeCnt : Int,
     @SerializedName("createAt") val createAt : String
 )
