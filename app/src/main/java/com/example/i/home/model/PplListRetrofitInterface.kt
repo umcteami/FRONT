@@ -3,7 +3,8 @@ package com.example.i.home.model
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface HotTtlListRetrofitInterface {
+interface PplListRetrofitInterface {
+
     @GET("/feeds/hot")
-    fun getHotTtlList(): Call<HotTtlListResponse>
+    fun getPplList(): Call<PplListResponse>
 }

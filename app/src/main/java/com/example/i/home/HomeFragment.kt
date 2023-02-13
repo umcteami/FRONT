@@ -26,7 +26,7 @@ import com.example.i.mypage.data.BlockedRVAdapter
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
-class HomeFragment :Fragment(), TtlListInterface, HotTtlListInterface {
+class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
     private lateinit var viewBinding: FragmentHomeBinding
     private var searchText : String = ""
     val ttlList: ArrayList<Ttls> = arrayListOf()
@@ -44,6 +44,18 @@ class HomeFragment :Fragment(), TtlListInterface, HotTtlListInterface {
 
     ): View? {
         viewBinding = FragmentHomeBinding.inflate(layoutInflater)
+
+        //인기글 RV
+
+        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        viewBinding.homePplRV.adapter = Padapter
+
+        Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
 
         viewBinding.homeMenuBtn.setOnClickListener {
@@ -127,9 +139,11 @@ class HomeFragment :Fragment(), TtlListInterface, HotTtlListInterface {
         }
 
 
+        //인기글 RV
+
         //전체글
         TtlListService(this).tryGetTtlList()
-        HotTtlListService(this).tryGetHotTtlList()
+        PplListService(this).tryGetPplList()
 
 
 
@@ -196,9 +210,9 @@ class HomeFragment :Fragment(), TtlListInterface, HotTtlListInterface {
         Log.d("error","카테고리 전체글 오류: $message")
     }
 
-    override fun onGetHotTtlListSuccess(response: HotTtlListResponse) {
-        if (response.isSuccess) {
 
+    override fun onGetPplListSuccess(response: PplListResponse) {
+        if(response.isSuccess){
             val index: Int = response.result.size - 1
 
             for (i in 0 ..index) {
@@ -209,9 +223,9 @@ class HomeFragment :Fragment(), TtlListInterface, HotTtlListInterface {
                     hasImage = HasImage.FALSE
                 }
 
-                ttlList.apply {
+                pplList.apply {
                     add(
-                        Ttls(
+                        Ppls(
                             hasImage,
                             response.result[i].boardType.toString(),
                             response.result[i].title,
@@ -224,25 +238,25 @@ class HomeFragment :Fragment(), TtlListInterface, HotTtlListInterface {
                         )
                     )
                 }
+
+
+
             }
 
-
         }
-        viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
-        viewBinding.homeTtlRV.adapter = Padapter
+
+        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        viewBinding.homePplRV.adapter = Padapter
 
         Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                intent.putExtra("memIdx",response.result[position].memIdx)
                 startActivity(intent)
             }
         }
-
-        // Result message
-        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
     }
-        override fun onGetHotTtlListFailure(message: String)  {
+
+    override fun onGetPplListFailure(message: String) {
         Log.d("error","카테고리 전체 인기글 오류: $message")
     }
 }
