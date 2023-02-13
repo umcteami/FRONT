@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentMypostBinding
-import com.example.i.login.memIdx
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter
 import com.example.i.mypage.data.post.PostInterface
 import com.example.i.mypage.data.post.PostResponse
 import com.example.i.mypage.data.post.PostService
+import com.example.i.mypage.myName
 import com.example.i.mypage.myProfile
 
 
@@ -35,7 +35,7 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
 
         viewBinding.btSort.setOnClickListener(this)
 
-        PostService(this).tryGetPost(memIdx = memIdx, 1) // 작성 글 조회 API
+        PostService(this).tryGetPost(memIdx = 1, 1) // 작성 글 조회 API
         backFragment() // 뒤로가기
 
         return viewBinding.root
@@ -70,9 +70,11 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
                                 response.result[i].feedImg.toString(),
                                 response.result[i].roomType.toString(),
                                 response.result[i].title.toString(),
+                                myName,
                                 response.result[i].createAt.toString(),
                                 response.result[i].hit.toString(),
-                                response.result[i].countLike.toString()
+                                response.result[i].countLike.toString(),
+                                response.result[i].countComment.toString()
                             )
                         )
                     }

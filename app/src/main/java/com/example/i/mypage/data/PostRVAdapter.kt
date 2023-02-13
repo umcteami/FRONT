@@ -18,13 +18,16 @@ class PostRVAdapter(private val PostList: ArrayList<MyPost>): RecyclerView.Adapt
                 .into(viewBinding.myPostProfile)
 
             Glide.with(viewBinding.myPostImg)
-                .load(MyPost.img)
+                .load(MyPost.picture)
                 .into(viewBinding.myPostImg)
+
             viewBinding.myPostTag.text = MyPost.tag
-            viewBinding.myPostContent.text = MyPost.content
+            viewBinding.myPostContent.text = MyPost.title
+            viewBinding.myPostName.text = MyPost.name
             viewBinding.myPostTime.text = MyPost.time
             viewBinding.myPostView.text = MyPost.view
-            viewBinding.myPostLike.text = MyPost.num
+            viewBinding.myPostLike.text = MyPost.heart
+            viewBinding.myPostComment.text = MyPost.comment
         }
     }
 
