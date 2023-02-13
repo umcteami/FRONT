@@ -35,8 +35,8 @@ class DiaryBoardAdapter (val itemList : ArrayList<DiaryItem>) : RecyclerView.Ada
             viewBinding.tvView.text = item.view
             viewBinding.tvHeart.text = item.heart
             viewBinding.tvComment.text = item.comment
-            itemView.setOnClickListener {
-            }
+//            itemView.setOnClickListener {
+//            }
         }
     }
     inner class BoardViewWithoutImgHolder(val viewBinding2: DiaryListImgxLayoutBinding) :
@@ -53,8 +53,8 @@ class DiaryBoardAdapter (val itemList : ArrayList<DiaryItem>) : RecyclerView.Ada
             viewBinding2.tvView.text = item.view
             viewBinding2.tvHeart.text = item.heart
             viewBinding2.tvComment.text = item.comment
-            itemView.setOnClickListener {
-            }
+//            itemView.setOnClickListener {
+//            }
         }
     }
 

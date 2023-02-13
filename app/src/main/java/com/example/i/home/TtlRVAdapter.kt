@@ -34,6 +34,7 @@ class TtlRVAdapter(private val ttlList: ArrayList<Ttls>) : RecyclerView.Adapter<
         RecyclerView.ViewHolder(viewBinding2.root) {
         fun bind(ttls: Ttls) {
             viewBinding2.ttlTitle.text = ttls.title
+            viewBinding2.ttlType.text = ttls.type
             viewBinding2.ttlWriter.text = ttls.writer
             viewBinding2.ttlDate.text = ttls.date
             viewBinding2.ttlViewNum.text = ttls.view

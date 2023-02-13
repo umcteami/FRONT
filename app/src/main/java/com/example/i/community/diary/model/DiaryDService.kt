@@ -7,23 +7,22 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//class DiaryDService (val DiaryDInterface: DiaryDInterface) {
-//    fun tryGetDiaryD(){
-//        val TalkRetrofitInterface = ApplicationClass.sRetrofit.create(TalkRetrofitInterface::class.java)
-//        TalkRetrofitInterface.getTalk(boardType, roomType).enqueue(object : Callback<TalkResponse> {
-//            override fun onResponse(call: Call<TalkResponse>, response: Response<TalkResponse>) {
-//                (response.body() as TalkResponse?)?.let {
-//                    TalkInterface.onGetTalkSuccess(
-//                        it
-//
-//                    )
-//                }
-//            }
-//
-//
-//            override fun onFailure(call: Call<TalkResponse>, t: Throwable) {
-//                TalkInterface.onGetTalkFailure(t.message ?: "통신 오류")
-//            }
-//        })
-//    }
-//}
+class DiaryDService (val DiaryDInterface: DiaryDInterface) {
+    fun tryGetDiaryD(roomType:Int){
+        val DiaryDRetrofitInterface = ApplicationClass.sRetrofit.create(DiaryDRetrofitInterface::class.java)
+        DiaryDRetrofitInterface.getDiaryD(roomType).enqueue(object : Callback<DiaryDResponse> {
+            override fun onResponse(call: Call<DiaryDResponse>, response: Response<DiaryDResponse>) {
+                (response.body() as DiaryDResponse?)?.let {
+                    DiaryDInterface.onGetDiaryDSuccess(
+                        it
+
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<DiaryDResponse>, t: Throwable) {
+                DiaryDInterface.onGetDiaryDFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
+}
