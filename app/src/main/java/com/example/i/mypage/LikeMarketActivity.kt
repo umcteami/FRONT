@@ -25,7 +25,7 @@ class LikeMarketActivity : AppCompatActivity(), WantInterface {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityLikeMarketBinding.inflate(layoutInflater)
 
-        WantService(this).tryGetWant(memIdx,3) // 찜한 물품들 API
+        WantService(this).tryGetWant(1,1) // 찜한 물품들 API
 
         adapter!!.itemClick = object : LikeMarketRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
