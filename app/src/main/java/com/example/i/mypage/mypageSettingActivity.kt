@@ -129,9 +129,9 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
         finish()
     }
 
+    // DatePicker
     fun showDatePicker() {
 
-        // DatePicker
         viewBinding.editBrith.setText(SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis()))
 
         // 시작일 직접 설정

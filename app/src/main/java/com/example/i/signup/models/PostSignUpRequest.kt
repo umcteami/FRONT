@@ -11,5 +11,5 @@ data class PostSignUpRequest(
         @SerializedName("birth") val birth: String? = null,
         @SerializedName("adresCode") val adresCode: String? = null,
         @SerializedName("adres") val adres: String? = null,
-        @SerializedName("adresPlus") val adresPlus: String? = null,
+        @SerializedName("adresPlus") val adresPlus: String? = null
 )

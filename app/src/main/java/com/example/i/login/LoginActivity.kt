@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
     private lateinit var viewBinding: ActivityLoginBinding
     private var id: String = ""
     private var pw: String = ""
+    var memIdx : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,6 +121,9 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
     override fun onPostLoginSuccess(response: LoginResponse) {
         // 계정이 있는 경우
         if(response.isSuccess){
+
+            memIdx = response.result.id.toString()
+
             // 메인 화면으로 이동
             val intent = Intent(this, Main2Activity::class.java)
             this.startActivity(intent)
