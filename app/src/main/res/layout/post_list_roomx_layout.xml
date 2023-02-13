@@ -133,6 +133,7 @@
                     android:id="@+id/iv_postimage"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_background"/>
             </androidx.cardview.widget.CardView>
             <ImageView

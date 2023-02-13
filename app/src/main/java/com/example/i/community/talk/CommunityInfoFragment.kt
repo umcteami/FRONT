@@ -34,7 +34,7 @@ class CommunityInfoFragment : Fragment(), TalkInterface {
         viewBinding = FragmentCommunityInfoBinding.inflate(layoutInflater)
 
         //리사이클러뷰 데이터 추가=
-        TalkService(this).tryGetTalk(1,3)
+        TalkService(this).tryGetTalk(3)
 
         adapter!!.itemClick = object : CommunityRoomXBoardAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {

@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.i.community.BoardRoomXItem
-import com.example.i.community.talk.models.Const
 import com.example.i.databinding.PostListRoomxLayoutBinding
 import com.example.i.databinding.PostListRoomxLayoutImgxBinding
 import com.example.i.home.Const.HASIMAGE

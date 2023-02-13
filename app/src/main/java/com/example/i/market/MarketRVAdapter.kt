@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemMarket2Binding
 
 class MarketRVAdapter(private val mkList: ArrayList<Market>, private var context: Context): RecyclerView.Adapter<MarketRVAdapter.ViewHolder>() {
@@ -15,10 +16,13 @@ class MarketRVAdapter(private val mkList: ArrayList<Market>, private var context
     inner class ViewHolder(val viewBinding: ItemMarket2Binding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind (Market: Market) {
             viewBinding.tvTitle.text = Market.title
-            viewBinding.tvContent.text = Market.content
-            viewBinding.tvView.text = Market.view
-            viewBinding.tvTime.text = Market.time
-            viewBinding.tvNum.text = Market.num
+            viewBinding.tvPrice.text = Market.price.toString()
+            viewBinding.tvDate.text = Market.date
+            viewBinding.tvViewCnt.text =  Market.view.toString()
+            viewBinding.tvHeartCnt.text = Market.hearNum.toString()
+            Glide.with(viewBinding.marketPostPicture)
+                .load(Market.image)
+                .into(viewBinding.marketPostPicture)
         }
     }
 
