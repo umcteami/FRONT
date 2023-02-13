@@ -17,6 +17,7 @@ import com.example.i.mypage.data.PostRVAdapter
 import com.example.i.mypage.data.like.LikeInterface
 import com.example.i.mypage.data.like.LikeResponse
 import com.example.i.mypage.data.like.LikeService
+import com.example.i.mypage.myName
 import com.example.i.mypage.myProfile
 
 class LikeInformationFragment : Fragment(), LikeInterface {
@@ -30,7 +31,7 @@ class LikeInformationFragment : Fragment(), LikeInterface {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentLikeInformationBinding.inflate(layoutInflater)
-        LikeService(this).tryGetLike(memIdx, 0) // 좋아요한 게시글 API
+        LikeService(this).tryGetLike(1, 1) // 좋아요한 게시글 API
         return viewBinding.root
     }
 
@@ -47,12 +48,15 @@ class LikeInformationFragment : Fragment(), LikeInterface {
 
     // 좋아요한 게시글 API
     override fun onGetLikeSuccess(response: LikeResponse) {
+
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
             val index: Int = response.result.size - 1
+            viewBinding.postCount.text = "총 ${response.result.size}개의 좋아요한 글이 있어요"
 
             for (i in 0 ..index) {
                 if (response.size != 0) {
+
                     PostList.apply {
                         add(
                             MyPost(
@@ -60,9 +64,11 @@ class LikeInformationFragment : Fragment(), LikeInterface {
                                 response.result[i].feedImg.toString(),
                                 response.result[i].roomType.toString(),
                                 response.result[i].title.toString(),
+                                myName,
                                 response.result[i].createAt.toString(),
                                 response.result[i].hit.toString(),
-                                response.result[i].countLike.toString()
+                                response.result[i].countLike.toString(),
+                                response.result[i].countComment.toString()
                             )
                         )
                     }

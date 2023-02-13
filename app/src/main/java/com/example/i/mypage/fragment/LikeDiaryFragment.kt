@@ -16,6 +16,7 @@ import com.example.i.mypage.data.*
 import com.example.i.mypage.data.like.LikeInterface
 import com.example.i.mypage.data.like.LikeResponse
 import com.example.i.mypage.data.like.LikeService
+import com.example.i.mypage.myName
 import com.example.i.mypage.myProfile
 
 class LikeDiaryFragment : Fragment(), LikeInterface {
@@ -30,7 +31,7 @@ class LikeDiaryFragment : Fragment(), LikeInterface {
     ): View? {
         viewBinding = FragmentLikeDiaryBinding.inflate(layoutInflater)
 
-        LikeService(this).tryGetLike(memIdx, 0) // 좋아요한 게시글 API
+        LikeService(this).tryGetLike(1, 1) // 좋아요한 게시글 API
 
         return viewBinding.root
     }
@@ -48,12 +49,15 @@ class LikeDiaryFragment : Fragment(), LikeInterface {
 
     // 좋아요한 게시글 API
     override fun onGetLikeSuccess(response: LikeResponse) {
+
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
             val index: Int = response.result.size - 1
+            viewBinding.postCount.text = "총 ${response.result.size}개의 좋아요한 글이 있어요"
 
             for (i in 0 ..index) {
                 if (response.size != 0) {
+
                     PostList.apply {
                         add(
                             MyPost(
@@ -61,12 +65,13 @@ class LikeDiaryFragment : Fragment(), LikeInterface {
                                 response.result[i].feedImg.toString(),
                                 response.result[i].roomType.toString(),
                                 response.result[i].title.toString(),
+                                myName,
                                 response.result[i].createAt.toString(),
                                 response.result[i].hit.toString(),
-                                response.result[i].countLike.toString()
+                                response.result[i].countLike.toString(),
+                                response.result[i].countComment.toString()
                             )
                         )
-                        // add(MyPost("질문방", "해피가 이런 증상을 보이는데 괜찮은 건가요?", "7시간 전", "조회 12", "2"))
                     }
                 }
             }
