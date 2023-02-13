@@ -7,7 +7,7 @@
     android:paddingHorizontal="16dp">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:id="@+id/rootLayout1"
+        android:id="@+id/rootLayout2"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -111,14 +111,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                app:cardCornerRadius="10dp">
-                <ImageView
-                    android:id="@+id/iv_image1"
-                    android:layout_width="353dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/diary_postlist"
-                    android:scaleType="centerCrop" />
-            </androidx.cardview.widget.CardView>
+                app:cardCornerRadius="10dp"/>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"

@@ -33,7 +33,7 @@ class CommunityTalkFragment : Fragment(), TalkInterface {
         viewBinding = FragmentCommunityTalkBinding.inflate(layoutInflater)
 
         //리사이클러뷰 데이터 추가=
-        TalkService(this).tryGetTalk(1,1)
+        TalkService(this).tryGetTalk(1)
 
         adapter!!.itemClick = object : CommunityRoomXBoardAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
@@ -42,26 +42,10 @@ class CommunityTalkFragment : Fragment(), TalkInterface {
             }
         }
 
-//        val itemList = ArrayList<BoardRoomXItem>()
-//        itemList.apply {
-//            add(BoardRoomXItem(false,
-//                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
-//            add(BoardRoomXItem(true,
-//                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
-//            add(BoardRoomXItem(false,
-//                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
-//            add(BoardRoomXItem(true,
-//                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
-//            add(BoardRoomXItem(false,
-//                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
-//            add(BoardRoomXItem(true,
-//                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
-//
-//        }
-        viewBinding.rvBoard.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        val adapter = CommunityRoomXBoardAdapter(itemList)
-        viewBinding.rvBoard.adapter = adapter
+//        viewBinding.rvBoard.layoutManager =
+//            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//        val adapter = CommunityRoomXBoardAdapter(itemList)
+//        viewBinding.rvBoard.adapter = adapter
 
         adapter!!.itemClick = object : CommunityRoomXBoardAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {

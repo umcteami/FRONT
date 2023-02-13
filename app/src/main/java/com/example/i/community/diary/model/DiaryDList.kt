@@ -1,8 +1,8 @@
-package com.example.i.community.talk.models.talk
+package com.example.i.community.diary.model
 
 import com.google.gson.annotations.SerializedName
 
-data class TalkList(
+data class DiaryDList(
     @SerializedName("boardType") val boardType: Int,
     @SerializedName("roomType") val roomType: Int,
     @SerializedName("feedIdx") val feedIdx: Int,
@@ -15,5 +15,4 @@ data class TalkList(
     @SerializedName("commentCnt") val commentCnt : Int,
     @SerializedName("likeCnt") val likeCnt : Int,
     @SerializedName("createAt") val createAt: String
-
 )

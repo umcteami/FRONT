@@ -34,7 +34,7 @@ class CommunityQnaFragment : Fragment(),TalkInterface {
 
 
         //리사이클러뷰 데이터 추가=
-        TalkService(this).tryGetTalk(1,2)
+        TalkService(this).tryGetTalk(2)
 
         adapter!!.itemClick = object : CommunityRoomXBoardAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
