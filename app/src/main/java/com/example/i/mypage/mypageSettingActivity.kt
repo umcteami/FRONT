@@ -11,7 +11,6 @@ import com.example.i.login.NewPwFragment
 import com.example.i.login.memIdx
 import com.example.i.mypage.customdialog.PopupSaveDialog
 import com.example.i.mypage.data.*
-import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -129,6 +128,8 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
 
         val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
             birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus, profile = "")
+
+        // 회원 정보 수정 API
         SettingService(this).tryPatchSetting(memIdx, settingRequest)
 
         finish()
