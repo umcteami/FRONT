@@ -32,8 +32,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityPostBinding.inflate(layoutInflater)
 
-        feedIdx = intent.getIntExtra("feedIdx",1)
-        memIdx = intent.getIntExtra("memIdx",1)
+
 
         ViewTalkroomService(this).tryGetViewTalkroom(feedIdx,memIdx)
 
@@ -110,9 +109,14 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
     }
 
     override fun onGetViewTalkroomSuccess(response: ViewTalkroomResponse) {
+
+
+        feedIdx = intent.getIntExtra("storyIdx",2)
+        memIdx = intent.getIntExtra("memIdx",33)
+
         if (response.isSuccess){
-            viewBinding.tvRoomType.text = response.result[feedIdx].roomType.toString()
-            viewBinding.tvTitle.text = response.result[feedIdx].title
+            viewBinding.tvRoomType.text = response.result[33].roomType.toString()
+            viewBinding.tvTitle.text = response.result[33].title
             Glide.with(viewBinding.ivProfileImage)
                 .load(response.result[feedIdx].title)
                 .into(viewBinding.ivProfileImage)
@@ -121,9 +125,9 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
             viewBinding.tvViewCnt.text = response.result[feedIdx].hit.toString()
            viewBinding.tvContent.text = response.result[feedIdx].content
             viewBinding.tvCommentCountNum.text = response.result[feedIdx].commentCnt.toString()
-            Glide.with(viewBinding.ivPost)
-                .load(response.result[feedIdx].img)
-                .into(viewBinding.ivPost)
+//            Glide.with(viewBinding.ivPost)
+//                .load(response.result[feedIdx].img)
+//                .into(viewBinding.ivPost)
         }
     }
 

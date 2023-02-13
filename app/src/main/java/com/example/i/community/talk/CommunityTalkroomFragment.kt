@@ -53,22 +53,7 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
                 } else {
                     hasImage = HasImage.FALSE
                 }
-                itemList.apply {
-                    add(
-                        BoardItem(
-                            hasImage
-                        ,"소통방",
-                            "이게멀티뷰타입되고있어요?안되는것같은데",
-                            null,
-                            "코코",
-                            "2020.20.20",
-                            "2",
-                            "3",
-                            "3"
 
-                        )
-                    )
-                }
                 itemList.apply {
                     add(
                         BoardItem(
