@@ -46,7 +46,11 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private var boardId : Int = 0
     private var roomType : Int = 0
     private var userId : Int = 33
+
+    //수정하기로 진입할 경우, feedIdx를 받아와야한다. default = -1
     private var feedIdx : Int = -1
+    private var memIdx : Int = -1
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var writeImageAdapter: WriteImageAdapter
     private var imageList : ArrayList<Uri> = ArrayList()
@@ -61,7 +65,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = writeImageAdapter
 
-        //업로드 버튼 클릭 리스너
+        //이미지 업로드 버튼 클릭 리스너
         val imageButton = viewBinding.clPhoto
 
         imageButton.setOnClickListener{
@@ -69,6 +73,15 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             intent.type = "image/*"
 //            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true)
             activityResult.launch(intent)
+        }
+
+        //수정하기의 경우 기존의 텍스트 불러오기
+        feedIdx = intent.getIntExtra("feedIdx", -1)
+        memIdx = intent.getIntExtra("memIdx", -1)
+//        ViewTalkroomService(this).tryGetViewTalkroom(feedIdx, memIdx)
+
+        if(feedIdx != - 1){
+            viewBinding.etTitle
         }
 
 
@@ -113,6 +126,8 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             override fun afterTextChanged(p0: Editable?) {
             }
         })
+
+        //카테로리 설정
         viewBinding.btChoiceCategory.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -320,7 +335,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
 
         }
     }
-
     override fun onPatchFeedsEditFailure(message: String) {
         Toast.makeText(this, "오류 $message", Toast.LENGTH_SHORT).show()
     }

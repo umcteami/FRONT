@@ -10,5 +10,4 @@ data class PostMarketWriteRequest(
     @SerializedName("category") val category : String,
     @SerializedName("price") val price : Int,
     @SerializedName("content") val content : String,
-    @SerializedName("images") val images : Images
 )
