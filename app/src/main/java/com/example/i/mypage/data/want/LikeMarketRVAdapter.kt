@@ -1,19 +1,23 @@
-package com.example.i.mypage.data
+package com.example.i.mypage.data.want
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemLikeMarketBinding
-import com.example.i.databinding.ItemMypostBinding
 
 class LikeMarketRVAdapter(private val LikeList: ArrayList<LikeMarket>): RecyclerView.Adapter<LikeMarketRVAdapter.ViewHolder>() {
 
-    var itemClick: LikeMarketRVAdapter.ItemClick? = null
+    var itemClick: ItemClick? = null
 
     inner class ViewHolder(val viewBinding: ItemLikeMarketBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind (LikeMarket: LikeMarket) {
+
+            Glide.with(viewBinding.imgLikeMarket)
+                .load(LikeMarket.image)
+                .into(viewBinding.imgLikeMarket)
+
             viewBinding.tvTitle.text = LikeMarket.title
             viewBinding.tvContent.text = LikeMarket.content
             viewBinding.tvTime.text = LikeMarket.time
