@@ -26,9 +26,9 @@ class SettingService(val SettingInterface: SettingInterface) {
     }
 
     // 회원정보 수정 API
-    fun tryPatchSetting(SettingRequest: SettingRequest){
+    fun tryPatchSetting(memIdx: Int, SettingRequest: SettingRequest){
         val SettingRetrofitInterface = ApplicationClass.sRetrofit.create(SettingRetrofitInterface::class.java)
-        SettingRetrofitInterface.postSetting(SettingRequest).enqueue(object : Callback<SettingResponse>{
+        SettingRetrofitInterface.postSetting(memIdx, SettingRequest).enqueue(object : Callback<SettingResponse>{
             override fun onResponse(call: Call<SettingResponse>, response: Response<SettingResponse>) {
                 (response.body() as SettingResponse?)?.let {
                     SettingInterface.onPatchSettingSuccess(

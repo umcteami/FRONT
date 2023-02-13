@@ -5,6 +5,8 @@ import retrofit2.http.*
 
 interface ReportRetrofitInterface {
     // 신고한 게시글 API
-    @GET("/mypage/blame/33")
-    fun getReport(): Call<ReportResponse>
+    @GET("/mypage/blame/{memIdx}")
+    fun getReport(
+        @Path("memIdx") memIdx: Int
+    ): Call<ReportResponse>
 }

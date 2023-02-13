@@ -1,24 +1,18 @@
 package com.example.i.community.talk.post
 
-import android.content.ClipData.Item
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.GlideBuilder
 import com.example.i.R
-import com.example.i.community.customdialog.CMCategoryDialog
 import com.example.i.community.talk.models.talkroom.ViewTalkroomInterface
 import com.example.i.community.talk.models.talkroom.ViewTalkroomResponse
 import com.example.i.community.talk.models.talkroom.ViewTalkroomService
 import com.example.i.databinding.ActivityCommunityPostBinding
-import java.io.File
 
 class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
 
@@ -109,30 +103,43 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
     }
 
     override fun onGetViewTalkroomSuccess(response: ViewTalkroomResponse) {
-
-
         feedIdx = intent.getIntExtra("storyIdx",2)
         memIdx = intent.getIntExtra("memIdx",33)
+//
+//        if (response.isSuccess){
+////            viewBinding.tvRoomType.text = response.result[memIdx].roomType.toString()
+////            viewBinding.tvTitle.text = response.result[memIdx].title
+//
+//            Glide.with(viewBinding.ivProfileImage)
+//                .load(response.result.feed[feedIdx].title)
+//                .into(viewBinding.ivProfileImage)
+//
+//            response.result.feed[feedIdx].roomType.toString() // roomType
+//
+//            // viewBinding.tvWriter.text = response.result[feedIdx].memNick
+//            viewBinding.tvRoomType.text = response.result.feed[feedIdx].roomType.toString() // roomType
+//            viewBinding.tvTitle.text = response.result.feed[feedIdx].title.toString() // title
+//            viewBinding.tvWriter.text = response.result.feed[feedIdx].memNick.toString() // memNick
+//            viewBinding.tvWriteTime.text = response.result.feed[feedIdx].createAt.toString() // createAt
+//            viewBinding.tvViewCnt.text = response.result.feed[feedIdx].hit.toString() // hit
+//            viewBinding.tvContent.text = response.result.feed[feedIdx].content.toString() // content
+//            viewBinding.tvCommentCountNum.text = response.result.feed[feedIdx].commentCnt.toString() // commentCnt
 
-        if (response.isSuccess){
-            viewBinding.tvRoomType.text = response.result[33].roomType.toString()
-            viewBinding.tvTitle.text = response.result[33].title
-            Glide.with(viewBinding.ivProfileImage)
-                .load(response.result[feedIdx].title)
-                .into(viewBinding.ivProfileImage)
-            viewBinding.tvWriter.text = response.result[feedIdx].memNick
-            viewBinding.tvWriteTime.text = response.result[feedIdx].createAt
-            viewBinding.tvViewCnt.text = response.result[feedIdx].hit.toString()
-           viewBinding.tvContent.text = response.result[feedIdx].content
-            viewBinding.tvCommentCountNum.text = response.result[feedIdx].commentCnt.toString()
+        Log.d("error", "Jerry 오류 : ${response.result.feed}")
+        Log.d("error", "Jerry 오류 : ${feedIdx}")
+        Log.d("error", "Jerry 오류 : ${memIdx}")
+
 //            Glide.with(viewBinding.ivPost)
 //                .load(response.result[feedIdx].img)
 //                .into(viewBinding.ivPost)
-        }
+
+
     }
 
+
     override fun onGetViewTalkroomFailure(message: String) {
-        Toast.makeText(this, "글 상세보기 오류 : $message", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Jerry 오류 : $message", Toast.LENGTH_SHORT).show()
+        Log.d("error", "Jerry 오류 : $message")
     }
 
 
