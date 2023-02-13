@@ -15,18 +15,17 @@
     <TextView
         android:id="@+id/ppl_title"
         android:layout_width="wrap_content"
-        android:maxWidth="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:maxLines="3"
         android:ellipsize="end"
+        android:maxWidth="200dp"
+        android:maxLines="3"
         android:text="다니고 계시는 병원 정보 좀 부탁드립니다.(서울/경기)"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pplType" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ppl_pictureC"
@@ -40,10 +39,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/ppl_picture"
+            android:id="@+id/ppl_Img"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/img" />
+            android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
 
 
@@ -139,6 +138,17 @@
         android:src="@drawable/ic_comment_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ppl_commentNum" />
+
+    <TextView
+        android:id="@+id/pplType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="이야기방"
+        android:textColor="@color/main_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,52 +20,52 @@ class DiaryRainBestFragment : Fragment() {
     ): View? {
         viewBinding = FragmentDiaryRainBestBinding.inflate(layoutInflater)
         val itemList = ArrayList<DiaryRoomxItem>()
-        itemList.apply {
-            add(
-                DiaryRoomxItem(
-                    "해피 간호일기 17일째",
-                    "해피엄마",
-                    "22.12.15",
-                    "조회 12",
-                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
-                    "12",
-                    "2"
-                )
-            )
-            add(
-                DiaryRoomxItem(
-                    "해피 간호일기 17일째",
-                    "해피엄마",
-                    "22.12.15",
-                    "조회 12",
-                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
-                    "12",
-                    "2"
-                )
-            )
-            add(
-                DiaryRoomxItem(
-                    "해피 간호일기 17일째",
-                    "해피엄마",
-                    "22.12.15",
-                    "조회 12",
-                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
-                    "12",
-                    "2"
-                )
-            )
-            add(
-                DiaryRoomxItem(
-                    "해피 간호일기 17일째",
-                    "해피엄마",
-                    "22.12.15",
-                    "조회 12",
-                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
-                    "12",
-                    "2"
-                )
-            )
-        }
+//        itemList.apply {
+//            add(
+//                DiaryRoomxItem(
+//                    "해피 간호일기 17일째",
+//                    "해피엄마",
+//                    "22.12.15",
+//                    "조회 12",
+//                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
+//                    "12",
+//                    "2"
+//                )
+//            )
+//            add(
+//                DiaryRoomxItem(
+//                    "해피 간호일기 17일째",
+//                    "해피엄마",
+//                    "22.12.15",
+//                    "조회 12",
+//                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
+//                    "12",
+//                    "2"
+//                )
+//            )
+//            add(
+//                DiaryRoomxItem(
+//                    "해피 간호일기 17일째",
+//                    "해피엄마",
+//                    "22.12.15",
+//                    "조회 12",
+//                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
+//                    "12",
+//                    "2"
+//                )
+//            )
+//            add(
+//                DiaryRoomxItem(
+//                    "해피 간호일기 17일째",
+//                    "해피엄마",
+//                    "22.12.15",
+//                    "조회 12",
+//                    "오늘은 정기검진 때문에 해피가 병원에 가는 날입니다",
+//                    "12",
+//                    "2"
+//                )
+//            )
+//        }
         viewBinding.rvDiary.layoutManager =
             LinearLayoutManager(context)
         val adapter = DiaryBoardRoomxAdapter(itemList)

@@ -15,18 +15,28 @@
     <TextView
         android:id="@+id/ppl_title"
         android:layout_width="wrap_content"
-        android:maxWidth="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:ellipsize="end"
+        android:maxWidth="300dp"
         android:maxLines="3"
         android:text="다니고 계시는 병원 정보 좀 부탁드립니다.(서울/경기)가나다라마바사간다라라바마바가나나나나나나나나나나나나나나나나나나나나나나ㅏ나나나"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pplType" />
+    <TextView
+        android:id="@+id/pplType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="이야기방"
+        android:textColor="@color/main_3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <TextView

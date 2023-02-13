@@ -19,22 +19,22 @@ import com.example.i.community.talk.*
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentHomeBinding
 import com.example.i.home.Const.HASIMAGE
-import com.example.i.home.model.TtlList
-import com.example.i.home.model.TtlListInterface
-import com.example.i.home.model.TtlListResponse
-import com.example.i.home.model.TtlListService
+import com.example.i.home.model.*
 import com.example.i.mypage.data.BlockResponse
 import com.example.i.mypage.data.Blocked
 import com.example.i.mypage.data.BlockedRVAdapter
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
-class HomeFragment :Fragment(), TtlListInterface {
+class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
     private lateinit var viewBinding: FragmentHomeBinding
     private var searchText : String = ""
     val ttlList: ArrayList<Ttls> = arrayListOf()
     val Tadapter = TtlRVAdapter(ttlList)
     var hasImage: HasImage = HasImage.TRUE
+
+    val pplList: ArrayList<Ppls> = arrayListOf()
+    val Padapter = PplRVAdapter(pplList)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +44,24 @@ class HomeFragment :Fragment(), TtlListInterface {
 
     ): View? {
         viewBinding = FragmentHomeBinding.inflate(layoutInflater)
+
+        //인기글 RV
+
+        pplList.apply {
+
+            add(Ppls(HasImage.FALSE,"1","타이틀타이틀타이틀","별이언니","2022.11.17","10","8","3"))
+
+        }
+
+        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        viewBinding.homePplRV.adapter = Padapter
+
+        Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
 
         viewBinding.homeMenuBtn.setOnClickListener {
@@ -128,32 +146,10 @@ class HomeFragment :Fragment(), TtlListInterface {
 
 
         //인기글 RV
-        val pplList: ArrayList<Ppls> = arrayListOf()
-        val Padapter = PplRVAdapter(pplList)
-
-        pplList.apply {
-
-            add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요 귀여워요 귀여워요 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다. 안녕하세요 안녕하세요 안녕하세요 안녕하세요 안녕하세요",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.FALSE,"안녕하세요 오늘 처음 가입해서 인사드립니다.",null,"별이언니","2022.11.17","10","8","3"))
-            add(Ppls(HasImage.TRUE,"고양이가 귀엽나요 강아지가 귀엽나요 저는 강아지파지만 동글이 귀여워요.",R.drawable.img_1,"별이언니","2022.11.17","10","8","3"))
-
-        }
-
-        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        viewBinding.homePplRV.adapter = Padapter
-
-        Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
 
         //전체글
         TtlListService(this).tryGetTtlList()
+        PplListService(this).tryGetPplList()
 
 
 
@@ -218,5 +214,55 @@ class HomeFragment :Fragment(), TtlListInterface {
 
     override fun onGetTtlListFailure(message: String)  {
         Log.d("error","카테고리 전체글 오류: $message")
+    }
+
+
+    override fun onGetPplListSuccess(response: PplListResponse) {
+        if(response.isSuccess){
+            val index: Int = response.result.size - 1
+
+            for (i in 0 ..index) {
+
+                if (response.result[i].img != null) {
+                    hasImage = HasImage.TRUE
+                } else {
+                    hasImage = HasImage.FALSE
+                }
+
+                pplList.apply {
+                    add(
+                        Ppls(
+                            hasImage,
+                            response.result[i].boardType.toString(),
+                            response.result[i].title,
+                            response.result[i].img,
+                            response.result[i].memNick,
+                            response.result[i].createAt,
+                            response.result[i].hit.toString(),
+                            response.result[i].likeCnt.toString(),
+                            response.result[i].commentCnt.toString()
+                        )
+                    )
+                }
+
+
+
+            }
+
+        }
+
+        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        viewBinding.homePplRV.adapter = Padapter
+
+        Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onGetPplListFailure(message: String) {
+        Log.d("error","카테고리 전체 인기글 오류: $message")
     }
 }

@@ -8,9 +8,8 @@ import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.chat.MessageListFragment
 import com.example.i.community.NewSearchActivity
-import com.example.i.community.talk.CommunityTalkroomActivity
-import com.example.i.community.talk.CommunityWriteActivity
 import com.example.i.community.review.ReviewActivity
+import com.example.i.community.talk.*
 import com.example.i.databinding.ActivityDiaryRainBinding
 import com.example.i.market.MarketFragment
 import com.example.i.mypage.fragment.MypageFragment
@@ -64,14 +63,55 @@ class DiaryRainActivity : AppCompatActivity() {
                     finish()
 
                 }
+
+                R.id.drawer_talking -> {
+                    val intent = Intent(this, CommunityTalkActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+
+                }
+
+                R.id.drawer_qna -> {
+                    val intent = Intent(this, CommunityQnaActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+
+                }
+
+                R.id.drawer_info -> {
+                    val intent = Intent(this, CommunityInfoActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+
+                }
+
                 R.id.drawer_diary -> {
                     val intent = Intent(this, DiaryActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
 
+                }
+
+                R.id.drawer_care -> {
+                    val intent = Intent(this, DiaryCareActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
 
                 }
+
+                R.id.drawer_rain -> {
+                    val intent = Intent(this, DiaryRainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+
+                }
+
                 R.id.drawer_review -> {
                     val intent = Intent(this, ReviewActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
