@@ -126,11 +126,11 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
         val addres = viewBinding.editAddress.text.toString()
         val addresPlus = viewBinding.editAddress2.text.toString()
 
-        val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
-            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus, profile = "")
+        val SettingEditRequest = SettingEditRequest(email = email, phone = phone, nick = nick, intro = intro,
+            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus)
 
         // 회원 정보 수정 API
-        SettingService(this).tryPatchSetting(memIdx, settingRequest)
+        SettingService(this).tryPatchSetting(memIdx, SettingEditRequest)
 
         finish()
     }

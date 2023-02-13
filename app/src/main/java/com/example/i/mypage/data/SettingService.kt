@@ -32,8 +32,8 @@ class SettingService(val SettingInterface: SettingInterface) {
 
 
     // 회원정보 수정 API
-    fun tryPatchSetting(memIdx: Int, SettingRequest: SettingRequest){
-        val requestBody = Gson().toJson(SettingRequest)
+    fun tryPatchSetting(memIdx: Int, SettingEditRequest: SettingEditRequest){
+        val requestBody = Gson().toJson(SettingEditRequest)
             .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
         val emptyImage = RequestBody.create("image/jpeg".toMediaTypeOrNull(), ByteArray(0))
         val image = MultipartBody.Part.createFormData("profile","profile.jpg",emptyImage)
