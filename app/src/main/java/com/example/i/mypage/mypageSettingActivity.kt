@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.i.databinding.ActivityMypageSettingBinding
 import com.example.i.login.NewPwFragment
+import com.example.i.login.memIdx
 import com.example.i.mypage.customdialog.PopupSaveDialog
 import com.example.i.mypage.data.*
 import de.hdodenhof.circleimageview.CircleImageView
@@ -56,7 +57,7 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
         }
 
         // 회원정보 get
-        SettingService(this).tryGetUser(33)
+        SettingService(this).tryGetUser(memIdx)
         Toast.makeText(this,"불러옴",Toast.LENGTH_SHORT).show()
 
         // 회원정보 수정
@@ -124,7 +125,7 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
 
         val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
             birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus, profile = "")
-        SettingService(this).tryPatchSetting(settingRequest)
+        SettingService(this).tryPatchSetting(memIdx, settingRequest)
 
         finish()
     }
