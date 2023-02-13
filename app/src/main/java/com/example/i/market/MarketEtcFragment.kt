@@ -61,11 +61,6 @@ class MarketEtcFragment: Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        main = context as Main2Activity
-    }
 
     override fun onClick(view:View?) {
         when(view?.id) {

@@ -101,7 +101,7 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
                 }
 
-                R.id.drawer_care -> { //무지개 일기
+                R.id.drawer_rain -> { //무지개 일기
                     val intent = Intent(context, DiaryRainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)

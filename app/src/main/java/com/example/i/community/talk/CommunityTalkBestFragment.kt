@@ -11,6 +11,7 @@ import com.example.i.R
 import com.example.i.community.BoardRoomXItem
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentCommunityTalkBestBinding
+import com.example.i.home.HasImage
 
 class CommunityTalkBestFragment : Fragment() {
     private lateinit var viewBinding: FragmentCommunityTalkBestBinding
@@ -33,6 +34,19 @@ class CommunityTalkBestFragment : Fragment() {
 //            add(BoardRoomXItem(true,
 //                R.drawable.img_1,R.drawable.img_1,"22.12.28", "별이엄마", "다니고 계신 병원 정보 좀 부탁드려요 (서울/경기도)", "12", "2", "3"))
 //        }
+
+        itemList.apply {
+            add(
+                BoardRoomXItem(
+                    HasImage.FALSE,
+                    "타이틀타이틀타이틀타이틀",
+                    null,
+                    "김민지",
+                    "2022-23-33-32",
+                "2","3","4"
+                )
+            )
+        }
 
         viewBinding.rvBoard.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

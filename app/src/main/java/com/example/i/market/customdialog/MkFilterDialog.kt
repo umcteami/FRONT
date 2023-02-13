@@ -21,7 +21,7 @@ class MkFilterDialog(private val context: AppCompatActivity) {
         // 다이얼로그에 사용할 xml 파일을 불러옴
         dlg.setContentView(binding.root)
         // 다이얼로그의 바깥 화면을 눌렀을 때 다이얼로그가 닫히지 않도록 함
-        dlg.setCancelable(false)
+//        dlg.setCancelable(false)
 
         binding.btLast.setOnClickListener{
             content = binding.btLast.text.toString()

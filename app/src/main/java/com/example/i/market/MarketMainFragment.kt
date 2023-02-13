@@ -42,7 +42,7 @@ class MarketMainFragment: Fragment() {
 
         mkList.apply{
             add(Market("0", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
-            add(Market("1", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
+            add(Market("1", "강아지 장난감", 30000,"2022-12-23-", 5,6,null))
         }
 
         viewBinding.rvMarket.layoutManager = LinearLayoutManager(context)
