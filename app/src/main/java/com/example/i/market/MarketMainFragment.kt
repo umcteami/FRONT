@@ -41,14 +41,8 @@ class MarketMainFragment: Fragment() {
         val customDecoration = CustomDecoration(2f, 2f, Color.rgb(0xB4,0xB4,0xB4))
 
         mkList.apply{
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+            add(Market("0", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
+            add(Market("1", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
         }
 
         viewBinding.rvMarket.layoutManager = LinearLayoutManager(context)

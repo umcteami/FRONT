@@ -47,12 +47,6 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
         //인기글 RV
 
-        pplList.apply {
-
-            add(Ppls(HasImage.FALSE,"1","타이틀타이틀타이틀","별이언니","2022.11.17","10","8","3"))
-
-        }
-
         viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         viewBinding.homePplRV.adapter = Padapter
 
