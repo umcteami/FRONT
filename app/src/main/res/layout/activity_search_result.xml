@@ -34,6 +34,8 @@
                 android:background="@drawable/border_search"
                 android:textColorHint="@color/main_3"
                 android:padding="10dp"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
                 android:hint="아이홈에서 검색할 내용을 입력하세요"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"

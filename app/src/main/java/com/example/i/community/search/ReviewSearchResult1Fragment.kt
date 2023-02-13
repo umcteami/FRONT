@@ -18,20 +18,30 @@ import com.example.i.home.HasImage
 class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface{
     private lateinit var viewBinding : FragmentReviewSearchResultBinding
     var hasImage : HasImage = HasImage.TRUE
-    var searchKeyword : String = ""
+    var searchKeyword : String? = ""
     var category : String? = null
     val searchTarget : String = "title"
     val itemList : ArrayList<ReviewSearchItem> = arrayListOf()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        var categoryGlobal : Int = searchVar.searchRoom
+        var roomGlobal : Int = searchVar.searchBoard
+        searchKeyword = searchVar.searchTerm
+
+        when(categoryGlobal){
+            0 -> category = null
+            1 -> category = "justchat"
+            2 -> category ="question"
+            3 -> category = "info"
+        }
         viewBinding = FragmentReviewSearchResultBinding.inflate(layoutInflater)
 
 
-        StorySearchService(this, "question", "test",null,"title").tryGetStorySearch()
+        StorySearchService(this, category, searchKeyword,null, searchTarget).tryGetStorySearch()
         return viewBinding.root
     }
 
