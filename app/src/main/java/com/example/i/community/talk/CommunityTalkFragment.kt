@@ -76,6 +76,7 @@ class CommunityTalkFragment : Fragment(), TalkInterface {
                             response.result[i].title,
                             response.result[i].img,
                             response.result[i].memNick,
+                            response.result[i].memProfile,
                             response.result[i].createAt,
                             response.result[i].hit.toString(),
                             response.result[i].likeCnt.toString(),

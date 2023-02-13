@@ -62,6 +62,7 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
                             response.result[i].title, //제목
                             response.result[i].img, //게시글 이미지
                             response.result[i].memNick, //작성자 닉네임
+                            response.result[i].memProfile.toString(),
                             response.result[i].createAt, //작성일자 및 시간
                             response.result[i].hit.toString(), //조회수
                             response.result[i].likeCnt.toString(), //하트수
