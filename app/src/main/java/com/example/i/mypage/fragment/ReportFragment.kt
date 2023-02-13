@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.databinding.FragmentReportBinding
+import com.example.i.login.memIdx
 import com.example.i.mypage.data.*
 
 class ReportFragment : Fragment(), ReportInterface {
@@ -26,7 +27,7 @@ class ReportFragment : Fragment(), ReportInterface {
     ): View? {
         viewBinding = FragmentReportBinding.inflate(layoutInflater)
 
-        ReportService(this).tryGetReport() // 신고한 게시글 API
+        ReportService(this).tryGetReport(memIdx) // 신고한 게시글 API
         backFragment()
 
         return viewBinding.root

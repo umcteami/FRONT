@@ -13,12 +13,12 @@ import com.example.i.databinding.ActivityLoginBinding
 import com.example.i.login.models.PostLoginRequest
 import com.example.i.login.models.LoginResponse
 
+var memIdx : Int = 0
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
     private lateinit var viewBinding: ActivityLoginBinding
     private var id: String = ""
     private var pw: String = ""
-    var memIdx : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +122,7 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
         // 계정이 있는 경우
         if(response.isSuccess){
 
-            memIdx = response.result.id.toString()
+            memIdx = response.result.id
 
             // 메인 화면으로 이동
             val intent = Intent(this, Main2Activity::class.java)

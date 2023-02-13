@@ -10,6 +10,9 @@ interface SettingRetrofitInterface {
     fun getUser(@Path("memIdx") memIdx: Int): Call<userSearchgResponse>
 
     // 회원정보 수정 API
-    @PATCH("/member/33")
-    fun postSetting(@Body params: SettingRequest): Call<SettingResponse>
+    @PATCH("/member/{memIdx}")
+    fun postSetting(
+        @Path("memIdx") memIdx: Int,
+        @Body params: SettingRequest
+    ): Call<SettingResponse>
 }

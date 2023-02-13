@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentLikeDiaryBinding
+import com.example.i.login.memIdx
 import com.example.i.mypage.data.*
 import com.example.i.mypage.data.like.LikeInterface
 import com.example.i.mypage.data.like.LikeResponse
@@ -29,7 +30,7 @@ class LikeDiaryFragment : Fragment(), LikeInterface {
     ): View? {
         viewBinding = FragmentLikeDiaryBinding.inflate(layoutInflater)
 
-        LikeService(this).tryGetLike(33, 0) // 좋아요한 게시글 API
+        LikeService(this).tryGetLike(memIdx, 0) // 좋아요한 게시글 API
 
         return viewBinding.root
     }

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.i.Main2Activity
 import com.example.i.databinding.FragmentMypageBinding
+import com.example.i.login.memIdx
 import com.example.i.mypage.*
 import com.example.i.mypage.customdialog.PopupEndDialog
 import com.example.i.mypage.data.MyPageInterface
@@ -41,7 +42,7 @@ class MypageFragment : Fragment(), MyPageInterface {
         setUpRevoke()
 
         // 마이페이지 시작창 조회 API
-        MyPageService(this).tryGetMyPage()
+        MyPageService(this).tryGetMyPage(memIdx)
 
         viewBinding.mypageLogoutTv.setOnClickListener {
             //커스텀 다이얼로그 필요(추후에 추가하기)

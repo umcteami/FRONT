@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentMypostBinding
+import com.example.i.login.memIdx
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter
@@ -34,7 +35,7 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
 
         viewBinding.btSort.setOnClickListener(this)
 
-        PostService(this).tryGetPost(33, 0) // 작성 글 조회 API
+        PostService(this).tryGetPost(memIdx, 0) // 작성 글 조회 API
         backFragment() // 뒤로가기
 
         return viewBinding.root

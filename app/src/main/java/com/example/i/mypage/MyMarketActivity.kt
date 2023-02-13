@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.i.R
 import com.example.i.databinding.ActivityMyMarketBinding
+import com.example.i.login.memIdx
 import com.example.i.market.MarketP
 import com.example.i.market.MarketPostActivity
 import com.example.i.market.MarketPplRVAdapter
@@ -27,7 +28,7 @@ class MyMarketActivity : AppCompatActivity(), MarketInterface {
         viewBinding = ActivityMyMarketBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        MarketService(this).tryGetMarket(33,0)     // 나눔장터 작성 글 조회 API
+        MarketService(this).tryGetMarket(memIdx,0)     // 나눔장터 작성 글 조회 API
 
         adapter!!.itemClick = object : MarketPplRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
