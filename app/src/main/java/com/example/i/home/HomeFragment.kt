@@ -127,7 +127,7 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
 
         viewBinding.homeSearchBtn.setOnClickListener {
-            val intent = Intent(context, SearchActivity::class.java)
+            val intent = Intent(context, NewSearchActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
