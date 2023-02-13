@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.community.talk.models.diaryT.DiaryInterface
-import com.example.i.community.talk.models.diaryT.DiaryResponse
-import com.example.i.community.talk.models.diaryT.DiaryService
+import com.example.i.community.diary.diaryT.DiaryInterface
+import com.example.i.community.diary.diaryT.DiaryResponse
+import com.example.i.community.diary.diaryT.DiaryService
 import com.example.i.community.talk.models.talkroom.TalkroomService
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentDiaryBinding
