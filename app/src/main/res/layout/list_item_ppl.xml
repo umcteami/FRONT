@@ -42,7 +42,7 @@
             android:id="@+id/ppl_Img"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/img" />
+            android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
 
 

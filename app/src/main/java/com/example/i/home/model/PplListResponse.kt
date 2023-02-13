@@ -3,7 +3,7 @@ package com.example.i.home.model
 import com.example.i.config.BaseResponse
 import com.google.gson.annotations.SerializedName
 
-data class HotTtlListResponse(
+data class PplListResponse(
 
-    @SerializedName("result") val result: ArrayList<HotTtlList>
+    @SerializedName("result") val result: ArrayList<PplList>
 ):BaseResponse()
