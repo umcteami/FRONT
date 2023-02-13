@@ -8,15 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.i.chat.customdialog.Jerry
 import com.example.i.chat.customdialog.MessageNoticeDialog
 import com.example.i.chat.customdialog.MessageOptionDialog
 import com.example.i.chat.model.ChatListInterface
 import com.example.i.chat.model.ChatListResponse
 import com.example.i.chat.model.ChatListService
 import com.example.i.databinding.FragmentMessageListBinding
-import com.example.i.market.MarketMainFragment
+
 
 class MessageListFragment : Fragment(), ChatListInterface {
     private lateinit var viewBinding : FragmentMessageListBinding
@@ -72,6 +72,10 @@ class MessageListFragment : Fragment(), ChatListInterface {
                 override fun onClick(view: View, position: Int) {
                     val dialog = MessageOptionDialog()
                     dialog.show(requireActivity().supportFragmentManager, "custom dialog")
+
+                    val dlg = MessageNoticeDialog()
+                    dlg.Jerry() // 데이터 가져오기
+                    Log.d("Jerry", "클릭 여부3 : $Jerry")
                 }
             }
         }
