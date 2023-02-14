@@ -23,7 +23,6 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface, Commen
     private lateinit var viewBinding : ActivityCommunityPostBinding
     private var heartClick : Boolean = false
     private var feedIdx = 0
-    private var memIdx = 0
     private var cntHeart : Int = 0
 
     val commentList : ArrayList<ItemComment> = arrayListOf()
@@ -35,7 +34,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface, Commen
 
 
 
-        ViewTalkroomService(this).tryGetViewTalkroom(1,39)
+        ViewTalkroomService(this).tryGetViewTalkroom(1, memIdx)
         CommentService(this).tryGetComment(1, 39)
 
         setContentView(viewBinding.root)
@@ -50,7 +49,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface, Commen
         }
 
         viewBinding.btnPostHeart.setOnClickListener{
-            var body = RequestLikeChange(39,1,39)
+            var body = RequestLikeChange(memIdx,1,39)
             LikeChangeService(this).tryPostLikeChange(body)
 
             if(!heartClick){
@@ -70,7 +69,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface, Commen
         }
 
         viewBinding.btSend.setOnClickListener {
-            var body = RequestCommentWrite(1,1,1,"댓글을 작성했습니다.",1)
+            var body = RequestCommentWrite(memIdx,1,1,"댓글을 작성했습니다.",1)
             CommentWriteService(this).tryPostCommentWrite(body)
 
         }
@@ -111,7 +110,6 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface, Commen
 
     override fun onGetViewTalkroomSuccess(response: ViewTalkroomResponse) {
         feedIdx = intent.getIntExtra("storyIdx",2)
-        memIdx = intent.getIntExtra("memIdx",39)
 //
 //        if (response.isSuccess){
 ////            viewBinding.tvRoomType.text = response.result[memIdx].roomType.toString()
