@@ -22,6 +22,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
     private var feedIdx = 0
     private var memIdx = 0
     private var cntHeart : Int = 0
+    val imgList : ArrayList<Img> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +111,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
         if(response.isSuccess){
 
             val index: Int = response.result.feed.size - 1
+            val index2: Int = response.result.feed.size - 1
 
             for (i in 0 ..index) {
                 if (response.result.feed.size != 0) {
@@ -120,9 +122,17 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
 
                     response.result.feed[index].roomType.toString() // roomType
 
-                    Glide.with(viewBinding.ivPost)
-                        .load(response.result.feed[index].feedIdx)
-                        .into(viewBinding.ivPost)
+
+//                    imgList.apply {
+//                        add(
+//                            response.result2
+//                        )
+//                    }
+//                    viewBinding.rvComment.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+//                    val adapter = PostImgRVAdapter(imgList)
+//                    viewBinding.rvComment.adapter = adapter
+
+
 
                     viewBinding.tvRoomType.text = response.result.feed[index].roomType.toString() // roomType
                     viewBinding.tvTitle.text = response.result.feed[index].title.toString() // title
