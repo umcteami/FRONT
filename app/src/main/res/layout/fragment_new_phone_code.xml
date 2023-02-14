@@ -73,7 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:hint="000 0000 0000"/>
+                android:hint="000 0000 0000"
+                android:textSize="20sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

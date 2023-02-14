@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="000 0000 0000"
+            android:paddingLeft="18dp"
             android:fontFamily="@font/roboto"
             android:textSize="20sp"
             android:gravity="center|left"
@@ -56,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/email_box"
+                    android:textSize="20sp"
                     android:hint="인증 번호를 입력해주세요" />
 
             </com.google.android.material.textfield.TextInputLayout>
