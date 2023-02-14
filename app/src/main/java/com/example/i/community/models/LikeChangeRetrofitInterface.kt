@@ -9,5 +9,5 @@ interface LikeChangeRetrofitInterface {
     @POST("/feeds/like/change")
     fun postLikeChange(
         @Body parmas: RequestLikeChange
-    ): Call<BaseResponse>
+    ): Call<LikeChangeResponse>
 }

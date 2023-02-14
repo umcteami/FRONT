@@ -10,19 +10,19 @@ class LikeChangeService(val LikeChangeInterface: LikeChangeInterface) {
     fun tryPostLikeChange(body: RequestLikeChange) {
         val LikeChangeRetrofitInterface = ApplicationClass.sRetrofit.create(LikeChangeRetrofitInterface::class.java)
         LikeChangeRetrofitInterface.postLikeChange(body).enqueue(object:
-            Callback<BaseResponse> {
+            Callback<LikeChangeResponse> {
             override fun onResponse(
-                call: Call<BaseResponse>,
-                response: Response<BaseResponse>
+                call: Call<LikeChangeResponse>,
+                response: Response<LikeChangeResponse>
             ) {
-                (response.body() as BaseResponse?)?.let {
+                (response.body() as LikeChangeResponse?)?.let {
                     LikeChangeInterface.onPostChangeLikeSuccess(
                         it
                     )
                 }
             }
 
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            override fun onFailure(call: Call<LikeChangeResponse>, t: Throwable) {
                 LikeChangeInterface.onPostChangeLikeFailure(t.message ?: "통신 오류")
             }
 
