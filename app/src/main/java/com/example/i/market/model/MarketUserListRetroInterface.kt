@@ -9,7 +9,7 @@ interface MarketUserListRetroInterface {
     // 나눔 장터 판매자별 판매글 조회 API
     @GET("/market/list")
     fun getMarketUserList(
-        @Body params: MarketUserListRequest,
+        @Query("postUserIdx") postUserIdx: Int,
         @Query("userIdx") userIdx: Int
     ): Call<MarketUserListResponse>
 }

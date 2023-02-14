@@ -30,10 +30,14 @@ class MarketGVAdapter(private val items: MutableList<MarketP>, private var conte
 
         viewBinding.cbHeart.setOnCheckedChangeListener { compoundButton, b ->
             if (viewBinding.cbHeart.isChecked == true) {
+                item.view + 1
                 Toast.makeText(context, "게시글을 찜 했습니다.", Toast.LENGTH_SHORT).show()
+                viewBinding.tvMkView.text = item.view
             }
             else {
+                item.view + 1
                 Toast.makeText(context, "게시글 찜을 해제했습니다.", Toast.LENGTH_SHORT).show()
+                viewBinding.tvMkView.text = item.view
             }
         }
 
