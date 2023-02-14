@@ -2,6 +2,7 @@
 
 package com.example.i.community.talk
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.example.i.R
 import com.example.i.community.BoardItem
 import com.example.i.community.BoardRoomXItem
 import com.example.i.community.DialogFilterDate
+import com.example.i.community.customdialog.PFilterDialog
 import com.example.i.community.talk.CommunityBoardAdapter
 import com.example.i.community.talk.CommunityTalkroomActivity
 import com.example.i.community.talk.models.talkroom.PplTalkroomInterface
@@ -27,19 +29,21 @@ import com.example.i.home.HasImage
 import com.example.i.market.customdialog.MkFilterDialog
 
 
-class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface {
+class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface, View.OnClickListener {
     private lateinit var viewBinding: FragmentCommunityTalkroomBestBinding
+    private lateinit var main : CommunityTalkroomActivity
 
     val itemList: ArrayList<BoardItem> = arrayListOf()
     var hasImage: HasImage = HasImage.TRUE
     val Tadapter = CommunityBoardAdapter(itemList)
 
-    private lateinit var main : CommunityTalkroomActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentCommunityTalkroomBestBinding.inflate(layoutInflater)
+        viewBinding.btSort.setOnClickListener(this)
+
 
         PplTalkroomService(this).tryGetPplTalkroom("story",1,0)
 
@@ -97,6 +101,23 @@ class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface {
 
     override fun onGetPplTalkroomFailure(message: String) {
         Log.d("error", "카테고리 이야기방 인기글 오류: $message")
+    }
+
+    override fun onAttach(context : Context){
+        super.onAttach(context)
+        main = context as CommunityTalkroomActivity
+    }
+
+    override fun onClick(view:View?){
+        when(view?.id){
+            viewBinding.btSort.id ->{
+                val dlg = PFilterDialog(main)
+                dlg.setOnOkClickedListener { content ->
+                    viewBinding.btSort.text = content
+                }
+                dlg.show()
+            }
+        }
     }
 
 }

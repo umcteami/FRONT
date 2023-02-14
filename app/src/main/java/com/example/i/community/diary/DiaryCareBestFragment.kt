@@ -1,5 +1,6 @@
 package com.example.i.community.diary
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,17 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
+import com.example.i.community.customdialog.PFilterDialog
+import com.example.i.community.talk.CommunityTalkroomActivity
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentDiaryCareBestBinding
 import com.example.i.databinding.FragmentDiaryCareBinding
 
-class DiaryCareBestFragment : Fragment() {
+class DiaryCareBestFragment : Fragment(), View.OnClickListener {
     private lateinit var viewBinding : FragmentDiaryCareBestBinding
+    private lateinit var main : DiaryCareActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentDiaryCareBestBinding.inflate(layoutInflater)
+        viewBinding.btSort.setOnClickListener(this)
+
         val itemList = ArrayList<DiaryRoomxItem>()
 //        itemList.apply {
 //            add(
@@ -78,5 +84,23 @@ class DiaryCareBestFragment : Fragment() {
             }
         }
         return viewBinding.root
+    }
+
+    override fun onAttach(context : Context){
+        super.onAttach(context)
+        main = context as DiaryCareActivity
+    }
+
+
+    override fun onClick(view:View?){
+        when(view?.id){
+            viewBinding.btSort.id ->{
+                val dlg = PFilterDialog(main)
+                dlg.setOnOkClickedListener { content ->
+                    viewBinding.btSort.text = content
+                }
+                dlg.show()
+            }
+        }
     }
 }
