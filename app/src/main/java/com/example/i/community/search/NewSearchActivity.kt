@@ -17,7 +17,8 @@ class NewSearchActivity : AppCompatActivity() {
         viewBinding.etSearch.setOnEditorActionListener{_, actionId, _->
             if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_SEARCH || EditorInfo.IME_ACTION_UNSPECIFIED == actionId)
             {
-//                Toast.makeText(this,"Search를 누름",Toast.LENGTH_SHORT).show()
+                searchVar.searchBoard = 0
+                searchVar.searchRoom = 1
                 val searchTerm = viewBinding.etSearch.text.toString()
                 val searchIntent = Intent(this, SearchResultActivity::class.java)
                 searchIntent.putExtra("searchTerm", "$searchTerm")
