@@ -46,18 +46,13 @@ class MarketPostActivity : AppCompatActivity() {
 
         viewBinding.gvMore.setOnItemClickListener { adapterView, view, i, l ->
             val intent = Intent(this, MarketPostActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
+        }
 
-            viewBinding.gvMore.setOnItemClickListener { adapterView, view, i, l ->
-                val intent = Intent(this, MarketPostActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                startActivity(intent)
-            }
-
-            viewBinding.btMore.setOnClickListener {
-                val intent = Intent(this, FriendProfileActivity::class.java)
-                startActivity(intent)
-            }
+        viewBinding.btMore.setOnClickListener {
+            val intent = Intent(this, FriendProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 }
