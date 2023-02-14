@@ -25,7 +25,7 @@ class ProfileMarketFragment : Fragment() {
         viewBinding = FragmentProfileMarketBinding.inflate(inflater, container, false)
 
         val mkpList: ArrayList<MarketP> = arrayListOf()
-        val adapter = MarketPplRVAdapter(mkpList)
+        val adapter = MarketPplRVAdapter(requireActivity(), mkpList)
 
         var img = "https://i-image.s3.ap-northeast-2.amazonaws.com/8568310d-73fb-4728-b11f-712d716c6416_Acer_Wallpaper_03_5000x2814.jpg"
 
