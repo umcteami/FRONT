@@ -231,8 +231,8 @@ class ReviewSearchResult1Fragment : Fragment(), HomeSearchInterface, StorySearch
                             response.result[i].buyerNick,
                             response.result[i].createAt,
                             response.result[i].hit.toString(),
-                            response.result[i].hit.toString(), //원래는 좋아요
-                            response.result[i].hit.toString(), //원래는 댓글
+                            response.result[i].likeCnt.toString(), //원래는 좋아요
+                            response.result[i].commentCnt.toString(), //원래는 댓글
                             response.result[i].image
                         )
                     )

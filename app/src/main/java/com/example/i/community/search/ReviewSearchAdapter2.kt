@@ -70,9 +70,9 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>(){
             viewBinding.tvDate.text = item.date
             viewBinding.tvHeart.text = item.heart
             viewBinding.tvComment.text = item.comment
-//            Glide.with(viewBinding.ivThumbnail)
-//                .load(item.img)
-//                .into(viewBinding.ivThumbnail)
+            Glide.with(viewBinding.ivThumbnail)
+                .load(item.img)
+                .into(viewBinding.ivThumbnail)
         }
     }
 

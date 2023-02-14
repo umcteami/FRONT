@@ -8,7 +8,7 @@ import retrofit2.Callback
 class MarketSearchService (val MarketSearchInterface : MarketSearchInterface, val category : String?, val searchKeyword : String?, val page : Int?, val searchTarget : String, val userIdx : Int){
     fun tryGetMarketSearch(){
         val MarketSearchRetrofitInterface = ApplicationClass.sRetrofit.create(MarketSearchRetrofitInterface::class.java)
-        MarketSearchRetrofitInterface.getMarketSearch(null,searchKeyword,null, searchTarget).enqueue(object:
+        MarketSearchRetrofitInterface.getMarketSearch(userIdx,null, searchKeyword,null, searchTarget).enqueue(object:
         Callback<MarketSearchResponse> {
             override fun onResponse(
                 call: Call<MarketSearchResponse>,

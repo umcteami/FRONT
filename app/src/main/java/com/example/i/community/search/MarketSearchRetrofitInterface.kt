@@ -8,10 +8,10 @@ import retrofit2.http.Query
 interface MarketSearchRetrofitInterface {
     @GET("/market/search?")
     fun getMarketSearch(
+        @Query("userIdx")userIdx:Int?,
         @Query("category")category:String?,
         @Query("search_keyword")searchKeyword:String?,
         @Query("page")page:Int?,
         @Query("search_target")searchTarget:String,
-//        @Body params : MarketSearchRequest
     ):Call<MarketSearchResponse>
 }
