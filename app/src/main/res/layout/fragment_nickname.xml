@@ -83,7 +83,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/basic_profile_large" />
+            android:src="@drawable/grey_circle" />
 
         <ImageButton
             android:layout_width="40dp"

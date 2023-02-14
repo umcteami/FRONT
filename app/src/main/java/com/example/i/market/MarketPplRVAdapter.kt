@@ -1,37 +1,22 @@
 package com.example.i.market
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemMarket3Binding
 
-class MarketPplRVAdapter(private val context: Context, private val mkpList: ArrayList<MarketP>): RecyclerView.Adapter<MarketPplRVAdapter.ViewHolder>() {
+class MarketPplRVAdapter(private val mkpList: ArrayList<MarketP>): RecyclerView.Adapter<MarketPplRVAdapter.ViewHolder>() {
 
     var itemClick: ItemClick? = null
 
     inner class ViewHolder(val viewBinding: ItemMarket3Binding) :
         RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(mp: MarketP) {
-            Glide.with(viewBinding.ivMk)
-                .load(mp.image)
-                .into(viewBinding.ivMk)
+            viewBinding.ivMk.setImageResource(mp.image)
             viewBinding.tvMkTitle.text = mp.title
             viewBinding.tvMkContent.text = mp.content
             viewBinding.tvMkView.text = mp.view
-            viewBinding.cbHeart.isChecked = mp.liked
-
-            viewBinding.cbHeart.setOnCheckedChangeListener { compoundButton, b ->
-                if (viewBinding.cbHeart.isChecked == true) {
-                    Toast.makeText(context, "게시글을 찜 했습니다.", Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    Toast.makeText(context, "게시글 찜을 해제했습니다.", Toast.LENGTH_SHORT).show()
-                }
-            }
         }
     }
 

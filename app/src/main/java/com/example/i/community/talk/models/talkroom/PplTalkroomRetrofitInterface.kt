@@ -11,7 +11,5 @@ interface PplTalkroomRetrofitInterface {
     fun getPplTalkroom(
         @Path("boardType") boardType: String,
         @Query("filter") filter: Int,
-        @Query("page") page: Int,
-        @Query("roomType") roomType: Int
-    ): Call<PplTalkroomResponse>
+        @Query("page") page: Int): Call<PplTalkroomResponse>
 }

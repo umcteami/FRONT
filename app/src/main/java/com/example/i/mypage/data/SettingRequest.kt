@@ -1,15 +1,16 @@
 package com.example.i.mypage.data
 
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 
 data class SettingRequest(
-        @SerializedName("email") val email: String? = null,
-        @SerializedName("phone") val phone: String? = null,
-        @SerializedName("nick") val nick: String? = null,
-        @SerializedName("intro") val intro: String? = null,
-        @SerializedName("birth") val birth: String? = null,
-        @SerializedName("addresCode") val addresCode: String? = null,
-        @SerializedName("addres") val addres: String? = null,
-        @SerializedName("addresPlus") val addresPlus: String? = null,
-        @SerializedName("profile") val profile: String? = null
+        @SerializedName("email") val email: String,
+        @SerializedName("phone") val phone: String,
+        @SerializedName("nick") val nick: String,
+        @SerializedName("intro") val intro: String,
+        @SerializedName("birth") val birth: String,
+        @SerializedName("addresCode") val addresCode: String,
+        @SerializedName("addres") val addres: String,
+        @SerializedName("addresPlus") val addresPlus: String,
+        @SerializedName("profile") val profile: String
 )

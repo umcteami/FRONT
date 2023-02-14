@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentMyDiaryBinding
+import com.example.i.home.HasImage
 import com.example.i.login.memIdx
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.DiaryRVAdapter
@@ -21,9 +22,6 @@ import com.example.i.mypage.data.post.PostInterface
 import com.example.i.mypage.data.post.PostResponse
 import com.example.i.mypage.data.post.PostService
 import com.example.i.mypage.myProfile
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.concurrent.scheduleAtFixedRate
 
 
 class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
@@ -32,7 +30,6 @@ class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
 
     val DiaryList: ArrayList<MyPost> = arrayListOf()
     val adapter = DiaryRVAdapter(DiaryList)
-    val page = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,12 +39,7 @@ class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
 
         viewBinding.btSort.setOnClickListener(this)
 
-        // 1시간 간격으로 반복
-        Timer().scheduleAtFixedRate(1000, 3600000) {
-            PostService(this@MyDiaryFragment).tryGetDiary(memIdx = memIdx, page) // 일기장 작성 글 조회 API
-            page + 1
-        }
-
+        PostService(this).tryGetDiary(memIdx = memIdx, 1) // 일기장 작성 글 조회 API
         backFragment() // 뒤로가기
 
         return viewBinding.root
@@ -85,6 +77,7 @@ class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
                                 response.result[i].countLike.toString()
                             )
                         )
+                        // add(MyPost("질문방", "해피가 이런 증상을 보이는데 괜찮은 건가요?", "7시간 전", "조회 12", "2"))
                     }
                 }
             }

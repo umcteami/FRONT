@@ -26,7 +26,7 @@ class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) : RecyclerView.A
             viewBinding.tvRoominfo.text = item.type
             viewBinding.tvWriter.text = item.writer
             Glide.with(viewBinding.ivProfileImage)
-                .load(item.profile)
+                .load(item.postImg)
                 .into(viewBinding.ivProfileImage)
             viewBinding.tvWriteTime.text = item.date
             viewBinding.tvView.text = item.view
@@ -42,7 +42,7 @@ class CommunityBoardAdapter(val itemList: ArrayList<BoardItem>) : RecyclerView.A
             viewBinding2.tvRoominfo.text = item.type
             viewBinding2.tvWriter.text = item.writer
             Glide.with(viewBinding2.ivProfileImage)
-                .load(item.profile)
+                .load(item.postImg)
                 .into(viewBinding2.ivProfileImage)
             viewBinding2.tvWriteTime.text = item.date
             viewBinding2.tvView.text = item.view

@@ -1,21 +1,15 @@
 package com.example.i.mypage.data
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemBlockedBinding
 
 class BlockedRVAdapter(private val BlockList: ArrayList<Blocked>): RecyclerView.Adapter<BlockedRVAdapter.ViewHolder>() {
     inner class ViewHolder(private val viewBinding: ItemBlockedBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind (Blocked: Blocked) {
-            viewBinding.blockedName.text = Blocked.nick
-            viewBinding.blockedIntro.text = Blocked.intro
-            Glide.with(viewBinding.imgProfile)
-                .load(Blocked.profile)
-                .into(viewBinding.imgProfile)
-            Log.d("확인", "blockMemIdx : ${Blocked.blockMemIdx}")
+            viewBinding.blockedName.text = Blocked.name
+            viewBinding.blockedContent.text = Blocked.content
             viewBinding.btBlocked.isSelected = true
 
             // 버튼 눌린 상태

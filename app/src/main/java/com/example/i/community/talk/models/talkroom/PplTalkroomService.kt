@@ -7,9 +7,9 @@ import retrofit2.Response
 import retrofit2.create
 
 class PplTalkroomService (val PplTalkroomInterface: PplTalkroomInterface){
-    fun tryGetPplTalkroom(boardType:String, filter:Int,page:Int,roomType: Int){
+    fun tryGetPplTalkroom(boardType:String, filter:Int,page:Int){
         val PplTalkroomRetrofitInterface = ApplicationClass.sRetrofit.create(PplTalkroomRetrofitInterface::class.java)
-        PplTalkroomRetrofitInterface.getPplTalkroom(boardType,filter,page, roomType).enqueue(object : Callback<PplTalkroomResponse>{
+        PplTalkroomRetrofitInterface.getPplTalkroom(boardType,filter,page).enqueue(object : Callback<PplTalkroomResponse>{
             override fun onResponse( call: Call<PplTalkroomResponse>, response: Response<PplTalkroomResponse>) {
                 (response.body()as PplTalkroomResponse?)?.let {
                     PplTalkroomInterface.onGetPplTalkroomSuccess(

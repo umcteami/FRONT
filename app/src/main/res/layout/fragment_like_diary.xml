@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="6dp"
                 android:textColor="#A6A6A6"
-                android:text="총 0개의 좋아요한 글이 있어요"
+                android:text="총 6개의 좋아요한 글이 있어요"
                 android:textSize="13sp"
                 android:fontFamily="@font/roboto_regular"/>
         </LinearLayout>
