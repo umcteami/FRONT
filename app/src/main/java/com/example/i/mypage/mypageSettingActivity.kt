@@ -96,9 +96,19 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
             myProfile = response.result.profile
             myName = response.result.nick
 
-            Glide.with(viewBinding.editProfile)
-                .load(myProfile)
-                .into(viewBinding.editProfile)
+            if(response.result.profile != null)
+            {
+                // 사용자 프로필
+                Glide.with(viewBinding.editProfile)
+                    .load(myProfile)
+                    .into(viewBinding.editProfile)
+            }
+            else
+            {   // 기본 프로필
+                Glide.with(viewBinding.editProfile)
+                    .load("https://github.com/umcteami/FRONT/blob/67c9fc8a8b5000bc6c478aad8c84b277caefa718/app/src/main/res/drawable/basic_profile_large.png?raw=true")
+                    .into(viewBinding.editProfile)
+            }
 
             viewBinding.editEmail.setText(response.result.email)
             viewBinding.editCall.setText(response.result.phone)
