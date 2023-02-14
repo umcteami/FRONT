@@ -28,7 +28,7 @@ class DiaryBoardAdapter (val itemList : ArrayList<DiaryItem>) : RecyclerView.Ada
                 .into(viewBinding.ivProfileImage)
             viewBinding.tvTitle.text = item.title
             viewBinding.tvWriteTime.text = item.date
-            //viewBinding.tvContent.text = item.content
+            viewBinding.tvContent.text = item.content
             Glide.with(viewBinding.ivImage1)
                 .load(item.Img)
                 .into(viewBinding.ivImage1)
@@ -49,7 +49,7 @@ class DiaryBoardAdapter (val itemList : ArrayList<DiaryItem>) : RecyclerView.Ada
                 .into(viewBinding2.ivProfileImage)
             viewBinding2.tvTitle.text = item.title
             viewBinding2.tvWriteTime.text = item.date
-            //viewBinding2.tvContent.text = item.content
+            viewBinding2.tvContent.text = item.content
             viewBinding2.tvView.text = item.view
             viewBinding2.tvHeart.text = item.heart
             viewBinding2.tvComment.text = item.comment

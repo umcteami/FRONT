@@ -10,6 +10,7 @@ data class DiaryDList(
     @SerializedName("memProfile") val memProfile: String,
     @SerializedName("memNick") val memNick: String,
     @SerializedName("title") val title: String,
+    @SerializedName("content") val content : String,
     @SerializedName("img") val img: String,
     @SerializedName("hit") val hit: Int,
     @SerializedName("commentCnt") val commentCnt : Int,

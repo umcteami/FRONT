@@ -7,7 +7,7 @@ data class BoardItem(
     var type: String,
     var title: String,
     var postImg : String?,
-    var Profile: String?,
+    var profile: String?,
     var writer: String,
     var date: String,
     var view : String,
