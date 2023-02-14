@@ -34,7 +34,7 @@ class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface {
     ): View? {
         viewBinding = FragmentCommunityTalkroomBestBinding.inflate(layoutInflater)
 
-        PplTalkroomService(this).tryGetPplTalkroom("story",1,0)
+        PplTalkroomService(this).tryGetPplTalkroom("story",1,0,0)
 
         return viewBinding.root
     }
