@@ -10,5 +10,6 @@ data class ReviewSearchList(
     @SerializedName("sellerNick")val sellerNick : String,
     @SerializedName("goods") val goods : String,
     @SerializedName("hit")val hit : Int,
-    @SerializedName("createAt")val createAt : String
+    @SerializedName("createAt")val createAt : String,
+    @SerializedName("image")val image : String?
 )
