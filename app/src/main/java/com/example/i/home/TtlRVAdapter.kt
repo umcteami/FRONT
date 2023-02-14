@@ -3,6 +3,8 @@ package com.example.i.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.i.databinding.ListItemTtl2Binding
@@ -49,6 +51,7 @@ class TtlRVAdapter(private val ttlList: ArrayList<Ttls>) : RecyclerView.Adapter<
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
         return if (viewType == HASIMAGE) {
             val view = ListItemTtlBinding.inflate(LayoutInflater.from(parent.context),parent, false)
             TtlWithImageViewHolder(view)
@@ -60,6 +63,7 @@ class TtlRVAdapter(private val ttlList: ArrayList<Ttls>) : RecyclerView.Adapter<
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
         if (getItemViewType(position) == HASIMAGE) {
             (holder as TtlWithImageViewHolder).bind(ttlList[position])
         }else {

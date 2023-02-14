@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.i.R
 import com.example.i.databinding.FragmentPpl2Binding
 
 class Ppl2Fragment : Fragment() {
@@ -19,14 +18,18 @@ class Ppl2Fragment : Fragment() {
     ): View? {
         viewBinding = FragmentPpl2Binding.inflate(inflater, container, false)
 
+        var img = "https://i-image.s3.ap-northeast-2.amazonaws.com/8568310d-73fb-4728-b11f-712d716c6416_Acer_Wallpaper_03_5000x2814.jpg"
+
         val item = mutableListOf<MarketP>()
 
-        item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
-        item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
-        item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
-        item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
-        item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
-        item.add(MarketP(R.drawable.img_post, "무료나눔", "강아지껌", "2"))
+        item.apply{
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
+        }
 
         val adapter = MarketGVAdapter(item, requireActivity())
         viewBinding.gvPpl.adapter = adapter

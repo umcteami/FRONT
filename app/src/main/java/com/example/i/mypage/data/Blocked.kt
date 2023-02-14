@@ -1,7 +1,9 @@
 package com.example.i.mypage.data
 
 data class Blocked(
-    val name: String,
-    val content: String
+    val blockMemIdx: Int,
+    val profile: String,
+    val nick: String,
+    val intro: String
 )
 

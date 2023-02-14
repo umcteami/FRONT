@@ -24,10 +24,9 @@ class CommunityRoomXBoardAdapter(val itemList: ArrayList<BoardRoomXItem>): Recyc
             Glide.with(viewBinding.ivPostimage)
                 .load(item.picture)
                 .into(viewBinding.ivPostimage)
-            //viewBinding.ivProfileImage.setImageResource(item.picture!!)
             viewBinding.tvWriter.text = item.writer
             Glide.with(viewBinding.ivProfileImage)
-                .load(item.Profile)
+                .load(item.profile)
                 .into(viewBinding.ivProfileImage)
             viewBinding.tvWriteTime.text = item.date
             viewBinding.tvView.text = item.view
@@ -42,7 +41,7 @@ class CommunityRoomXBoardAdapter(val itemList: ArrayList<BoardRoomXItem>): Recyc
             viewBinding2.tvTitle.text = item.title
             viewBinding2.tvWriter.text = item.writer
             Glide.with(viewBinding2.ivProfileImage)
-                .load(item.Profile)
+                .load(item.profile)
                 .into(viewBinding2.ivProfileImage)
             viewBinding2.tvWriteTime.text = item.date
             viewBinding2.tvView.text = item.view

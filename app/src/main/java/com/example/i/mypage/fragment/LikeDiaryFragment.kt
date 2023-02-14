@@ -18,12 +18,16 @@ import com.example.i.mypage.data.like.LikeResponse
 import com.example.i.mypage.data.like.LikeService
 import com.example.i.mypage.myName
 import com.example.i.mypage.myProfile
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.scheduleAtFixedRate
 
 class LikeDiaryFragment : Fragment(), LikeInterface {
 
     private lateinit var viewBinding : FragmentLikeDiaryBinding
     val PostList: ArrayList<MyPost> = arrayListOf()
     val adapter = PostRVAdapter(PostList)
+    val page = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +35,11 @@ class LikeDiaryFragment : Fragment(), LikeInterface {
     ): View? {
         viewBinding = FragmentLikeDiaryBinding.inflate(layoutInflater)
 
-        LikeService(this).tryGetLike(1, 1) // 좋아요한 게시글 API
+        // 1시간 간격으로 반복
+        Timer().scheduleAtFixedRate(1000, 3600000) {
+            LikeService(this@LikeDiaryFragment).tryGetLike(memIdx, page) // 좋아요한 게시글 API
+            page + 1
+        }
 
         return viewBinding.root
     }

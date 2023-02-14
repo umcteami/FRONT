@@ -65,6 +65,7 @@
             android:layout_marginTop="100dp"
             android:hint="000 0000 0000"
             android:textSize="20sp"
+            android:paddingLeft="18dp"
             android:fontFamily="@font/roboto_regular">
         </EditText>
 

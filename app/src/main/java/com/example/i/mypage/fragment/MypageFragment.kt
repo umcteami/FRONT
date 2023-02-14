@@ -65,10 +65,19 @@ class MypageFragment : Fragment(), MyPageInterface {
 
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
-            // 프로필
-            Glide.with(viewBinding.mypageProfile)
-                .load(response.result.profile)
-                .into(viewBinding.mypageProfile)
+            if(response.result.profile != null)
+            {
+                // 사용자 프로필
+                Glide.with(viewBinding.mypageProfile)
+                    .load(response.result.profile)
+                    .into(viewBinding.mypageProfile)
+            }
+            else
+            {   // 기본 프로필
+                Glide.with(viewBinding.mypageProfile)
+                    .load("https://github.com/umcteami/FRONT/blob/67c9fc8a8b5000bc6c478aad8c84b277caefa718/app/src/main/res/drawable/basic_profile_large.png?raw=true")
+                    .into(viewBinding.mypageProfile)
+            }
 
             viewBinding.mypageUsername.text = response.result.nick
             viewBinding.mypageIntro.text = response.result.intro

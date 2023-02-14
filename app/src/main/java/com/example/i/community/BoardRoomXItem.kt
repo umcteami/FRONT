@@ -7,7 +7,7 @@ data class BoardRoomXItem(
     var title: String? = null,
     var picture : String? = null,
     var writer: String? = null,
-    var Profile:String? = null,
+    var profile:String? = null,
     var date: String? = null,
     var view : String? = null,
     var heart : String? = null,

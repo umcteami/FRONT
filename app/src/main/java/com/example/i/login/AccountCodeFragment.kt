@@ -14,6 +14,8 @@ import com.example.i.databinding.FragmentAccountCodeBinding
 import com.example.i.login.models.FindInterface
 import com.example.i.login.models.FindResponse
 import com.example.i.login.models.FindService
+import com.example.i.signup.SignupActivity
+import com.example.i.signup.models.EmailCheckResponse
 
 var accountEmail : String = "" // 전역 변수
 
@@ -28,7 +30,7 @@ class AccountCodeFragment : Fragment(), FindInterface {
         viewBinding = FragmentAccountCodeBinding.inflate(inflater, container, false)
 
         viewBinding.btOk.isEnabled = false
-        viewBinding.tvPhone.text = phone // 데이터 가져오기
+        viewBinding.tvPhone.text = accountPhone // 데이터 가져오기
 
         viewBinding.etPhonecode.addTextChangedListener(object: TextWatcher {
             // 입력 전
@@ -56,10 +58,7 @@ class AccountCodeFragment : Fragment(), FindInterface {
 
         // 이메일 확인
         viewBinding.btOk.setOnClickListener{
-            val Activity = activity as AccountSearchActivity
-            Activity.changeFragment(4)
-
-            FindService(this).tryGetFind(phone) // 이메일 찾기 API
+            FindService(this).tryGetFind(accountPhone) // 이메일 찾기 API
         }
 
         return viewBinding.root
@@ -67,20 +66,25 @@ class AccountCodeFragment : Fragment(), FindInterface {
 
     // 이메일 찾기 API
     override fun onGetFindSuccess(response: FindResponse) {
-        // 인증번호 발송이 성공한 경우
         if(response.isSuccess){
-            val Activity = activity as AccountSearchActivity
-            Activity.changeFragment(4)
 
-            if(response.result != null)
+            val userCode = viewBinding.etPhonecode.text.toString()
+            if(userCode == accountIdx.toString())
             {
-                accountEmail = response.result.toString() //이메일 가져오기
+                accountEmail = response.result
+
+                // 다음 페이지로 이동
+                val Activity = activity as AccountSearchActivity
+                Activity.changeFragment(4)
+
+                // Result message
+                Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
             }
             else
-            {   accountEmail = "가입하신 이메일 주소가 없습니다."    }
+            {
+                viewBinding.inputPwd.error = "인증 번호가 틀렸습니다"
+            }
         }
-        // Result message
-        Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
     }
 
     // 서버 연결 실패

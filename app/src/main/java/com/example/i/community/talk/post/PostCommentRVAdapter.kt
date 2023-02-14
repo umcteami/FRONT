@@ -21,7 +21,7 @@ class PostCommentRVAdapter (private val commentList : ArrayList<ItemComment>) : 
                     viewBinding.tvCommentWriter.text = itemComment.commentWriter
                     viewBinding.tvContent.text = itemComment.content
                     viewBinding.tvWriteTime.text = itemComment.date
-                    if(viewBinding.tvCommentWriter == null || itemComment.commentWriter == null){
+                    if(viewBinding.tvCommentWriter == null || itemComment.commentWriter != null || itemComment.writer != itemComment.commentWriter){
                         viewBinding.tvCommentWriter.visibility  = View.GONE
                         viewBinding.root
                     }

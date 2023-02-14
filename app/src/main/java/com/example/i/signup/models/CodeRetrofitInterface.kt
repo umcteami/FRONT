@@ -1,5 +1,6 @@
 package com.example.i.signup.models
 
+import com.example.i.mypage.data.MyPageResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -14,5 +15,7 @@ interface CodeRetrofitInterface {
 
     // 인증번호 조회 API
     @GET("/member/join/auth")
-    fun getEmail(@Query("authIdx") authIdx: Int): Call<EmailCheckResponse>
+    fun getEmail(
+        @Query("authIdx") authIdx: Int
+    ): Call<EmailCheckResponse>
 }

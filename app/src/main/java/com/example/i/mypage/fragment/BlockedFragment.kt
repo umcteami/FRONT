@@ -35,16 +35,37 @@ class BlockedFragment : Fragment(), BlockInterface {
     override fun onGetBlockSuccess(response: BlockResponse) {
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
+
             val BlockList: ArrayList<Blocked> = arrayListOf()
-            BlockList.apply{
-                add(Blocked(response.result[2].toString(), response.result[3].toString()))
+
+            val index: Int = response.result.size - 1
+
+            for (i in 0 ..index) {
+                if (response.result.size != 0) {
+                    BlockList.apply {
+                        add(
+                            Blocked(
+                                nick = response.result[i].nick,
+                                intro = response.result[i].intro,
+                                profile = response.result[i].profile,
+                                blockMemIdx = response.result[i].blockMemIdx
+                            )
+                        )
+                    }
+                }
             }
+            if (response.result.size == 0)
+            {
+                Toast.makeText(activity, "차단한 사용자가 없습니다", Toast.LENGTH_SHORT).show()
+            }
+
             viewBinding.recyclerview.layoutManager = LinearLayoutManager(context)
             viewBinding.recyclerview.adapter = BlockedRVAdapter(BlockList)
         }
 
         // Result message
-        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
+        Log.d("Success", "성공 : $response.message")
+        // Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
     }
 
     // 서버 연결 실패
