@@ -6,14 +6,19 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.i.MainActivity
 import com.example.i.databinding.FragmentPhoneCodeBinding
+import com.example.i.signup.models.EmailCheckResponse
+import com.example.i.signup.models.GetEmailInterface
+import com.example.i.signup.models.GetEmailService
 
-class PhoneCodeFragment : Fragment() {
+class PhoneCodeFragment : Fragment(), GetEmailInterface {
     private lateinit var viewBinding : FragmentPhoneCodeBinding
 
     override fun onCreateView(
@@ -27,8 +32,6 @@ class PhoneCodeFragment : Fragment() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
-
-        val activity = activity as SignupActivity
 
         viewBinding.btOk.isEnabled = false
         viewBinding.tvPhone.text = signUp_phone // 값 적용
@@ -58,9 +61,36 @@ class PhoneCodeFragment : Fragment() {
         })
 
         viewBinding.btOk.setOnClickListener{
-            activity.changeFragment(4)
+            GetEmailService(this).tryGetEmail(authIdx) // 인증번호 조회 API
         }
 
         return viewBinding.root
+    }
+
+    // 인증번호 조회 API
+    override fun onGetEmailSuccess(response: EmailCheckResponse) {
+
+        if(response.isSuccess){
+
+            val userCode = viewBinding.etPhonecode.text.toString()
+            if(response.result.authIdx == userCode)
+            {
+                // 다음 페이지로 이동
+                val Activity = activity as SignupActivity
+                Activity.changeFragment(4)
+
+                // Result message
+                Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                viewBinding.tiPhonecode.error = "인증 번호가 틀렸습니다"
+            }
+        }
+    }
+
+    // 서버 연결 실패
+    override fun onGetEmailFailure(message: String) {
+        Log.d("error", "오류 : $message")
     }
 }
