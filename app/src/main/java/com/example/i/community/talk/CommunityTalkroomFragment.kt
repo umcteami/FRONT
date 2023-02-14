@@ -94,7 +94,7 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
                 override fun onClick(view: View, position: Int) {
                     val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
                     //글 정보 보내주기: 회원 인덱스, 게시글 인덱스
-                    intent.putExtra("storyIdx",response.result[position].feedIdx)
+                    intent.putExtra("storyIdx",2)
                     intent.putExtra("memIdx",response.result[position].memIdx)
                     startActivity(intent)
                 }

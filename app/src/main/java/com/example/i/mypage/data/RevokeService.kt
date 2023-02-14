@@ -7,6 +7,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RevokeService(val RevokeInterface: RevokeInterface) {
+
     // 탈퇴하기 API
     fun tryPostRevoke(memIdx: Int){
         val RevokeRetrofitInterface = ApplicationClass.sRetrofit.create(RevokeRetrofitInterface::class.java)

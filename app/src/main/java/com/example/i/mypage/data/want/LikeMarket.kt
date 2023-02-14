@@ -1,6 +1,7 @@
-package com.example.i.mypage.data
+package com.example.i.mypage.data.want
 
 data class LikeMarket(
+    val image: String,
     val title: String,
     val content: String,
     val time: String,

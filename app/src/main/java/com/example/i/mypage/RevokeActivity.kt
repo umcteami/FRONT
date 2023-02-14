@@ -33,7 +33,6 @@ class RevokeActivity : AppCompatActivity(), RevokeInterface {
             dialog.show(supportFragmentManager, "custom dialog")
 
             // 서버에 값 보냄
-            // val postRequest = PostRevokeRequest(33)
             RevokeService(this).tryPostRevoke(memIdx)
         }
     }
