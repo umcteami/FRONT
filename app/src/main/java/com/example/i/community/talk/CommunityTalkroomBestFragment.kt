@@ -2,6 +2,7 @@
 
 package com.example.i.community.talk
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +23,7 @@ import com.example.i.databinding.FragmentCommunityTalkroomBestBinding
 import com.example.i.home.HasImage
 
 
-class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface {
+class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface, View.OnClickListener {
     private lateinit var viewBinding: FragmentCommunityTalkroomBestBinding
 
     val itemList: ArrayList<BoardItem> = arrayListOf()
