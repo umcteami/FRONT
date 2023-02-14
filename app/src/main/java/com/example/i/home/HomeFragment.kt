@@ -23,13 +23,14 @@ import com.example.i.toolbar.SearchActivity
 
 class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
     private lateinit var viewBinding: FragmentHomeBinding
-    private var searchText : String = ""
+    private var searchText: String = ""
     val ttlList: ArrayList<Ttls> = arrayListOf()
     val Tadapter = TtlRVAdapter(ttlList)
     var hasImage: HasImage = HasImage.TRUE
 
     val pplList: ArrayList<Ppls> = arrayListOf()
     val Padapter = PplRVAdapter(pplList)
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,10 +43,11 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
         //인기글 RV
 
-        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        viewBinding.homePplRV.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         viewBinding.homePplRV.adapter = Padapter
 
-        Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
+        Padapter!!.itemClick = object : PplRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
                 startActivity(intent)
@@ -58,7 +60,7 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
         }
 
         viewBinding.drawerView.setNavigationItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.drawer_community -> { //이야기방 전체
                     val intent = Intent(context, CommunityTalkroomActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -117,13 +119,13 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
         viewBinding.homeSearchBtn.setOnClickListener {
             val intent = Intent(context, SearchActivity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
         viewBinding.homeNotiBtn.setOnClickListener {
             val intent = Intent(context, NotiActivity::class.java)
-            intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
@@ -152,7 +154,7 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
             val index: Int = response.result.size - 1
 
-            for (i in 0 ..index) {
+            for (i in 0..index) {
 
                 if (response.result[i].img != null) {
                     hasImage = HasImage.TRUE
@@ -182,35 +184,36 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
         viewBinding.homeTtlRV.layoutManager = LinearLayoutManager(requireActivity())
         viewBinding.homeTtlRV.adapter = Tadapter
 
-        Tadapter!!.itemClick = object: TtlRVAdapter.ItemClick{
+        Tadapter!!.itemClick = object : TtlRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-                if (response.result[position].roomType == 1){
-                    intent.putExtra("storyIdx",response.result[position].feedIdx)
-                } else if (response.result[position].roomType == 2){
-                    intent.putExtra("diaryIdx",response.result[position].feedIdx)
-                } else if (response.result[position].roomType == 3){
-                    intent.putExtra("reviewIdx",response.result[position].feedIdx)
+                if (response.result[position].roomType == 1) {
+                    intent.putExtra("storyIdx", response.result[position].feedIdx)
+                } else if (response.result[position].roomType == 2) {
+                    intent.putExtra("diaryIdx", response.result[position].feedIdx)
+                } else if (response.result[position].roomType == 3) {
+                    intent.putExtra("reviewIdx", response.result[position].feedIdx)
                 }
-                intent.putExtra("memIdx",response.result[position].memIdx)
+                intent.putExtra("memIdx", response.result[position].memIdx)
                 startActivity(intent)
             }
         }
 
         // Result message
-        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, response.message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onGetTtlListFailure(message: String)  {
-        Log.d("error","카테고리 전체글 오류: $message")
+    override fun onGetTtlListFailure(message: String) {
+        Log.d("error", "카테고리 전체글 오류: $message")
     }
 
 
     override fun onGetPplListSuccess(response: PplListResponse) {
-        if(response.isSuccess){
+        if (response.isSuccess) {
+
             val index: Int = response.result.size - 1
 
-            for (i in 0 ..index) {
+            for (i in 0..index) {
 
                 if (response.result[i].img != null) {
                     hasImage = HasImage.TRUE
@@ -235,15 +238,16 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
                 }
 
 
-
             }
 
         }
 
-        viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        viewBinding.homePplRV.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         viewBinding.homePplRV.adapter = Padapter
 
-        Padapter!!.itemClick = object: PplRVAdapter.ItemClick{
+
+        Padapter!!.itemClick = object : PplRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
                 startActivity(intent)
@@ -252,6 +256,8 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
     }
 
     override fun onGetPplListFailure(message: String) {
-        Log.d("error","카테고리 전체 인기글 오류: $message")
+        Log.d("error", "카테고리 전체 인기글 오류: $message")
     }
+
 }
+

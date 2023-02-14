@@ -9,7 +9,7 @@ data class DiaryRoomxItem(
     val memImg : String,
     val date : String,
     val view : String,
-    //val content : String,
+    val content : String,
     val Img : String?,
     val heart : String,
     val comment : String

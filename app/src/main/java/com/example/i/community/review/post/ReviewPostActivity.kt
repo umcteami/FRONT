@@ -18,6 +18,10 @@ class ReviewPostActivity : AppCompatActivity() {
         viewBinding = ActivityReviewPostBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        viewBinding.btBack.setOnClickListener{
+            finish()
+        }
+
         viewBinding.btnPostHeart.setOnClickListener{
             if(!heartClick){
                 heartClick = true
