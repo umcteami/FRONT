@@ -63,6 +63,7 @@ class DiaryCareFragment : Fragment(),DiaryDInterface {
                             response.result[i].memProfile,
                             response.result[i].createAt,
                             response.result[i].hit.toString(),
+                            response.result[i].content,
                             response.result[i].img,
                             response.result[i].likeCnt.toString(),
                             response.result[i].commentCnt.toString()
