@@ -7,9 +7,9 @@ import retrofit2.Response
 
 class MarketUserListService(val MarketUserListInterface: MarketUserListInterface) {
     // 나눔장터 판매자별 판매글 조회 API
-    fun tryGetMarketUserList(body: MarketUserListRequest, userIdx: Int) {
+    fun tryGetMarketUserList(postUserIdx: Int, userIdx: Int) {
         val MarketUserListRetroInterface = ApplicationClass.sRetrofit.create(MarketUserListRetroInterface::class.java)
-        MarketUserListRetroInterface.getMarketUserList(body, userIdx).enqueue(object: Callback<MarketUserListResponse> {
+        MarketUserListRetroInterface.getMarketUserList(postUserIdx, userIdx).enqueue(object: Callback<MarketUserListResponse> {
             override fun onResponse(
                 call: Call<MarketUserListResponse>,
                 response: Response<MarketUserListResponse>
