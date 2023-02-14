@@ -18,6 +18,7 @@ import com.example.i.chat.model.ChatListInterface
 import com.example.i.chat.model.ChatListResponse
 import com.example.i.chat.model.ChatListService
 import com.example.i.databinding.FragmentMessageListBinding
+import com.example.i.login.memIdx
 
 
 class MessageListFragment : Fragment(), ChatListInterface, CustomDialogListener, DialogListener {
@@ -31,9 +32,9 @@ class MessageListFragment : Fragment(), ChatListInterface, CustomDialogListener,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentMessageListBinding.inflate(layoutInflater)
+        viewBinding = FragmentMessageListBinding.inflate(inflater, container, false)
 
-        ChatListService(this).tryGetChatList(8)
+        ChatListService(this).tryGetChatList(memIdx)
 
         return viewBinding.root
     }
@@ -65,7 +66,6 @@ class MessageListFragment : Fragment(), ChatListInterface, CustomDialogListener,
             adapter!!.itemClick = object : MessageRVAdapter.ItemClick{
                 override fun onClick(view: View,  data: CharSequence, position: Int) {
                     val intent = Intent(context, MessageActivity::class.java)
-                    intent.putExtra("memIdx", 8)
                     intent.putExtra("roomIdx", response.result[position].roomIdx)
                     intent.putExtra("nick", response.result[position].nick)
                     startActivity(intent)

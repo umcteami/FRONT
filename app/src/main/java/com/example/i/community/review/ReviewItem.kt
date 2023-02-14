@@ -13,5 +13,4 @@ data class ReviewItem(
     var heart : String? = null,
     var comment: String? = null,
     var img: String? = null
-
 )

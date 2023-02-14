@@ -7,6 +7,7 @@ import com.example.i.R
 import com.example.i.community.talk.post.ItemComment
 import com.example.i.community.talk.post.PostCommentRVAdapter
 import com.example.i.databinding.ActivityReviewPostBinding
+import com.example.i.login.memIdx
 
 class ReviewPostActivity : AppCompatActivity() {
     private lateinit var viewBinding : ActivityReviewPostBinding
@@ -17,6 +18,10 @@ class ReviewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityReviewPostBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        viewBinding.btBack.setOnClickListener{
+            finish()
+        }
 
         viewBinding.btnPostHeart.setOnClickListener{
             if(!heartClick){

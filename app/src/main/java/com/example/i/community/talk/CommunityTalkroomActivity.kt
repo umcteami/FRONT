@@ -2,6 +2,7 @@ package com.example.i.community.talk
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.example.i.Main2Activity
@@ -12,6 +13,7 @@ import com.example.i.community.review.ReviewActivity
 import com.example.i.community.diary.DiaryActivity
 import com.example.i.community.diary.DiaryCareActivity
 import com.example.i.community.diary.DiaryRainActivity
+import com.example.i.community.search.SearchResultActivity
 import com.example.i.databinding.ActivityCommunityTalkroomBinding
 import com.example.i.market.MarketFragment
 import com.example.i.mypage.fragment.MypageFragment
@@ -169,7 +171,5 @@ class CommunityTalkroomActivity : AppCompatActivity() {
             }
 
         }
-
-
     }
 }
