@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
 
 data class MyPageRequest(
-        @SerializedName("nick") val nick: String? = null,
-        @SerializedName("intro") val intro: String? = null,
-        @SerializedName("profile") val profile: String? = null,
-        @SerializedName("feedCount") val feedCount: Int = 0,
-        @SerializedName("diaryCount") val diaryCount: Int = 0,
-        @SerializedName("marketCount") val marketCount: Int = 0,
-        @SerializedName("alarm") val alarm: String? = null
+        @SerializedName("nick") val nick: String,
+        @SerializedName("intro") val intro: String,
+        @SerializedName("profile") val profile: String,
+        @SerializedName("feedCount") val feedCount: Int,
+        @SerializedName("diaryCount") val diaryCount: Int,
+        @SerializedName("marketCount") val marketCount: Int,
+        @SerializedName("alarm") val alarm: String
 )

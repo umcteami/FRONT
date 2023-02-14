@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/blocked_intro"
+            android:id="@+id/blocked_content"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -64,7 +64,7 @@
             android:layout_marginEnd="4dp"
             android:background="@drawable/bt_block"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/blocked_intro"
+            app:layout_constraintStart_toEndOf="@+id/blocked_content"
             app:layout_constraintTop_toTopOf="@+id/blocked_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

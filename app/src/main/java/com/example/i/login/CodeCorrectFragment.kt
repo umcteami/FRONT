@@ -20,7 +20,7 @@ class CodeCorrectFragment : Fragment() {
 
         val activity = activity as AccountSearchActivity
 
-        viewBinding.tvEmail.setText(accountEmail) // 이메일 가져오기
+        viewBinding.tvEmail.text = accountEmail // 이메일 가져오기
 
         // 로그인 화면으로 이동
         viewBinding.btOk.setOnClickListener{

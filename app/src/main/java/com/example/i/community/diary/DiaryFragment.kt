@@ -64,7 +64,7 @@ class DiaryFragment : Fragment(), DiaryInterface {
                             response.result[i].memProfile, //작성자 프로필
                             response.result[i].createAt, //날짜
                             response.result[i].hit.toString(), //조회수
-                            response.result[i].content,
+                            //content 추가 되어야 함
                             response.result[i].img, //대표 이미지
                             response.result[i].likeCnt.toString(), //좋아요 수
                             response.result[i].commentCnt.toString() //댓글 수

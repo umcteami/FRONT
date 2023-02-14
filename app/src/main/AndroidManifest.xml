@@ -25,14 +25,12 @@
             android:name=".community.review.post.ReviewPostActivity"
             android:exported="false" />
         <activity
-            android:name=".community.NewSearchActivity"
+            android:name=".community.search.NewSearchActivity"
             android:exported="false" />
         <activity android:name=".community.talk.post.CommunityPostActivity" />
+
         <activity
-            android:name=".community.SearchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".community.SearchResultActivity"
+            android:name=".community.search.SearchResultActivity"
             android:exported="false" />
         <activity
             android:name=".community.UploadPhotoActivity"
@@ -180,6 +178,8 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+
     </application>
 
 </manifest>

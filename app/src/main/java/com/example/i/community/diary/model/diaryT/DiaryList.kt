@@ -12,7 +12,6 @@ data class DiaryList(
     @SerializedName("title") val title: String,
     @SerializedName("img") val img: String,
     @SerializedName("hit") val hit: Int,
-    @SerializedName("content") val content: String,
     @SerializedName("commentCnt") val commentCnt : Int,
     @SerializedName("likeCnt") val likeCnt : Int,
     @SerializedName("createAt") val createAt: String

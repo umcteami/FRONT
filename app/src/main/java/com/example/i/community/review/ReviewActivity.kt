@@ -7,7 +7,7 @@ import androidx.core.view.GravityCompat
 import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.chat.MessageListFragment
-import com.example.i.community.NewSearchActivity
+import com.example.i.community.search.NewSearchActivity
 import com.example.i.community.diary.DiaryActivity
 import com.example.i.community.diary.DiaryCareActivity
 import com.example.i.community.diary.DiaryRainActivity

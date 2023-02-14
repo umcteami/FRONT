@@ -61,33 +61,26 @@ class EmailCodeFragment : Fragment(), GetEmailInterface {
         })
 
         viewBinding.btOk.setOnClickListener{
-            GetEmailService(this).tryGetEmail(authIdx) // 인증번호 조회 API
+            GetEmailService(this).tryGetEmail(authIdx)
+            Toast.makeText(activity,"authIdx : {$authIdx}",Toast.LENGTH_SHORT).show()
+
+            val Activity = activity as SignupActivity
+            Activity.changeFragment(2)
         }
 
         return viewBinding.root
 
     }
 
-    // 인증번호 조회 API
     override fun onGetEmailSuccess(response: EmailCheckResponse) {
-
+        // 계정이 있는 경우
         if(response.isSuccess){
-
-            val userCode = viewBinding.etEmailCode.text.toString()
-            if(response.result.authIdx == userCode)
-            {
-                // 다음 페이지로 이동
-                val Activity = activity as SignupActivity
-                Activity.changeFragment(2)
-
-                // Result message
-                Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
-            }
-            else
-            {
-                viewBinding.tiEmailcode.error = "인증 번호가 틀렸습니다"
-            }
+            // 인증번호 발송이 성공한 경우
+            val Activity = activity as SignupActivity
+            Activity.changeFragment(2)
         }
+        // Result message
+        Toast.makeText(activity,response.message,Toast.LENGTH_SHORT).show()
     }
 
     // 서버 연결 실패

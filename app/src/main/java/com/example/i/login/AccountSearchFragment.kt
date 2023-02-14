@@ -11,15 +11,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.i.databinding.FragmentAccountSearchBinding
-import com.example.i.login.models.PostPhoneInterface
-import com.example.i.login.models.PostPhoneService
 import com.example.i.signup.models.CodeResponse
+import com.example.i.signup.models.PostCodeInterface
 import com.example.i.signup.models.PostCodeRequest
+import com.example.i.signup.models.PostCodeService
 
-var accountPhone : String = "" // 전역 변수
-var accountIdx : Int = 0 // 전역 변수
+var phone : String = "" // 전역 변수
 
-class AccountSearchFragment : Fragment(), PostPhoneInterface {
+class AccountSearchFragment : Fragment(), PostCodeInterface {
     private lateinit var viewBinding: FragmentAccountSearchBinding
 
     override fun onCreateView(
@@ -27,6 +26,8 @@ class AccountSearchFragment : Fragment(), PostPhoneInterface {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentAccountSearchBinding.inflate(inflater, container, false)
+
+        val activity = activity as AccountSearchActivity
 
         viewBinding.btCall.isEnabled = false
 
@@ -57,12 +58,18 @@ class AccountSearchFragment : Fragment(), PostPhoneInterface {
         //인증번호 받기
         viewBinding.btCall.setOnClickListener{
 
-            accountPhone =  viewBinding.etPhone.text.toString()
+            phone =  viewBinding.etPhone.text.toString()
 
-            val PhoneRequest = PostCodeRequest(type = 2, auth = accountPhone)
-            PostPhoneService(this).tryPostPhone(PhoneRequest)
+            val PhoneRequest = PostCodeRequest(type = 2, auth = phone)
+            PostCodeService(this).tryPostPhone(PhoneRequest)
         }
         return viewBinding.root
+    }
+
+    override fun onPostEmailSuccess(response: CodeResponse) {
+    }
+
+    override fun onPostEmailFailure(message: String) {
     }
 
     // 인증번호 발송 API
@@ -71,8 +78,6 @@ class AccountSearchFragment : Fragment(), PostPhoneInterface {
         if(response.isSuccess){
             val Activity = activity as AccountSearchActivity
             Activity.changeFragment(3)
-
-            accountIdx = response.result.authIdx
         }
         // Result message
         Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
