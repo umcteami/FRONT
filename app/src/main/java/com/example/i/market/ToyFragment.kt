@@ -37,15 +37,9 @@ class ToyFragment: Fragment(), View.OnClickListener {
         val customDecoration = CustomDecoration(2f, 2f, Color.GRAY)
         val adapter = MarketRVAdapter(mkList, requireActivity())
 
-        mkList.apply{
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+       mkList.apply{
+            add(Market("0", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
+            add(Market("1", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
         }
 
         viewBinding.rvToy.layoutManager = LinearLayoutManager(context)

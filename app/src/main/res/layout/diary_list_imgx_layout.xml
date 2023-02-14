@@ -36,8 +36,10 @@
                 android:textSize="14sp"/>
             <TextView
                 android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:text="해피 간호일기 17번째"
                 app:layout_constraintTop_toBottomOf="@id/tv_diaryInfo"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -45,7 +47,7 @@
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_bold"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profileImage"
                 android:layout_width="44dp"
@@ -59,7 +61,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/basic_profile"
                 />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"

@@ -37,16 +37,16 @@ class MarketEtcFragment: Fragment(), View.OnClickListener {
         val customDecoration = CustomDecoration(2f, 2f, Color.GRAY)
         val adapter = MarketRVAdapter(mkList, requireActivity())
 
-        mkList.apply{
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
-        }
+//        mkList.apply{
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//            add(Market("무료나눔", "강아지 껌", "7시간 전","조회 12", "2"))
+//        }
 
         viewBinding.rvEtc.layoutManager = LinearLayoutManager(context)
         viewBinding.rvEtc.adapter = adapter
@@ -61,11 +61,6 @@ class MarketEtcFragment: Fragment(), View.OnClickListener {
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        main = context as Main2Activity
-    }
 
     override fun onClick(view:View?) {
         when(view?.id) {

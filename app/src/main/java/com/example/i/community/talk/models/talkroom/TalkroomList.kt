@@ -9,6 +9,7 @@ data class TalkroomList(
         @SerializedName("feedIdx") val feedIdx: Int,
         @SerializedName("memIdx") val memIdx: Int,
         @SerializedName("memNick") val memNick: String,
+        @SerializedName("memPrfile") val memProfile:String?,
         @SerializedName("title") val title: String,
         @SerializedName("img") val img: String,
         @SerializedName("hit") val hit: Int,

@@ -47,12 +47,6 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
         //인기글 RV
 
-        pplList.apply {
-
-            add(Ppls(HasImage.FALSE,"1","타이틀타이틀타이틀","별이언니","2022.11.17","10","8","3"))
-
-        }
-
         viewBinding.homePplRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         viewBinding.homePplRV.adapter = Padapter
 
@@ -107,7 +101,7 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
                 }
 
-                R.id.drawer_care -> { //무지개 일기
+                R.id.drawer_rain -> { //무지개 일기
                     val intent = Intent(context, DiaryRainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)

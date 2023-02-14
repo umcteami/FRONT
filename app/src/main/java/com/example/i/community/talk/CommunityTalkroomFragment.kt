@@ -17,10 +17,12 @@ import com.example.i.community.talk.models.talkroom.TalkroomResponse
 import com.example.i.community.talk.models.talkroom.TalkroomService
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentTalkroomBinding
+import com.example.i.databinding.PostListLayoutBinding
 import com.example.i.home.HasImage
 
 class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
     private lateinit var viewBinding: FragmentTalkroomBinding
+    private lateinit var viewBinding2: PostListLayoutBinding
     val itemList: ArrayList<BoardItem> = arrayListOf()
     var hasImage: HasImage = HasImage.TRUE
     val Tadapter = CommunityBoardAdapter(itemList)
@@ -54,14 +56,25 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
                     hasImage = HasImage.FALSE
                 }
 
+                var roomType: String = ""
+
+                if(response.result[i].roomType == 1){
+                    roomType = "수다방"
+                } else if(response.result[i].roomType == 2){
+                    roomType="질문방"
+                }else{
+                  "정보방"
+                }
+
                 itemList.apply {
                     add(
                         BoardItem(
                             hasImage, //이미지 있는지 여부
-                            response.result[i].roomType.toString(), //세부 카테고리(1.수다방, 2.질문방, 3.정보방)
+                            roomType, //세부 카테고리(1.수다방, 2.질문방, 3.정보방)
                             response.result[i].title, //제목
                             response.result[i].img, //게시글 이미지
                             response.result[i].memNick, //작성자 닉네임
+                            response.result[i].memProfile.toString(),
                             response.result[i].createAt, //작성일자 및 시간
                             response.result[i].hit.toString(), //조회수
                             response.result[i].likeCnt.toString(), //하트수
@@ -70,6 +83,7 @@ class CommunityTalkroomFragment : Fragment(), TalkroomInterface {
                     )
 
                 }
+
             }
 
             viewBinding.rvBoard.layoutManager =

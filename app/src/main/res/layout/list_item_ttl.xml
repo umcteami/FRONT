@@ -27,12 +27,11 @@
 
     <TextView
         android:id="@+id/ttl_title"
-        android:layout_width="250dp"
+        android:layout_width="230dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:ellipsize="end"
-        android:maxWidth="230dp"
         android:maxLines="2"
         android:text="다니고 계시는 병원 정보 좀 부탁드립니다.(서울/경기)"
         android:textColor="@color/black"

@@ -1,9 +1,11 @@
 package com.example.i.market
 
 data class Market(
-    val title: String,
-    val content: String,
-    val time: String,
-    val view: String,
-    val num: String
+    val soldout: String? = null,
+    val title: String? =null ,
+    val price: Int? = null,
+    val date: String? = null ,
+    val view: Int ? = null ,
+    val hearNum: Int? = null,
+    val image: String? = null
 )

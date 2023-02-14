@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.i.community.BoardRoomXItem
-import com.example.i.community.talk.models.Const
 import com.example.i.databinding.PostListRoomxLayoutBinding
 import com.example.i.databinding.PostListRoomxLayoutImgxBinding
 import com.example.i.home.Const.HASIMAGE
@@ -27,6 +26,9 @@ class CommunityRoomXBoardAdapter(val itemList: ArrayList<BoardRoomXItem>): Recyc
                 .into(viewBinding.ivPostimage)
             //viewBinding.ivProfileImage.setImageResource(item.picture!!)
             viewBinding.tvWriter.text = item.writer
+            Glide.with(viewBinding.ivProfileImage)
+                .load(item.Profile)
+                .into(viewBinding.ivProfileImage)
             viewBinding.tvWriteTime.text = item.date
             viewBinding.tvView.text = item.view
             viewBinding.tvTitle.text = item.title
@@ -38,8 +40,10 @@ class CommunityRoomXBoardAdapter(val itemList: ArrayList<BoardRoomXItem>): Recyc
         RecyclerView.ViewHolder(viewBinding2.root){
         fun bind(item : BoardRoomXItem){
             viewBinding2.tvTitle.text = item.title
-            //viewBinding.ivProfileImage.setImageResource(item.picture!!)
             viewBinding2.tvWriter.text = item.writer
+            Glide.with(viewBinding2.ivProfileImage)
+                .load(item.Profile)
+                .into(viewBinding2.ivProfileImage)
             viewBinding2.tvWriteTime.text = item.date
             viewBinding2.tvView.text = item.view
             viewBinding2.tvTitle.text = item.title
