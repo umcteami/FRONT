@@ -6,7 +6,9 @@ import retrofit2.http.*
 
 interface RevokeRetrofitInterface {
     // 탈퇴하기 API
-    @FormUrlEncoded
+    @Multipart
     @POST("/member/withdraw")
-    fun postRevoke(@Field ("memIdx") memIdx: Int): Call<BaseResponse>
+    fun postRevoke(
+        @Part("memIdx") memIdx : Int
+    ): Call<BaseResponse>
 }

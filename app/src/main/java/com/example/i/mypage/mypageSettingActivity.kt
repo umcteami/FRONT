@@ -11,10 +11,11 @@ import com.example.i.login.NewPwFragment
 import com.example.i.login.memIdx
 import com.example.i.mypage.customdialog.PopupSaveDialog
 import com.example.i.mypage.data.*
-import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 import java.util.*
 
+var myProfile : String? = null
+var myName : String? = null
 
 class MypageSettingActivity : AppCompatActivity(), SettingInterface {
     private lateinit var viewBinding: ActivityMypageSettingBinding
@@ -90,9 +91,13 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
 
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
+
             // 프로필
+            myProfile = response.result.profile
+            myName = response.result.nick
+
             Glide.with(viewBinding.editProfile)
-                .load(response.result.profile)
+                .load(myProfile)
                 .into(viewBinding.editProfile)
 
             viewBinding.editEmail.setText(response.result.email)
@@ -123,9 +128,11 @@ class MypageSettingActivity : AppCompatActivity(), SettingInterface {
         val addres = viewBinding.editAddress.text.toString()
         val addresPlus = viewBinding.editAddress2.text.toString()
 
-        val settingRequest = SettingRequest(email = email, phone = phone, nick = nick, intro = intro,
-            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus, profile = "")
-        SettingService(this).tryPatchSetting(memIdx, settingRequest)
+        val SettingEditRequest = SettingEditRequest(email = email, phone = phone, nick = nick, intro = intro,
+            birth = birth, addresCode = addresCode, addres = addres, addresPlus = addresPlus)
+
+        // 회원 정보 수정 API
+        SettingService(this).tryPatchSetting(memIdx, SettingEditRequest)
 
         finish()
     }

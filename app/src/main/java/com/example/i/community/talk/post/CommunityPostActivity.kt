@@ -13,6 +13,7 @@ import com.example.i.community.talk.models.talkroom.ViewTalkroomInterface
 import com.example.i.community.talk.models.talkroom.ViewTalkroomResponse
 import com.example.i.community.talk.models.talkroom.ViewTalkroomService
 import com.example.i.databinding.ActivityCommunityPostBinding
+import com.example.i.login.memIdx
 
 class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
 
@@ -28,7 +29,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
 
 
 
-        ViewTalkroomService(this).tryGetViewTalkroom(feedIdx,memIdx)
+        ViewTalkroomService(this).tryGetViewTalkroom(1,39)
 
         setContentView(viewBinding.root)
 
@@ -104,7 +105,7 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
 
     override fun onGetViewTalkroomSuccess(response: ViewTalkroomResponse) {
         feedIdx = intent.getIntExtra("storyIdx",2)
-        memIdx = intent.getIntExtra("memIdx",33)
+        memIdx = intent.getIntExtra("memIdx",39)
 //
 //        if (response.isSuccess){
 ////            viewBinding.tvRoomType.text = response.result[memIdx].roomType.toString()

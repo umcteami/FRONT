@@ -7,30 +7,25 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.i.R
 import com.example.i.databinding.ActivityMyMarketBinding
-import com.example.i.login.memIdx
-import com.example.i.market.MarketP
 import com.example.i.market.MarketPostActivity
 import com.example.i.market.MarketPplRVAdapter
-import com.example.i.mypage.data.mymarket.MarketInterface
-import com.example.i.mypage.data.mymarket.MarketResponse
-import com.example.i.mypage.data.mymarket.MarketService
+import com.example.i.mypage.data.mymarket.*
 
 class MyMarketActivity : AppCompatActivity(), MarketInterface {
     lateinit var viewBinding: ActivityMyMarketBinding
 
-    val mkpList: ArrayList<MarketP> = arrayListOf()
-    val adapter = MarketPplRVAdapter(mkpList)
+    val mkpList: ArrayList<MyMarket> = arrayListOf()
+    val adapter = MyMarketRVAdapter(mkpList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMyMarketBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        MarketService(this).tryGetMarket(memIdx,0)     // 나눔장터 작성 글 조회 API
+        MarketService(this).tryGetMarket(2,1)     // 나눔장터 작성 글 조회 API
 
-        adapter!!.itemClick = object : MarketPplRVAdapter.ItemClick {
+        adapter!!.itemClick = object : MyMarketRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(this@MyMarketActivity, MarketPostActivity::class.java)
                 startActivity(intent)
@@ -45,13 +40,23 @@ class MyMarketActivity : AppCompatActivity(), MarketInterface {
     override fun onGetMarketSuccess(response: MarketResponse) {
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
-
+            val index: Int = response.result.size - 1
             viewBinding.tvCount.text = "총 ${response.size}개의 나눔장터 상품이 있어요"
 
-//            mkpList.apply{
-//                // add(MarketP(R.drawable.img_post, "무료나눔", "강아지 껌", "2"))
-//                add(MarketP(R.drawable.img_post, response.result[0].toString(), response.result[1].toString(), response.result[2].toString(), false))
-//            }
+            for (i in 0 ..index) {
+                if (response.size != 0) {
+                    mkpList.apply {
+                        add(
+                            MyMarket(
+                                response.result[i].feedImg.toString(),
+                                response.result[i].title.toString(),
+                                response.result[i].title.toString(),
+                                response.result[i].boarIdx.toString(),
+                            )
+                        )
+                    }
+                }
+            }
 
             viewBinding.recyclerview.layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
             viewBinding.recyclerview.adapter = adapter

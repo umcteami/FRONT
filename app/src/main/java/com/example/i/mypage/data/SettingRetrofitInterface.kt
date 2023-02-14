@@ -1,6 +1,7 @@
 package com.example.i.mypage.data
 
-import com.example.i.chat.model.ChatListResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -10,9 +11,11 @@ interface SettingRetrofitInterface {
     fun getUser(@Path("memIdx") memIdx: Int): Call<userSearchgResponse>
 
     // 회원정보 수정 API
+    @Multipart
     @PATCH("/member/{memIdx}")
     fun postSetting(
         @Path("memIdx") memIdx: Int,
-        @Body params: SettingRequest
+        @Part("request") request : RequestBody,
+        @Part profile : MultipartBody.Part?
     ): Call<SettingResponse>
 }
