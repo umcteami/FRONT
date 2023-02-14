@@ -36,8 +36,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
 import java.io.File
-import com.example.i.login.memIdx
-
 
 
 class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsWriteInterface, FeedsWriteImageInterface, FeedsEditInterface {
@@ -47,11 +45,11 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
     private var category: String = ""
     private var boardId : Int = 0
     private var roomType : Int = 0
-    private var userId : Int = 0
+    private var userId : Int = 33
 
     //수정하기로 진입할 경우, feedIdx를 받아와야한다. default = -1
     private var feedIdx : Int = -1
-//    private var memIdx : Int = -1
+    private var memIdx : Int = -1
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var writeImageAdapter: WriteImageAdapter
@@ -61,7 +59,6 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCommunityWriteBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-
         //이미지 업로드
         writeImageAdapter = WriteImageAdapter(imageList, this)
         recyclerView = viewBinding.rvPhoto
@@ -178,7 +175,7 @@ class CommunityWriteActivity : AppCompatActivity(), View.OnClickListener, FeedsW
             val imgCnt = imageList.size
             val boardIdx = boardId
             val roomType = roomType
-            val userIdx = memIdx
+            val userIdx = userId
             val imageList = imageList
             val feedIdx = feedIdx
 

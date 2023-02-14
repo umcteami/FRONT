@@ -8,7 +8,6 @@ import com.example.i.chat.model.*
 import com.example.i.config.BaseResponse
 import com.example.i.databinding.ActivityMessageBinding
 import com.example.i.home.model.ChatService
-import com.example.i.login.memIdx
 import java.text.SimpleDateFormat
 import kotlin.collections.ArrayList
 
@@ -17,13 +16,17 @@ class MessageActivity : AppCompatActivity(), ChatInterface, ChatDeleteInterface 
     private lateinit var viewBinding: ActivityMessageBinding
     val cList: ArrayList<Chat> = arrayListOf()
     val adapter = ChatRVAdpater(cList)
+    var memIdx: Int = 0
     var roomIdx: Int = 0
+    //var memIdx: Int = 8
+    //var roomIdx: Int = 17
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMessageBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        memIdx = intent.getIntExtra("memIdx", 1)
         roomIdx = intent.getIntExtra("roomIdx", 1)
 
         viewBinding.backBtn.setOnClickListener {
@@ -70,7 +73,7 @@ class MessageActivity : AppCompatActivity(), ChatInterface, ChatDeleteInterface 
 
             viewBinding.rvChatting.layoutManager = LinearLayoutManager(this@MessageActivity)
             viewBinding.rvChatting.adapter = adapter
-            viewBinding.rvChatting.smoothScrollToPosition(cList.size)
+            viewBinding.rvChatting.smoothScrollToPosition(cList.size - 1)
 
         }
     }

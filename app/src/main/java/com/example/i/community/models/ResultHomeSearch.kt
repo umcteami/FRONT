@@ -1,4 +1,4 @@
-package com.example.i.community.search
+package com.example.i.community.models
 
 import com.google.gson.annotations.SerializedName
 
@@ -12,6 +12,5 @@ data class ResultHomeSearch(
     @SerializedName("img") val img : String,
     @SerializedName("hit") val hit : Int,
     @SerializedName("commentCnt") val commentCnt : Int,
-    @SerializedName("likeCnt") val likeCnt : Int,
     @SerializedName("createAt") val createAt : String
 )

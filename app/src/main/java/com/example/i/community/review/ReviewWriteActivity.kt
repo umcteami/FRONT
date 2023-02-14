@@ -17,7 +17,6 @@ import com.example.i.community.review.models.*
 import com.example.i.community.talk.WriteImageAdapter
 import com.example.i.config.ApplicationClass
 import com.example.i.databinding.ActivityReviewWriteBinding
-import com.example.i.login.memIdx
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -121,7 +120,7 @@ class ReviewWriteActivity : AppCompatActivity(), ReviewWriteInterface {
             val content = viewBinding.etContent.text.toString()
             val goods = viewBinding.etKind.text.toString()
             val sellerIdx = sellerIdx
-            val buyerIdx = memIdx
+            val buyerIdx = buyerIdx
             Toast.makeText(this,"buttonCLck",Toast.LENGTH_SHORT).show()
             val postReviewWriteRequest = PostReviewWriteRequest(sellerIdx, buyerIdx, goods, content)
             if(imageList.size == 0)

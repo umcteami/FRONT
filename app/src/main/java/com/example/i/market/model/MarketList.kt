@@ -8,12 +8,12 @@ data class MarketList(
     @SerializedName("userNickname") val memNick: String,
     @SerializedName("group") val group: Int,
     @SerializedName("title") val title: String,
-    @SerializedName("content") val content: String? = null,
+    @SerializedName("content") val content: String,
     @SerializedName("price") val price: Int,
-    @SerializedName("img") val img: String,
-    @SerializedName("soldout") val soldout: String? = null,
+    @SerializedName("imgage") val imgage: String,
+    @SerializedName("soldout") val soldout: String,
     @SerializedName("hit") val hit: Int,
+    @SerializedName("commentCnt") val commentCnt : Int,
     @SerializedName("likeCnt") val likeCnt : Int,
-    @SerializedName("createAt") val createAt: String,
-    @SerializedName("userLiked") val userLiked: Boolean
+    @SerializedName("createAt") val createAt: String
 )
