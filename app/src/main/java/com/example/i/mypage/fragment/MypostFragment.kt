@@ -11,14 +11,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.Main2Activity
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentMypostBinding
+import com.example.i.login.memIdx
 import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.mypage.data.MyPost
 import com.example.i.mypage.data.PostRVAdapter
+import com.example.i.mypage.data.like.LikeService
 import com.example.i.mypage.data.post.PostInterface
 import com.example.i.mypage.data.post.PostResponse
 import com.example.i.mypage.data.post.PostService
 import com.example.i.mypage.myName
 import com.example.i.mypage.myProfile
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.scheduleAtFixedRate
 
 
 class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
@@ -26,6 +31,7 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
     private lateinit var main: Main2Activity
     val PostList: ArrayList<MyPost> = arrayListOf()
     val adapter = PostRVAdapter(PostList)
+    val page = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +41,12 @@ class MypostFragment : Fragment(), PostInterface, View.OnClickListener {
 
         viewBinding.btSort.setOnClickListener(this)
 
-        PostService(this).tryGetPost(memIdx = 1, 1) // 작성 글 조회 API
+        // 1시간 간격으로 반복
+        Timer().scheduleAtFixedRate(1000, 3600000) {
+            PostService(this@MypostFragment).tryGetPost(memIdx = memIdx, page) // 작성 글 조회 API
+            page + 1
+        }
+
         backFragment() // 뒤로가기
 
         return viewBinding.root

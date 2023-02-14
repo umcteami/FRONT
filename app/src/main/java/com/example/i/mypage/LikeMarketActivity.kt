@@ -8,23 +8,33 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.databinding.ActivityLikeMarketBinding
+import com.example.i.login.memIdx
 import com.example.i.market.MarketPostActivity
 import com.example.i.mypage.data.want.LikeMarket
 import com.example.i.mypage.data.want.LikeMarketRVAdapter
 import com.example.i.mypage.data.want.WantInterface
 import com.example.i.mypage.data.want.WantResponse
 import com.example.i.mypage.data.want.WantService
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.scheduleAtFixedRate
 
 class LikeMarketActivity : AppCompatActivity(), WantInterface {
     lateinit var viewBinding: ActivityLikeMarketBinding
     val LikeList: ArrayList<LikeMarket> = arrayListOf()
     val adapter = LikeMarketRVAdapter(LikeList)
+    val page = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityLikeMarketBinding.inflate(layoutInflater)
 
-        WantService(this).tryGetWant(1,1) // 찜한 물품들 API
+        // 1시간 간격으로 반복
+        Timer().scheduleAtFixedRate(1000, 3600000) {
+            WantService(this@LikeMarketActivity).tryGetWant(memIdx, page) // 찜한 물품들 API
+            page + 1
+        }
+
 
         adapter!!.itemClick = object : LikeMarketRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {

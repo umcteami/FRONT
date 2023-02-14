@@ -8,21 +8,31 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.i.databinding.ActivityMyMarketBinding
+import com.example.i.login.memIdx
 import com.example.i.market.MarketPostActivity
 import com.example.i.mypage.data.mymarket.*
+import com.example.i.mypage.data.want.WantService
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.scheduleAtFixedRate
 
 class MyMarketActivity : AppCompatActivity(), MarketInterface {
     lateinit var viewBinding: ActivityMyMarketBinding
 
     val mkpList: ArrayList<MyMarket> = arrayListOf()
     val adapter = MyMarketRVAdapter(mkpList)
+    val page = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMyMarketBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        MarketService(this).tryGetMarket(2,1)     // 나눔장터 작성 글 조회 API
+        // 1시간 간격으로 반복
+        Timer().scheduleAtFixedRate(1000, 3600000) {
+            MarketService(this@MyMarketActivity).tryGetMarket(memIdx, page)     // 나눔장터 작성 글 조회 API
+            page + 1
+        }
 
         adapter!!.itemClick = object : MyMarketRVAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
