@@ -11,20 +11,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.i.R
 import com.example.i.community.BoardItem
-import com.example.i.community.BoardRoomXItem
-import com.example.i.community.DialogFilterDate
-import com.example.i.community.talk.CommunityBoardAdapter
-import com.example.i.community.talk.CommunityTalkroomActivity
 import com.example.i.community.talk.models.talkroom.PplTalkroomInterface
 import com.example.i.community.talk.models.talkroom.PplTalkroomResponse
 import com.example.i.community.talk.models.talkroom.PplTalkroomService
 import com.example.i.community.talk.post.CommunityPostActivity
-import com.example.i.databinding.DialogPopularFilterBinding
 import com.example.i.databinding.FragmentCommunityTalkroomBestBinding
 import com.example.i.home.HasImage
-import com.example.i.market.customdialog.MkFilterDialog
 
 
 class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface {
@@ -76,7 +69,6 @@ class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface {
 
                 }
             }
-
             viewBinding.rvBoard.layoutManager =
                 LinearLayoutManager(requireActivity())
             viewBinding.rvBoard.adapter = Tadapter
