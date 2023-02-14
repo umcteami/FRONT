@@ -6,6 +6,6 @@ data class Market(
     val price: Int? = null,
     val date: String? = null ,
     val view: Int ? = null ,
-    val heartNum: Int? = null,
-    val img: String? = null
+    val hearNum: Int? = null,
+    val image: String? = null
 )

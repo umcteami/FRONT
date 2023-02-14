@@ -181,7 +181,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text=" "
+                android:text="강아지 약"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
@@ -209,7 +209,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text=" "
+                android:text="강아지 약"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
@@ -236,7 +236,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text=" "
+                android:text="고양이 약"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
@@ -263,7 +263,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text=" "
+                android:text="강아지 약"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
@@ -291,7 +291,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text=" "
+                android:text="강아지 약"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 />
@@ -319,7 +319,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text=" "
+                android:text="강아지 약"
                 android:textColor="@color/black"
                 />
             <ImageView
@@ -347,7 +347,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text=" "
+                android:text="강아지 약"
                 android:textColor="@color/black" />
             <ImageView
                 android:id="@+id/iv_arrow7th"

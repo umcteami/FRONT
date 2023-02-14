@@ -6,7 +6,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class MarketVPAdapter(marketMain: FragmentActivity): FragmentStateAdapter(marketMain) {
     val fragments: List<Fragment>
-
     init{
         fragments = listOf(Ppl1Fragment(), Ppl2Fragment(), Ppl3Fragment())
     }

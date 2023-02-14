@@ -19,9 +19,9 @@ class MarketRVAdapter(private val mkList: ArrayList<Market>, private var context
             viewBinding.tvPrice.text = Market.price.toString()
             viewBinding.tvDate.text = Market.date
             viewBinding.tvViewCnt.text =  Market.view.toString()
-            viewBinding.tvHeartCnt.text = Market.heartNum.toString()
+            viewBinding.tvHeartCnt.text = Market.hearNum.toString()
             Glide.with(viewBinding.marketPostPicture)
-                .load(Market.img)
+                .load(Market.image)
                 .into(viewBinding.marketPostPicture)
         }
     }
