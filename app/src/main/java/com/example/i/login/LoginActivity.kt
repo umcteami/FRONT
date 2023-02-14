@@ -14,6 +14,7 @@ import com.example.i.login.models.PostLoginRequest
 import com.example.i.login.models.LoginResponse
 
 var memIdx : Int = 0
+var loginEmail : String = ""
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
     private lateinit var viewBinding: ActivityLoginBinding
@@ -109,9 +110,9 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             }
 
             // 서버에 값 보냄
-            val email = viewBinding.loginEtId.text.toString()
+            loginEmail = viewBinding.loginEtId.text.toString()
             val password = viewBinding.loginEtPw.text.toString()
-            val postRequest = PostLoginRequest(email = email, password = password)
+            val postRequest = PostLoginRequest(email = loginEmail, password = password)
             LoginService(this).tryPostLogin(postRequest)
         }
     }
