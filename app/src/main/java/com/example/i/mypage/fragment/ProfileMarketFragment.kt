@@ -1,60 +1,72 @@
 package com.example.i.mypage.fragment
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.i.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.i.databinding.FragmentProfileMarketBinding
+import com.example.i.market.MarketP
+import com.example.i.market.MarketPostActivity
+import com.example.i.market.MarketPplRVAdapter
+import com.example.i.market.model.MarketUserListInterface
+import com.example.i.market.model.MarketUserListResponse
+import com.example.i.market.model.MarketUserListService
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileMarketFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ProfileMarketFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ProfileMarketFragment : Fragment(), MarketUserListInterface {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var viewBinding: FragmentProfileMarketBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewBinding = FragmentProfileMarketBinding.inflate(inflater, container, false)
+
+        MarketUserListService(this).tryGetMarketUserList(1)
+
+        return viewBinding.root
+    }
+
+    override fun onGetMarketUserListSuccess(response: MarketUserListResponse) {
+        if (response.isSuccess) {
+            val mkpList: ArrayList<MarketP> = arrayListOf()
+            val adapter = MarketPplRVAdapter(mkpList)
+            val index: Int = response.result.size - 1
+
+            for (i in 0..index) {
+                mkpList.apply {
+                    add(
+                        MarketP(
+                            response.result[i].img,
+                            response.result[i].title,
+                            response.result[i].content,
+                            response.result[i].hit.toString(),
+                            response.result[i].liked
+                        )
+                    )
+                }
+            }
+
+            viewBinding.marketRecyclerview.layoutManager = GridLayoutManager(requireActivity(), 3)
+            viewBinding.marketRecyclerview.adapter = adapter
+
+            adapter!!.itemClick = object : MarketPplRVAdapter.ItemClick {
+
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(activity, MarketPostActivity::class.java)
+                    startActivity(intent)
+                }
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_market, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileMarketFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileMarketFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onGetChatListFailure(message: String) {
+        Log.d("error","오류: $message")
     }
 }

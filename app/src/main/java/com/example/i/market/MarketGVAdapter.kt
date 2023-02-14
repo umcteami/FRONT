@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemMarket3Binding
 
 class MarketGVAdapter(private val items: MutableList<MarketP>, private var context: Context): BaseAdapter() {
@@ -19,10 +20,13 @@ class MarketGVAdapter(private val items: MutableList<MarketP>, private var conte
         var viewBinding =  ItemMarket3Binding.inflate(LayoutInflater.from(parent?.context), parent, false)
 
         val item: MarketP = items[position]
-        viewBinding.ivMk.setImageResource(item.image)
+        Glide.with(viewBinding.ivMk)
+            .load(item.image)
+            .into(viewBinding.ivMk)
         viewBinding.tvMkTitle.text = item.title
         viewBinding.tvMkContent.text = item.content
         viewBinding.tvMkView.text = item.view
+        viewBinding.cbHeart.isChecked = item.liked
 
         viewBinding.cbHeart.setOnCheckedChangeListener { compoundButton, b ->
             if (viewBinding.cbHeart.isChecked == true) {

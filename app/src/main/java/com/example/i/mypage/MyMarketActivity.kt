@@ -48,10 +48,10 @@ class MyMarketActivity : AppCompatActivity(), MarketInterface {
 
             viewBinding.tvCount.text = "총 ${response.size}개의 나눔장터 상품이 있어요"
 
-            mkpList.apply{
-                // add(MarketP(R.drawable.img_post, "무료나눔", "강아지 껌", "2"))
-                add(MarketP(R.drawable.img_post, response.result[0].toString(), response.result[1].toString(), response.result[2].toString()))
-            }
+//            mkpList.apply{
+//                // add(MarketP(R.drawable.img_post, "무료나눔", "강아지 껌", "2"))
+//                add(MarketP(R.drawable.img_post, response.result[0].toString(), response.result[1].toString(), response.result[2].toString(), false))
+//            }
 
             viewBinding.recyclerview.layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
             viewBinding.recyclerview.adapter = adapter

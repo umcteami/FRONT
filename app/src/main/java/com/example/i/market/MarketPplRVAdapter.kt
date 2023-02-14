@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.i.databinding.ItemMarket3Binding
 
 class MarketPplRVAdapter(private val mkpList: ArrayList<MarketP>): RecyclerView.Adapter<MarketPplRVAdapter.ViewHolder>() {
@@ -13,7 +14,9 @@ class MarketPplRVAdapter(private val mkpList: ArrayList<MarketP>): RecyclerView.
     inner class ViewHolder(val viewBinding: ItemMarket3Binding) :
         RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(mp: MarketP) {
-            viewBinding.ivMk.setImageResource(mp.image)
+            Glide.with(viewBinding.ivMk)
+                .load(mp.image)
+                .into(viewBinding.ivMk)
             viewBinding.tvMkTitle.text = mp.title
             viewBinding.tvMkContent.text = mp.content
             viewBinding.tvMkView.text = mp.view
