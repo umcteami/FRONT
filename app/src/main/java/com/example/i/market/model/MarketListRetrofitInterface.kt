@@ -9,7 +9,6 @@ interface MarketListRetrofitInterface {
 
     @GET("/market/latest")
     fun getMarketList(
-        @Query ("category") category: String? = null,
-        @Query ("soldout") soldout: String? = null
+        @Query ("userIdx") userIdx: Int? = null
     ): Call<MarketListResponse>
 }

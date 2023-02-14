@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.i.Main2Activity
 import com.example.i.databinding.FragmentMarketMainBinding
+import com.example.i.login.memIdx
 import com.example.i.market.model.MarketListInterface
 import com.example.i.market.model.MarketListResponse
 import com.example.i.market.model.MarketListService
@@ -29,7 +30,7 @@ class MarketMainFragment: Fragment(), MarketListInterface {
     ): View? {
         viewBinding = FragmentMarketMainBinding.inflate(inflater, container, false)
 
-        MarketListService(this).tryGetMarketList("snack", "0")
+        MarketListService(this).tryGetMarketList(memIdx)
 
         return viewBinding.root
     }
@@ -50,13 +51,28 @@ class MarketMainFragment: Fragment(), MarketListInterface {
     override fun onGetMarketListSuccess(response: MarketListResponse) {
         if (response.isSuccess) {
 
+            val index:Int = 0
+
             val customDecoration = CustomDecoration(2f, 2f, Color.rgb(0xB4,0xB4,0xB4))
             val mkList: ArrayList<Market> = arrayListOf()
             val adapter = MarketRVAdapter(mkList, requireActivity())
+            for (i in 0..index) {
 
-            mkList.apply{
-                add(Market("0", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
-                add(Market("1", "강아지 장난감", 30000,"2022-12-23-", 5,6,null))
+
+                mkList.apply {
+                    add(
+                        Market(
+                            response.result[i].soldout,
+                            response.result[i].title,
+                            response.result[i].price,
+                            response.result[i].createAt,
+                            response.result[i].hit,
+                            response.result[i].likeCnt,
+                            response.result[i].img
+
+                        )
+                    )
+                }
             }
 
             viewBinding.rvMarket.layoutManager = LinearLayoutManager(activity)
