@@ -2,18 +2,13 @@ package com.example.i.market
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.i.R
 import com.example.i.databinding.FragmentPpl3Binding
-import com.example.i.market.model.MarketUserListInterface
-import com.example.i.market.model.MarketUserListResponse
-import com.example.i.market.model.MarketUserListService
 
-class Ppl3Fragment : Fragment(), MarketUserListInterface {
+class Ppl3Fragment : Fragment() {
 
     private lateinit var viewBinding: FragmentPpl3Binding
 
@@ -23,26 +18,17 @@ class Ppl3Fragment : Fragment(), MarketUserListInterface {
     ): View? {
         viewBinding = FragmentPpl3Binding.inflate(inflater, container, false)
 
-        MarketUserListService(this).tryGetMarketUserList(1)
+        var img = "https://i-image.s3.ap-northeast-2.amazonaws.com/8568310d-73fb-4728-b11f-712d716c6416_Acer_Wallpaper_03_5000x2814.jpg"
 
-        return viewBinding.root
-    }
-
-    override fun onGetMarketUserListSuccess(response: MarketUserListResponse) {
         val item = mutableListOf<MarketP>()
 
-        for (i in 0..5) {
-            item.apply {
-                add(
-                    MarketP(
-                        response.result[i].img,
-                        response.result[i].title,
-                        response.result[i].content,
-                        response.result[i].hit.toString(),
-                        response.result[i].liked
-                    )
-                )
-            }
+        item.apply{
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
+            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
         }
 
         val adapter = MarketGVAdapter(item, requireActivity())
@@ -53,9 +39,6 @@ class Ppl3Fragment : Fragment(), MarketUserListInterface {
             startActivity(intent)
         }
 
-    }
-
-    override fun onGetChatListFailure(message: String) {
-        Log.d("error", "오류: $message")
+        return viewBinding.root
     }
 }
