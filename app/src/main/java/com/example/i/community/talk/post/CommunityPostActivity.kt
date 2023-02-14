@@ -123,9 +123,6 @@ class CommunityPostActivity : AppCompatActivity(), ViewTalkroomInterface{
                     Glide.with(viewBinding.ivPost)
                         .load(response.result.feed[index].feedIdx)
                         .into(viewBinding.ivPost)
-                    viewBinding.tvRoomType.text = response.result.feed[index].roomType.toString() // roomType
-                    viewBinding.tvRoomType.text = response.result.feed[index].feedIdx.toString() // roomType
-
 
                     viewBinding.tvRoomType.text = response.result.feed[index].roomType.toString() // roomType
                     viewBinding.tvTitle.text = response.result.feed[index].title.toString() // title
