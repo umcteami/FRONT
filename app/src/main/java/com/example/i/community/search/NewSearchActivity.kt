@@ -18,7 +18,7 @@ class NewSearchActivity : AppCompatActivity() {
             if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_SEARCH || EditorInfo.IME_ACTION_UNSPECIFIED == actionId)
             {
                 searchVar.searchBoard = 0
-                searchVar.searchRoom = 1
+                searchVar.searchRoom = 0
                 val searchTerm = viewBinding.etSearch.text.toString()
                 val searchIntent = Intent(this, SearchResultActivity::class.java)
                 searchIntent.putExtra("searchTerm", "$searchTerm")

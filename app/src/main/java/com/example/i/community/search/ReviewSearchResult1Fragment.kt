@@ -1,30 +1,29 @@
 package com.example.i.community.search
 
 import android.content.Intent
-import android.graphics.Insets.add
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.i.community.BoardItem
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentReviewSearchResultBinding
 import com.example.i.home.HasImage
+import com.example.i.market.Market
+import com.example.i.market.MarketPostActivity
 
-class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface, DiarySearchInterface, ReviewSearchInterface, MarketSearchInterface{
+class ReviewSearchResult1Fragment : Fragment(), HomeSearchInterface, StorySearchInterface, DiarySearchInterface, ReviewSearchInterface, MarketSearchInterface{
     private lateinit var viewBinding : FragmentReviewSearchResultBinding
     var hasImage : HasImage = HasImage.TRUE
     var searchKeyword : String? = ""
     var category : String? = null
-    val searchTarget : String = "title"
+    val searchTarget : String = "title_content"
     val userIdx : Int = 33
     val itemList : ArrayList<ReviewSearchItem> = arrayListOf()
     val itemList2 : ArrayList<ReviewSearchItem2> = arrayListOf()
+    val mkList : ArrayList<Market> = arrayListOf()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +37,8 @@ class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface, DiarySearc
         searchKeyword = searchVar.searchTerm
 
         when(roomGlobal){
+            0 -> when(categoryGlobal){
+            }
             1 -> when(categoryGlobal){
                 0 -> category = null
                 1 -> category = "justchat"
@@ -67,6 +68,7 @@ class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface, DiarySearc
 
 
         when(roomGlobal){
+            0 -> HomeSearchService(this, searchKeyword, null, searchTarget).tryGetHomeSearch()
             1 -> StorySearchService(this, category, searchKeyword,null, searchTarget).tryGetStorySearch()
             2 -> DiarySearchService(this,category,searchKeyword,null,searchTarget).tryGetDiarySearch()
             3 -> ReviewSearchService(this, searchKeyword, 0).trygetReviewSearch()
@@ -96,7 +98,7 @@ class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface, DiarySearc
                             response.result[i].memNick,
                             response.result[i].createAt,
                             response.result[i].hit.toString(),
-                            response.result[i].hit.toString(),
+                            response.result[i].likeCnt.toString(),
                             response.result[i].commentCnt.toString(),
                             response.result[i].img
                         )
@@ -116,6 +118,49 @@ class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface, DiarySearc
         }
     }
 
+    override fun onGetHomeSearchSuccess(response: HomeSearchResponse) {
+        if(response.isSuccess){
+            val index : Int = response.result.size - 1
+            viewBinding.tvResultCount.text = response.result.size.toString()
+
+            for(i in 0 .. index){
+                if(response.result[i].img != null){
+                    hasImage = HasImage.TRUE
+                }else
+                {
+                    hasImage = HasImage.FALSE
+                }
+                itemList.apply{
+                    add(
+                        ReviewSearchItem(
+                            hasImage,
+                            response.result[i].title,
+                            response.result[i].memNick,
+                            response.result[i].createAt,
+                            response.result[i].hit.toString(),
+                            response.result[i].likeCnt.toString(),
+                            response.result[i].commentCnt.toString(),
+                            response.result[i].img
+                        )
+                    )
+                }
+            }
+        }
+        viewBinding.rvBoard.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        viewBinding.rvBoard.adapter = ReviewSearchAdapter(itemList)
+
+        ReviewSearchAdapter(itemList)!!.itemClick = object : ReviewSearchAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(),CommunityPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onGetHomeSearchFailure(message: String) {
+        Log.d("error", "아이홈 검색 오류: $message")
+    }
     override fun onGetStorySearchFailure(message: String) {
         Log.d("error", "이야기방 검색 오류: $message")
     }
@@ -141,7 +186,7 @@ class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface, DiarySearc
                             response.result[i].memNick,
                             response.result[i].createAt,
                             response.result[i].hit.toString(),
-                            response.result[i].hit.toString(),
+                            response.result[i].likeCnt.toString(),
                             response.result[i].commentCnt.toString(),
                             response.result[i].img
                         )
@@ -212,7 +257,37 @@ class ReviewSearchResult1Fragment : Fragment(), StorySearchInterface, DiarySearc
 
     //나눔장터 검색
     override fun onGetMarketSearchSuccess(response: MarketSearchResponse) {
-        TODO("Not yet implemented")
+        if(response.isSuccess){
+            val index : Int = response.result.size - 1
+            viewBinding.tvResultCount.text = response.result.size.toString()
+
+            for(i in 0 .. index){
+//                if(response.result[i].img )
+                mkList.apply{
+                    add(
+                        Market(
+                            response.result[i].soldout,
+                            response.result[i].title,
+                            response.result[i].price,
+                            response.result[i].createdAt,
+                            response.result[i].hit,
+                            response.result[i].likeCount,
+                            response.result[i].image
+                        )
+                    )
+                }
+            }
+        }
+        viewBinding.rvBoard.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        viewBinding.rvBoard.adapter = MarketSearchAdapter(mkList)
+
+        MarketSearchAdapter(mkList)!!.itemClick = object : MarketSearchAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(requireActivity(), MarketPostActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onGetMarketSearchFailure(message: String) {

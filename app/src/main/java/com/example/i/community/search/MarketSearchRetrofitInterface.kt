@@ -12,5 +12,6 @@ interface MarketSearchRetrofitInterface {
         @Query("search_keyword")searchKeyword:String?,
         @Query("page")page:Int?,
         @Query("search_target")searchTarget:String,
-        @Body params : MarketSearchRequest):Call<MarketSearchResponse>
+//        @Body params : MarketSearchRequest
+    ):Call<MarketSearchResponse>
 }

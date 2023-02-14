@@ -13,3 +13,4 @@ data class ReviewSearchList(
     @SerializedName("createAt")val createAt : String,
     @SerializedName("image")val image : String?
 )
+

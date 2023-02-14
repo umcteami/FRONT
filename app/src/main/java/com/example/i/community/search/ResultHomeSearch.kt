@@ -1,4 +1,4 @@
-package com.example.i.community.models
+package com.example.i.community.search
 
 import com.google.gson.annotations.SerializedName
 
