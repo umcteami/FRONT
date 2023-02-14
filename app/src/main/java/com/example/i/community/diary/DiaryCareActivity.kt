@@ -9,7 +9,6 @@ import com.example.i.R
 import com.example.i.chat.MessageListFragment
 import com.example.i.community.*
 import com.example.i.community.review.ReviewActivity
-import com.example.i.community.search.NewSearchActivity
 import com.example.i.community.talk.*
 import com.example.i.databinding.ActivityDiaryCareBinding
 import com.example.i.market.MarketFragment

@@ -6,6 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.i.R
 import com.example.i.databinding.ActivityFriendProfileBinding
+import com.example.i.market.MarketPostActivity
+import com.example.i.mypage.fragment.ProfileMarketFragment
+import com.example.i.mypage.fragment.ProfilePostFragment
+import com.google.android.material.tabs.TabLayout
 
 class FriendProfileActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityFriendProfileBinding
@@ -20,6 +24,29 @@ class FriendProfileActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         //왼쪽 버튼 사용설정 (기본: 뒤로가기)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(viewBinding.tabProfile.id, ProfilePostFragment())
+            .commitAllowingStateLoss()
+
+        viewBinding.tabs.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tab?.position) {
+                    0 ->  supportFragmentManager.beginTransaction().replace(viewBinding.tabProfile.id, ProfilePostFragment()).commitAllowingStateLoss()
+                    1 ->  supportFragmentManager.beginTransaction().replace(viewBinding.tabProfile.id, ProfileMarketFragment()).commitAllowingStateLoss()
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
     }
     //item 버튼 메뉴 Toolbar에 집어 넣기
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

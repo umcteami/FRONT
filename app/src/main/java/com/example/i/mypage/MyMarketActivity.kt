@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.i.databinding.ActivityMyMarketBinding
 import com.example.i.market.MarketPostActivity
-import com.example.i.market.MarketPplRVAdapter
 import com.example.i.mypage.data.mymarket.*
 
 class MyMarketActivity : AppCompatActivity(), MarketInterface {
