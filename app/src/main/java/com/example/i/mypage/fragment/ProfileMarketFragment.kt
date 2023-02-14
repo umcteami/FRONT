@@ -2,18 +2,23 @@ package com.example.i.mypage.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.i.databinding.FragmentProfileMarketBinding
+import com.example.i.login.memIdx
 import com.example.i.market.MarketP
 import com.example.i.market.MarketPostActivity
 import com.example.i.market.MarketPplRVAdapter
+import com.example.i.market.model.MarketUserListInterface
+import com.example.i.market.model.MarketUserListResponse
+import com.example.i.market.model.MarketUserListService
 
 
-class ProfileMarketFragment : Fragment() {
+class ProfileMarketFragment : Fragment(), MarketUserListInterface {
 
     private lateinit var viewBinding: FragmentProfileMarketBinding
 
@@ -24,32 +29,45 @@ class ProfileMarketFragment : Fragment() {
     ): View? {
         viewBinding = FragmentProfileMarketBinding.inflate(inflater, container, false)
 
-        val mkpList: ArrayList<MarketP> = arrayListOf()
-        val adapter = MarketPplRVAdapter(requireActivity(), mkpList)
-
-        var img = "https://i-image.s3.ap-northeast-2.amazonaws.com/8568310d-73fb-4728-b11f-712d716c6416_Acer_Wallpaper_03_5000x2814.jpg"
-
-
-        mkpList.apply{
-            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
-            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
-            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
-            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
-            add(MarketP(img, "간식 나눔", "강아지 껌", "2", false))
-            add(MarketP(img, "간식 나눔", "강아지 껌", "2", true))
-        }
-
-        viewBinding.marketRecyclerview.layoutManager = GridLayoutManager(requireActivity(), 3)
-        viewBinding.marketRecyclerview.adapter = adapter
-
-        adapter!!.itemClick = object : MarketPplRVAdapter.ItemClick {
-
-            override fun onClick(view: View, position: Int) {
-                val intent = Intent(activity, MarketPostActivity::class.java)
-                startActivity(intent)
-            }
-        }
+        MarketUserListService(this).tryGetMarketUserList(1, memIdx)
 
         return viewBinding.root
+    }
+
+    override fun onGetMarketUserListSuccess(response: MarketUserListResponse) {
+        if (response.isSuccess) {
+            val mkpList: ArrayList<MarketP> = arrayListOf()
+            val adapter = MarketPplRVAdapter(requireActivity(), mkpList)
+            viewBinding.marketCount.text = "총 $(response.result.size)개의 나눔장터 글이 있어요"
+
+            for (i in 0 .. response.result.size-1) {
+                mkpList.apply {
+                    add(MarketP(
+                        response.result[i].img,
+                        response.result[i].title,
+                        response.result[i].content,
+                        response.result[i].hit.toString(),
+                        response.result[i].liked
+                    ))
+                }
+            }
+
+            viewBinding.marketRecyclerview.layoutManager = GridLayoutManager(requireActivity(), 3)
+            viewBinding.marketRecyclerview.adapter = adapter
+
+            adapter.notifyDataSetChanged()
+
+            adapter!!.itemClick = object : MarketPplRVAdapter.ItemClick {
+
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(activity, MarketPostActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+    }
+
+    override fun onGetChatListFailure(message: String) {
+        Log.d("error", "오류: $message")
     }
 }

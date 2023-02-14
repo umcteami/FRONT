@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.i.chat.MessageActivity
 import com.example.i.databinding.ActivityMarketPostBinding
+import com.example.i.login.memIdx
 import com.example.i.market.model.MarketUserListInterface
 import com.example.i.market.model.MarketUserListResponse
 import com.example.i.market.model.MarketUserListService
@@ -14,6 +15,7 @@ import com.example.i.mypage.FriendProfileActivity
 class MarketPostActivity : AppCompatActivity(), MarketUserListInterface {
 
     private lateinit var viewBinding: ActivityMarketPostBinding
+    var postUserIdx: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,7 @@ class MarketPostActivity : AppCompatActivity(), MarketUserListInterface {
 
         setContentView(viewBinding.root)
 
-        MarketUserListService(this).tryGetMarketUserList(39,17)
+        MarketUserListService(this).tryGetMarketUserList(postUserIdx, memIdx)
 
         viewBinding.btBack.setOnClickListener {
             finish()
