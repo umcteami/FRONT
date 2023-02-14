@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.i.Main2Activity
 import com.example.i.community.talk.WriteImageAdapter
 import com.example.i.databinding.ActivityWriteBinding
+import com.example.i.login.memIdx
 import com.example.i.market.customdialog.CategoryDialog
 import com.example.i.market.model.MarketWriteInterface
 import com.example.i.market.model.MarketWriteResponse
@@ -146,7 +147,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, MarketWriteInte
         viewBinding.btUpload.setOnClickListener {
             val title = viewBinding.etTitle.text.toString()
             val content = viewBinding.etContent.text.toString()
-            val userIdx = userId
+            val userIdx = memIdx
             val price = viewBinding.etPrice.text.toString().toInt()
             val category = viewBinding.btCategory.text.toString()
             var numCategory : String = "1"
