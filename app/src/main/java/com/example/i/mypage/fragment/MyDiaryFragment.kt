@@ -85,7 +85,6 @@ class MyDiaryFragment : Fragment(), PostInterface, View.OnClickListener {
                                 response.result[i].countLike.toString()
                             )
                         )
-                        // add(MyPost("질문방", "해피가 이런 증상을 보이는데 괜찮은 건가요?", "7시간 전", "조회 12", "2"))
                     }
                 }
             }

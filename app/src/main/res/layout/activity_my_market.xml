@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="총 9개의 나눔장터 상품이 있어요"
+                    android:text="총 0개의 나눔장터 상품이 있어요"
                     android:textColor="#A6A6A6"
                     android:textSize="13sp" />
             </LinearLayout>
