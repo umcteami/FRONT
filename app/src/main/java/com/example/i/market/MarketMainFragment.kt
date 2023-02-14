@@ -16,12 +16,20 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MarketMainFragment: Fragment() {
     private lateinit var viewBinding: FragmentMarketMainBinding
 
+    val mkList: ArrayList<Market> = arrayListOf()
+    val adapter = MarketRVAdapter(mkList, requireActivity())
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentMarketMainBinding.inflate(layoutInflater)
+
+        mkList.apply{
+            add(Market("0", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
+            add(Market("1", "강아지 장난감", 30000,"2022-12-23-", 5,6,null))
+        }
 
         return viewBinding.root
     }
@@ -36,14 +44,9 @@ class MarketMainFragment: Fragment() {
             viewBinding.vpPpl.setCurrentItem(tab.position)
         }.attach()
 
-        val mkList: ArrayList<Market> = arrayListOf()
-        val adapter = MarketRVAdapter(mkList, requireActivity())
+
         val customDecoration = CustomDecoration(2f, 2f, Color.rgb(0xB4,0xB4,0xB4))
 
-        mkList.apply{
-            add(Market("0", "강아지 껌", 30000,"2022-12-23-", 5,6,null))
-            add(Market("1", "강아지 장난감", 30000,"2022-12-23-", 5,6,null))
-        }
 
         viewBinding.rvMarket.layoutManager = LinearLayoutManager(context)
         viewBinding.rvMarket.adapter = adapter
