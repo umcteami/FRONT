@@ -39,14 +39,31 @@ class ReportFragment : Fragment(), ReportInterface {
 
     // 신고한 게시글 API
     override fun onGetReportSuccess(response: ReportResponse) {
+
         // 받아온 정보와 UI 연결
         if(response.isSuccess){
 
             val ReportList: ArrayList<Report> = arrayListOf()
-            val nick = response.result[2]
 
-            ReportList.apply{
-                add(Report(response.result[0].toString(),"{$nick}님의 게시글이 정상적으로 신고 접수 되었습니다", response.result[3].toString()))
+            val index: Int = response.result.size - 1
+
+            for (i in 0 ..index) {
+                if (response.result.size != 0) {
+                    ReportList.apply {
+                        add(
+                            Report(
+                                response.result[i].roomType.toString(),
+                                response.result[i].profile,
+                                response.result[i].nick,
+                                response.result[i].createAt
+                            )
+                        )
+                    }
+                }
+            }
+            if (response.result.size == 0)
+            {
+                Toast.makeText(activity, "신고한 게시글이 없습니다", Toast.LENGTH_SHORT).show()
             }
 
             viewBinding.recyclerview.layoutManager = LinearLayoutManager(context)
@@ -54,7 +71,8 @@ class ReportFragment : Fragment(), ReportInterface {
         }
 
         // Result message
-        Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
+        Log.d("Success", "성공 : $response.message")
+        // Toast.makeText(activity,response.message, Toast.LENGTH_SHORT).show()
     }
 
     // 서버 연결 실패
