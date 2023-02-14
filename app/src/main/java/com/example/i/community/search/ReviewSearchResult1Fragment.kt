@@ -1,6 +1,5 @@
 package com.example.i.community.search
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,19 +9,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.community.talk.post.CommunityPostActivity
-import com.example.i.databinding.FragmentReviewSearchResult2Binding
 import com.example.i.databinding.FragmentReviewSearchResultBinding
-import com.example.i.market.customdialog.MkFilterDialog
 import com.example.i.home.HasImage
 import com.example.i.market.Market
 import com.example.i.market.MarketPostActivity
 
-class ReviewSearchResult2Fragment() : Fragment(), HomeSearchInterface, StorySearchInterface, DiarySearchInterface, ReviewSearchInterface, MarketSearchInterface{
+class ReviewSearchResult1Fragment : Fragment(), HomeSearchInterface, StorySearchInterface, DiarySearchInterface, ReviewSearchInterface, MarketSearchInterface{
     private lateinit var viewBinding : FragmentReviewSearchResultBinding
     var hasImage : HasImage = HasImage.TRUE
     var searchKeyword : String? = ""
     var category : String? = null
-    val searchTarget : String = "title"
+    val searchTarget : String = "title_content"
     val userIdx : Int = 33
     val itemList : ArrayList<ReviewSearchItem> = arrayListOf()
     val itemList2 : ArrayList<ReviewSearchItem2> = arrayListOf()
@@ -115,7 +112,7 @@ class ReviewSearchResult2Fragment() : Fragment(), HomeSearchInterface, StorySear
 
         ReviewSearchAdapter(itemList)!!.itemClick = object : ReviewSearchAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                val intent = Intent(requireActivity(),CommunityPostActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -155,7 +152,7 @@ class ReviewSearchResult2Fragment() : Fragment(), HomeSearchInterface, StorySear
 
         ReviewSearchAdapter(itemList)!!.itemClick = object : ReviewSearchAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                val intent = Intent(requireActivity(),CommunityPostActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -203,7 +200,7 @@ class ReviewSearchResult2Fragment() : Fragment(), HomeSearchInterface, StorySear
 
         ReviewSearchAdapter(itemList)!!.itemClick = object : ReviewSearchAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
-                val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
+                val intent = Intent(requireActivity(),CommunityPostActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -234,8 +231,8 @@ class ReviewSearchResult2Fragment() : Fragment(), HomeSearchInterface, StorySear
                             response.result[i].buyerNick,
                             response.result[i].createAt,
                             response.result[i].hit.toString(),
-                            response.result[i].hit.toString(), //원래는 좋아요
-                            response.result[i].hit.toString(), //원래는 댓글
+                            response.result[i].likeCnt.toString(), //원래는 좋아요
+                            response.result[i].commentCnt.toString(), //원래는 댓글
                             response.result[i].image
                         )
                     )

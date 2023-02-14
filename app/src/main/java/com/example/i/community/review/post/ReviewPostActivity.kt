@@ -7,6 +7,7 @@ import com.example.i.R
 import com.example.i.community.talk.post.ItemComment
 import com.example.i.community.talk.post.PostCommentRVAdapter
 import com.example.i.databinding.ActivityReviewPostBinding
+import com.example.i.login.memIdx
 
 class ReviewPostActivity : AppCompatActivity() {
     private lateinit var viewBinding : ActivityReviewPostBinding

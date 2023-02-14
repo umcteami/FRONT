@@ -11,7 +11,7 @@
         android:layout_height="47dp"
         android:backgroundTint="@color/white"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:text="맘마/까까"
+        android:text="전체 게시글"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_regular"
@@ -26,7 +26,7 @@
         android:layout_height="47dp"
         android:backgroundTint="@color/white"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:text="장난감"
+        android:text="맘마/까까"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_regular"
@@ -41,7 +41,7 @@
         android:layout_height="47dp"
         android:backgroundTint="@color/white"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:text="영양제/약/간호용품"
+        android:text="장난감"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_regular"
@@ -56,6 +56,21 @@
         android:layout_height="47dp"
         android:backgroundTint="@color/white"
         style="@style/Widget.AppCompat.Button.Borderless"
+        android:text="영양제/약/간호용품"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintBottom_toTopOf="@+id/bt_mk_alert5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_mk_alert3" />
+
+    <Button
+        android:id="@+id/bt_mk_alert5"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:backgroundTint="@color/white"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:text="기타"
         android:textSize="16sp"
         android:textColor="@color/black"
@@ -63,6 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_mk_alert3" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_mk_alert4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
