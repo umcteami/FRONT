@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
+import com.example.i.community.search.NewSearchActivity
 import com.example.i.community.diary.DiaryActivity
 import com.example.i.community.diary.DiaryCareActivity
 import com.example.i.community.diary.DiaryRainActivity
@@ -17,7 +18,11 @@ import com.example.i.community.review.ReviewActivity
 import com.example.i.community.talk.*
 import com.example.i.community.talk.post.CommunityPostActivity
 import com.example.i.databinding.FragmentHomeBinding
+import com.example.i.home.Const.HASIMAGE
 import com.example.i.home.model.*
+import com.example.i.mypage.data.BlockResponse
+import com.example.i.mypage.data.Blocked
+import com.example.i.mypage.data.BlockedRVAdapter
 import com.example.i.toolbar.NotiActivity
 import com.example.i.toolbar.SearchActivity
 
@@ -116,7 +121,7 @@ class HomeFragment :Fragment(), TtlListInterface, PplListInterface {
 
 
         viewBinding.homeSearchBtn.setOnClickListener {
-            val intent = Intent(context, SearchActivity::class.java)
+            val intent = Intent(context, NewSearchActivity::class.java)
             intent.addFlags (Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }

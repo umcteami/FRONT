@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.R
 import com.example.i.community.BoardItem
+import com.example.i.community.BoardRoomXItem
+import com.example.i.community.talk.CommunityBoardAdapter
+import com.example.i.community.talk.CommunityTalkroomActivity
 import com.example.i.community.customdialog.PFilterDialog
 import com.example.i.community.talk.models.talkroom.PplTalkroomInterface
 import com.example.i.community.talk.models.talkroom.PplTalkroomResponse

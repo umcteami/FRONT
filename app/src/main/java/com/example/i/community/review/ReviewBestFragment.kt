@@ -13,6 +13,7 @@ import com.example.i.community.BoardRoomXItem
 import com.example.i.community.customdialog.PFilterDialog
 import com.example.i.community.review.post.ReviewPostActivity
 import com.example.i.community.talk.CommunityRoomXBoardAdapter
+import com.example.i.community.talk.CommunityTalkroomActivity
 import com.example.i.databinding.FragmentReviewBestBinding
 
 class ReviewBestFragment : Fragment(), View.OnClickListener {
