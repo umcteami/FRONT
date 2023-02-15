@@ -19,9 +19,9 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>(){
             viewBinding.tvPrice.text = Market.price.toString()
             viewBinding.tvDate.text = Market.date
             viewBinding.tvViewCnt.text =  Market.view.toString()
-            viewBinding.tvHeartCnt.text = Market.hearNum.toString()
+            viewBinding.tvHeartCnt.text = Market.heartNum.toString()
             Glide.with(viewBinding.marketPostPicture)
-                .load(Market.image)
+                .load(Market.img)
                 .into(viewBinding.marketPostPicture)
         }
     }

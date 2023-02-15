@@ -9,12 +9,12 @@ import com.example.i.R
 import com.example.i.chat.MessageListFragment
 import com.example.i.community.*
 import com.example.i.community.review.ReviewActivity
+import com.example.i.community.search.NewSearchActivity
 import com.example.i.community.talk.*
 import com.example.i.databinding.ActivityDiaryBinding
 import com.example.i.market.MarketFragment
 import com.example.i.mypage.fragment.MypageFragment
 import com.example.i.toolbar.NotiActivity
-import com.example.i.toolbar.SearchActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DiaryActivity : AppCompatActivity() {

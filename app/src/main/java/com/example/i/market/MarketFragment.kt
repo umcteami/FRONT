@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.i.R
-import com.example.i.community.NewSearchActivity
+import com.example.i.community.search.NewSearchActivity
 import com.example.i.databinding.FragmentMarketBinding
 import com.example.i.toolbar.NotiActivity
-import com.example.i.toolbar.SearchActivity
 import com.google.android.material.tabs.TabLayout
 
 class MarketFragment : Fragment() {

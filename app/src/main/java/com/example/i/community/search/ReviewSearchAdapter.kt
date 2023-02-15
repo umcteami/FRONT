@@ -5,22 +5,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.i.community.review.ReviewItem
-import com.example.i.databinding.PostListReviewLayoutBinding
+import com.bumptech.glide.Registry.NoImageHeaderParserException
+import com.example.i.community.search.Const.HASIMAGE
+import com.example.i.community.search.Const.NOIMAGE
 import com.example.i.databinding.SearchListLayoutBinding
 import com.example.i.databinding.SearchListLayoutNoimgBinding
 import com.example.i.home.HasImage
+import com.example.i.home.PplRVAdapter
 
-class ReviewSearchAdapter2(val itemList : ArrayList<ReviewSearchItem2>) :
-RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    var itemClick : ReviewSearchAdapter2.ItemClick? = null
+class ReviewSearchAdapter(val itemList : ArrayList<ReviewSearchItem>) :
+RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    var itemClick : ReviewSearchAdapter.ItemClick? = null
 
     override fun getItemViewType(position: Int): Int {
-        return if(itemList[position].hasImage == HasImage.TRUE) Const.HASIMAGE else Const.NOIMAGE
+        return if(itemList[position].hasImage == HasImage.TRUE) HASIMAGE else NOIMAGE
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if(viewType == Const.HASIMAGE){
+        return if(viewType == HASIMAGE){
             val view = SearchListLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             BoardViewHolder(view)
         } else{
@@ -30,7 +32,7 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(getItemViewType(position) == Const.HASIMAGE){
+        if(getItemViewType(position) == HASIMAGE){
             (holder as BoardViewHolder).bind(itemList[position])
         }else{
             (holder as BoardViewNoImgHolder).bind(itemList[position])
@@ -62,29 +64,34 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     }
 
     inner class BoardViewHolder(val viewBinding: SearchListLayoutBinding):
-        RecyclerView.ViewHolder(viewBinding.root){
-        fun bind(item : ReviewSearchItem2){
-            viewBinding.tvTitle.text = "${item.seller}님과 ${item.goods}물품을 거래했어요"
-            viewBinding.tvWriter.text = item.writer
-            viewBinding.tvView.text = item.view
-            viewBinding.tvDate.text = item.date
-            viewBinding.tvHeart.text = item.heart
-            viewBinding.tvComment.text = item.comment
-            Glide.with(viewBinding.ivThumbnail)
-                .load(item.img)
-                .into(viewBinding.ivThumbnail)
-        }
-    }
+            RecyclerView.ViewHolder(viewBinding.root){
+                fun bind(item : ReviewSearchItem){
+                    viewBinding.tvTitle.text = item.title
+                    viewBinding.tvWriter.text = item.writer
+                    viewBinding.tvView.text = item.view
+                    viewBinding.tvDate.text = item.date
+                    viewBinding.tvHeart.text = item.heart
+                    viewBinding.tvComment.text = item.comment
+                    Glide.with(viewBinding.ivThumbnail)
+                        .load(item.picture)
+                        .into(viewBinding.ivThumbnail)
+                }
+            }
 
     inner class BoardViewNoImgHolder(val viewBinding : SearchListLayoutNoimgBinding):
-        RecyclerView.ViewHolder(viewBinding.root){
-        fun bind(item : ReviewSearchItem2){
-            viewBinding.tvTitle.text = "${item.seller}님과 ${item.goods}물품을 거래했어요"
-            viewBinding.tvWriter.text = item.writer
-            viewBinding.tvView.text = item.view
-            viewBinding.tvDate.text = item.date
-            viewBinding.tvHeart.text = item.heart
-            viewBinding.tvComment.text = item.comment
-        }
-    }
+            RecyclerView.ViewHolder(viewBinding.root){
+                fun bind(item : ReviewSearchItem){
+                    viewBinding.tvTitle.text = item.title
+                    viewBinding.tvWriter.text = item.writer
+                    viewBinding.tvView.text = item.view
+                    viewBinding.tvDate.text = item.date
+                    viewBinding.tvHeart.text = item.heart
+                    viewBinding.tvComment.text = item.comment
+                }
+            }
+}
+
+object Const{
+    const val HASIMAGE = 0
+    const val NOIMAGE = 1
 }

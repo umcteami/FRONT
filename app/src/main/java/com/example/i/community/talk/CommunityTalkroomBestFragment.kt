@@ -2,7 +2,6 @@
 
 package com.example.i.community.talk
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +12,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.i.community.BoardItem
-import com.example.i.community.customdialog.PFilterDialog
 import com.example.i.community.talk.models.talkroom.PplTalkroomInterface
 import com.example.i.community.talk.models.talkroom.PplTalkroomResponse
 import com.example.i.community.talk.models.talkroom.PplTalkroomService
@@ -22,14 +20,14 @@ import com.example.i.databinding.FragmentCommunityTalkroomBestBinding
 import com.example.i.home.HasImage
 
 
-class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface, View.OnClickListener {
+class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface {
     private lateinit var viewBinding: FragmentCommunityTalkroomBestBinding
-    private lateinit var talk : CommunityTalkroomActivity
 
     val itemList: ArrayList<BoardItem> = arrayListOf()
     var hasImage: HasImage = HasImage.TRUE
     val Tadapter = CommunityBoardAdapter(itemList)
 
+    private lateinit var main : CommunityTalkroomActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,8 +35,6 @@ class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface, View.OnCl
         viewBinding = FragmentCommunityTalkroomBestBinding.inflate(layoutInflater)
 
         PplTalkroomService(this).tryGetPplTalkroom("story",1,0,0)
-
-        viewBinding.btSort.setOnClickListener(this)
 
         return viewBinding.root
     }
@@ -93,24 +89,6 @@ class CommunityTalkroomBestFragment : Fragment(),PplTalkroomInterface, View.OnCl
 
     override fun onGetPplTalkroomFailure(message: String) {
         Log.d("error", "카테고리 이야기방 인기글 오류: $message")
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        talk = context as CommunityTalkroomActivity
-    }
-
-    override fun onClick(p0: View?) {
-        when(view?.id) {
-            viewBinding.btSort.id -> {
-                val dlg = PFilterDialog(talk)
-                dlg.setOnOkClickedListener { content ->
-                    viewBinding.btSort.setText(content)
-                }
-                dlg.show()
-            }
-        }
     }
 
 }

@@ -1,12 +1,12 @@
-package com.example.i.community
+package com.example.i.community.search
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View.GONE
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.i.databinding.ActivityNewSearchBinding
 
 class NewSearchActivity : AppCompatActivity(), BestKeywordInterface {
@@ -32,7 +32,7 @@ class NewSearchActivity : AppCompatActivity(), BestKeywordInterface {
                 return@setOnEditorActionListener true
             }
             else{
-                Toast.makeText(this,"Search를 잘못 누름",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Search를 잘못 누름", Toast.LENGTH_SHORT).show()
                 false
             }
 

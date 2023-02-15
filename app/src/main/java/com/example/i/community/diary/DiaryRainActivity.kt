@@ -7,14 +7,13 @@ import androidx.core.view.GravityCompat
 import com.example.i.Main2Activity
 import com.example.i.R
 import com.example.i.chat.MessageListFragment
-import com.example.i.community.NewSearchActivity
 import com.example.i.community.review.ReviewActivity
+import com.example.i.community.search.NewSearchActivity
 import com.example.i.community.talk.*
 import com.example.i.databinding.ActivityDiaryRainBinding
 import com.example.i.market.MarketFragment
 import com.example.i.mypage.fragment.MypageFragment
 import com.example.i.toolbar.NotiActivity
-import com.example.i.toolbar.SearchActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DiaryRainActivity : AppCompatActivity() {
